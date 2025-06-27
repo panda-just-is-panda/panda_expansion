@@ -5,7 +5,7 @@ local skill = fk.CreateSkill("active", {
   prompt = "#ex__fanjian",
   max_phase_use_time = 1,
    card_filter = function(self, player, to_select, selected)
-    return #selected == 0 and table.contains(player:getCardIds("h"), to_select)
+    return #selected == 0
   end,
   target_filter = function(self, player, to_select, selected)
     return #selected == 0 and to_select ~= player and not to_select:isKongcheng()
@@ -13,8 +13,8 @@ local skill = fk.CreateSkill("active", {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = event:getCostData(self).tos[1]
-    local id = room:askToChooseCard(player, {target = to, flag = "he", skill_name = pang_fanjian.name})
-    room:throwCard({id}, pang_fanjian.name, to, player)
+    local id = room:askToChooseCard(player, {target = to, flag = "he", skill_name = skill.name})
+    room:throwCard({id}, skill.name, to, player)
   end,
 })
 
