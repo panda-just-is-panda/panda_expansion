@@ -18,6 +18,7 @@ skill:addEffect("active", {
   end,
   on_use = function(self, room, effect)
     local player = effect.from
+    room:throwCard(effect.cards, skill.name, player, player)
     local target = effect.tos[1]
     local id = room:askToChooseCard(player, {target = target, flag = "he", skill_name = skill.name})
     room:throwCard({id}, skill.name, target, player)
