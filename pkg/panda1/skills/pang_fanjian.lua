@@ -1,4 +1,9 @@
-local skill = fk.CreateSkill("active", {
+local skill = fk.CreateSkill({
+  name = "pang_fanjian", ---技能内部名称，要求唯一性
+  tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
+})
+
+skill:addEffect("active", {
   anim_type = "control",
   card_num = 1,
   target_num = 1,
