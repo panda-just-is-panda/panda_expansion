@@ -18,7 +18,7 @@ local skill = fk.CreateSkill("active", {
   end,
 })
 
-Fk:loadTranslationTable {["pang_chaiqian"] = "拆迁",
+Fk:loadTranslationTable {["pang_fanjian"] = "反间",
 [":pang_fanjian"] = "出牌阶段限一次，你可以弃置一张手牌并弃置一名其他角色一张牌。",
 ["#ex__fanjian"] = "弃置一张手牌并选择一名其他角色，然后你弃置其一张牌"
 }
