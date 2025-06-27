@@ -16,11 +16,11 @@ skill:addEffect("active", {
   target_filter = function(self, player, to_select, selected)
     return #selected == 0 and to_select ~= player and not to_select:isKongcheng()
   end,
-  on_use = function(self, event, target, player, data)
-    local room = player.room
-    local to = event:getCostData(self).tos[1]
-    local id = room:askToChooseCard(player, {target = to, flag = "he", skill_name = skill.name})
-    room:throwCard({id}, skill.name, to, player)
+  on_use = function(self, event, room, effect)
+    local player = effect.from
+    local target = effect.tos[1]
+    local id = room:askToChooseCard(player, {target = target, flag = "he", skill_name = skill.name})
+    room:throwCard({id}, skill.name, target, player)
   end,
 })
 
