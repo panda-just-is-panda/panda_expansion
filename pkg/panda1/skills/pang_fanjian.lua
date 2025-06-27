@@ -8,7 +8,7 @@ skill:addEffect("active", {
   target_num = 1,
   prompt = "#ex_fanjian",
   can_use = function(self, player)
-    return player:usedSkillTimes(fanjian.name, Player.HistoryPhase) == 0
+    return player:usedSkillTimes(skill.name, Player.HistoryPhase) == 0
   end,
    card_filter = function(self, player, to_select, selected)
     return #selected == 0
