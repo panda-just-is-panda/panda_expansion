@@ -10,11 +10,30 @@ skill:addEffect(fk.EventPhaseStart, { --准备阶段
       player.phase == Player.Start
   end,
   on_use = function(self, event, target, player, data)
-    player:drawCards( 1, pang_yingzi.name)
+    player:drawCards( 1, skill.name)
   end,
 })
+
+skill:addTest(function(room, me)
+  FkTest.runInRoom(function()
+    room:handleAddLoseSkills(me, skill.name)
+  end)
+
+  FkTest.setNextReplies(me, { "1", "1" })
+  FkTest.runInRoom(function()
+    GameEvent.Turn:create(TurnData:new(me, "game_rule", { Player.Start })):exec()
+  end)
+
+  lu.assertEquals(#me:getCardIds("h"), 2)
+  FkTest.runInRoom(function()
+    GameEvent.Turn:create(TurnData:new(me, "game_rule", { Player.Start })):exec()
+  end)
+
+  lu.assertEquals(#me:getCardIds("h"), 3)
+end)
+
 Fk:loadTranslationTable {["pang_yingzi"] = "英姿",
-[":pang_yingzi"] = "准备阶段，你摸一张牌。",
+[":pang_yingzi"] = "准备阶段，你可以摸一张牌。",
 }
 return skill  --不要忘记返回做好的技能对象哦
 

@@ -8,12 +8,14 @@ skill:addEffect("active", {
   card_num = 1,
   target_num = 1,
   prompt = "#ex__fanjian",
-  max_phase_use_time = 1,
    card_filter = function(self, player, to_select, selected)
     return #selected == 0
   end,
   target_filter = function(self, player, to_select, selected)
     return #selected == 0 and to_select ~= player and not to_select:isKongcheng()
+  end,
+    can_use = function(self, player)
+    return player:usedSkillTimes(skill.name, Player.HistoryPhase) == 0
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
