@@ -9,15 +9,18 @@ skill:addEffect("viewas", {
   pattern = "slash",
   handly_pile = true,
   card_filter = function(self, player, to_select, selected)
-    if #selected == 3 then return false end
+    if #selected == 2 or Fk:currentRoom():getCardArea(to_select) ~= Player.Hand then return false end
+    return not table.contains(record, Fk:getCardById(to_select):getSuitString(true))
   end,
   view_as = function(self, player, cards)
-    if #cards ~= 3 then return end
+    if #cards ~= 2 then
+      return nil
+    end
     local card = Fk:cloneCard("slash")
     card.skillName = skill.name
-    card:addSubcard(cards)
+    card:addSubcards(cards)
     return card
-  end,
+  end
 })
 skill:addEffect("targetmod", {
   bypass_times = function (self, player, skill, scope, card, to)
