@@ -18,21 +18,20 @@ skill:addEffect("viewas", {
       return nil
     end
     local card = Fk:cloneCard("slash")
-    card.skillName = "ouliege_tanta"
-    self.extra_data = cards
+    card.skillName = skill.name
     card:addSubcards(cards)
     return card
   end,
 })
 skill:addEffect("targetmod",{
   bypass_times = function(self, player, skill, scope, card, to)
-    return card and table.contains(card.skillNames, "ouliege_tanta")    
+    return card and table.contains(card.skillNames, skill.name)    
   end,
 })
 
 Fk:loadTranslationTable{["pang_tanta"] = "坦踏",
-  [":pang_tanta"] = "你可以将三张牌作为无次数限制的【杀】使用，然后若其中不包含装备牌，你获得1点护甲且此技能本回合失效。",
-  ["#pang_tanta"] = "坦踏：你可将三张牌作为无次数限制【杀】使用；若没有装备牌则你获得护甲且此技能本回合失效",
+  [":pang_tanta"] = "你可以将三张牌作为无次数限制的【杀】使用，",
+  ["#pang_tanta"] = "坦踏：将三张牌作为无次数限制【杀】使用",
 }
 
 return skill
