@@ -9,12 +9,12 @@ skill:addEffect("viewas", {
   pattern = "slash",
   handly_pile = true,
   card_filter = function(self, player, to_select, selected)
-    if #selected == 2 then return false end
+    if #selected == 3 then return false end
     local record = Self:getTableMark("@hs__luanji-turn")
     return not table.contains(record, Fk:getCardById(to_select):getSuitString(true))
   end,
   view_as = function(self, player, cards)
-    if #cards ~= 2 then
+    if #cards ~= 3 then
       return nil
     end
     local card = Fk:cloneCard("slash")
@@ -32,6 +32,11 @@ skill:addEffect("viewas", {
     end
     room:setPlayerMark(player, "@hs__luanji-turn", record)
   end
+})
+skill:addEffect("targetmod", {
+  bypass_times = function (self, player, skill, scope, card, to)
+    return card and table.contains(card.skillNames, skill.name)
+  end,
 })
 
 Fk:loadTranslationTable{["pang_tanta"] = "坦踏",
