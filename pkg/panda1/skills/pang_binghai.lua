@@ -20,7 +20,8 @@ skill:addEffect(fk.CardUsing, {
       room:delay(50)
       if player.dead then return end
       local discards = table.filter(player:getCardIds("he"), function(id)
-        return Fk:getCardById(cards).color == Card.Black and not player:prohibitDiscard(id)
+        local card = Fk:getCardById(id)
+        return card and card.color == card.Black and not player:prohibitDiscard(id)
       end)
       if #discards > 0 then
         room:throwCard(discards, skill.name, player, player)
