@@ -13,15 +13,15 @@ skill:addEffect("viewas", {
   end,
   view_as = function(self, player, cards)
     if #cards ~= 3 then return end
-    local c = Fk:cloneCard("slash")
-    c.skillName = skill.name
-    c:addSubcard(cards[3])
-    return c
+    local card = Fk:cloneCard("slash")
+    card.skillName = skill.name
+    card:addSubcard(cards[3])
+    return card
   end,
 })
 skill:addEffect("targetmod", {
-  bypass_times = function (self, player, skill, scope, c)
-    return c and table.contains(c.skillName, skill.name)
+  bypass_times = function (self, player, skill, scope, card, to)
+    return card and table.contains(card.skillNames, jungong.name)
   end,
 })
 
