@@ -17,15 +17,13 @@ skill:addEffect(fk.CardUsing, {
     if #cards > 0 then
       player:showCards(cards)
     end
-      local cards = target:getCardIds("h")
-      target:showCards(cards)
       room:delay(500)
-      if target.dead then return end
-      local discards = table.filter(target:getCardIds("he"), function(id)
-        return Fk:getCardById(id).suit == ".|.|spade,club" and not target:prohibitDiscard(id)
+      if player.dead then return end
+      local discards = table.filter(player:getCardIds("he"), function(id)
+        return Fk:getCardById(id).suit == ".|.|spade,club" and not player:prohibitDiscard(id)
       end)
       if #discards > 0 then
-        room:throwCard(discards, fanjian.name, target, target)
+        room:throwCard(discards, skill.name, player, player)
       end
   end,
 })
