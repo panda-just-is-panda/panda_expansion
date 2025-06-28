@@ -38,21 +38,18 @@ tanta:addEffect("targetmod",{
   end,
 })
 tanta:addEffect(fk.Damage, {
-  can_refresh = function (self, event, target, player, data)
-    return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
+  can_refresh = function (self, event, target, player, card)
+    return target == player and card and table.contains(card.skillNames, tanta.name)
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = player
     room:changeShield(to, 1)
   end,
-  on_refresh = function (self, event, target, player, data)
-    player.room:invalidateSkill(player, tanta.name, "-turn")
-  end,
 })
 
 Fk:loadTranslationTable{["pang_tanta"] = "坦踏",
-  [":pang_tanta"] = "你可以将四张牌作为无次数限制的【杀】使用，然后若此【杀】造成了伤害，你获得1点护甲且此技能本回合失效。",
+  [":pang_tanta"] = "你可以将四张牌作为无次数限制的【杀】使用，然后若此【杀】造成了伤害，你获得1点护甲。",
   ["#pang_tanta"] = "坦踏：将四张牌作为无次数限制【杀】使用，若造成伤害则获得护甲",
 }
 
