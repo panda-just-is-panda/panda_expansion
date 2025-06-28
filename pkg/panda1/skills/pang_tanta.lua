@@ -6,6 +6,7 @@ local tanta = fk.CreateSkill({
 
 tanta:addEffect("viewas", {
   anim_type = "offensive",
+  prompt = "#pang_tanta",
   mute_card = true,
   pattern = "slash",
   handly_pile = true,
@@ -37,12 +38,6 @@ tanta:addEffect("targetmod",{
     return card and table.contains(card.skillNames, tanta.name)    
   end,
 })
-tanta:addEffect(fk.CardUseFinished, {
-  is_delay_effect = true,
-  can_trigger = function (self, event, target, player, data)
-    return (data.extra_data or {}).kuangfuUser == player.id and not data.damageDealt
-  end,
-})
 tanta:addEffect(fk.Damage, {
   can_refresh = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
@@ -56,8 +51,9 @@ tanta:addEffect(fk.Damage, {
 
 
 Fk:loadTranslationTable{["pang_tanta"] = "坦踏",
-  [":pang_tanta"] = "你可以将四张牌作为无次数限制的【杀】使用，然后若此【杀】造成了伤害，你获得1点护甲。",
-  ["#pang_tanta"] = "坦踏：将四张牌作为无次数限制【杀】使用，若造成伤害则获得护甲",
+  [":pang_tanta"] = "你可以将四张牌作为无次数限制的【杀】使用，然后若此【杀】造成了伤害，你可以获得1点护甲。",
+  ["#pang_tanta"] = "坦踏：将四张牌作为【杀】使用，若造成伤害则获得护甲",
+  ["tanta_shield"] = "你可以获得1点护甲"
 }
 
 return tanta
