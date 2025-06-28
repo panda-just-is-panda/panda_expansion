@@ -18,4 +18,15 @@ Fk:loadTranslationTable{
 ["illustrator:pang_zhouyu"] = "官方",
 }
 
+local ouliege = General:new(extension, "pang_ouliege", "shu", 4)
+zhouyu:addSkill("pang_binghai")
+zhouyu:addSkill("pang_tanta")
+Fk:loadTranslationTable{
+["pang_ouliege"] = "欧列格",
+["#pang_ouliege"] = "红军突进",
+["designer:pang_ouliege"] = "胖即是胖",
+["cv:pang_ouliege"] = "红色警戒3",
+["illustrator:pang_ouliege"] = "红色警戒3",
+}
+
 return extension
