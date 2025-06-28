@@ -19,8 +19,8 @@ Fk:loadTranslationTable{
 }
 
 local ouliege = General:new(extension, "pang_ouliege", "shu", 4)
-zhouyu:addSkill("pang_binghai")
-zhouyu:addSkill("pang_tanta")
+ouliege:addSkill("pang_binghai")
+ouliege:addSkill("pang_tanta")
 Fk:loadTranslationTable{
 ["pang_ouliege"] = "欧列格",
 ["#pang_ouliege"] = "红军突进",
