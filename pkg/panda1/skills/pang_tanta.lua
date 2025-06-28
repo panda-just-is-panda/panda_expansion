@@ -11,18 +11,15 @@ skill:addEffect("viewas", {
   card_filter = function(self, player, to_select, selected)
     return #selected == 2
   end,
+    can_use = function(self, player)
+    return player:usedSkillTimes(skill.name, Player.HistoryPhase) == 0
+  end,
   view_as = function(self, player, cards)
     if #cards ~= 3 then return end
     local c = Fk:cloneCard("slash")
     c.skillName = skill.name
     c:addSubcard(cards[3])
     return c
-  end,
-})
-
-skill:addEffect("targetmod", {
-  bypass_times = function (self, player, skill, scope, c, to)
-    return c and table.contains(c.skillName, skill.name)
   end,
 })
 
