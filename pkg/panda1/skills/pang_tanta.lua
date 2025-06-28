@@ -37,9 +37,15 @@ tanta:addEffect("targetmod",{
     return card and table.contains(card.skillNames, tanta.name)    
   end,
 })
+tanta:addEffect(fk.CardUseFinished, {
+  is_delay_effect = true,
+  can_trigger = function (self, event, target, player, data)
+    return (data.extra_data or {}).kuangfuUser == player.id and not data.damageDealt
+  end,
+})
 tanta:addEffect(fk.Damage, {
-  can_refresh = function (self, event, target, player, card)
-    return target == player and card and table.contains(card.skillNames, tanta.name)
+  can_refresh = function (self, event, target, player, data)
+    return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
@@ -47,6 +53,7 @@ tanta:addEffect(fk.Damage, {
     room:changeShield(to, 1)
   end,
 })
+
 
 Fk:loadTranslationTable{["pang_tanta"] = "坦踏",
   [":pang_tanta"] = "你可以将四张牌作为无次数限制的【杀】使用，然后若此【杀】造成了伤害，你获得1点护甲。",
