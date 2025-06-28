@@ -9,7 +9,8 @@ skill:addEffect("viewas", {
   pattern = "slash",
   handly_pile = true,
   card_filter = function(self, player, to_select, selected)
-    if #selected == 3 then return false end
+    if #selected > 3 then return false end
+    return #selected < 3
   end,
   view_as = function(self, player, cards)
     if #cards ~= 3 then
