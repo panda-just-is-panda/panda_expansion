@@ -17,7 +17,7 @@ skill:addEffect(fk.CardUsing, {
     if #cards > 0 then
       player:showCards(cards)
     end
-      room:delay(50)
+      room:delay(200)
       if player.dead then return end
       local discards = table.filter(player:getCardIds("he"), function(id)
         local card = Fk:getCardById(id)
