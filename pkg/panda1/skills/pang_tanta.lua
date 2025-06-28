@@ -38,8 +38,8 @@ tanta:addEffect("targetmod",{
     return card and table.contains(card.skillNames, tanta.name)    
   end,
 })
-tanta:addEffect(fk.Damage, {
-  can_refresh = function (self, event, target, player, data)
+tanta:addEffect(fk.DamageCaused, {
+  can_trigger = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
   end,
   on_use = function(self, event, target, player, data)
