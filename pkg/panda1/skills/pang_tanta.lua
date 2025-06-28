@@ -18,7 +18,7 @@ skill:addEffect("viewas", {
       return nil
     end
     local card = Fk:cloneCard("slash")
-    card.skillName = skill.name
+    card.skillName = "ouliege_tanta"
     self.extra_data = cards
     card:addSubcards(cards)
     return card
@@ -26,7 +26,7 @@ skill:addEffect("viewas", {
 })
 skill:addEffect("targetmod",{
   bypass_times = function(self, player, skill, scope, card, to)
-    return card and table.contains(card.skillNames, skill.name)    
+    return card and table.contains(card.skillNames, "ouliege_tanta")    
   end,
 })
 
