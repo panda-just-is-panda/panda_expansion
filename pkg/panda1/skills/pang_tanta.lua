@@ -24,8 +24,8 @@ skill:addEffect("viewas", {
   end,
 })
 skill:addEffect("targetmod",{
-  bypass_times = function(self, player, skill, scope, card)
-    return card and table.contains(card.skillName, skill.name)    
+  bypass_times = function(self, player, skill, scope, card, to)
+    return card and table.contains(card.skillNames, skill.name)    
   end,
 })
 
