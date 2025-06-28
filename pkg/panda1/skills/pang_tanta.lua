@@ -19,6 +19,7 @@ skill:addEffect("viewas", {
     end
     local card = Fk:cloneCard("slash")
     card.skillName = skill.name
+    self.extra_data = cards
     card:addSubcards(cards)
     return card
   end,
