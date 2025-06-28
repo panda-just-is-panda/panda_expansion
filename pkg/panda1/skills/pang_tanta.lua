@@ -9,13 +9,13 @@ skill:addEffect("viewas", {
   pattern = "slash",
   handly_pile = true,
   card_filter = function(self, player, to_select, selected)
-    return #selected == 0
+    return #selected == 3
   end,
   view_as = function(self, player, cards)
     if #cards ~= 3 then return end
     local card = Fk:cloneCard("slash")
     card.skillName = skill.name
-    card:addSubcard(cards[3])
+    card:addSubcard(cards)
     return card
   end,
 })
