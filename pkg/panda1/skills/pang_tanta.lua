@@ -1,9 +1,10 @@
-local skill = fk.CreateSkill({
+
+local tanta = fk.CreateSkill({
   name = "pang_tanta", ---技能内部名称，要求唯一性
   tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 
-skill:addEffect("viewas", {
+tanta:addEffect("viewas", {
   anim_type = "offensive",
   mute_card = true,
   pattern = "slash",
@@ -13,19 +14,27 @@ skill:addEffect("viewas", {
     return #selected < 3
   end,
   view_as = function(self, player, cards)
-    if response then return false end
     if #cards ~= 3 then
       return nil
     end
     local card = Fk:cloneCard("slash")
-    card.skillName = skill.name
+    card.skillName = tanta.name
     card:addSubcards(cards)
     return card
   end,
+  enabled_at_play = function (self, player)
+    --这里是在出牌阶段 这个按钮是否亮起来的判断 return true就是亮
+    return true
+  end,
+  enabled_at_response = function (self, player, response)
+    --这里是在需要响应别人的牌时 这个按钮是否亮起来的判断 return true就是亮
+    if response then return false end
+    return true
+  end
 })
-skill:addEffect("targetmod",{
+tanta:addEffect("targetmod",{
   bypass_times = function(self, player, skill, scope, card, to)
-    return card and table.contains(card.skillNames, skill.name)    
+    return card and table.contains(card.skillNames, tanta.name)    
   end,
 })
 
@@ -34,4 +43,4 @@ Fk:loadTranslationTable{["pang_tanta"] = "坦踏",
   ["#pang_tanta"] = "坦踏：将三张牌作为无次数限制【杀】使用",
 }
 
-return skill
+return tanta
