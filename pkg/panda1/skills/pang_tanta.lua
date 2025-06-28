@@ -20,11 +20,6 @@ skill:addEffect("viewas", {
   end,
 })
 
-skill:addEffect("targetmod", {
-  bypass_times = function (self, player, skill, scope, c, to)
-    return c and table.contains(c.skillName, skill.name)
-  end,
-})
 
 Fk:loadTranslationTable{
   ["pang_tanta"] = "坦踏",

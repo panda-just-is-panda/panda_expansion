@@ -13,7 +13,7 @@ skill:addEffect(fk.CardUsing, {
     local cards = player:drawCards(2)
     if #cards == 0 then return false end
     if player.dead then return end
-     local cards = player:getCardIds("h")
+    local cards = player:getCardIds("h")
     if #cards > 0 then
       player:showCards(cards)
     end
