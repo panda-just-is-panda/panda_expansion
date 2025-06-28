@@ -13,19 +13,19 @@ skill:addEffect("viewas", {
     return #selected < 3
   end,
   view_as = function(self, player, cards)
+    if response then return false end
     if #cards ~= 3 then
       return nil
     end
-    if response then return false end
     local card = Fk:cloneCard("slash")
-    card.skillNames = skill.name
+    card.skillName = skill.name
     card:addSubcards(cards)
     return card
   end,
 })
 skill:addEffect("targetmod",{
   bypass_times = function(self, player, skill, scope, card)
-    return card and table.contains(card.skillNames, skill.name)    
+    return card and table.contains(card.skillName, skill.name)    
   end,
 })
 
