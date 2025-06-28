@@ -16,14 +16,14 @@ skill:addEffect("viewas", {
     if #cards ~= 3 then
       return nil
     end
+    if response then return false end
     local card = Fk:cloneCard("slash")
-    card.skillName = skill.name
+    card.skillNames = skill.name
     card:addSubcards(cards)
     return card
   end,
 })
 skill:addEffect("targetmod",{
-  frequency = Skill.Compulsory,
   bypass_times = function(self, player, skill, scope, card)
     return card and table.contains(card.skillNames, skill.name)    
   end,
