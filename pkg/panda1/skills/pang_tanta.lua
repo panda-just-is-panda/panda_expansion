@@ -7,10 +7,9 @@ skill:addEffect("viewas", {
   anim_type = "offensive",
   mute_card = true,
   pattern = "slash",
-  prompt = "#ex__wusheng",
   handly_pile = true,
   card_filter = function(self, player, to_select, selected)
-    return #selected == 3
+    return #selected == 2
   end,
   view_as = function(self, player, cards)
     if #cards ~= 3 then return end
