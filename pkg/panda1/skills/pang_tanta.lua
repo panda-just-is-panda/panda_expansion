@@ -39,7 +39,7 @@ tanta:addEffect("targetmod",{
   end,
 })
 tanta:addEffect(fk.DamageCaused, {
-  prompt = "tanta_shield",
+  prompt = "#tanta_shield",
   can_trigger = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
   end,
@@ -54,7 +54,7 @@ tanta:addEffect(fk.DamageCaused, {
 Fk:loadTranslationTable{["pang_tanta"] = "坦踏",
   [":pang_tanta"] = "你可以将四张牌作为无次数限制的【杀】使用，然后若此【杀】造成了伤害，你可以获得1点护甲。",
   ["#pang_tanta"] = "坦踏：将四张牌作为【杀】使用，若造成伤害则获得护甲",
-  ["tanta_shield"] = "你可以获得1点护甲"
+  ["#tanta_shield"] = "你可以获得1点护甲"
 }
 
 return tanta

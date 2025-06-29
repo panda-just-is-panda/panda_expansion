@@ -7,7 +7,7 @@ local chengxi = fk.CreateSkill({
 chengxi:addEffect(fk.TargetConfirming, {
   anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
-    return target ~= player and player:hasSkill(chengxi.name) and data:isOnlyTarget(target) and
+    return target ~= player and player:hasSkill(chengxi.name) and data:isOnlyTarget(target) and not target:isNude() and
       data.from == player and player:usedSkillTimes(chengxi.name, Player.HistoryTurn) == 0
   end,
   on_cost = function(self, event, target, player, data)
@@ -25,7 +25,7 @@ chengxi:addEffect(fk.TargetConfirming, {
     max_num = 1,      
     target = target,
     flag = "he",
-    prompt = "chengxi_chai",
+    prompt = "#chengxi_chai",
     skill_name = chengxi.name,
   })
       room:throwCard(id, chengxi.name, target, player) 
@@ -37,7 +37,7 @@ chengxi:addEffect(fk.TargetConfirming, {
       include_equip = false,
       skill_name = chengxi.name,
       pattern = ".|.|.|meilanni_qiao",
-      prompt = "chengxi_obtain",
+      prompt = "#chengxi_obtain",
       cancelable = true,
       expand_pile = "meilanni_qiao",
     })
@@ -61,9 +61,9 @@ end
 Fk:loadTranslationTable{["pang_chengxi"] = "乘隙",
   [":pang_chengxi"] = "每回合限一次，当你使用牌指定其他角色为唯一目标后，你可以弃置其一张牌，然后你可以移除一张“巧”并获得其一张牌。",
   ["#pang_chengxi"] = "乘隙：你可以弃置其一张牌,然后可移除巧并获得其一张牌",
-  ["chengxi_chai"] = "你可以弃置其一张牌",
+  ["#chengxi_chai"] = "你可以弃置其一张牌",
   ["meilanni_qiao"] = "巧",
-  ["chengxi_obtain"] = "你可以移除一张”巧“并获得其一张牌",
+  ["#chengxi_obtain"] = "你可以移除一张”巧“并获得其一张牌",
 }
 
 return chengxi
