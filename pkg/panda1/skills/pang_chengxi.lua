@@ -21,9 +21,9 @@ chengxi:addEffect(fk.TargetConfirming, {
     local from = data.player
     if not target:isNude() then
       local id = room:askToChooseCard(player, {
+    min_num = 1,
+    max_num = 1,        
     target = target,
-    min = 1,
-      max = 1,
     flag = "he",
     skill_name = chengxi.name,
   })
