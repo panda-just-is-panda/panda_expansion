@@ -29,7 +29,7 @@ chengxi:addEffect(fk.TargetConfirming, {
   })
       room:throwCard(id, chengxi.name, target, player) 
       if player.dead or player:isNude() or target.dead then return end
-      if #player:getPile("meilanni_qiao") > 0 then
+      if #player:getPile("meilanni_qiao") > 0 and not target:isKongcheng() then
         local id2 = room:askToCards(player, {
       min_num = 1,
       max_num = 1,
