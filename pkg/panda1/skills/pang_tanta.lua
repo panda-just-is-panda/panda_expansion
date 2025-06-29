@@ -38,15 +38,15 @@ tanta:addEffect("targetmod",{
     return card and table.contains(card.skillNames, tanta.name)    
   end,
 })
-tanta:addEffect(fk.DamageCaused, {
+tanta:addEffect(fk.Damage, {
   prompt = "#tanta_shield",
-  can_trigger = function (self, event, target, player, data)
+  can_refresh = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     local to = player
-    room:changeShield(to, 1)
+    room:changeShield(to, 1, {cancelable = false})
   end,
 })
 
