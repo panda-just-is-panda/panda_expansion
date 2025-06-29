@@ -51,7 +51,7 @@ chengxi:addEffect(fk.TargetConfirming, {
         prompt = "#chengxi_obtain",
         cancelable = false,
       })
-      room:obtainCard(player, cards2, false, fk.ReasonPrey, target, chengxi.name)
+      room:obtainCard(player, cards2, false, fk.ReasonPrey)
 end
 
     end
