@@ -30,24 +30,23 @@ chengxi:addEffect(fk.TargetConfirming, {
       room:throwCard(id, chengxi.name, target, player) 
       if player.dead or player:isNude() or target.dead then return end
       if #player:getPile("meilanni_qiao") > 0 then
-        local id = room:askToChooseCard(player, {
-    target = player,
-    min = 1,
-      max = 1,
-    expand_pile = "meilanni_qiao",
-    flag = "hee",
-    card_filter = function(self, player, to_select, selected)
-    return #selected == 0 and player:getPileNameOfId(to_select) == "meilanni_qiao"
-  end,
-    skill_name = chengxi.name,
-  })
-      room:moveCardTo(id, Card.DiscardPile, nil, fk.ReasonPutIntoDiscardPile, chengxi.name, nil, true, player)
+        local id2 = room:askToCards(player, {
+      min_num = 1,
+      max_num = 1,
+      include_equip = false,
+      skill_name = chengxi.name,
+      pattern = ".|.|.|meilanni_qiao",
+      prompt = "chengxi_obtain",
+      cancelable = true,
+      expand_pile = "meilanni_qiao",
+    })
+      room:moveCardTo(id2, Card.DiscardPile, nil, fk.ReasonPutIntoDiscardPile, chengxi.name, nil, true, player)
       if player.dead or player:isNude() or target.dead then return end
         local cards2 = room:askToChooseCards(player, {
       target = target,
       flag = "h",
       skill_name = chengxi.name,
-      room:obtainCard(target, cards, false, fk.ReasonPrey)
+      room:obtainCard(player, cards2, false, fk.ReasonPrey)
     })   
 end
 
@@ -60,7 +59,7 @@ Fk:loadTranslationTable{["pang_chengxi"] = "乘隙",
   ["#pang_chengxi"] = "乘隙：你可以弃置其一张牌,然后可移除巧并获得其一张牌",
   ["chengxi_chai"] = "弃置其一张牌",
   ["meilanni_qiao"] = "巧",
-  ["qiaoshou_gain_qiao"] = "你可以将这些牌作为”巧“置于武将牌上",
+  ["chengxi_obtain"] = "你可以移除一张”巧“并获得其一张牌",
 }
 
 return chengxi
