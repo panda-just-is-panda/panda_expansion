@@ -11,10 +11,8 @@ qiaoshou:addEffect("viewas", {
   handly_pile = true,
   include_equip = false,
   derived_piles = "meilanni_qiao",
-  can_use = function(self, player)
-    if player.phase == Player.Play and player:usedSkillTimes(qiaoshou.name, Player.HistoryPhase) == 0 then
-      return true
-    end
+  enabled_at_play = function(self, player)
+    return player:usedSkillTimes(qiaoshou.name, Player.HistoryPhase) == 0 and not player:isKongcheng()
   end,
   card_filter = function(self, player, to_select, selected)
     return Fk:currentRoom():getCardArea(to_select) ~= Player.Equip
@@ -27,9 +25,6 @@ qiaoshou:addEffect("viewas", {
     card.skillName = qiaoshou.name
     card:addSubcards(cards)
     return card
-  end,
-  enabled_at_play = function (self, player)
-    return true
   end,
   enabled_at_response = function (self, player, response)
     if response then return false end
