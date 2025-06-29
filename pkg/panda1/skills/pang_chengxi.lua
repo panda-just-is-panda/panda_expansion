@@ -13,7 +13,7 @@ chengxi:addEffect(fk.TargetConfirming, {
   on_cost = function(self, event, target, player, data)
     return player.room:askToSkillInvoke(player, {
       skill_name = chengxi.name,
-        prompt = "#pang_chengxi" .. player.id,
+      prompt = "#pang_chengxi",
     })
   end,
   on_use = function (self, event, target, player, data)
@@ -25,7 +25,7 @@ chengxi:addEffect(fk.TargetConfirming, {
     max_num = 1,      
     target = target,
     flag = "he",
-    prompt = "chengxi_chai" .. player.id,
+    prompt = "chengxi_chai",
     skill_name = chengxi.name,
   })
       room:throwCard(id, chengxi.name, target, player) 
@@ -37,7 +37,7 @@ chengxi:addEffect(fk.TargetConfirming, {
       include_equip = false,
       skill_name = chengxi.name,
       pattern = ".|.|.|meilanni_qiao",
-      prompt = "chengxi_obtain" .. player.id,
+      prompt = "chengxi_obtain",
       cancelable = true,
       expand_pile = "meilanni_qiao",
     })
