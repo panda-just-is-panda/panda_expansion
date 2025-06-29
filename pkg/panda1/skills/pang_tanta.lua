@@ -39,7 +39,7 @@ tanta:addEffect("targetmod",{
   end,
 })
 tanta:addEffect(fk.DamageCaused, {
-  prompt = "#tanta_shield",
+  prompt = "#tanta_shield" .. player.id,
   can_trigger = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
   end,

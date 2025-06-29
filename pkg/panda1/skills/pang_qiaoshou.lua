@@ -12,7 +12,9 @@ qiaoshou:addEffect("viewas", {
   include_equip = false,
   derived_piles = "meilanni_qiao",
   can_use = function(self, player)
-    return player.phase == Player.Play and player:usedSkillTimes(qiaoshou.name, Player.HistoryPhase) == 0
+    if player.phase == Player.Play and player:usedSkillTimes(qiaoshou.name, Player.HistoryPhase) == 0 then
+      return true
+    end
   end,
   card_filter = function(self, player, to_select, selected)
     return Fk:currentRoom():getCardArea(to_select) ~= Player.Equip
