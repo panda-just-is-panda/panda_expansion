@@ -43,10 +43,10 @@ tanta:addEffect(fk.DamageCaused, {
   can_trigger = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
   end,
-  on_use = function(self, event, target, player, data)
+  on_refresh = function(self, event, target, player, data)
     local room = player.room
     local to = player
-    room:changeShield(to, 1, {cancelable = false,})
+    room:changeShield(to, 1)
   end,
 })
 
