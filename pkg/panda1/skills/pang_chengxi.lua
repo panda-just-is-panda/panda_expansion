@@ -43,7 +43,7 @@ chengxi:addEffect(fk.TargetConfirming, {
     })
       room:moveCardTo(id2, Card.DiscardPile, nil, fk.ReasonPutIntoDiscardPile, chengxi.name, nil, true, player)
       if player.dead or player:isNude() or target.dead then return end
-      local cards2 = room:askToCards(player, {
+      local cards2 = room:askToChooseCards(player, {
         target = target,
         min_num = 1,
         max_num = 1,
