@@ -22,14 +22,14 @@ chengxi:addEffect(fk.TargetConfirming, {
     if not target:isNude() then
       local id = room:askToChooseCard(player, {
     min_num = 1,
-    max_num = 1,        
+    max_num = 1,      
     target = target,
     flag = "he",
     skill_name = chengxi.name,
   })
       room:throwCard(id, chengxi.name, target, player) 
       if player.dead or player:isNude() or target.dead then return end
-      if #player:getPile("meilanni_qiao") > 0 and not target:isKongcheng() then
+      if #player:getPile("meilanni_qiao") > 0 and not target:isNude() then
         local id2 = room:askToCards(player, {
       min_num = 1,
       max_num = 1,
@@ -42,7 +42,7 @@ chengxi:addEffect(fk.TargetConfirming, {
     })
       room:moveCardTo(id2, Card.DiscardPile, nil, fk.ReasonPutIntoDiscardPile, chengxi.name, nil, true, player)
       if player.dead or player:isNude() or target.dead then return end
-      local cards2 = room:askToChooseCards(player, {
+      local cards2 = room:askToChooseCard(player, {
       target = target,
       min_num = 1,
       max_num = 1,
