@@ -13,7 +13,7 @@ chengxi:addEffect(fk.TargetConfirming, {
   on_cost = function(self, event, target, player, data)
     return player.room:askToSkillInvoke(player, {
       skill_name = chengxi.name,
-        prompt = "#pang_chengxi",
+        prompt = "#pang_chengxi" .. player.id,
     })
   end,
   on_use = function (self, event, target, player, data)
@@ -25,6 +25,7 @@ chengxi:addEffect(fk.TargetConfirming, {
     max_num = 1,      
     target = target,
     flag = "he",
+    prompt = "chengxi_chai" .. player.id,
     skill_name = chengxi.name,
   })
       room:throwCard(id, chengxi.name, target, player) 
@@ -36,7 +37,7 @@ chengxi:addEffect(fk.TargetConfirming, {
       include_equip = false,
       skill_name = chengxi.name,
       pattern = ".|.|.|meilanni_qiao",
-      prompt = "chengxi_obtain",
+      prompt = "chengxi_obtain" .. player.id,
       cancelable = true,
       expand_pile = "meilanni_qiao",
     })
@@ -49,8 +50,8 @@ chengxi:addEffect(fk.TargetConfirming, {
       include_equip = true,
       flag = "h",
       skill_name = chengxi.name,
-      room:obtainCard(player, cards2, false, fk.ReasonPrey)
     })   
+    room:obtainCard(player, cards2, false, fk.ReasonPrey)
 end
 
     end
@@ -60,7 +61,7 @@ end
 Fk:loadTranslationTable{["pang_chengxi"] = "乘隙",
   [":pang_chengxi"] = "每回合限一次，当你使用牌指定其他角色为唯一目标后，你可以弃置其一张牌，然后你可以移除一张“巧”并获得其一张牌。",
   ["#pang_chengxi"] = "乘隙：你可以弃置其一张牌,然后可移除巧并获得其一张牌",
-  ["chengxi_chai"] = "弃置其一张牌",
+  ["chengxi_chai"] = "你可以弃置其一张牌",
   ["meilanni_qiao"] = "巧",
   ["chengxi_obtain"] = "你可以移除一张”巧“并获得其一张牌",
 }

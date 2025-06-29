@@ -5,7 +5,7 @@ local qiaoshou = fk.CreateSkill({
 
 qiaoshou:addEffect("viewas", {
   anim_type = "offensive",
-  prompt = "#pang_qiaoshou",
+  prompt = "#pang_qiaoshou" .. player.id,
   mute_card = true,
   pattern = "slash",
   handly_pile = true,
@@ -35,7 +35,6 @@ qiaoshou:addEffect("viewas", {
   end
 })
 qiaoshou:addEffect(fk.DamageCaused, {
-  prompt = "qiaoshou_gain_qiao",
   can_refresh = function(self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, qiaoshou.name)
   end,
