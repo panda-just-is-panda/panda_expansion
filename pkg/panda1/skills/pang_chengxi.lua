@@ -44,6 +44,8 @@ chengxi:addEffect(fk.TargetConfirming, {
       if player.dead or player:isNude() or target.dead then return end
       local cards2 = room:askToChooseCards(player, {
       target = target,
+      min_num = 1,
+      max_num = 1,
       flag = "h",
       skill_name = chengxi.name,
       room:obtainCard(player, cards2, false, fk.ReasonPrey)
