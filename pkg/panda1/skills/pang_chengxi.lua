@@ -46,6 +46,7 @@ chengxi:addEffect(fk.TargetConfirming, {
       target = target,
       min_num = 1,
       max_num = 1,
+      include_equip = true,
       flag = "h",
       skill_name = chengxi.name,
       room:obtainCard(player, cards2, false, fk.ReasonPrey)
