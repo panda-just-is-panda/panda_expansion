@@ -43,6 +43,7 @@ tanta:addEffect(fk.DamageCaused, {
   can_trigger = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, tanta.name)
   end,
+  cancelable = false,
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = player
