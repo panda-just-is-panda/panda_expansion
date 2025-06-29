@@ -37,7 +37,7 @@ chengxi:addEffect(fk.TargetConfirming, {
     expand_pile = "meilanni_qiao",
     flag = "hee",
     card_filter = function(self, player, to_select, selected)
-    return #selected == 0 and table.contains(player:getPile("meilanni_qiao"), to_select)
+    return #selected == 0 and player:getPileNameOfId(to_select) == "meilanni_qiao"
   end,
     skill_name = chengxi.name,
   })

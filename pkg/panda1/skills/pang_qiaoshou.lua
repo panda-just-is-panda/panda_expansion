@@ -12,10 +12,10 @@ qiaoshou:addEffect("viewas", {
   include_equip = false,
   derived_piles = "meilanni_qiao",
   can_use = function(self, player)
-    return player:usedSkillTimes(qiaoshou.name, Player.HistoryPhase) == 0
+    return player.phase == Player.Play and player:usedSkillTimes(qiaoshou.name, Player.HistoryPhase) == 0
   end,
   card_filter = function(self, player, to_select, selected)
-    return #selected < 1 and table.contains(player:getCardIds("h"), to_select)
+    return Fk:currentRoom():getCardArea(to_select) ~= Player.Equip
   end,
   view_as = function(self, player, cards)
     if #cards < 1 then
@@ -26,6 +26,13 @@ qiaoshou:addEffect("viewas", {
     card:addSubcards(cards)
     return card
   end,
+  enabled_at_play = function (self, player)
+    return true
+  end,
+  enabled_at_response = function (self, player, response)
+    if response then return false end
+    return true
+  end
 })
 qiaoshou:addEffect(fk.DamageCaused, {
   prompt = "qiaoshou_gain_qiao",
