@@ -1,3 +1,4 @@
+
 local qiaoshou = fk.CreateSkill({
   name = "pang_qiaoshou", ---技能内部名称，要求唯一性
 })

@@ -1,3 +1,4 @@
+
 local chengxi = fk.CreateSkill({
   name = "pang_chengxi", ---技能内部名称，要求唯一性
   tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
@@ -53,7 +54,6 @@ end
     end
   end,
 })
-
 
 Fk:loadTranslationTable{["pang_chengxi"] = "乘隙",
   [":pang_chengxi"] = "每回合限一次，当你使用牌指定其他角色为唯一目标后，你可以弃置其一张牌，然后你可以移除一张“巧”并获得其一张牌。",
