@@ -51,7 +51,7 @@ chengxi:addEffect(fk.TargetConfirming, {
     prompt = "#chengxi_obtain",
     skill_name = chengxi.name,
     })
-       room:obtainCard(player, cards2, false, fk.ReasonPrey, player, chengxi.name)
+       room:moveCardTo(cards2, Card.PlayerHand, player, fk.ReasonPrey, chengxi.name, nil, false, player.id)
 end
 
     end
