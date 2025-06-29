@@ -29,4 +29,15 @@ Fk:loadTranslationTable{
 ["illustrator:pang_ouliege"] = "红色警戒3",
 }
 
+local meilanni = General:new(extension, "pang_meilanni", "shu", 4)
+meilanni:addSkill("pang_qiaoshou")
+meilanni:addSkill("pang_chengxi")
+Fk:loadTranslationTable{
+["pang_meilanni"] = "梅兰妮",
+["#pang_meilanni"] = "狡猾的绒兽",
+["designer:pang_meilanni"] = "胖即是胖",
+["cv:pang_meilanni"] = "无",
+["illustrator:pang_meilanni"] = "深蓝",
+}
+
 return extension

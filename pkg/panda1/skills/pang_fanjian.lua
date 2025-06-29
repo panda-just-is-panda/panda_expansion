@@ -25,16 +25,6 @@ skill:addEffect("active", {
   end,
 })
 
-skill:addTest(function (room, me)
-  local comp2 = room.players[2]
-  FkTest.setNextReplies(me, {"1"})
-  FkTest.runInRoom(function ()
-    room:handleAddLoseSkills(me, skill.name)
-    room:obtainCard(comp2, 1)
-    room:obtainCard(me, 2)
-    room:throwCard({1}, "", me)
-  end)
-end)
 
 Fk:loadTranslationTable {["pang_fanjian"] = "反间",
 [":pang_fanjian"] = "出牌阶段限一次，你可以弃置一张手牌并弃置一名其他角色一张牌。",
