@@ -5,7 +5,7 @@ local skill = fk.CreateSkill({
 
 skill:addEffect(fk.CardUsing, {
   anim_type = "drawcard",
-  prompt = "#pang_binghai" .. player.id,
+  prompt = "#pang_binghai",
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(skill.name)
   end,
