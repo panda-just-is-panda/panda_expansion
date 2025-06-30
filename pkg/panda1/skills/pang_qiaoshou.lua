@@ -31,7 +31,7 @@ qiaoshou:addEffect("viewas", {
     return true
   end
 })
-qiaoshou:addEffect(fk.DamageCaused, {
+qiaoshou:addEffect(fk.Damage, {
   can_refresh = function(self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, qiaoshou.name)
   end,
