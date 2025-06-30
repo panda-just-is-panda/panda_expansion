@@ -40,4 +40,15 @@ Fk:loadTranslationTable{
 ["illustrator:pang_meilanni"] = "深蓝",
 }
 
+local zoglin = General:new(extension, "pang_zoglin", "shu", 6, 6, General.Male)
+zoglin:addSkill("pang_kuangluan")
+zoglin:addSkill("pang_wangling")
+Fk:loadTranslationTable{
+["pang_zoglin"] = "僵尸疣猪兽",
+["#pang_zoglin"] = "污染疯躯",
+["designer:pang_zoglin"] = "胖即是胖",
+["cv:pang_zoglin"] = "无",
+["illustrator:pang_zoglin"] = "我的世界",
+}
+
 return extension
