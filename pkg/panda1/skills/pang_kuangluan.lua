@@ -30,6 +30,9 @@ kuangluan:addEffect(fk.EventPhaseStart, { --准备阶段
 })
 kuangluan:addEffect(fk.Damaged, {
   anim_type = "masochism",
+  trigger_times = function(self, event, target, player, data)
+    return 1
+  end,
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(self) and
       player.phase == Player.Finish
