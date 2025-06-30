@@ -34,8 +34,7 @@ kuangluan:addEffect(fk.Damaged, {
     return 1
   end,
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(self) and
-      player.phase == Player.Finish
+    return target == player and player:hasSkill(self)
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
