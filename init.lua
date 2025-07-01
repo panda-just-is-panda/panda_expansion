@@ -1,6 +1,6 @@
 local prefix = "packages.panda.pkg."
-local panda1 = require (prefix.."panda1")
-local panda2 = require (prefix.."panda2")
+local panda1 = require ("packages/panda/pkg/panda1")
+local panda2 = require ("packages/panda/pkg/panda2")
 
 Fk:loadTranslationTable{
   ["panda"] = "胖胖身份",
