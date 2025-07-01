@@ -40,9 +40,9 @@ jigao:addEffect(fk.Damage, {
             local to_select = room:askToCards(player, {
       min_num = 1,
       max_num = 1,
-      include_equip = false,
+      include_equip = true,
       skill_name = jigao.name,
-      pattern = card,
+      pattern = ".|.|spade,club",
       prompt = "use_shortage",
       cancelable = false,
     })
@@ -95,9 +95,9 @@ jigao:addEffect(fk.Damaged, {
             local to_select = room:askToCards(player, {
       min_num = 1,
       max_num = 1,
-      include_equip = false,
+      include_equip = true,
       skill_name = jigao.name,
-      pattern = card,
+      pattern = ".|.|spade,club",
       prompt = "use_shortage",
       cancelable = false,
     })
