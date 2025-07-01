@@ -63,8 +63,8 @@ Fk:loadTranslationTable{
 }
 
 local husk = General:new(extension, "pang_husk", "wu", 4, 4, General.Male)
-drowned:addSkill("pang_jigao")
-drowned:addSkill("pang_wangling")
+husk:addSkill("pang_jigao")
+husk:addSkill("pang_wangling")
 Fk:loadTranslationTable{
 ["pang_husk"] = "尸壳",
 ["#pang_husk"] = "餧饿干躯",
