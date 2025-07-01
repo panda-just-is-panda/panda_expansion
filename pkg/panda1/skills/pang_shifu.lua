@@ -28,10 +28,7 @@ shifu:addEffect(fk.TargetSpecified, {
       skill_name = shifu.name,
     })
     if choice ~= "Cancel" then
-      event:setCostData(self, {choice = choice})
-      return true
-    else
-        cards = room:askToCards(to, {
+        local cards = room:askToCards(to, {
         min_num = 1,
         max_num = 1,
         include_equip = true,
