@@ -24,6 +24,7 @@ chaoyong:addEffect(fk.CardUsing, {
     if #mark1 > 6 then return false end
     local suits = {}
     local types = {}
+    data.extra_data = data.extra_data or {}
     if suit ~= "log_nosuit" and not table.contains(mark1, suit) then 
         table.insertIfNeed(suits, suit)
         data.extra_data.jianyingCheck = true
