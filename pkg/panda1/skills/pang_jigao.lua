@@ -101,7 +101,7 @@ jigao:addEffect(fk.Damaged, {
       prompt = "use_shortage",
       cancelable = false,
     })
-    if #card > 0 then
+    if #to_select > 0 then
             local card2 = Fk:cloneCard("supply_shortage")
       card2:addSubcard(to_select)
       return not player:prohibitUse(card2) and not player:isProhibited(player, card2)
