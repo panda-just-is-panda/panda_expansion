@@ -31,6 +31,8 @@ jigao:addEffect(fk.Damage, {
     and #card > 0
     then
       table.insert(choices, 2, "shortage")
+    else 
+        table.insert(choices, 2, "losehp")
     end
     local choice = room:askToChoice(player, {
       choices = choices,
