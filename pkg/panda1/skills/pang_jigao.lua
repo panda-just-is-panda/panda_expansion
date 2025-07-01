@@ -103,7 +103,7 @@ jigao:addEffect(fk.Damaged, {
     })
     if #to_select > 0 then
             local card2 = Fk:cloneCard("supply_shortage")
-      card2:addSubcard(to_select)
+      card2:addSubcards(to_select)
       return not player:prohibitUse(card2) and not player:isProhibited(player, card2)
     end
     room:useVirtualCard("supply_shortage", to_select, player, player, jigao.name)
