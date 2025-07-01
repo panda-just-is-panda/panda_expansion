@@ -18,23 +18,8 @@ chaoyong:addEffect(fk.CardUsing, {
         event:setCostData(self, {choice1 = suits})
         return true
     end
-  end
-  end,
-  on_use = function(self, event, target, player, data)
-    local room = player.room
-    local suits = event:getCostData(self).choice1
-    local mark1 = player:getTableMark("@chaoyong_suit-turn")
-    table.insertTable(mark1, suits)
-    player.room:setPlayerMark(player, "@chaoyong_suit-turn", mark1)
-    local cards = player:drawCards(1, chaoyong.name)
-    if #cards == 0 then return false end
-  end
-})
-chaoyong:addEffect(fk.CardUsing, {
-  anim_type = "drawcard",
-  prompt = "#pang_chaoyong",
-  can_trigger = function(self, event, target, player, data)
-    if target == player and player:hasSkill(chaoyong.name) then
+    end
+        if target == player and player:hasSkill(chaoyong.name) then
     local mark2 = player:getTableMark("@chaoyong_type-turn")
     if #mark2 > 2 then return false end
     local types = {}
@@ -49,8 +34,14 @@ chaoyong:addEffect(fk.CardUsing, {
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
+    local suits = event:getCostData(self).choice1
+    local mark1 = player:getTableMark("@chaoyong_suit-turn")
+    table.insertTable(mark1, suits)
+    player.room:setPlayerMark(player, "@chaoyong_suit-turn", mark1)
+    local cards = player:drawCards(1, chaoyong.name)
+    if #cards == 0 then return false end
     local types = event:getCostData(self).choice2
-    local mark1 = player:getTableMark("@chaoyong_type-turn")
+    local mark2 = player:getTableMark("@chaoyong_type-turn")
     table.insertTable(mark2, types)
     player.room:setPlayerMark(player, "@chaoyong_type-turn", mark2)
     local cards = player:drawCards(1, chaoyong.name)
