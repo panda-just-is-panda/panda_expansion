@@ -51,4 +51,15 @@ Fk:loadTranslationTable{
 ["illustrator:pang_zoglin"] = "我的世界",
 }
 
+local drowned = General:new(extension, "pang_drowned", "wu", 4, 4, General.Male)
+drowned:addSkill("pang_chaoyong")
+drowned:addSkill("pang_wangling")
+Fk:loadTranslationTable{
+["pang_drowned"] = "溺尸",
+["#pang_drowned"] = "残尸剩水",
+["designer:pang_drowned"] = "胖即是胖",
+["cv:pang_drowned"] = "无",
+["illustrator:pang_drowned"] = "我的世界",
+}
+
 return extension
