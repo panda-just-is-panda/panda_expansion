@@ -56,7 +56,7 @@ jigao:addEffect(fk.Damage, {
       end
     end
         else
-            room:loseHp(player, 1, jigao.name)
+            room:loseHp(to, 1, jigao.name)
     end
      end
 })
