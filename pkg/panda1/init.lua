@@ -47,7 +47,7 @@ Fk:loadTranslationTable{
 ["pang_zoglin"] = "僵尸疣猪兽",
 ["#pang_zoglin"] = "污染疯躯",
 ["designer:pang_zoglin"] = "胖即是胖",
-["cv:pang_zoglin"] = "无",
+["cv:pang_zoglin"] = "我的世界",
 ["illustrator:pang_zoglin"] = "我的世界",
 }
 
@@ -58,8 +58,19 @@ Fk:loadTranslationTable{
 ["pang_drowned"] = "溺尸",
 ["#pang_drowned"] = "残尸剩水",
 ["designer:pang_drowned"] = "胖即是胖",
-["cv:pang_drowned"] = "无",
+["cv:pang_drowned"] = "我的世界",
 ["illustrator:pang_drowned"] = "我的世界",
+}
+
+local husk = General:new(extension, "pang_husk", "wu", 4, 4, General.Male)
+drowned:addSkill("pang_jigao")
+drowned:addSkill("pang_wangling")
+Fk:loadTranslationTable{
+["pang_husk"] = "尸壳",
+["#pang_husk"] = "餧饿干躯",
+["designer:pang_husk"] = "胖即是胖",
+["cv:pang_husk"] = "我的世界",
+["illustrator:pang_husk"] = "我的世界",
 }
 
 return extension
