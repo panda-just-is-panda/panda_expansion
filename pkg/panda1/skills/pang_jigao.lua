@@ -56,6 +56,7 @@ jigao:addEffect(fk.Damage, {
             room:loseHp(player, 1, jigao.name)
     end
      end
+     end
 })
 
 jigao:addEffect(fk.Damaged, {
@@ -111,6 +112,7 @@ jigao:addEffect(fk.Damaged, {
             room:loseHp(player, 1, jigao.name)
     end
      end
+    end
 })
 
 Fk:loadTranslationTable{["pang_jigao"] = "饥槁",
