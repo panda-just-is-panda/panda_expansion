@@ -24,7 +24,7 @@ chaoyong:addEffect(fk.CardUsing, {
     if #mark2 > 2 then return false end
     local types = {}
     local type = data.card:getTypeString(true)
-    if not table.contains(mark2, type) then table.insertIfNeed(types, type)
+    if not table2.contains(mark2, type) then table2.insertIfNeed(types, type)
     end
         if #types > 0 then
         event:setCostData(self, {choice2 = types})
@@ -42,7 +42,7 @@ chaoyong:addEffect(fk.CardUsing, {
     if #cards == 0 then return false end
     local types = event:getCostData(self).choice2
     local mark2 = player:getTableMark("@chaoyong_type-turn")
-    table.insertTable(mark2, types)
+    table2.insertTable(mark2, types)
     player.room:setPlayerMark(player, "@chaoyong_type-turn", mark2)
     local cards = player:drawCards(1, chaoyong.name)
     if #cards == 0 then return false end
