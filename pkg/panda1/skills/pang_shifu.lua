@@ -7,7 +7,7 @@ shifu:addEffect(fk.TargetSpecified, {
   anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
     if not (target == player and player:hasSkill(shifu.name)) then return end
-    return data.card.trueName == "slash" and not data.to:isNude()
+    return data.card.trueName == "slash"
   end,
   on_cost = function (self, event, target, player, data)
     local room = player.room
