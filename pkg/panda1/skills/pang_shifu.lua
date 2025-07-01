@@ -17,6 +17,7 @@ shifu:addEffect(fk.TargetSpecified, {
     }) then
       room:loseHp(player, 1, shifu.name)
       room:loseHp(data.to, 1, shifu.name)
+      return true
     end
   end,
   on_use = function(self, event, target, player, data)
