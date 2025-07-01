@@ -36,8 +36,6 @@ jigao:addEffect(fk.Damage, {
       choices = choices,
       skill_name = jigao.name,
     })
-        local room = player.room
-        local choice = event:getCostData(self).choice
         if choice == "shortage" then
             local to_select = room:askToCards(player, {
       min_num = 1,
@@ -93,9 +91,7 @@ jigao:addEffect(fk.Damaged, {
       choices = choices,
       skill_name = jigao.name,
     })
-        local room = player.room
-        local choice = event:getCostData(self).choice
-        if choice == "shortage" then
+    if choice == "shortage" then
             local to_select = room:askToCards(player, {
       min_num = 1,
       max_num = 1,
@@ -105,7 +101,7 @@ jigao:addEffect(fk.Damaged, {
       prompt = "use_shortage",
       cancelable = false,
     })
-        if #card > 0 then
+    if #card > 0 then
             local card2 = Fk:cloneCard("supply_shortage")
       card2:addSubcard(to_select)
       return not player:prohibitUse(card) and not player:isProhibited(player, card)
