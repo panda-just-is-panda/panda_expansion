@@ -50,7 +50,7 @@ jigao:addEffect(fk.Damage, {
             local card2 = Fk:cloneCard("supply_shortage")
       card2:addSubcards(to_select)
       if not player:prohibitUse(card2) and not player:isProhibited(player, card2) then
-    room:useVirtualCard("supply_shortage", card2.cards, data.to, player, jigao.name)
+    room:useVirtualCard("supply_shortage", card2.cards, player, data.to, jigao.name)
       end
         elseif choice == "losehp" then
             room:loseHp(player, 1, jigao.name)
