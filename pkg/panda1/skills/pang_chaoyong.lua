@@ -14,11 +14,19 @@ chaoyong:addEffect(fk.CardUsing, {
     local suit = data.card:getSuitString(true)
     if suit ~= "log_nosuit" and not table.contains(mark1, suit) then table.insertIfNeed(suits, suit)
     end
+    if #suits > 0 then
+        event:setCostData(self, {choice1 = suits})
+        return true
+    end
   end
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    local cards = player:drawCards(1)
+    local suits = event:getCostData(self).choice1
+    local mark1 = player:getTableMark("@chaoyong_suit-turn")
+    table.insertTable(mark1, suits)
+    player.room:setPlayerMark(player, "@chaoyong_suit-turn", mark1)
+    local cards = player:drawCards(1, chaoyong.name)
     if #cards == 0 then return false end
   end
 })
@@ -33,11 +41,19 @@ chaoyong:addEffect(fk.CardUsing, {
     local type = data.card:getTypeString(true)
     if not table.contains(mark2, type) then table.insertIfNeed(types, type)
     end
+        if #types > 0 then
+        event:setCostData(self, {choice2 = types})
+        return true
+    end
   end
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    local cards = player:drawCards(1)
+    local types = event:getCostData(self).choice2
+    local mark1 = player:getTableMark("@chaoyong_type-turn")
+    table.insertTable(mark2, types)
+    player.room:setPlayerMark(player, "@chaoyong_type-turn", mark2)
+    local cards = player:drawCards(1, chaoyong.name)
     if #cards == 0 then return false end
   end
 })
