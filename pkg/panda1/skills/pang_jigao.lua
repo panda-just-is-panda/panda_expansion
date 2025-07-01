@@ -10,7 +10,15 @@ jigao:addEffect(fk.Damage, {
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
-    local choices = {"losehp", "Cancel"}
+    if room:askToSkillInvoke(player, {
+      skill_name = jigao.name,
+      prompt = "#pang_jigao1",
+    }) then
+      event:setCostData(self, {tos = {data.to}})
+      player:drawCards(2)
+      return true
+    end
+    local choices = {"losehp"}
     if not data.to:hasDelayedTrick("supply_shortage") and not table.contains(data.to.sealedSlots, data.to.JudgeSlot) then
       table.insert(choices, 2, "shortage")
     end
@@ -18,10 +26,6 @@ jigao:addEffect(fk.Damage, {
       choices = choices,
       skill_name = jigao.name,
     })
-    if choice ~= "Cancel" then
-      event:setCostData(self, {choice = choice})
-      return true
-    end
     end,
     on_use = function(self, event, target, player, data)
         local room = player.room
@@ -44,29 +48,35 @@ jigao:addEffect(fk.Damage, {
       return not player:prohibitUse(card) and not player:isProhibited(player, card)
     end
     room:useVirtualCard("supply_shortage", to_select, data.to, player, jigao.name)
+        elseif choice == "losehp" then
+            room:loseHp(player, 1, jigao.name)
     end
      end
 })
 
 jigao:addEffect(fk.Damaged, {
-  prompt = "#pang_jigao2",
+  prompt = "#pang_jigao1",
   can_trigger = function(self, event, target, player, data)
     return player:hasSkill(jigao.name) and target == player
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
-    local choices = {"losehp", "Cancel"}
-    if not data.to:hasDelayedTrick("supply_shortage") and not table.contains(data.to.sealedSlots, data.to.JudgeSlot) then
+    if room:askToSkillInvoke(player, {
+      skill_name = jigao.name,
+      prompt = "#pang_jigao1",
+    }) then
+      event:setCostData(self, {tos = {player}})
+      player:drawCards(2)
+      return true
+    end
+    local choices = {"losehp"}
+    if not player:hasDelayedTrick("supply_shortage") and not table.contains(player.sealedSlots, player.JudgeSlot) then
       table.insert(choices, 2, "shortage")
     end
     local choice = room:askToChoice(player, {
       choices = choices,
       skill_name = jigao.name,
     })
-    if choice ~= "Cancel" then
-      event:setCostData(self, {choice = choice})
-      return true
-    end
     end,
     on_use = function(self, event, target, player, data)
         local room = player.room
@@ -88,7 +98,9 @@ jigao:addEffect(fk.Damaged, {
       card2:addSubcard(to_select)
       return not player:prohibitUse(card) and not player:isProhibited(player, card)
     end
-    room:useVirtualCard("supply_shortage", to_select, player, data.to, jigao.name)
+    room:useVirtualCard("supply_shortage", to_select, player, player, jigao.name)
+        elseif choice == "losehp" then
+            room:loseHp(player, 1, jigao.name)
     end
      end
 })
