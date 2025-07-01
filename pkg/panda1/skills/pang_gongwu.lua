@@ -52,4 +52,4 @@ Fk:loadTranslationTable {["pang_gongwu"] = "共舞",
 [":pang_gongwu"] = "准备阶段，你可以和一名其他角色各摸一张牌，然后直到本回合结束，你和其的所有红色手牌均视为【火杀】。",
 ["#gongwu"] = "选择一名角色和你一起起舞！",
 }
-return kuangluan  --不要忘记返回做好的技能对象哦
+return gongwu  --不要忘记返回做好的技能对象哦
