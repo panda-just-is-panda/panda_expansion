@@ -18,7 +18,9 @@ jigao:addEffect(fk.Damage, {
       player:drawCards(2)
       return true
     end
-    local card = table.filter(player:getCardIds("he"), function(id)
+    end,
+    on_use = function(self, event, target, player, data)
+            local card = table.filter(player:getCardIds("he"), function(id)
         local card_pick = Fk:getCardById(id)
         return card_pick and card_pick.color == card_pick.Black and not player:prohibitDiscard(id)
         end)
@@ -33,8 +35,6 @@ jigao:addEffect(fk.Damage, {
       choices = choices,
       skill_name = jigao.name,
     })
-    end,
-    on_use = function(self, event, target, player, data)
         local room = player.room
         local choice = event:getCostData(self).choice
         if choice == "shortage" then
@@ -74,7 +74,9 @@ jigao:addEffect(fk.Damaged, {
       player:drawCards(2)
       return true
     end
-    local card = table.filter(player:getCardIds("he"), function(id)
+    end,
+    on_use = function(self, event, target, player, data)
+        local card = table.filter(player:getCardIds("he"), function(id)
         local card_pick = Fk:getCardById(id)
         return card_pick and card_pick.color == card_pick.Black and not player:prohibitDiscard(id)
     end)
@@ -89,8 +91,6 @@ jigao:addEffect(fk.Damaged, {
       choices = choices,
       skill_name = jigao.name,
     })
-    end,
-    on_use = function(self, event, target, player, data)
         local room = player.room
         local choice = event:getCostData(self).choice
         if choice == "shortage" then
