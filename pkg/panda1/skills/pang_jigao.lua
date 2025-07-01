@@ -31,8 +31,6 @@ jigao:addEffect(fk.Damage, {
     and #card > 0
     then
       table.insert(choices, 2, "shortage")
-    else 
-        table.insert(choices, 2, "losehp")
     end
     local choice = room:askToChoice(player, {
       choices = choices,
@@ -54,10 +52,10 @@ jigao:addEffect(fk.Damage, {
       if not player:prohibitUse(card2) and not player:isProhibited(player, card2) then
     room:useVirtualCard("supply_shortage", card2, player, data.to, jigao.name)
       end
+    end
         else
             room:loseHp(player, 1, jigao.name)
     end
-     end
      end
 })
 
@@ -110,10 +108,10 @@ jigao:addEffect(fk.Damaged, {
       if not player:prohibitUse(card2) and not player:isProhibited(player, card2) then
     room:useVirtualCard("supply_shortage", card2, player, player, jigao.name)
       end
-    else
-            room:loseHp(player, 1, jigao.name)
     end
-     end
+    else
+        room:loseHp(player, 1, jigao.name)
+    end
     end
 })
 
