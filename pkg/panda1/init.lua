@@ -43,6 +43,7 @@ Fk:loadTranslationTable{
 local zombie = General:new(extension, "pang_zombie", "wu", 3, 3, General.Male)
 zombie:addSkill("pang_shifu")
 zombie:addSkill("pang_shichao")
+zombie:addSkill("pang_gongwu")
 zombie:addSkill("pang_wangling")
 Fk:loadTranslationTable{
 ["pang_zombie"] = "僵尸",
