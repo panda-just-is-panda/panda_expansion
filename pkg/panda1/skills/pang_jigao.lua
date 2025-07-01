@@ -6,7 +6,7 @@ local jigao = fk.CreateSkill({
 jigao:addEffect(fk.Damage, {
   prompt = "#pang_jigao1",
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(jigao.name) and target == data.to and not target.dead
+    return player:hasSkill(jigao.name) and target == player and not target.dead
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
@@ -119,7 +119,7 @@ jigao:addEffect(fk.Damaged, {
 
 Fk:loadTranslationTable{["pang_jigao"] = "饥槁",
   [":pang_jigao"] = "当你造成或受到伤害后，你可以令受到伤害的角色摸两张牌并选择一项：失去1点体力；将一张黑色牌作为【兵粮寸断】对自己使用。",
-  ["#pang_jigao1"] = "你可以摸两张牌并选择失去体力或对其用【兵粮寸断】",
+  ["#pang_jigao1"] = "你可以令其摸两张牌并选择失去体力或对自己用【兵粮寸断】",
   ["losehp"] = "失去体力",
   ["shortage"] = "使用兵粮寸断",
   ["use_shortage"] = "将一张黑色牌作为兵粮寸断使用",
