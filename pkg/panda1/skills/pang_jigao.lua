@@ -20,8 +20,9 @@ jigao:addEffect(fk.Damage, {
     end
     end,
     on_use = function(self, event, target, player, data)
-            local card = table.filter(player:getCardIds("he"), function(id)
-        local card_pick = Fk:getCardById(id)
+    local room = player.room
+    local card = table.filter(player:getCardIds("he"), function(id)
+    local card_pick = Fk:getCardById(id)
         return card_pick and card_pick.color == card_pick.Black and not player:prohibitDiscard(id)
         end)
     local choices = {"losehp"}
@@ -76,10 +77,11 @@ jigao:addEffect(fk.Damaged, {
     end
     end,
     on_use = function(self, event, target, player, data)
-        local card = table.filter(player:getCardIds("he"), function(id)
-        local card_pick = Fk:getCardById(id)
+    local room = player.room
+    local card = table.filter(player:getCardIds("he"), function(id)
+    local card_pick = Fk:getCardById(id)
         return card_pick and card_pick.color == card_pick.Black and not player:prohibitDiscard(id)
-    end)
+        end)
     local choices = {"losehp"}
     if not data.to:hasDelayedTrick("supply_shortage") 
         and not table.contains(data.to.sealedSlots, data.to.JudgeSlot)
