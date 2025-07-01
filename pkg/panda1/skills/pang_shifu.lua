@@ -17,7 +17,7 @@ shifu:addEffect(fk.TargetSpecified, {
     }) then
       room:loseHp(player, 1, shifu.name)
       room:loseHp(data.to, 1, shifu.name)
-      if not not data.to.dead then
+      if not data.to.dead then
       return true
     end
     end
