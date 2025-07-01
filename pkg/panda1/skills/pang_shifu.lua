@@ -24,7 +24,7 @@ shifu:addEffect(fk.TargetSpecified, {
     local room = player.room
     local to = data.to
     local choices = {"shifu_submit", "Cancel"}
-    local choice = room:askToChoice(player, {
+    local choice = room:askToChoice(to, {
       choices = choices,
       skill_name = shifu.name,
     })
@@ -38,6 +38,8 @@ shifu:addEffect(fk.TargetSpecified, {
         cancelable = false,
       })
       room:obtainCard(player, cards, false, fk.ReasonGive)
+      room:recover({who = player, num = 1, recoverBy = player, skillName = shifu.name})
+      room:recover({who = to, num = 1, recoverBy = to, skillName = shifu.name})
     end
   end
 })
