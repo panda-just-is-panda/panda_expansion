@@ -13,7 +13,7 @@ chaoyong:addEffect(fk.CardUsing, {
     local suits = {}
     local suit = ""
     suit = data.card:getSuitString(true)
-    if suit ~= "log_nosuit" and not table.contains(mark, suit) then table.insertIfNeed(suits, suit)
+    if suit ~= "log_nosuit" and not table.contains(mark1, suit) then table.insertIfNeed(suits, suit)
     end
   end
   end,
@@ -28,12 +28,12 @@ chaoyong:addEffect(fk.CardUsing, {
   prompt = "#pang_chaoyong",
   can_trigger = function(self, event, target, player, data)
     if target == player and player:hasSkill(chaoyong.name) then
-    local mark1 = player:getTableMark("@chaoyong_type-turn")
-    if #mark1 > 2 then return false end
+    local mark2 = player:getTableMark("@chaoyong_type-turn")
+    if #mark2 > 2 then return false end
     local types = {}
     local type = ""
     type = data.card:getTypeString(true)
-    if not table.contains(mark, suit) then table.insertIfNeed(types, type)
+    if not table.contains(mark2, type) then table.insertIfNeed(types, type)
     end
   end
   end,
