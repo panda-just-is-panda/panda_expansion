@@ -6,7 +6,7 @@ local jigao = fk.CreateSkill({
 jigao:addEffect(fk.Damage, {
   prompt = "#pang_jigao1",
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(jigao.name) and target == player and not target.dead
+    return player:hasSkill(jigao.name) and target == player and not data.to.dead
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
