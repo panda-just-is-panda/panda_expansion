@@ -9,6 +9,7 @@ chaoyong:addEffect(fk.CardUsing, {
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(chaoyong.name)
   end,
+  on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
     local room = player.room
     local use_events1 = player.room.logic:getEventsOfScope(GameEvent.UseCard, 1, function (e)
@@ -19,7 +20,7 @@ chaoyong:addEffect(fk.CardUsing, {
         local use2 = e.data
         return use2.from == player and use2.card.suit == data.card.suit
       end, Player.HistoryTurn)
-    if #use_events1 == 1 and use_events1[1].data or #use_events2 == 1 and use_events2[1].data == data then
+    if #use_events1 == 1 and use_events1[1].data == data or #use_events2 == 1 and use_events2[1].data == data then
          player:drawCards(1, chaoyong.name)
     else room:loseHp(player, 1, chaoyong.name)
   end
