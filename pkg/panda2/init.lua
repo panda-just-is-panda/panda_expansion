@@ -28,3 +28,5 @@ Fk:loadTranslationTable{
 ["cv:pang_meilanni"] = "无",
 ["illustrator:pang_meilanni"] = "深蓝",
 }
+
+return extension
