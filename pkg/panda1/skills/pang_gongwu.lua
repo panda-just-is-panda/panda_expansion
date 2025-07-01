@@ -6,7 +6,7 @@ local gongwu = fk.CreateSkill({
 gongwu:addEffect(fk.EventPhaseStart, { --
   anim_type = "drawcard", 
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(gongwu) and
+    return target == player and player:hasSkill(gongwu.name) and
       player.phase == Player.Start
   end,
   on_cost = function(self, event, target, player, data)
