@@ -11,30 +11,19 @@ chaoyong:addEffect(fk.CardUsing, {
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    if data.extra_data.chaoyongCheck then player:drawCards(1, chaoyong.name)
+    local use_events1 = player.room.logic:getEventsOfScope(GameEvent.UseCard, 1, function (e)
+        local use = e.data
+        return use.from == player and use.card.type == data.card.type
+      end, Player.HistoryTurn)
+      local use_events2 = player.room.logic:getEventsOfScope(GameEvent.UseCard, 1, function (e)
+        local use = e.data
+        return use.from == player and use.card.type == data.card.suit
+      end, Player.HistoryTurn)
+    if #use_events1 == 1 and use_events1[1].data or #use_events2 == 1 and use_events2[1].data == data then
+         player:drawCards(1, chaoyong.name)
     else room:loseHp(player, 1, chaoyong.name)
   end
-  end,
-  can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(chaoyong.name, true)
-  end,
-  on_refresh = function(self, event, target, player, data)
-    local room = player.room
-    local suit, type = data.card:getSuitString(true), data.card.type
-    local mark1 = player:getTableMark("@chaoyong-turn")
-    if #mark1 > 6 then return false end
-    local suits = {}
-    local types = {}
-    data.extra_data = data.extra_data or {}
-    if suit ~= "log_nosuit" and not table.contains(mark1, suit) then 
-        table.insertIfNeed(suits, suit)
-        data.extra_data.jianyingCheck = true
-    elseif not table.contains(mark1, type) then
-        table.insertIfNeed(types, type)
-        data.extra_data.jianyingCheck = true
-    end
-     room:setPlayerMark(player, "@chaoyong-turn", {suits, types})
-  end,
+end
 })
 
 Fk:loadTranslationTable {["pang_chaoyong"] = "潮涌",
