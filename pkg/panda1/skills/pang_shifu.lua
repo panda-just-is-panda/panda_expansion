@@ -23,7 +23,7 @@ shifu:addEffect(fk.TargetSpecified, {
     local room = player.room
     local to = data.to
     local choices = {"shifu_submit", "Cancel"}
-    local choice = room:askToChoice(to, {
+    local choice = room:askToChoice(player, {
       choices = choices,
       skill_name = shifu.name,
     })
