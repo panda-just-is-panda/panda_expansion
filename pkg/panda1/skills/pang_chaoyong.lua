@@ -12,12 +12,12 @@ chaoyong:addEffect(fk.CardUsing, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local use_events1 = player.room.logic:getEventsOfScope(GameEvent.UseCard, 1, function (e)
-        local use = e.data
-        return use.from == player and use.card.type == data.card.type
+        local use1 = e.data
+        return use1.from == player and use1.card.type == data.card.type
       end, Player.HistoryTurn)
       local use_events2 = player.room.logic:getEventsOfScope(GameEvent.UseCard, 1, function (e)
-        local use = e.data
-        return use.from == player and use.card.type == data.card.suit
+        local use2 = e.data
+        return use2.from == player and use2.card.suit == data.card.suit
       end, Player.HistoryTurn)
     if #use_events1 == 1 and use_events1[1].data or #use_events2 == 1 and use_events2[1].data == data then
          player:drawCards(1, chaoyong.name)
