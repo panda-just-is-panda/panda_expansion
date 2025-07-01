@@ -11,8 +11,7 @@ chaoyong:addEffect(fk.CardUsing, {
     local mark1 = player:getTableMark("@chaoyong_suit-turn")
     if #mark1 > 3 then return false end
     local suits = {}
-    local suit = ""
-    suit = data.card:getSuitString(true)
+    local suit = data.card:getSuitString(true)
     if suit ~= "log_nosuit" and not table.contains(mark1, suit) then table.insertIfNeed(suits, suit)
     end
   end
@@ -31,8 +30,7 @@ chaoyong:addEffect(fk.CardUsing, {
     local mark2 = player:getTableMark("@chaoyong_type-turn")
     if #mark2 > 2 then return false end
     local types = {}
-    local type = ""
-    type = data.card:getTypeString(true)
+    local type = data.card:getTypeString(true)
     if not table.contains(mark2, type) then table.insertIfNeed(types, type)
     end
   end
