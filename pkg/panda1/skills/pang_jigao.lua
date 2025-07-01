@@ -27,7 +27,7 @@ jigao:addEffect(fk.Damage, {
     local choices = {"losehp"}
     if not data.to:hasDelayedTrick("supply_shortage") 
     and not table.contains(data.to.sealedSlots, data.to.JudgeSlot)
-    and card > 0
+    and #card > 0
     then
       table.insert(choices, 2, "shortage")
     end
@@ -83,7 +83,7 @@ jigao:addEffect(fk.Damaged, {
     local choices = {"losehp"}
     if not data.to:hasDelayedTrick("supply_shortage") 
         and not table.contains(data.to.sealedSlots, data.to.JudgeSlot)
-        and card > 0
+        and #card > 0
     then
       table.insert(choices, 2, "shortage")
     end
