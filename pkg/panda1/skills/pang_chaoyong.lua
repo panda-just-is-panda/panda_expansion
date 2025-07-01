@@ -19,7 +19,7 @@ chaoyong:addEffect(fk.CardUsing, {
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
-    local suit, type = data.card:getSuitString(true), data.card.getTypeString(true)
+    local suit, type = data.card:getSuitString(true), data.card.type
     local mark1 = player:getTableMark("@chaoyong-turn")
     if #mark1 > 6 then return false end
     local suits = {}
@@ -36,7 +36,7 @@ chaoyong:addEffect(fk.CardUsing, {
 })
 
 Fk:loadTranslationTable {["pang_chaoyong"] = "潮涌",
-[":pang_chaoyong"] = "当你使用一张牌后，若你本回合未使用过和此牌类型或花色相同的牌，你摸一张牌，否则你失去1点体力。",
+[":pang_chaoyong"] = "锁定技，当你使用一张牌后，若你本回合未使用过和此牌类型或花色相同的牌，你摸一张牌，否则你失去1点体力。",
 ["#pang_chaoyong"] = "根据使用牌的条件摸牌",
 ["@chaoyong_suit-turn"] = "潮涌花色",
 ["@chaoyong_type-turn"] = "潮涌类型",
