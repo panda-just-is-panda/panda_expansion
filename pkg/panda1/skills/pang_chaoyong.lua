@@ -33,7 +33,7 @@ chaoyong:addEffect(fk.CardUsing, {
         table.insertIfNeed(types, type)
         data.extra_data.jianyingCheck = true
     end
-     room:setPlayerMark(player, "@chaoyong-turn", {suit, type})
+     room:setPlayerMark(player, "@chaoyong-turn", {suits, types})
   end,
 })
 
