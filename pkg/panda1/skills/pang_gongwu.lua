@@ -40,8 +40,7 @@ gongwu:addEffect("filter", {
   mute = true,
   card_filter = function(self, to_select, player)
     return to_select.color == card.Red and
-    player:getMark("tianyi_win-turn") > 0 and scope == Player.HistoryTurn and
-    table.contains(player:getCardIds("h"), to_select.id)
+    table.contains(player:getTableMark("gongwu-turn"), player:getCardIds("h"), to_select.id)
   end,
   view_as = function(self, player, card)
     return Fk:cloneCard("slash", card.suit, card.number)
