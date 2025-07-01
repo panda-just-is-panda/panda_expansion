@@ -18,8 +18,15 @@ jigao:addEffect(fk.Damage, {
       player:drawCards(2)
       return true
     end
+    local card = table.filter(player:getCardIds("he"), function(id)
+        local card_pick = Fk:getCardById(id)
+        return card_pick and card_pick.color == card_pick.Black and not player:prohibitDiscard(id)
+        end)
     local choices = {"losehp"}
-    if not data.to:hasDelayedTrick("supply_shortage") and not table.contains(data.to.sealedSlots, data.to.JudgeSlot) then
+    if not data.to:hasDelayedTrick("supply_shortage") 
+    and not table.contains(data.to.sealedSlots, data.to.JudgeSlot)
+    and card > 0
+    then
       table.insert(choices, 2, "shortage")
     end
     local choice = room:askToChoice(player, {
@@ -30,8 +37,6 @@ jigao:addEffect(fk.Damage, {
     on_use = function(self, event, target, player, data)
         local room = player.room
         local choice = event:getCostData(self).choice
-        local card = player:getCardIds("he")
-        card = table.filter(card, card.color == card.Black)
         if choice == "shortage" then
             local to_select = room:askToCards(player, {
       min_num = 1,
@@ -69,8 +74,15 @@ jigao:addEffect(fk.Damaged, {
       player:drawCards(2)
       return true
     end
+    local card = table.filter(player:getCardIds("he"), function(id)
+        local card_pick = Fk:getCardById(id)
+        return card_pick and card_pick.color == card_pick.Black and not player:prohibitDiscard(id)
+    end)
     local choices = {"losehp"}
-    if not player:hasDelayedTrick("supply_shortage") and not table.contains(player.sealedSlots, player.JudgeSlot) then
+    if not data.to:hasDelayedTrick("supply_shortage") 
+        and not table.contains(data.to.sealedSlots, data.to.JudgeSlot)
+        and card > 0
+    then
       table.insert(choices, 2, "shortage")
     end
     local choice = room:askToChoice(player, {
@@ -81,8 +93,6 @@ jigao:addEffect(fk.Damaged, {
     on_use = function(self, event, target, player, data)
         local room = player.room
         local choice = event:getCostData(self).choice
-        local card = player:getCardIds("he")
-        card = table.filter(card, card.color == card.Black)
         if choice == "shortage" then
             local to_select = room:askToCards(player, {
       min_num = 1,
