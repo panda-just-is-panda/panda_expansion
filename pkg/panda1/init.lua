@@ -40,4 +40,16 @@ Fk:loadTranslationTable{
 ["illustrator:pang_husk"] = "我的世界",
 }
 
+local zombie = General:new(extension, "pang_zombie", "wu", 3, 3, General.Male)
+zombie:addSkill("pang_shifu")
+zombie:addSkill("pang_shichao")
+zombie:addSkill("pang_wangling")
+Fk:loadTranslationTable{
+["pang_zombie"] = "僵尸",
+["#pang_zombie"] = "行尸走肉",
+["designer:pang_zombie"] = "胖即是胖",
+["cv:pang_zombie"] = "我的世界",
+["illustrator:pang_zombie"] = "我的世界",
+}
+
 return extension

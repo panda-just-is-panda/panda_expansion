@@ -3,8 +3,8 @@ local kuangluan = fk.CreateSkill({
   tags = {Skill.Compulsory}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 
-kuangluan:addEffect(fk.EventPhaseStart, { --准备阶段
-  anim_type = "drawcard", --动画效果为  摸牌动画
+kuangluan:addEffect(fk.EventPhaseStart, { --
+  anim_type = "drawcard", 
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(self) and
       player.phase == Player.Finish
