@@ -10,6 +10,7 @@ chaoyong:addEffect(fk.CardUsing, {
     return target == player and player:hasSkill(chaoyong.name)
   end,
   on_use = function(self, event, target, player, data)
+    local room = player.room
     if data.extra_data.chaoyongCheck then player:drawCards(1, chaoyong.name)
     else room:loseHp(player, 1, chaoyong.name)
   end
