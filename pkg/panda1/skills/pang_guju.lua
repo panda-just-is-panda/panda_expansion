@@ -79,6 +79,7 @@ guju:addEffect("targetmod", {
 guju:addEffect(fk.CardUsing, {
   anim_type = "offensive",
   cancelable = false,
+  prompt = "qiangming_trigger",
   can_trigger = function(self, event, target, player, data)
     return target == player and
     (data.card.trueName == "slash" or data.card:isCommonTrick()) and 
@@ -99,5 +100,6 @@ Fk:loadTranslationTable {["pang_guju"] = "骨狙",
 ["guju_qiangming"] = "使用牌不能被响应",
 ["guju_juli"] = "使用牌无距离限制",
 ["draw1"] = "摸一张牌",
+["qiangming_trigger"] = "你可以令此牌不能被响应",
 }
 return guju  --不要忘记返回做好的技能对象哦
