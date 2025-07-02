@@ -98,7 +98,7 @@ Fk:loadTranslationTable{
 ["cv:pang__pillager"] = "我的世界",
 ["illustrator:pang__pillager"] = "我的世界",
 }
-pillager.hidden = true
+
 
 
 return extension
