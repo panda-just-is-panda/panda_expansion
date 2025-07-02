@@ -92,7 +92,7 @@ local pillager = General:new(extension, "pang__pillager", "wu", 3, 3, General.Ma
 pillager:addSkill("pang_beilve")
 pillager:addSkill("pang_chuijiao")
 Fk:loadTranslationTable{
-["pang__pillager"] = "劫掠者",
+["pang__pillager"] = "掠夺者",
 ["#pang__pillager"] = "号鸣角震",
 ["designer:pang__pillager"] = "胖即是胖",
 ["cv:pang__pillager"] = "我的世界",
