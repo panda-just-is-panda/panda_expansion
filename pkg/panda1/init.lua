@@ -64,16 +64,17 @@ Fk:loadTranslationTable{
 ["illustrator:pang_stray"] = "我的世界",
 }
 
-local pillager = General:new(extension, "pang_pillager", "wu", 3, 3, General.Male)
-pillager:addSkill("pang_jielve")
-pillager:addSkill("pang_chuijiao")
+local skeleton = General:new(extension, "pang_skeleton", "wu", 3, 3, General.Male)
+skeleton:addSkill("pang_guju")
+skeleton:addSkill("pang_haibi")
+skeleton:addSkill("pang_wangling")
 Fk:loadTranslationTable{
-["pang_pillager"] = "掠夺者头目",
-["#pang_pillager"] = "号鸣角震",
-["designer:pang_pillager"] = "胖即是胖",
-["cv:pang_pillager"] = "我的世界",
-["illustrator:pang_pillager"] = "我的世界",
+["pang_skeletonr"] = "骷髅",
+["#pang_skeleton"] = "白骨狰狰",
+["designer:pang_skeleton"] = "胖即是胖",
+["cv:pang_skeleton"] = "我的世界",
+["illustrator:pang_skeleton"] = "我的世界",
 }
-pillager.hidden = true
+skeleton.hidden = true
 
 return extension
