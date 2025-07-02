@@ -14,7 +14,7 @@ eying:addEffect("active", {
   end,
   card_filter = Util.FalseFunc,
   target_filter = function(self, player, to_select, selected, selected_cards)
-    return to_select ~= player and not to_select:isNude()
+    return not to_select:isNude()
   end,
   on_use = function(self, room, effect)
     local player = effect.from
