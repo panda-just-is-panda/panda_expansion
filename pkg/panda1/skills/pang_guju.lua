@@ -28,8 +28,8 @@ guju:addEffect(fk.EventPhaseStart, { --
         local card = room:askToDiscard(player, {
           skill_name = guju.name,
           cancelable = false,
-          min_num = 2,
-          max_num = 2,
+          min_num = 1,
+          max_num = 1,
           include_equip = true,
         })
         if not player.dead then
@@ -78,12 +78,12 @@ guju:addEffect("targetmod", {
 
 guju:addEffect(fk.CardUsing, {
   anim_type = "offensive",
-  frequency = Skill.Compulsory,
+  cancelable = false,
   can_trigger = function(self, event, target, player, data)
-    return player:getMark("guju_qiangming-turn") > 0
+    return target == player and player:getMark("guju_qiangming-turn") > 0
   end,
   on_use = function(self, event, target, player, data)
-    data.disresponsive = true
+    data.disresponsiveList = room:getOtherPlayers(player, false)
   end,
 })
 
