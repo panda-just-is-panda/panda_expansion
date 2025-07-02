@@ -27,13 +27,16 @@ jielve:addEffect(fk.EventPhaseStart, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local user = event:getCostData(self).tos[1]
-    local use = room:askToUseCard(user, {
+    local use = room:askToPlayCard(player, {
       skill_name = jielve.name,
       prompt = "jielve_use",
+      cancelable = true,
       extra_data = {
-       skillName = jielve.name,
         bypass_times = true,
-      }
+        extraUse = true,
+        skillName = jielve.name
+      },
+      skip = true,
     })
     if use then
       use.extraUse = true
