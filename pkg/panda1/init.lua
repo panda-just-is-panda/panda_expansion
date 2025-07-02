@@ -87,7 +87,6 @@ Fk:loadTranslationTable{
 ["cv:pang__evoker"] = "我的世界",
 ["illustrator:pang__evoker"] = "我的世界",
 }
-evoker.hidden = true
 
 local pillager = General:new(extension, "pang__pillager", "wu", 4, 4, General.Male)
 pillager:addSkill("pang_beilve")
