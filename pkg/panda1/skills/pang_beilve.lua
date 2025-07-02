@@ -18,9 +18,9 @@ on_cost = function(self, event, target, player, data)
       prompt = "#beilve",
     }) then
     local num = 4 - player:getHandcardNum()
-    if player.shield > 1 then
+    if player.shield > 0 then
       room:addPlayerMark(player, "beilve-turn", 1)
-      player:drawCards(1, beilve.name)
+
     end
     if num > 0 then
       player:drawCards(num, beilve.name)
