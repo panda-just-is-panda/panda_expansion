@@ -89,7 +89,7 @@ Fk:loadTranslationTable{
 }
 evoker.hidden = true
 
-local pillager = General:new(extension, "pang__pillager", "wu", 3, 3, General.Male)
+local pillager = General:new(extension, "pang__pillager", "wu", 4, 4, General.Male)
 pillager:addSkill("pang_beilve")
 pillager:addSkill("pang_chuijiao")
 Fk:loadTranslationTable{
