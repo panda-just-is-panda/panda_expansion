@@ -12,8 +12,12 @@ can_trigger = function(self, event, target, player, data)
       player.phase == Player.Start
   end,
 on_cost = function(self, event, target, player, data)
+    local room = player.room
     local player = player
     local num = 4 - player:getHandcardNum()
+    if player.shield > 1 then
+      room:addPlayerMark(player, "beilve-turn", 1)
+    end
     if num > 0 then
       player:drawCards(num, beilve.name)
     else
@@ -22,11 +26,7 @@ on_cost = function(self, event, target, player, data)
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    if player.shield < 1 then
       room:changeShield(player, 1, {cancelable = false})
-    else
-      room:addPlayerMark(player, "beilve-turn", 1)
-    end
   end,
 })
 
@@ -39,7 +39,7 @@ beilve:addEffect(fk.EventPhaseChanging, {
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
-    room:setPlayerMark(player,"guju_juli-turn",0)
+    room:setPlayerMark(player,"beilve-turn",0)
     room:sendLog{
       type = "#PhaseChanged",
       from = player.id,
