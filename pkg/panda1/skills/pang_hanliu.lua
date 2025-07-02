@@ -18,8 +18,8 @@ hanliu:addEffect("distance", {
 })
 
 Fk:loadTranslationTable{
-  ["pang_binshi"] = "寒流",
-  [":pang_binshi"] = "锁定技，你对已受伤的角色使用牌无距离限制，已受伤的角色计算和你的距离+1。",
+  ["pang_hanliu"] = "寒流",
+  [":pang_hanliu"] = "锁定技，你对已受伤的角色使用牌无距离限制，已受伤的角色计算和你的距离+1。",
 }
 
 return hanliu
