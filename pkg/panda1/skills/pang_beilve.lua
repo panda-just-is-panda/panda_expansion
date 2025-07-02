@@ -32,7 +32,7 @@ on_cost = function(self, event, target, player, data)
 
 beilve:addEffect(fk.EventPhaseChanging, {
   can_refresh = function(self, event, target, player, data)
-    if target == player and player:getMark("guju_juli-turn") > 0 and not data.skipped and
+    if target == player and player:getMark("beilve-turn") > 0 and not data.skipped and
       data.phase == Player.Discard then
       return true
     end
