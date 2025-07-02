@@ -71,7 +71,7 @@ jigao:addEffect(fk.Damaged, {
     local room = player.room
     if room:askToSkillInvoke(player, {
       skill_name = jigao.name,
-      prompt = "#pang_jigao1",
+      prompt = "#pang_jigao2",
     }) then
       event:setCostData(self, {tos = {player}})
       player:drawCards(1)
