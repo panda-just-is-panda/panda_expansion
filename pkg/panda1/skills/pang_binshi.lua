@@ -28,7 +28,7 @@ binshi:addEffect(fk.TargetSpecified, {
       table.insert(choices, 1, "binshi_chai")
     end
     if #cards_player > 1 then
-      table.insert(choices, 2, "binshi_beng")
+      table.insert(choices, 1, "binshi_beng")
     end
     local choice = room:askToChoice(player, {
       choices = choices,
