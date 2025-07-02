@@ -52,4 +52,17 @@ Fk:loadTranslationTable{
 ["illustrator:pang_zombie"] = "我的世界",
 }
 
+local stray = General:new(extension, "pang_stray", "wu", 3, 3, General.Male)
+stray:addSkill("pang_binshi")
+stray:addSkill("pang_hanliu")
+stray:addSkill("pang_wangling")
+Fk:loadTranslationTable{
+["pang_stray"] = "流髑",
+["#pang_stray"] = "彻骨之寒",
+["designer:pang_straye"] = "胖即是胖",
+["cv:pang_stray"] = "我的世界",
+["illustrator:pang_stray"] = "我的世界",
+}
+stray.hidden = true
+
 return extension
