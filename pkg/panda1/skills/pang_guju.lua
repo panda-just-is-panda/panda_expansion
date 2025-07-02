@@ -97,4 +97,4 @@ Fk:loadTranslationTable {["pang_guju"] = "骨狙",
 ["guju_juli"] = "使用牌无距离限制",
 ["draw1"] = "摸一张牌",
 }
-return kuangluan  --不要忘记返回做好的技能对象哦
+return guju  --不要忘记返回做好的技能对象哦

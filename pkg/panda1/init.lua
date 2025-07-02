@@ -69,7 +69,7 @@ skeleton:addSkill("pang_guju")
 skeleton:addSkill("pang_haibi")
 skeleton:addSkill("pang_wangling")
 Fk:loadTranslationTable{
-["pang_skeletonr"] = "骷髅",
+["pang_skeleton"] = "骷髅",
 ["#pang_skeleton"] = "白骨狰狰",
 ["designer:pang_skeleton"] = "胖即是胖",
 ["cv:pang_skeleton"] = "我的世界",
