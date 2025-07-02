@@ -20,6 +20,7 @@ on_cost = function(self, event, target, player, data)
     local num = 4 - player:getHandcardNum()
     if player.shield > 1 then
       room:addPlayerMark(player, "beilve-turn", 1)
+      player:losehp(1, beilve.name)
     end
     if num > 0 then
       player:drawCards(num, beilve.name)
@@ -41,7 +42,6 @@ beilve:addEffect(fk.EventPhaseChanging, {
     local room = player.room
     if target == player and player:getMark("beilve-turn") > 0 and not data.skipped and
       data.phase == Player.Discard then
-        player:drawCards(1, beilve.name)
       return true
     end
   end,
