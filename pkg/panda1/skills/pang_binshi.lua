@@ -37,7 +37,7 @@ binshi:addEffect(fk.TargetSpecified, {
     if choice == "binshi_chai" then
         room:loseHp(player, 1, binshi.name)
         if not to.dead and not player.dead and not to:isNude() then
-        local cards2 = room:askToCards(player, {
+        local cards2 = room:askToChooseCards(player, {
             target = to,
             min = 1,
             max = 2,
