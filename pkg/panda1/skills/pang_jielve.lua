@@ -16,7 +16,7 @@ jielve:addEffect(fk.EventPhaseStart, {
       max_num = 1,
       targets = room.alive_players,
       skill_name = jielve.name,
-      prompt = "jielve_choose",
+      prompt = "#pang_jielve",
       cancelable = true,
     })
     if #to > 0 then
@@ -31,12 +31,12 @@ jielve:addEffect(fk.EventPhaseStart, {
       skill_name = jielve.name,
       prompt = "jielve_use",
       extra_data = {
+       skillName = jielve.name,
         bypass_times = true,
       }
     })
     if use then
       use.extraUse = true
-      use.skillName = jielve.name
       room:useCard(use)
     else
         to:drawCards(1, jielve.name)
@@ -65,7 +65,7 @@ jielve:addEffect(fk.Damage, {
 
 Fk:loadTranslationTable {["pang_jielve"] = "劫掠",
 [":pang_jielve"] = "准备阶段，你可以令一名角色选择摸一张牌或使用一张牌；当一名角色受到因此使用的牌造成的伤害后，你获得其一张牌。",
-["#pang_jielve"] = "你可以令一名角色摸牌或使用牌",
+["#pang_jielve"] = "你可以令一名角色选择摸牌或使用牌",
 ["jielve_use"] = "你可以使用一张牌，或点取消摸一张牌",
 }
 return jielve
