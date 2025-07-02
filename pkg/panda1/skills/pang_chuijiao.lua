@@ -8,6 +8,9 @@ chuijiao:addEffect("active", {
   prompt = "#chuijiao",
   min_card_num = 1,
   min_target_num = 1,
+  can_use = function(self, player)
+    return player:usedSkillTimes(chuijiao.name, Player.HistoryGame) == 0
+  end,
   card_filter = function(self, player, to_select, selected)
     return not player:prohibitDiscard(to_select)
   end,

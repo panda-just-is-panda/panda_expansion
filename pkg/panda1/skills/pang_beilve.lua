@@ -20,7 +20,8 @@ on_cost = function(self, event, target, player, data)
     local num = 3 - player:getHandcardNum()
     if player.shield > 0 then
       room:addPlayerMark(player, "beilve-turn", 1)
-      player.room:setPlayerMark(player, "jielve-turn")
+      local mark = player:getTableMark("beilve-turn")
+      player.room:setPlayerMark(player, "beilve-turn", mark)
     end
     if num > 0 then
       player:drawCards(num, beilve.name)
