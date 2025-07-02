@@ -75,6 +75,6 @@ Fk:loadTranslationTable{
 ["cv:pang_skeleton"] = "我的世界",
 ["illustrator:pang_skeleton"] = "我的世界",
 }
-skeleton.hidden = true
+
 
 return extension

@@ -79,7 +79,6 @@ guju:addEffect("targetmod", {
 guju:addEffect(fk.CardUsing, {
   anim_type = "offensive",
   cancelable = false,
-  prompt = "qiangming_trigger",
   can_trigger = function(self, event, target, player, data)
     return target == player and
     (data.card.trueName == "slash" or data.card:isCommonTrick()) and 
@@ -87,7 +86,12 @@ guju:addEffect(fk.CardUsing, {
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
+    if player.room:askToSkillInvoke(player, {
+      skill_name = guju.name,
+      prompt = "qiangming_trigger",
+    }) then
     data.disresponsiveList = room:getOtherPlayers(player, false)
+    end
   end,
 })
 
