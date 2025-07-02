@@ -20,7 +20,6 @@ on_cost = function(self, event, target, player, data)
     local num = 3 - player:getHandcardNum()
     if player.shield > 0 then
       room:addPlayerMark(player, "beilve-turn", 1)
-      player.room:setPlayerMark(player, "beilve-turn")
     end
     if num > 0 then
       player:drawCards(num, beilve.name)
@@ -55,7 +54,7 @@ beilve:addEffect(fk.EventPhaseChanging, {
 
 Fk:loadTranslationTable {["pang_beilve"] = "备掠",
 [":pang_beilve"] = "准备阶段，你可以将手牌数摸至三张，然后若你：未因此摸牌且没有护甲，你获得1点护甲；有护甲，你本回合的弃牌阶段改为出牌阶段。",
-["#beilve"] = "你可以将手牌摸至四张，然后根据自身状态获得后续效果",
+["#beilve"] = "你可以将手牌摸至三张，并根据自身状态获得后续效果",
 ["jielve-turn"] = "——劫掠——"
 }
 return beilve  --不要忘记返回做好的技能对象哦
