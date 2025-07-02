@@ -86,7 +86,7 @@ guju:addEffect(fk.CardUsing, {
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    data.disresponsiveList = room:getOtherPlayers(player, false)
+    data.disresponsiveList = table.simpleClone(room.players)
   end,
 })
 
