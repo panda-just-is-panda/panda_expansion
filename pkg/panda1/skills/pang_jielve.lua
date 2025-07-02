@@ -39,6 +39,7 @@ jielve:addEffect(fk.EventPhaseStart, {
       skip = true,
     })
     if use then
+        room:setCardMark(use, "pillaging-turn", 1)
       use.extraUse = true
       use.skillName = jielve.name
       room:useCard(use)
@@ -51,8 +52,8 @@ jielve:addEffect(fk.EventPhaseStart, {
 jielve:addEffect(fk.Damage, {
   anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(jielve.name) and data.card and
-        table.contains(data.card.skillNames, jielve.name)
+    return player:hasSkill(jielve.name) and data.card and
+        data.card:getMark("pillaging-turn") > 0
         and not data.to:isNude() and not player.dead and not data.to.dead
   end,
   on_cost = Util.TrueFunc,
@@ -71,5 +72,6 @@ Fk:loadTranslationTable {["pang_jielve"] = "劫掠",
 [":pang_jielve"] = "准备阶段，你可以令一名角色选择摸一张牌或使用一张牌；当一名角色受到因此使用的牌造成的伤害后，你获得其一张牌。",
 ["#pang_jielve"] = "你可以令一名角色选择摸牌或使用牌",
 ["jielve_use"] = "你可以使用一张牌，或点取消摸一张牌",
+["pillaging-turn"] = "劫掠"
 }
 return jielve
