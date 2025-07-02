@@ -1,5 +1,5 @@
 local chuijiao = fk.CreateSkill({
-  name = "pang_beilve", ---技能内部名称，要求唯一性
+  name = "pang_chuijiao", ---技能内部名称，要求唯一性
   tags = {Skill.Limited}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 
