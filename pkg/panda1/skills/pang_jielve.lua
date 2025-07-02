@@ -6,7 +6,7 @@ local jielve = fk.CreateSkill({
 jielve:addEffect(fk.EventPhaseStart, {
   anim_type = "drawcard", 
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(jielve) and
+    return target == player and player:hasSkill(jielve.name) and
       player.phase == Player.Start
   end,
   on_cost = function(self, event, target, player, data)
