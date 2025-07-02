@@ -16,7 +16,7 @@ jigao:addEffect(fk.Damage, {
       prompt = "#pang_jigao1",
     }) then
       event:setCostData(self, {tos = {data.to}})
-      to:drawCards(2)
+      to:drawCards(1)
       return true
     end
     end,
@@ -57,6 +57,7 @@ jigao:addEffect(fk.Damage, {
     end
         else
             room:loseHp(to, 1, jigao.name)
+            player:drawCards(1)
     end
      end
 })
@@ -73,7 +74,7 @@ jigao:addEffect(fk.Damaged, {
       prompt = "#pang_jigao1",
     }) then
       event:setCostData(self, {tos = {player}})
-      player:drawCards(2)
+      player:drawCards(1)
       return true
     end
     end,
@@ -113,17 +114,18 @@ jigao:addEffect(fk.Damaged, {
     end
     else
         room:loseHp(player, 1, jigao.name)
+        player:drawCards(1)
     end
     end
 })
 
 Fk:loadTranslationTable{["pang_jigao"] = "饥槁",
-  [":pang_jigao"] = "当你造成或受到伤害后，你可以令受到伤害的角色摸两张牌并选择一项：失去1点体力；将一张黑色牌作为【兵粮寸断】对自己使用。",
-  ["#pang_jigao1"] = "你可以令其摸两张牌并选择失去体力或对自己用【兵粮寸断】",
+  [":pang_jigao"] = "当你造成或受到伤害后，你可以令受到伤害的角色摸一张牌并选择一项：失去1点体力，你摸一张牌；将一张黑色牌作为【兵粮寸断】对自己使用。",
+  ["#pang_jigao1"] = "你可以令其摸一张牌并选择失去体力或对自己用【兵粮寸断】",
   ["losehp"] = "失去体力",
-  ["shortage"] = "使用兵粮寸断",
+  ["shortage"] = "获得饥饿",
   ["use_shortage"] = "将一张黑色牌作为兵粮寸断使用",
-  ["#pang_jigao2"] = "你可以摸两张牌并选择失去体力或对自己用【兵粮寸断】",
+  ["#pang_jigao2"] = "你可以摸一张牌并选择失去体力或对自己用【兵粮寸断】",
 }
 
 return jigao
