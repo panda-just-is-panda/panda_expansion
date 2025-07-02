@@ -1,5 +1,5 @@
 local eying = fk.CreateSkill({
-  name = "pang_keying", ---技能内部名称，要求唯一性
+  name = "pang_eying", ---技能内部名称，要求唯一性
   tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 
