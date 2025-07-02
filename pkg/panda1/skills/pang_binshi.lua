@@ -25,19 +25,19 @@ binshi:addEffect(fk.TargetSpecified, {
     local cards_player = player:getCardIds("he")
     local cards_to = to:getCardIds("he")
     if #cards_to > 1 then
-      table.insert(choices, 2, "binshi_chai")
+      table.insert(choices, 1, "binshi_chai")
     end
     if #cards_player > 1 then
-      table.insert(choices, 3, "binshi_beng")
+      table.insert(choices, 2, "binshi_beng")
     end
-    local choice = room:askToChoice(to, {
+    local choice = room:askToChoice(player, {
       choices = choices,
       skill_name = binshi.name,
     })
     if choice == "binshi_chai" then
         room:loseHp(player, 1, binshi.name)
         if not to.dead and not player.dead and not to:isNude() then
-        local card = room:askToChooseCard(player, {
+        local card = room:askToChooseCards(player, {
             min_num = 1,
             max_num = 2,
           target = to,
@@ -47,15 +47,14 @@ binshi:addEffect(fk.TargetSpecified, {
         room:throwCard(card, binshi.name, target, player)
       end
     elseif choice == "binshi_beng" then
-        local card = room:askToChooseCard(player, {
-            min_num = 2,
-            max_num = 2,
-            target = player,
+        local card = room:askToDiscard(player, {
           skill_name = binshi.name,
-          flag = "he",
+          cancelable = false,
+          min_num = 2,
+          max_num = 2,
+          include_equip = true,
         })
-        room:throwCard(card, binshi.name, player, player)
-        if not to.dead and not player.dead then
+        if not to.dead then
             room:loseHp(to, 1, binshi.name)
         end
     end
