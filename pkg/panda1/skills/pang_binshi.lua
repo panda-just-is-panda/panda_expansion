@@ -44,7 +44,7 @@ binshi:addEffect(fk.TargetSpecified, {
             flag = "he",
           skill_name = binshi.name,
         })
-        room:throwCard(cards2, binshi.name, target, player)
+        room:throwCards(cards2, binshi.name, target, player)
       end
     elseif choice == "binshi_beng" then
         local card = room:askToDiscard(player, {
