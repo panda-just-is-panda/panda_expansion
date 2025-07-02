@@ -53,11 +53,11 @@ jigao:addEffect(fk.Damage, {
       card2:addSubcards(to_select)
       if not player:prohibitUse(card2) and not player:isProhibited(player, card2) then
     room:useVirtualCard("supply_shortage", card2, to, to, jigao.name)
-    room:recover({who = player, num = 1, recoverBy = player, skillName = jigao.name})
       end
     end
         else
             room:loseHp(to, 1, jigao.name)
+            room:recover({who = player, num = 1, recoverBy = player, skillName = jigao.name})
     end
      end
 })
@@ -110,17 +110,17 @@ jigao:addEffect(fk.Damaged, {
       card2:addSubcards(to_select)
       if not player:prohibitUse(card2) and not player:isProhibited(player, card2) then
     room:useVirtualCard("supply_shortage", card2, player, player, jigao.name)
-    room:recover({who = player, num = 1, recoverBy = player, skillName = jigao.name})
       end
     end
     else
         room:loseHp(player, 1, jigao.name)
+        room:recover({who = player, num = 1, recoverBy = player, skillName = jigao.name})
     end
     end
 })
 
 Fk:loadTranslationTable{["pang_jigao"] = "饥槁",
-  [":pang_jigao"] = "当你造成或受到伤害后，你可以令受到伤害的角色摸一张牌并选择一项：失去1点体力；将一张黑色牌作为【兵粮寸断】对自己使用，然后你回复1点体力。",
+  [":pang_jigao"] = "当你造成或受到伤害后，你可以令受到伤害的角色摸一张牌并选择一项：失去1点体力，你回复1点体力；将一张黑色牌作为【兵粮寸断】对自己使用。",
   ["#pang_jigao1"] = "你可以令其摸一张牌并选择失去体力或对自己用【兵粮寸断】",
   ["losehp"] = "失去体力",
   ["shortage"] = "获得饥饿",
