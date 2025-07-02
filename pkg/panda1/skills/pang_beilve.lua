@@ -30,14 +30,18 @@ on_cost = function(self, event, target, player, data)
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
+    if player.shield < 1 then
       room:changeShield(player, 1, {cancelable = false})
+    end
   end,
 })
 
 beilve:addEffect(fk.EventPhaseChanging, {
   can_refresh = function(self, event, target, player, data)
+    local room = player.room
     if target == player and player:getMark("beilve-turn") > 0 and not data.skipped and
       data.phase == Player.Discard then
+        player:drawCards(1, beilve.name)
       return true
     end
   end,
