@@ -83,6 +83,7 @@ guju:addEffect(fk.CardUsing, {
     return target == player and player:getMark("guju_qiangming-turn") > 0
   end,
   on_use = function(self, event, target, player, data)
+    local room = player.room
     data.disresponsiveList = room:getOtherPlayers(player, false)
   end,
 })
