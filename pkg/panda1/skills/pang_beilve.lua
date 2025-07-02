@@ -5,7 +5,6 @@ local beilve = fk.CreateSkill({
 
 beilve:addEffect(fk.EventPhaseStart, { 
 anim_type = "drawcard", 
-prompt = "#beilve",
 cancelable = true,
 can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(self) and
@@ -14,6 +13,10 @@ can_trigger = function(self, event, target, player, data)
 on_cost = function(self, event, target, player, data)
     local room = player.room
     local player = player
+    if player.room:askToSkillInvoke(player, {
+      skill_name = beilve.name,
+      prompt = "#beilve",
+    }) then
     local num = 4 - player:getHandcardNum()
     if player.shield > 1 then
       room:addPlayerMark(player, "beilve-turn", 1)
@@ -22,6 +25,7 @@ on_cost = function(self, event, target, player, data)
       player:drawCards(num, beilve.name)
     else
       return true
+    end
     end
   end,
   on_use = function(self, event, target, player, data)
@@ -39,14 +43,9 @@ beilve:addEffect(fk.EventPhaseChanging, {
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
-    room:setPlayerMark(player,"beilve-turn",0)
-    room:sendLog{
-      type = "#PhaseChanged",
-      from = player.id,
-      arg = Util.PhaseStrMapper(data.phase),
-      arg2 = "phase_play",
-    }
-    data.phase = Player.Play
+    data.skipped = true
+    if player.dead then return end
+    player:gainAnExtraPhase(Player.Play, beilve.name)
   end,
   })
 
