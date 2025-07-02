@@ -81,11 +81,23 @@ local evoker = General:new(extension, "pang__evoker", "wu", 3, 3, General.Male)
 evoker:addSkill("pang_moya")
 evoker:addSkill("pang_eying")
 Fk:loadTranslationTable{
-["pan__evoker"] = "唤魔者",
+["pang__evoker"] = "唤魔者",
 ["#pang__evoker"] = "魔涌忌灵",
 ["designer:pang__evoker"] = "胖即是胖",
 ["cv:pang__evoker"] = "我的世界",
 ["illustrator:pang__evoker"] = "我的世界",
+}
+evoker.hidden = true
+
+local pillager = General:new(extension, "pang__pillager", "wu", 3, 3, General.Male)
+evoker:addSkill("pang_beilve")
+evoker:addSkill("pang_chuijiao")
+Fk:loadTranslationTable{
+["pang__pillager"] = "劫掠者",
+["#pang__pillager"] = "号鸣角震",
+["designer:pang__pillager"] = "胖即是胖",
+["cv:pang__pillager"] = "我的世界",
+["illustrator:pang__pillager"] = "我的世界",
 }
 evoker.hidden = true
 
