@@ -80,7 +80,9 @@ guju:addEffect(fk.CardUsing, {
   anim_type = "offensive",
   cancelable = false,
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:getMark("guju_qiangming-turn") > 0
+    return target == player and
+    (data.card.trueName == "slash" or data.card:isCommonTrick()) and 
+    player:getMark("guju_qiangming-turn") > 0
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
@@ -90,7 +92,7 @@ guju:addEffect(fk.CardUsing, {
 
 
 Fk:loadTranslationTable {["pang_guju"] = "骨狙",
-[":pang_guju"] = "出牌阶段开始时，你可以失去1点体力或弃置一张牌，然后你依次选择两项：本回合使用牌无距离限制；本回合使用牌不能被响应；摸一张牌。",
+[":pang_guju"] = "出牌阶段开始时，你可以失去1点体力或弃置一张牌，然后你依次选择两项：本回合使用牌无距离限制；本回合使用牌时可令此牌不能被响应；摸一张牌。",
 ["#pang_guju"] = "你可以发动“骨狙”",
 ["guju_beng"] = "失去体力",
 ["guju_qizhi"] = "弃牌",
