@@ -22,6 +22,7 @@ eying:addEffect("active", {
       if #tos > 0 then
         room:sortByAction(tos)
         for _, p in ipairs(tos) do
+        room:changeShield(p, 1, {cancelable = false})
           if not p.dead then
             local use = room:askToUseCard(p, {
       skill_name = eying.name,
@@ -43,9 +44,6 @@ eying:addEffect("active", {
           max_num = 1,
           include_equip = true,
         })
-        if not p.dead then
-        room:changeShield(p, 1, {cancelable = false})
-        end
         end
         end
         end
