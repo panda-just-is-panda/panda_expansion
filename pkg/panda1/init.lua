@@ -76,5 +76,17 @@ Fk:loadTranslationTable{
 ["illustrator:pang_skeleton"] = "我的世界",
 }
 
+local evoker = General:new(extension, "pang_evoker", "wu", 3, 3, General.Male)
+evoker:addSkill("pang_moya")
+evoker:addSkill("pang_eying")
+Fk:loadTranslationTable{
+["pang_evoker"] = "唤魔者",
+["#pang_evoker"] = "魔涌忌灵",
+["designer:pang_evoker"] = "胖即是胖",
+["cv:pang_evoker"] = "我的世界",
+["illustrator:pang_evoker"] = "我的世界",
+}
+evoker.hidden = true
+
 
 return extension
