@@ -64,8 +64,8 @@ binshi:addEffect(fk.TargetSpecified, {
 Fk:loadTranslationTable {["pang_binshi"] = "冰蚀",
 [":pang_binshi"] = "当你使用【杀】指定目标后，你可以选择一项：弃置两张牌，然后其失去1点体力；弃置其两张牌，然后你失去1点体力。",
 ["#pang_binshi"] = "你可以发动“冰蚀”",
-["binshi_chai"] = "失去体力",
-["binshi_beng"] = "弃置牌",
+["binshi_chai"] = "弃置其牌，你失去体力",
+["binshi_beng"] = "你弃置牌，其失去体力",
 ["binshi_chai2"] = "弃置其两张牌",
 }
 return binshi  --不要忘记返回做好的技能对象哦
