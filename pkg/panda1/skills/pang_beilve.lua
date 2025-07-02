@@ -6,6 +6,7 @@ local beilve = fk.CreateSkill({
 beilve:addEffect(fk.EventPhaseStart, { 
 anim_type = "drawcard", 
 prompt = "#beilve",
+cancelable = true,
 can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(self) and
       player.phase == Player.Start
