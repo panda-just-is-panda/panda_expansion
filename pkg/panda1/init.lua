@@ -59,9 +59,21 @@ stray:addSkill("pang_wangling")
 Fk:loadTranslationTable{
 ["pang_stray"] = "流髑",
 ["#pang_stray"] = "彻骨之寒",
-["designer:pang_straye"] = "胖即是胖",
+["designer:pang_stray"] = "胖即是胖",
 ["cv:pang_stray"] = "我的世界",
 ["illustrator:pang_stray"] = "我的世界",
 }
+
+local pillager = General:new(extension, "pang_pillager", "wu", 3, 3, General.Male)
+pillager:addSkill("pang_jielve")
+pillager:addSkill("pang_chuijiao")
+Fk:loadTranslationTable{
+["pang_pillager"] = "劫掠者头目",
+["#pang_pillager"] = "号鸣角震",
+["designer:pang_pillager"] = "胖即是胖",
+["cv:pang_pillager"] = "我的世界",
+["illustrator:pang_pillager"] = "我的世界",
+}
+pillager.hidden = true
 
 return extension
