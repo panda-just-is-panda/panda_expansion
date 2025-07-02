@@ -27,6 +27,7 @@ jielve:addEffect(fk.EventPhaseStart, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local user = event:getCostData(self).tos[1]
+    room:setCardMark(user:getCardIds("he"), "pillahing-turn", 1)
     local use = room:askToPlayCard(user, {
       skill_name = jielve.name,
       prompt = "jielve_use",
@@ -39,13 +40,13 @@ jielve:addEffect(fk.EventPhaseStart, {
       skip = true,
     })
     if use then
-        room:setCardMark(use, "pillaging-turn", 1)
       use.extraUse = true
       use.skillName = jielve.name
       room:useCard(use)
     else
         user:drawCards(1, jielve.name)
     end
+    room:removeCardMark(user:getCardIds("he"), "pillahing-turn", 1)
   end,
 })
 
