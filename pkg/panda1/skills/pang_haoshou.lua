@@ -31,6 +31,7 @@ haoshou:addEffect(fk.EventPhaseStart, { --
         end
     end
     end
+  end
     if player:getMark("haoshou-turn") == 0 then
         local targets2 = table.filter(room:getOtherPlayers(player, false), function (p)
       return player:canUseTo(duel, p)
@@ -49,7 +50,7 @@ haoshou:addEffect(fk.EventPhaseStart, { --
     room:useVirtualCard("duel", nil, player, targets, haoshou.name, true)
     end
     end
-  end
+
 end
 })
 
