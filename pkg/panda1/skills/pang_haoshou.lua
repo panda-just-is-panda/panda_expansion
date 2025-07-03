@@ -1,6 +1,6 @@
 local haoshou = fk.CreateSkill({
   name = "pang_haoshou", ---技能内部名称，要求唯一性
-  tags = {Skill.compulsory},
+  tags = {Skill.Compulsory},
 })
 
 haoshou:addEffect(fk.EventPhaseStart, { --
