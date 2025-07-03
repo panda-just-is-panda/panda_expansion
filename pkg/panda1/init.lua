@@ -99,6 +99,18 @@ Fk:loadTranslationTable{
 ["illustrator:pang__pillager"] = "我的世界",
 }
 
+local vindicator = General:new(extension, "pang__vindicator", "wu", 3, 3, General.Male)
+vindicator.shield = 1
+vindicator:addSkill("pang_huifu")
+vindicator:addSkill("pang_weidao")
+Fk:loadTranslationTable{
+["pang__vindicator"] = "卫道士",
+["#pang__vindicator"] = "斧钺正道",
+["designer:pang__vindicator"] = "胖即是胖",
+["cv:pang__vindicator"] = "我的世界",
+["illustrator:pang__vindicator"] = "我的世界",
+}
+vindicator.hidden = true
 
 
 return extension
