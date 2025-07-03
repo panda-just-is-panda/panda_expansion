@@ -44,7 +44,12 @@ anim_type = "switch",
     })
     if #tos > 0 then
         local target = tos
-        room:useVirtualCard("duel", nil, target, player, weidao.name, true)
+        local new_use = { ---@type UseCardDataSpec
+      from = target,
+      tos = player,
+      card = duel,
+    }
+    room:useCard(new_use)
     end
     end
   end,
