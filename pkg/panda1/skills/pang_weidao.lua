@@ -32,7 +32,7 @@ anim_type = "switch",
     else
       local duel = Fk:cloneCard("duel")
     local targets = table.filter(room:getOtherPlayers(player, false), function (p)
-      return p:canUseTo(duel, player)
+      return p:canUseTo(duel, player) and not p:isProhibited(player, Fk:cloneCard("duel"))
     end)
     local tos = room:askToChoosePlayers(player, {
       min_num = 1,
