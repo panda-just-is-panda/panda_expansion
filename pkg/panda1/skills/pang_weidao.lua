@@ -27,7 +27,7 @@ anim_type = "switch",
     if #tos > 0 then
         local targets = tos
         room:sortByAction(targets)
-    room:useVirtualCard("dual", nil, player, targets, weidao.name, true)
+    room:useVirtualCard("duel", nil, player, targets, weidao.name, true)
     end
     else
       local duel = Fk:cloneCard("duel")
@@ -46,7 +46,7 @@ anim_type = "switch",
     if #tos > 0 then
         local targets = tos
         room:sortByAction(targets)
-    room:useVirtualCard("dual", nil, targets, player, weidao.name, true)
+    room:useVirtualCard("duel", nil, targets, player, weidao.name, true)
     end
     end
   end,
