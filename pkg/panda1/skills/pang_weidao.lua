@@ -6,7 +6,8 @@ local weidao = fk.CreateSkill {
 weidao:addEffect(fk.EventPhaseStart, {
 anim_type = "switch",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(weidao.name) and player.phase == Player.Start and player:getSwitchSkillState(weidao.name, true) ~= fk.SwitchYang
+    return target == player and player:hasSkill(weidao.name) and player.phase == Player.Start and
+    player:getSwitchSkillState(weidao.name, true) ~= fk.SwitchYang
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
@@ -15,19 +16,21 @@ anim_type = "switch",
     local targets = table.filter(room:getOtherPlayers(player, false), function (p)
       return player:canUseTo(duel, p)
     end)
+    if #targets > 0 then
     local tos = room:askToChoosePlayers(player, {
       min_num = 1,
       max_num = max_num,
       targets = targets,
       skill_name = weidao.name,
       prompt = "#weidao1",
-      cancelable = true,
+      cancelable = false,
     })
     if #tos > 0 then
         local targets = tos
         room:sortByAction(targets)
     room:useVirtualCard("duel", nil, player, targets, weidao.name, true)
     end
+  end
   end,
 })
 weidao:addEffect(fk.EventPhaseStart, {
