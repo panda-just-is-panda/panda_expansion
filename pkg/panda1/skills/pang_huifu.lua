@@ -10,10 +10,10 @@ huifu:addEffect(fk.EventPhaseStart, { --
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    if #player.room.logic:getActualDamageEvents(1, function(e) return e.data.from == player end) == 0 then
+    if #player.room.logic:getActualDamageEvents(1, function(e) return e.data.from == player end) > 0 then
     local cards = player.room:getCardsFromPileByRule("slash", 1, "discardPile")
     if #cards > 0 then
-      player.room:obtainCard(player, cards[1], true, fk.ReasonJustMove, player, dangxian.name)
+      player.room:obtainCard(player, cards[1], true, fk.ReasonJustMove, player, huifu.name)
       if player.dead then return false end
     end
     end
