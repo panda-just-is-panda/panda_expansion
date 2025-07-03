@@ -4,9 +4,18 @@ local haizaijizhi = fk.CreateSkill {
 }
 
 haizaijizhi:addEffect(fk.GameStart, {
-    anim_type = "control",
   can_trigger = function(self, event, target, player, data)
     return player:hasSkill(haizaijizhi.name)
+  end,
+  on_use = function(self, event, target, player, data)
+    player:gainAnExtraTurn(true, haizaijizhi.name)
+  end,
+})
+
+haizaijizhi:addEffect(fk.RoundStart, {
+    anim_type = "control",
+  can_trigger = function(self, event, target, player, data)
+    return player.room:getBanner("RoundCount") == 1 and player:hasSkill(haizaijizhi.name)
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
@@ -16,15 +25,6 @@ haizaijizhi:addEffect(fk.GameStart, {
     for _, p2 in ipairs(targets) do
     room:setPlayerMark(p2, "@@haizaijizhi", 1)
     end
-  end,
-})
-
-haizaijizhi:addEffect(fk.GameStart, {
-  can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(haizaijizhi.name)
-  end,
-  on_use = function(self, event, target, player, data)
-    player:gainAnExtraTurn(true, haizaijizhi.name)
   end,
 })
 
