@@ -32,11 +32,11 @@ huifu:addEffect(fk.EventPhaseStart, { --
       prompt = "#huifu_choose",
       cancelable = false,
     })
-    end
     if #tos > 0 then
         local targets = tos
         room:sortByAction(targets)
     room:useVirtualCard("slash", nil, player, targets, huifu.name, true)
+    end
     end
       end
 end
