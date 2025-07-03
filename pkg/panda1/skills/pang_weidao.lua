@@ -52,8 +52,8 @@ anim_type = "switch",
   end,
 })
 
-Fk:loadTranslationTable {["pang_weidao"] = "挥斧",
-[":pang_weidao"] = "锁定技，结束阶段，若你本回合：造成过伤害，你获得弃牌堆中的一张【杀】；未回复过体力，你视为使用一张【杀】。",
+Fk:loadTranslationTable {["pang_weidao"] = "卫道",
+[":pang_weidao"] = "转换技，准备阶段，①你可以视为使用一张【决斗】②你可以令一名其他角色视为对你使用一张【决斗】。",
 ["#weidao1"] = "你可以视为使用一张【决斗】",
 ["#weidao2"] = "你可以令一名角色视为对你使用一张【决斗】"
 }
