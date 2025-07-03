@@ -43,9 +43,8 @@ anim_type = "switch",
       cancelable = true,
     })
     if #tos > 0 then
-        local targets = tos
-        room:sortByAction(targets)
-    room:useVirtualCard("duel", nil, targets, player, weidao.name, true)
+        local target = tos
+        room:useVirtualCard("duel", nil, target, player, weidao.name, true)
     end
     end
   end,
