@@ -112,14 +112,14 @@ Fk:loadTranslationTable{
 }
 
 local ravager = General:new(extension, "pang__ravager", "wu", 8, 8, General.Male)
-vindicator:addSkill("pang_haoshou")
-vindicator:addSkill("pang_dangli")
+ravager:addSkill("pang_haoshou")
+ravager:addSkill("pang_dangli")
 Fk:loadTranslationTable{
-["pang__vindicator"] = "劫掠兽",
-["#pang__vindicator"] = "千钧之兽",
-["designer:pang__vindicator"] = "胖即是胖",
-["cv:pang__vindicator"] = "我的世界",
-["illustrator:pang__vindicator"] = "我的世界",
+["pang__ravager"] = "劫掠兽",
+["#pang__ravager"] = "千钧之兽",
+["designer:pang__ravager"] = "胖即是胖",
+["cv:pang__ravagerr"] = "我的世界",
+["illustrator:pang__ravager"] = "我的世界",
 }
 
 
