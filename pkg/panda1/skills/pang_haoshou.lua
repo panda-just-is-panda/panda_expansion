@@ -1,6 +1,6 @@
 local haoshou = fk.CreateSkill({
   name = "pang_haoshou", ---技能内部名称，要求唯一性
-  tags = {},
+  tags = {Skill.compulsory},
 })
 
 haoshou:addEffect(fk.EventPhaseStart, { --
@@ -21,11 +21,12 @@ haoshou:addEffect(fk.EventPhaseStart, { --
         for _, tos in ipairs(targets) do
     local choice_made = room:askToChoice(tos, {
       choices = choices,
+      prompt = "duel_question",
       skill_name = haoshou.name,
     })
     if choice_made ~= "Cancel" then
         room:useVirtualCard("duel", nil, tos, player, haoshou.name, true)
-        if player:getMark("haoshou-turn") > 0 then
+        if player:getMark("haoshou-turn") == 0 then
         room:addPlayerMark(player, "haoshou-turn", 1)
         end
     end
@@ -55,6 +56,8 @@ end
 
 Fk:loadTranslationTable {["pang_haoshou"] = "浩兽",
 [":pang_haoshou"] = "准备阶段，攻击范围内包含你的其他角色依次可以视为对你使用一张【决斗】；若没有角色如此做，你可以视为使用一张【决斗】。",
-["#haoshou"] = "你需使用一张【杀】，否则失去1点体力",
+["useduel"] = "使用决斗",
+["duel_question"] = "你可以视为对劫掠兽使用一张【决斗】",
+["#haoshou2"] = "你可以视为使用一张【决斗】"
 }
 return haoshou  --不要忘记返回做好的技能对象哦
