@@ -12,13 +12,49 @@ haoshou:addEffect(fk.EventPhaseStart, { --
   on_use = function(self, event, target, player, data)
     local room = player.room
     local duel = Fk:cloneCard("duel")
-    local choices = {"losehp", ""}
+    local slash = Fk:cloneCard("slash")
+    local choices = {"useduel", "Cancel"}
+    local targets = table.filter(room:getOtherPlayers(player, false), function (p)
+      return p:canUseTo(slash, player, {bypass_times = true})
+    end)
+    if #targets > 0 then
+        local tos = targets
+        room:sortByAction(tos)
+    local choice_made = room:askToChoice(tos, {
+      choices = choices,
+      skill_name = haoshou.name,
+    })
+    if choice_made ~= "Cancel" then
+        room:useVirtualCard("duel", nil, tos, player, haoshou.name, true)
+        if player:getMark("haoshou-turn") > 0 then
+        room:addPlayerMark(player, "haoshou-turn", 1)
+        end
+    end
+    end
+    if player:getMark("haoshou-turn") == 0 then
+        local targets2 = table.filter(room:getOtherPlayers(player, false), function (p)
+      return player:canUseTo(duel, p)
+    end)
+    local tos2 = room:askToChoosePlayers(player, {
+      min_num = 1,
+      max_num = 1,
+      targets = targets2,
+      skill_name = haoshou.name,
+      prompt = "#haoshou2",
+      cancelable = true,
+    })
+    if #tos2 > 0 then
+        local targets = tos2
+        room:sortByAction(targets)
+    room:useVirtualCard("duel", nil, player, targets, haoshou.name, true)
+    end
+    end
   end
 })
 
 
-Fk:loadTranslationTable {["pang_haoshou"] = "狂乱",
-[":pang_haoshou"] = "锁定技，结束阶段或当你受到伤害后，你摸一张牌并选择一项：使用一张【杀】；失去1点体力。",
+Fk:loadTranslationTable {["pang_haoshou"] = "浩兽",
+[":pang_haoshou"] = "准备阶段，攻击范围内包含你的其他角色依次可以视为对你使用一张【决斗】；若没有角色如此做，你可以视为使用一张【决斗】。",
 ["#haoshou"] = "你需使用一张【杀】，否则失去1点体力",
 }
 return haoshou  --不要忘记返回做好的技能对象哦
