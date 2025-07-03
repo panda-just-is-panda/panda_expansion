@@ -18,8 +18,7 @@ haoshou:addEffect(fk.EventPhaseStart, { --
       return p:canUseTo(slash, player, {bypass_times = true})
     end)
     if #targets > 0 then
-        local tos = targets
-        room:sortByAction(tos)
+        for _, tos in ipairs(targets) do
     local choice_made = room:askToChoice(tos, {
       choices = choices,
       skill_name = haoshou.name,

@@ -121,6 +121,7 @@ Fk:loadTranslationTable{
 ["cv:pang__ravagerr"] = "我的世界",
 ["illustrator:pang__ravager"] = "我的世界",
 }
+ravager.hidden = true
 
 
 
