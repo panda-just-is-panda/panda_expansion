@@ -20,8 +20,8 @@ huifu:addEffect(fk.EventPhaseStart, { --
     if #player.room.logic:getActualDamageEvents(1, function(e) return e.data.to == player end, Player.HistoryTurn) == 0 then
          local slash = Fk:cloneCard("slash")
     local max_num = slash.skill:getMaxTargetNum(player, slash)
-    local targets = table.filter(player:inMyAttackRange(player, false), function (p)
-      return player:canUseTo(slash, p, {bypass_distances = true, bypass_times = true})
+    local targets = table.filter(room:getOtherPlayers(player, false), function (p)
+      return player:canUseTo(slash, p, {bypass_times = true})
     end)
     local tos = room:askToChoosePlayers(player, {
       min_num = 1,
