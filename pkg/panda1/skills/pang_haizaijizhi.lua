@@ -20,7 +20,9 @@ haizaijizhi:addEffect(fk.RoundStart, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local targets = room:getOtherPlayers(player, false)
+    for _, p in targets do
     room:setPlayerMark(targets, "@@haizaijizhi", 1)
+    end
   end,
 })
 
@@ -49,5 +51,6 @@ haizaijizhi:addEffect("invalidity", {
 
 Fk:loadTranslationTable {["pang_haizaijizhi"] = "还在机制",
 [":pang_haizaijizhi"] = "持恒技，游戏开始时，你执行一个额外的回合；本局游戏的首轮内，其他角色的所有技能失效。",
+["@@haizaijizhi"] = "胖怒"
 }
 return haizaijizhi

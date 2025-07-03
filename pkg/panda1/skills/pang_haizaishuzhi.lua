@@ -8,7 +8,7 @@ haizaishuzhi:addEffect(fk.TurnStart, {
     return target == player and player:hasSkill(haizaishuzhi.name)
   end,
   on_use = function(self, event, target, player, data)
-    player:drawCards(1, haizaishuzhi.name)
+    player:drawCards(64, haizaishuzhi.name)
   end,
 })
 
