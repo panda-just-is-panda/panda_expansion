@@ -6,7 +6,7 @@ local weidao = fk.CreateSkill {
 weidao:addEffect(fk.EventPhaseStart, {
 anim_type = "switch",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(weidao.name) and player.phase == Player.Start and player:getSwitchSkillState(weidao.name, true) == fk.SwitchYang
+    return target == player and player:hasSkill(weidao.name) and player.phase == Player.Start and player:getSwitchSkillState(weidao.name, true) ~= fk.SwitchYang
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
@@ -33,7 +33,7 @@ anim_type = "switch",
 weidao:addEffect(fk.EventPhaseStart, {
 anim_type = "switch",
   can_trigger = function(self, event, target, player, data)
-    return target ~= player and player:hasSkill(weidao.name) and target.phase == Player.Start and player:getSwitchSkillState(weidao.name, true) ~= fk.SwitchYang
+    return target ~= player and player:hasSkill(weidao.name) and target.phase == Player.Start and player:getSwitchSkillState(weidao.name, true) == fk.SwitchYang
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
