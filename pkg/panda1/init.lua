@@ -110,7 +110,7 @@ Fk:loadTranslationTable{
 ["cv:pang__vindicator"] = "我的世界",
 ["illustrator:pang__vindicator"] = "我的世界",
 }
-vindicator.hidden = true
+
 
 
 return extension
