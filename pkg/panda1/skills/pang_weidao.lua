@@ -44,7 +44,7 @@ anim_type = "switch",
       cancelable = true,
     })
     if #tos > 0 then
-    room:useVirtualCard("duel", nil, tos, player, weidao.name, true)
+    room:useVirtualCard("duel", nil, player, tos, weidao.name, true)
     end
     end
   end,

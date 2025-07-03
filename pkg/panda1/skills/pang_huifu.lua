@@ -29,7 +29,7 @@ huifu:addEffect(fk.EventPhaseStart, { --
       targets = targets,
       skill_name = huifu.name,
       prompt = "#huifu_choose",
-      cancelable = true,
+      cancelable = false,
     })
     if #tos > 0 then
         local targets = tos
