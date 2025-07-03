@@ -118,11 +118,21 @@ Fk:loadTranslationTable{
 ["pang__ravager"] = "劫掠兽",
 ["#pang__ravager"] = "千钧之兽",
 ["designer:pang__ravager"] = "胖即是胖",
-["cv:pang__ravagerr"] = "我的世界",
+["cv:pang__ravager"] = "我的世界",
 ["illustrator:pang__ravager"] = "我的世界",
 }
-ravager.hidden = true
 
+local aggressive_panda = General:new(extension, "pang__aggressive_panda", "god", 64, 64, General.Male)
+aggressive_panda:addSkill("pang_haizaishuzhi")
+aggressive_panda:addSkill("pang_haizaijizhi")
+Fk:loadTranslationTable{
+["pang__aggressive_panda"] = "好斗熊猫",
+["#pang__aggressive_panda"] = "太怒太怒",
+["designer:pang__aggressive_panda"] = "胖即是胖",
+["cv:pang__aggressive_panda"] = "我的世界",
+["illustrator:pang__aggressive_panda"] = "我的世界",
+}
+aggressive_panda.hidden = true
 
 
 return extension
