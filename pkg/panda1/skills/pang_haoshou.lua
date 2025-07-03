@@ -49,6 +49,7 @@ haoshou:addEffect(fk.EventPhaseStart, { --
     end
     end
   end
+end
 })
 
 
