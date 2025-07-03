@@ -1,6 +1,6 @@
 local huifu = fk.CreateSkill({
   name = "pang_huifu", ---技能内部名称，要求唯一性
-  tags = {Skill.Compulsory}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
+  tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 huifu:addEffect(fk.EventPhaseStart, { --
   anim_type = "drawcard", 
@@ -30,7 +30,7 @@ huifu:addEffect(fk.EventPhaseStart, { --
       targets = targets,
       skill_name = huifu.name,
       prompt = "#huifu_choose",
-      cancelable = false,
+      cancelable = true,
     })
     if #tos > 0 then
         local targets = tos
@@ -43,7 +43,7 @@ end
 })
 
 Fk:loadTranslationTable {["pang_huifu"] = "挥斧",
-[":pang_huifu"] = "锁定技，结束阶段，若你本回合：造成过伤害，你获得弃牌堆中的一张【杀】；未受到过伤害，你视为使用一张【杀】。",
+[":pang_huifu"] = "结束阶段，若你本回合：造成过伤害，你获得弃牌堆中的一张【杀】；未受到过伤害，你可以视为使用一张【杀】。",
 ["#huifu_choose"] = "视为使用一张【杀】"
 }
 return huifu  --不要忘记返回做好的技能对象哦
