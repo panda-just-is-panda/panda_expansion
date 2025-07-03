@@ -5,6 +5,7 @@ local dangli = fk.CreateSkill {
 
 dangli:addEffect(fk.DamageInflicted, {
 anim_type = "switch",
+prompt = "#dangli",
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(dangli.name) and player:getSwitchSkillState(dangli.name, true) ~= fk.SwitchYang
   end,
@@ -21,6 +22,7 @@ anim_type = "switch",
 
 dangli:addEffect(fk.DamageCaused, {
 anim_type = "switch",
+prompt = "#dangli",
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(dangli.name) and player:getSwitchSkillState(dangli.name, true) == fk.SwitchYang
   end,
