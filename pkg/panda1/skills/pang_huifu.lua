@@ -23,6 +23,7 @@ huifu:addEffect(fk.EventPhaseStart, { --
     local targets = table.filter(room:getOtherPlayers(player, false), function (p)
       return player:canUseTo(slash, p, {bypass_times = true})
     end)
+    if #targets > 0 then
     local tos = room:askToChoosePlayers(player, {
       min_num = 1,
       max_num = max_num,
@@ -31,6 +32,7 @@ huifu:addEffect(fk.EventPhaseStart, { --
       prompt = "#huifu_choose",
       cancelable = false,
     })
+    end
     if #tos > 0 then
         local targets = tos
         room:sortByAction(targets)
