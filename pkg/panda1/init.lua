@@ -126,7 +126,7 @@ local aggressive_panda = General:new(extension, "pang__aggressive_panda", "god",
 aggressive_panda:addSkill("pang_haizaishuzhi")
 aggressive_panda:addSkill("pang_haizaijizhi")
 Fk:loadTranslationTable{
-["pang__aggressive_panda"] = "好斗熊猫",
+["pang__aggressive_panda"] = "太怒熊猫",
 ["#pang__aggressive_panda"] = "太怒太怒",
 ["designer:pang__aggressive_panda"] = "胖即是胖",
 ["cv:pang__aggressive_panda"] = "我的世界",
