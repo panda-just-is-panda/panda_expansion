@@ -31,6 +31,7 @@ anim_type = "switch",
     end
     else
       local duel = Fk:cloneCard("duel")
+      duel.skillName = weidao.name
     local targets = table.filter(room:getOtherPlayers(player, false), function (p)
       return not p:isProhibited(player, Fk:cloneCard("duel"))
     end)
@@ -43,13 +44,7 @@ anim_type = "switch",
       cancelable = true,
     })
     if #tos > 0 then
-        local target = tos
-        local new_use = { ---@type UseCardDataSpec
-      from = target,
-      tos = player,
-      card = duel,
-    }
-    room:useCard(new_use)
+    room:useVirtualCard("duel", nil, tos, player, weidao.name, true)
     end
     end
   end,
