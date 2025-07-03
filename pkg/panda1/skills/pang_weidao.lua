@@ -31,13 +31,12 @@ anim_type = "switch",
     end
     else
       local duel = Fk:cloneCard("duel")
-    local max_num = duel.skill:getMaxTargetNum(player, duel)
     local targets = table.filter(room:getOtherPlayers(player, false), function (p)
-      return player:canUseTo(duel, p)
+      return p:canUseTo(duel, player)
     end)
     local tos = room:askToChoosePlayers(player, {
       min_num = 1,
-      max_num = max_num,
+      max_num = 1,
       targets = targets,
       skill_name = weidao.name,
       prompt = "#weidao2",
