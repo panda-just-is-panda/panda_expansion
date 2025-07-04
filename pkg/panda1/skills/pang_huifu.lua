@@ -3,11 +3,10 @@ local huifu = fk.CreateSkill({
   tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 huifu:addEffect(fk.TurnEnd, { --
-  anim_type = "drawcard", 
+  anim_type = "offensive", 
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(self)
-    and #player.room.logic:getActualDamageEvents(1, function(e) return e.data.from == player end) > 0
-    or #player.room.logic:getActualDamageEvents(1, function(e) return e.data.to == player end, Player.HistoryTurn) > 0
+    return player:hasSkill(huifu.name)
+    and #player.room.logic:getActualDamageEvents(1, function(e) return e.data.from == player or e.data.to == player end, Player.HistoryTurn) > 0
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
