@@ -42,8 +42,8 @@ qieshou:addEffect(fk.CardUseFinished, {
     if #to > 0 then
     local targets = to
     room:sortByAction(targets)
-      player.room:obtainCard(to, data.card, true, fk.ReasonJustMove, player, qieshou.name)
-      if player:hasSkill(qieshou.name) and not targets:hasSkill("pang_qietian") then
+      player.room:obtainCard(to, data.card, true, fk.ReasonJustMove, to, qieshou.name)
+      if player:hasSkill(qieshou.name) then
         local choices = {"give_skill", "Cancel"}
             local choice = room:askToChoice(player, {
       choices = choices,
@@ -60,7 +60,7 @@ qieshou:addEffect(fk.CardUseFinished, {
 
 Fk:loadTranslationTable {["pang_qieshou"] = "且守",
 [":pang_qieshou"] = "你可以将一张装备牌作为【闪】使用或打出并可以令一名其他角色获得此装备牌，然后若其没有“且佃”，你可以失去此技能并令其获得“且佃”。",
-["#qieshou"] = "你可以将一张装备牌作为【闪】使用",
+["#qieshou"] = "你可以将一张装备牌作为【闪】使用或打出",
 ["qieshou_2"] = "你可以令一名其他角色获得此装备牌",
 ["give_skill"] = "你可以失去“且守”并令其获得“且佃”"
 }
