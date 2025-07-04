@@ -40,9 +40,11 @@ qieshou:addEffect(fk.CardUseFinished, {
       cancelable = true,
     })
     if #to > 0 then
-    local targets = to
-    room:sortByAction(targets)
-      player.room:obtainCard(to, data.card, true, fk.ReasonJustMove, to, qieshou.name)
+    local targets = table.filter(to, function (p)
+      return not p.dead
+    end)
+    for _, p2 in ipairs(targets) do
+      player.room:obtainCard(p2, data.card, true, fk.ReasonJustMove, player, qieshou.name)
       if player:hasSkill(qieshou.name) then
         local choices = {"give_skill", "Cancel"}
             local choice = room:askToChoice(player, {
@@ -53,6 +55,7 @@ qieshou:addEffect(fk.CardUseFinished, {
         room:handleAddLoseSkills(player, "-pang_qieshou")
         room:handleAddLoseSkills(target, "pang_qietian", nil, true, false)
         end
+    end
       end
       end
     end,
