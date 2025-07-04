@@ -45,7 +45,7 @@ qieshou:addEffect(fk.CardUseFinished, {
     end)
     for _, p2 in ipairs(targets) do
       player.room:obtainCard(p2, data.card, true, fk.ReasonJustMove, player, qieshou.name)
-      if player:hasSkill(qieshou.name) then
+      if player:hasSkill(qieshou.name) and not p2:hasSkill("pang_qietian")  then
         local choices = {"give_skill", "Cancel"}
             local choice = room:askToChoice(player, {
       choices = choices,
@@ -53,7 +53,7 @@ qieshou:addEffect(fk.CardUseFinished, {
     })
         if choice ~= "Cancel" then
         room:handleAddLoseSkills(player, "-pang_qieshou")
-        room:handleAddLoseSkills(target, "pang_qietian", nil, true, false)
+        room:handleAddLoseSkills(p2, "pang_qietian", nil, true, false)
         end
     end
       end
