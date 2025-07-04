@@ -23,7 +23,7 @@ qieshou:addEffect("viewas", {
 qieshou:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(qieshou.name) and data.card and table.contains(data.card.skillNames, qieshou.name) and
+    return data.card.from:hasSkill(qieshou.name) and data.card and table.contains(data.card.skillNames, qieshou.name) and
         player.room:getCardArea(data.card) == Card.Processing
   end,
   on_use = function(self, event, target, player, data)
@@ -40,7 +40,7 @@ qieshou:addEffect(fk.CardUseFinished, {
       cancelable = true,
     })
       player.room:obtainCard(player, data.card, true, fk.ReasonJustMove, to, qieshou.name)
-      if player:hasSkill(qieshou.name) and not target:hasSkill("pang_qietian") then
+      if player:hasSkill(qieshou.name) and not to:hasSkill("pang_qietian") then
         local choices = {"give_skill", "Cancel"}
             local choice = room:askToChoice(player, {
       choices = choices,
