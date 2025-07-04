@@ -44,7 +44,7 @@ prompt = "#qietian_invoke",
       skill_name = qietian.name,
     })
         if choice ~= "Cancel" then
-        room:handleAddLoseSkills(player, "pang_qietian")
+        room:handleAddLoseSkills(player, "-pang_qietian")
         room:handleAddLoseSkills(target, "pang_qieshou", nil, true, false)
         end
       end

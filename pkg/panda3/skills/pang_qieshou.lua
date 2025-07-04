@@ -13,7 +13,7 @@ qieshou:addEffect("viewas", {
   end,
   view_as = function(self, player, cards)
     if #cards ~= 1 then return nil end
-    local card = Fk:cloneCard("slash")
+    local card = Fk:cloneCard("jink")
     card:addSubcard(cards[1])
     card.skillName = qieshou.name
     return card
@@ -47,7 +47,7 @@ qieshou:addEffect(fk.CardUseFinished, {
       skill_name = qieshou.name,
     })
         if choice ~= "Cancel" then
-        room:handleAddLoseSkills(player, "pang_qieshou")
+        room:handleAddLoseSkills(player, "-pang_qieshou")
         room:handleAddLoseSkills(target, "pang_qietian", nil, true, false)
         end
       end
