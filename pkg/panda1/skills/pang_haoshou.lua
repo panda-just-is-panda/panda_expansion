@@ -68,7 +68,7 @@ Fk:loadTranslationTable {["pang_haoshou"] = "浩兽",
 [":pang_haoshou"] = "准备阶段，攻击范围内包含你的其他角色依次可以将一张牌作为【决斗】对你使用；若没有角色如此做，你可以视为使用一张【决斗】。",
 ["useduel"] = "使用决斗",
 ["duel_asking"] = "将一张牌作为【决斗】对劫掠兽使用",
-["duel_question"] = "你可以视为对劫掠兽使用一张【决斗】",
+["duel_question"] = "你可以将一张牌作为【决斗】对劫掠兽使用",
 ["#haoshou2"] = "你可以视为使用一张【决斗】"
 }
 return haoshou  --不要忘记返回做好的技能对象哦
