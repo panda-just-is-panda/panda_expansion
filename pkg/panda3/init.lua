@@ -1,7 +1,7 @@
 local extension = Package:new("panda3")
 extension.extensionName = "panda"
 
-extension:loadSkillSkelsByPath("./packages/panda/pkg/panda2/skills")
+extension:loadSkillSkelsByPath("./packages/panda/pkg/panda3/skills")
 
 Fk:loadTranslationTable{
   ["panda3"] = "历史胖",
@@ -16,7 +16,7 @@ Fk:loadTranslationTable{
 ["#pang__huzhi"] = "素业贞粹",
 ["designer:pang__huzhi"] = "胖即是胖",
 ["cv:pang__huzhi"] = "无",
-["illustrator:pang__huzhi"] = "",
+["illustrator:pang__huzhi"] = "无",
 }
 huzhi.hidden = true
 
