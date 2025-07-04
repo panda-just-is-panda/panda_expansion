@@ -15,7 +15,7 @@ haoshou:addEffect(fk.EventPhaseStart, { --
     local slash = Fk:cloneCard("slash")
     local choices = {"useduel", "Cancel"}
     local targets = table.filter(room:getOtherPlayers(player, false), function (p)
-      return p:canUseTo(slash, player, {bypass_times = true})
+      return p:canUseTo(slash, player, {bypass_times = true}) and not p:isNude()
     end)
     if #targets > 0 then
         for _, tos in ipairs(targets) do
@@ -25,6 +25,15 @@ haoshou:addEffect(fk.EventPhaseStart, { --
       skill_name = haoshou.name,
     })
     if choice_made ~= "Cancel" then
+         local cards = room:askToCards(tos, {
+        min_num = 1,
+        max_num = 1,
+        include_equip = true,
+        skill_name = haoshou.name,
+        prompt = "duel_asking",
+        cancelable = false,
+      })
+        duel:addSubcard(cards[1])
         room:useVirtualCard("duel", nil, tos, player, haoshou.name, true)
         if player:getMark("haoshou-turn") == 0 then
         room:addPlayerMark(player, "haoshou-turn", 1)
@@ -56,8 +65,9 @@ end
 
 
 Fk:loadTranslationTable {["pang_haoshou"] = "浩兽",
-[":pang_haoshou"] = "准备阶段，攻击范围内包含你的其他角色依次可以视为对你使用一张【决斗】；若没有角色如此做，你可以视为使用一张【决斗】。",
+[":pang_haoshou"] = "准备阶段，攻击范围内包含你的其他角色依次可以将一张牌作为【决斗】对你使用；若没有角色如此做，你可以视为使用一张【决斗】。",
 ["useduel"] = "使用决斗",
+["duel_asking"] = "将一张牌作为【决斗】对劫掠兽使用",
 ["duel_question"] = "你可以视为对劫掠兽使用一张【决斗】",
 ["#haoshou2"] = "你可以视为使用一张【决斗】"
 }
