@@ -33,7 +33,7 @@ haoshou:addEffect(fk.EventPhaseStart, { --
         prompt = "duel_asking",
         cancelable = false,
       })
-        duel:addSubcards(cards[1])
+        duel:addSubcards(cards)
         room:useVirtualCard("duel", nil, tos, player, haoshou.name, true)
         if player:getMark("haoshou-turn") == 0 then
         room:addPlayerMark(player, "haoshou-turn", 1)
