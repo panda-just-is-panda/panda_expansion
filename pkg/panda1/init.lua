@@ -127,9 +127,9 @@ panda:addSkill("pang_touxiang")
 Fk:loadTranslationTable{
 ["pang__panda"] = "熊猫胖",
 ["#pang__panda"] = "太胖太胖",
-["designer:pang__ravager"] = "胖即是胖",
-["cv:pang__ravager"] = "我的世界",
-["illustrator:pang__ravager"] = "我的世界",
+["designer:pang__panda"] = "胖即是胖",
+["cv:pang__panda"] = "我的世界",
+["illustrator:pang__panda"] = "我的世界",
 }
 panda.hidden = true
 
