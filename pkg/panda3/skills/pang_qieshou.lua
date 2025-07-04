@@ -22,6 +22,7 @@ qieshou:addEffect("viewas", {
 
 qieshou:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
+    prompt = "#qieshou_2",
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(qieshou.name) and data.card and table.contains(data.card.skillNames, qieshou.name) and
         player.room:getCardArea(data.card) == Card.Processing
@@ -36,7 +37,7 @@ qieshou:addEffect(fk.CardUseFinished, {
         max_num = 1,
       targets = targets,
       skill_name = qieshou.name,
-      prompt = "qieshou_2",
+      prompt = "qieshou_3",
       cancelable = true,
     })
     if #to > 0 then
@@ -64,7 +65,8 @@ qieshou:addEffect(fk.CardUseFinished, {
 Fk:loadTranslationTable {["pang_qieshou"] = "且守",
 [":pang_qieshou"] = "你可以将一张装备牌作为【闪】使用或打出并可以令一名其他角色获得此装备牌，然后若其没有“且佃”，你可以失去此技能并令其获得“且佃”。",
 ["#qieshou"] = "你可以将一张装备牌作为【闪】使用或打出",
-["qieshou_2"] = "你可以令一名其他角色获得此装备牌",
+["#qieshou_2"] = "你可以令一名其他角色获得此装备牌",
+["qieshou_3"] = "选择一名角色",
 ["give_skill"] = "你可以失去“且守”并令其获得“且佃”"
 }
 return qieshou --不要忘记返回做好的技能对象哦

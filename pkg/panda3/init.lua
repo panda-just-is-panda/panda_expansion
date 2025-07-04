@@ -16,8 +16,8 @@ Fk:loadTranslationTable{
 ["#pang__huzhi"] = "素业贞粹",
 ["designer:pang__huzhi"] = "胖即是胖",
 ["cv:pang__huzhi"] = "无",
-["illustrator:pang__huzhi"] = "无",
+["illustrator:pang__huzhi"] = "率土之滨",
 }
-huzhi.hidden = true
+
 
 return extension
