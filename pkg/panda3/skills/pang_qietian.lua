@@ -37,7 +37,7 @@ prompt = "#qietian_invoke",
         cancelable = false,
       })
       room:obtainCard(target, cards, false, fk.ReasonGive)
-      if player:hasSkill(qietian.name) and not target:hasSkill("pang_qieshou") then
+      if data.card.from:hasSkill(qietian.name) and not target:hasSkill("pang_qieshou") then
         local choices = {"give_skill", "Cancel"}
             local choice = room:askToChoice(player, {
       choices = choices,
