@@ -55,7 +55,7 @@ prompt = "#qietian_invoke",
 Fk:loadTranslationTable {["pang_qietian"] = "且佃",
 [":pang_qietian"] = "其他角色的结束阶段，你可将一张黑色牌作为【无中生有】使用并交给其一张牌，然后若其没有“且守”，你可以失去此技能并令其获得“且守”。",
 ["qietian_asking"] = "将一张黑色牌作为【无中生有】使用",
-["qietian_2"] = "交给其一张牌",
-["give_skill"] = "你可以失去且佃并令其获得且守"
+["qietian_2"] = "你需交给当前回合角色一张牌",
+["give_skill"] = "你可以失去“且佃”并令其获得“且守”"
 }
 return qietian  --不要忘记返回做好的技能对象哦
