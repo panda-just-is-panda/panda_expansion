@@ -23,7 +23,7 @@ qieshou:addEffect("viewas", {
 qieshou:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
   can_trigger = function(self, event, target, player, data)
-    return data.card.from:hasSkill(qieshou.name) and data.card and table.contains(data.card.skillNames, qieshou.name) and
+    return target:hasSkill(qieshou.name) and data.card and table.contains(data.card.skillNames, qieshou.name) and
         player.room:getCardArea(data.card) == Card.Processing
   end,
   on_use = function(self, event, target, player, data)
