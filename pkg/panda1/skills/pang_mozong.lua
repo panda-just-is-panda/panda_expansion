@@ -33,7 +33,7 @@ mozong:addEffect(fk.TargetSpecified, {
           flag = "he",
           cancelable = false,
         })
-        room:throwCard(card, mozong.name, target, player)
+        room:throwCard(card, mozong.name, to, player)
     player:broadcastSkillInvoke(mozong.name, 2)
   end,
 })
