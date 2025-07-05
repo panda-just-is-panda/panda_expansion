@@ -37,8 +37,12 @@ end,
       cancelable = false,
     })
     if #tos > 0 then
-        room:sortByAction(tos)
-    tos:gainAnExtraTurn(true, yingyu.name)
+    local targets = table.filter(tos, function (p)
+      return not p.dead
+    end)
+    for _, p2 in ipairs(targets) do
+    p2:gainAnExtraTurn(true, yingyu.name)
+    end
     end
   end
 })
@@ -77,9 +81,12 @@ end,
       cancelable = false,
     })
     if #tos > 0 then
-        room:sortByAction(tos)
-    tos:gainAnExtraTurn(true, yingyu.name)
-    player:broadcastSkillInvoke(yingyu.name, 2)
+    local target2 = table.filter(tos, function (p)
+      return not p.dead
+    end)
+    for _, p2 in ipairs(target2) do
+    p2:gainAnExtraTurn(true, yingyu.name)
+    end
     end
   end
 })
