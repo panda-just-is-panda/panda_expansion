@@ -5,12 +5,14 @@ local mozong = fk.CreateSkill({
 })
 
 mozong:addEffect("targetmod", {
-  player:broadcastSkillInvoke(mozong.name, 1),
   bypass_distances =  function(self, player, skill)
-    return skill.trueName == "slash_skill" and player:hasSkill(mozong.name)
+    if skill.trueName == "slash_skill" and player:hasSkill(mozong.name) then
+      return true
+    end
   end,
   extra_target_func = function(self, player, skill)
     if skill.trueName == "slash_skill" and player:hasSkill(mozong.name) then
+      player:broadcastSkillInvoke(mozong.name, 1)
       return 2
     end
   end,
