@@ -61,7 +61,6 @@ yingyu:addEffect(fk.RoundStart, {
     }) then
       local cards = player:getCardIds("h")
        if #cards > 0 then
-        event:setCostData(self, {card_discard = #cards})
         room:throwCard(cards, yingyu.name, player, player)
                 player:broadcastSkillInvoke(yingyu.name, 2)
         return true
@@ -86,9 +85,10 @@ end,
       return not p.dead
     end)
     for _, p2 in ipairs(target2) do
-    if p2 == player then
-      local draw_card = event:getCostData(self).card_discard
-      player:drawCards(draw_card, yingyu.name)
+      local cards = player.room:getCardsFromPileByRule("slash", 1, "discardPile")
+    if #cards > 0 then
+      player.room:obtainCard(p2, cards[1], true, fk.ReasonJustMove, p2, yingyu.name)
+      if p2.dead then return false end
     end
     p2:gainAnExtraTurn(true, yingyu.name)
     end
@@ -97,7 +97,7 @@ end,
 })
 
 Fk:loadTranslationTable {["pang_yingyu"] = "影驭",
-[":pang_yingyu"] = "每轮开始时，你可以弃置所有手牌（无牌则不弃）并令一名角色执行一个额外的回合，然后若你没有护甲且选择的角色为自己，你摸等量张牌。",
+[":pang_yingyu"] = "每轮开始时，你可以弃置所有手牌（无牌则不弃）并令一名角色执行一个额外的回合；若你没有护甲，其从弃牌堆中获得一张【杀】。",
 ["#yingyu_choose"] = "弃置所有手牌并令一名角色执行一个额外的回合",
 }
 return yingyu  --不要忘记返回做好的技能对象哦
