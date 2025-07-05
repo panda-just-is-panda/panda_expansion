@@ -14,5 +14,6 @@ introtheme:addEffect(fk.GameStart, {
 
 Fk:loadTranslationTable {["pang_introtheme"] = "奇厄教主",
 [":pang_introtheme"] = "主公技，游戏开始时，你播放炫酷的入场音乐。",
+["$pang_introtheme1"] = "Archillager",
 }
 return introtheme  --不要忘记返回做好的技能对象哦
