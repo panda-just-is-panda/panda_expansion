@@ -135,6 +135,7 @@ Fk:loadTranslationTable{
 ["cv:pang__archillager"] = "我的世界",
 ["illustrator:pang__archillager"] = "我的世界",
 }
+archillager.hidden = true
 
 local panda = General:new(extension, "pang__panda", "god", 64, 64, General.Male)
 panda:addSkill("pang_touxiang")
