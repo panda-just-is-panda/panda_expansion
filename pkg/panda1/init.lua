@@ -130,7 +130,7 @@ archillager:addSkill("pang_yingyu")
 archillager:addSkill("pang_introtheme")
 Fk:loadTranslationTable{
 ["pang__archillager"] = "奇厄教主",
-["#pang__archillager"] = "千钧之兽",
+["#pang__archillager"] = "影心溺欲",
 ["designer:pang__archillager"] = "胖即是胖",
 ["cv:pang__archillager"] = "我的世界",
 ["illustrator:pang__archillager"] = "我的世界",
