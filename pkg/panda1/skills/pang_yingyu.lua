@@ -31,7 +31,7 @@ end,
         local tos = room:askToChoosePlayers(player, {
       min_num = 1,
       max_num = 1,
-      targets = room:getOtherPlayers(player, false),
+      targets = room.alive_players,
       skill_name = yingyu.name,
       prompt = "#yingyu_choose",
       cancelable = false,
@@ -61,6 +61,7 @@ yingyu:addEffect(fk.RoundStart, {
     }) then
       local cards = player:getCardIds("h")
        if #cards > 0 then
+        event:setCostData(self, {card_discard = #cards})
         room:throwCard(cards, yingyu.name, player, player)
                 player:broadcastSkillInvoke(yingyu.name, 2)
         return true
@@ -85,6 +86,10 @@ end,
       return not p.dead
     end)
     for _, p2 in ipairs(target2) do
+    if p2 == player then
+      local draw_card = event:getCostData(self).card_discard
+      player:drawCards(draw_card, yingyu.name)
+    end
     p2:gainAnExtraTurn(true, yingyu.name)
     end
     end
@@ -92,8 +97,7 @@ end,
 })
 
 Fk:loadTranslationTable {["pang_yingyu"] = "影驭",
-[":pang_yingyu"] = "每轮开始时，你可弃置所有手牌（无牌则不弃）并令一名其他角色执行一个额外的回合；若你没有护甲，“其他角色”改为“角色”。",
-["#yingyu_choose"] = "弃置所有手牌并令一名其他角色执行一个额外的回合",
-["#yingyu_choose2"] = "弃置所有手牌并令一名角色执行一个额外的回合",
+[":pang_yingyu"] = "每轮开始时，你可以弃置所有手牌（无牌则不弃）并令一名角色执行一个额外的回合，然后若你没有护甲且选择的角色为自己，你摸等量张牌。",
+["#yingyu_choose"] = "弃置所有手牌并令一名角色执行一个额外的回合",
 }
 return yingyu  --不要忘记返回做好的技能对象哦
