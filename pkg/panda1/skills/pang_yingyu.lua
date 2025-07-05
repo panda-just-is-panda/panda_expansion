@@ -77,7 +77,7 @@ end,
       max_num = 1,
       targets = room.alive_players,
       skill_name = yingyu.name,
-      prompt = "#yingyu_choose2",
+      prompt = "#yingyu_choose",
       cancelable = false,
     })
     if #tos > 0 then

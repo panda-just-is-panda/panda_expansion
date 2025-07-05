@@ -30,6 +30,7 @@ mozong:addEffect(fk.TargetSpecified, {
       skill_name = mozong.name,
       cancelable = false,
     }) then
+      player:broadcastSkillInvoke(mozong.name, 1)
       return true
     end
     end,
@@ -43,7 +44,7 @@ mozong:addEffect(fk.TargetSpecified, {
           cancelable = false,
         })
         room:throwCard(card, mozong.name, to, player)
-    player:broadcastSkillInvoke(mozong.name, 2)
+        player:broadcastSkillInvoke(mozong.name, 2)
   end,
 })
 
