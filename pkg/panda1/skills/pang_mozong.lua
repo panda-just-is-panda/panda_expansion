@@ -24,6 +24,15 @@ mozong:addEffect(fk.TargetSpecified, {
       data.card.trueName == "slash" and not data.to.dead and not data.to:isNude()
       and player.shield < 1
   end,
+     on_cost = function(self, event, target, player, data)
+    local room = player.room
+    if room:askToSkillInvoke(player, {
+      skill_name = mozong.name,
+      cancelable = false,
+    }) then
+      return true
+    end
+    end,
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = data.to
