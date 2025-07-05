@@ -122,6 +122,20 @@ Fk:loadTranslationTable{
 ["illustrator:pang__ravager"] = "我的世界",
 }
 
+local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)
+archillager.subkingdom = "jin"
+archillager.shield = 2
+archillager:addSkill("pang_mozong")
+archillager:addSkill("pang_yingyu")
+archillager:addSkill("pang_introtheme")
+Fk:loadTranslationTable{
+["pang__archillager"] = "奇厄教主",
+["#pang__archillager"] = "千钧之兽",
+["designer:pang__archillager"] = "胖即是胖",
+["cv:pang__archillager"] = "我的世界",
+["illustrator:pang__archillager"] = "我的世界",
+}
+
 local panda = General:new(extension, "pang__panda", "god", 64, 64, General.Male)
 panda:addSkill("pang_touxiang")
 Fk:loadTranslationTable{
