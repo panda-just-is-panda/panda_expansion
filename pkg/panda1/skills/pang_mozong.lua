@@ -12,7 +12,6 @@ mozong:addEffect("targetmod", {
   end,
   extra_target_func = function(self, player, skill)
     if skill.trueName == "slash_skill" and player:hasSkill(mozong.name) then
-      player:broadcastSkillInvoke(mozong.name, 1)
       return 2
     end
   end,
