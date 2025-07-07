@@ -30,7 +30,7 @@ chuangzao:addEffect("active", {
     local player = effect.from
     local x = #effect.cards
     local ids = room:getCardsFromPileByRule(".|.|.|.|.|equip|", x, "allPiles")
-    local get = ids
+    local get = ids[1]
     room:moveCardTo(get, Player.Hand, player, fk.ReasonJustMove, chuangzao.name, nil, true, player)
     room:cleanProcessingArea(ids)
 end
