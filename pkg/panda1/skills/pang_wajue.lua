@@ -19,8 +19,8 @@ wajue:addEffect(fk.EventPhaseEnd, {
       card_map = {cards},
       prompt = "#wajue-choose",
       box_size = 0,
-      max_limit = 1,
-      min_limit = 1,
+      max_limit = {1, 1},
+      min_limit = {0, 1},
       default_choice = {{}, {cards[1]}}
     })[2]
     room:moveCardTo(get, Player.Hand, player, fk.ReasonJustMove, wajue.name, nil, true, player)
