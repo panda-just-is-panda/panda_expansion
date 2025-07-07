@@ -146,7 +146,6 @@ Fk:loadTranslationTable{
 ["cv:pang__steve"] = "我的世界",
 ["illustrator:pang__steve"] = "我的世界",
 }
-steve.hidden = true
 
 local panda = General:new(extension, "pang__panda", "god", 64, 64, General.Male)
 panda:addSkill("pang_touxiang")
