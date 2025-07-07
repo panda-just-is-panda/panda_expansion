@@ -8,7 +8,7 @@ chuangzao:addEffect("active", {
   prompt = "#chuangzao1",
     target_num = 0,
   min_card_num = 2,
-  max_target_num = 3,
+  max_card_num = 3,
   can_use = function(self, player)
     return player:usedSkillTimes(chuangzao.name, Player.HistoryPhase) < 2
   end,
@@ -34,8 +34,8 @@ chuangzao:addEffect("active", {
       card_map = {ids},
       prompt = "#chuangzao2",
       box_size = 0,
-      max_limit = 1,
-      min_limit = 1,
+      max_limit = {1, 1},
+      min_limit = {0, 1},
       default_choice = {{}, {ids[1]}},
       cancelable = false,
     })[2]
