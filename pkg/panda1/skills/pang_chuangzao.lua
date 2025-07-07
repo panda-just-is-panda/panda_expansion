@@ -29,7 +29,7 @@ chuangzao:addEffect("active", {
   on_use = function(self, room, effect)
     local from = effect.from
     local x = #effect.cards
-    room:throwCard(x, chuangzao.name, from, from)
+    room:throwCard(effect.cards, chuangzao.name, from, from)
     local ids = room:getCardsFromPileByRule(".|.|.|.|.|equip|" .. id_neg, x, "allPiles")
     local get = room:askToArrangeCards(from, {
       skill_name = chuangzao.name,
