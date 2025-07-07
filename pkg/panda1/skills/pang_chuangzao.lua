@@ -29,6 +29,7 @@ chuangzao:addEffect("active", {
     local player = effect.from
     local x = #effect.cards
     local ids = room:getCardsFromPileByRule(".|.|.|.|.|equip|", x, "allPiles")
+    room:turnOverCardsFromDrawPile(player, ids, chuangzao.name)
     local get = room:askToArrangeCards(player, {
       skill_name = chuangzao.name,
       card_map = {ids},
