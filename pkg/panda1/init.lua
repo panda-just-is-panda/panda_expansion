@@ -136,6 +136,18 @@ Fk:loadTranslationTable{
 ["illustrator:pang__archillager"] = "我的世界",
 }
 
+local steve = General:new(extension, "pang__steve", "wu", 4, 4, General.Male)
+steve:addSkill("pang_wajue")
+steve:addSkill("pang_chuangzao")
+Fk:loadTranslationTable{
+["pang__steve"] = "史蒂夫",
+["#pang__steve"] = "孑然独创",
+["designer:pang__steve"] = "胖即是胖",
+["cv:pang__steve"] = "我的世界",
+["illustrator:pang__steve"] = "我的世界",
+}
+steve.hidden = true
+
 local panda = General:new(extension, "pang__panda", "god", 64, 64, General.Male)
 panda:addSkill("pang_touxiang")
 Fk:loadTranslationTable{
