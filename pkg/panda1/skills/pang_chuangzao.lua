@@ -30,16 +30,7 @@ chuangzao:addEffect("active", {
     local player = effect.from
     local x = #effect.cards
     local ids = room:getCardsFromPileByRule(".|.|.|.|.|equip|", x, "allPiles")
-    local get = room:askToArrangeCards(player, {
-      skill_name = chuangzao.name,
-      card_map = ids,
-      prompt = "#chuangzao2",
-      box_size = #ids - 1,
-      max_limit = {1, 1},
-      min_limit = {0, 1},
-      default_choice = {{}, {ids[1]}},
-      cancelable = false,
-    })[2]
+    local get = ids
     room:moveCardTo(get, Player.Hand, player, fk.ReasonJustMove, chuangzao.name, nil, true, player)
     room:cleanProcessingArea(ids)
 end
