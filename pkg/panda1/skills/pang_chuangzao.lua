@@ -10,7 +10,7 @@ chuangzao:addEffect("active", {
   min_card_num = 2,
   max_card_num = 3,
   can_use = function(self, player)
-    return player:usedSkillTimes(chuangzao.name, Player.HistoryPhase) < 2
+    return player:usedSkillTimes(chuangzao.name, Player.HistoryPhase) == 0
   end,
   card_filter = function(self, player, to_select, selected)
     if #selected < 3 and not player:prohibitDiscard(to_select) then
@@ -48,7 +48,7 @@ end
 
 
 Fk:loadTranslationTable {["pang_chuangzao"] = "创造",
-[":pang_chuangzao"] = "出牌阶段限两次，你可以弃置至少两张类型不同的牌，然后你亮出牌堆或弃牌堆中的等量张装备牌并获得其中一张。",
+[":pang_chuangzao"] = "出牌阶段限一次，你可以弃置至少两张类型不同的牌，然后你亮出牌堆或弃牌堆中的等量张装备牌并获得其中一张。",
 ["#chuangzao1"] = "弃置任意张类型均不同的牌并获得一张装备牌",
 ["#chuangzao2"] = "获得其中一张牌",
 }
