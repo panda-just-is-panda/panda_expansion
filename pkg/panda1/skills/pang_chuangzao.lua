@@ -35,7 +35,7 @@ chuangzao:addEffect("active", {
       skill_name = chuangzao.name,
       card_map = ids,
       prompt = "#chuangzao2",
-      box_size = #x,
+      box_size = x,
       max_limit = {1, 1},
       min_limit = {0, 1},
       default_choice = {{}, {ids[1]}},
