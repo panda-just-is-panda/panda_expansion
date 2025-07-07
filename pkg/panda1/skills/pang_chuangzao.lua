@@ -22,6 +22,7 @@ chuangzao:addEffect("active", {
        elseif #selected == 2 and
        Fk:getCardById(to_select).type ~= Fk:getCardById(selected[1]).type and
        Fk:getCardById(to_select).type ~= Fk:getCardById(selected[2]).type then
+        return true
         end
     end
   end,
@@ -29,12 +30,11 @@ chuangzao:addEffect("active", {
     local player = effect.from
     local x = #effect.cards
     local ids = room:getCardsFromPileByRule(".|.|.|.|.|equip|", x, "allPiles")
-    room:turnOverCardsFromDrawPile(player, ids, chuangzao.name)
     local get = room:askToArrangeCards(player, {
       skill_name = chuangzao.name,
-      card_map = {ids},
+      card_map = ids,
       prompt = "#chuangzao2",
-      box_size = 0,
+      box_size = #ids - 1,
       max_limit = {1, 1},
       min_limit = {0, 1},
       default_choice = {{}, {ids[1]}},

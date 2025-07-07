@@ -18,7 +18,7 @@ wajue:addEffect(fk.EventPhaseEnd, {
       skill_name = wajue.name,
       card_map = {cards},
       prompt = "#wajue-choose",
-      box_size = 0,
+      box_size = #cards - 1,
       max_limit = {1, 1},
       min_limit = {0, 1},
       default_choice = {{}, {cards[1]}}
@@ -43,7 +43,7 @@ wajue:addEffect(fk.CardUseFinished, {
       skill_name = wajue.name,
       card_map = {cards},
       prompt = "#wajue-choose",
-      box_size = 0,
+      box_size = #cards - 1,
       max_limit = {1, 1},
       min_limit = {0, 1},
       default_choice = {{}, {cards[1]}},
