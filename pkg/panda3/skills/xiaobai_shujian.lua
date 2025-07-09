@@ -5,7 +5,9 @@ local shujian = fk.CreateSkill{
 shujian:addEffect(fk.TargetConfirmed, {
   anim_type = "control",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(shujian.name) and data.from == player or data.card.type == Card.TypeBasic or data.card.suit == Card.Heart
+    return target == player and player:hasSkill(shujian.name) and data.from == player or
+    target == player and player:hasSkill(shujian.name) and data.card.type == Card.TypeBasic or
+    target == player and player:hasSkill(shujian.name) and data.card.suit == Card.Heart
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room

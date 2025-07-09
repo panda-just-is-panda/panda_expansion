@@ -20,7 +20,7 @@ end,
     local room = player.room
     local x = player:getMark("@shujian")
     local targets = table.filter(room.alive_players, function (p)
-      return p:getHandcardNum() == x
+      return p:getHandcardNum() == x and not p:isNude()
     end)
     local to = room:askToChoosePlayers(player, {
       min_num = 1,
