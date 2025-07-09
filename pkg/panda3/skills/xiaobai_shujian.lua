@@ -64,7 +64,7 @@ end,
         local valid_target2 = table.filter(room.alive_players, function (p2)
       return p2 ~= room.current and p2 ~= to1
     end)
-    local to2 = room:askToChoosePlayers(player, {
+    local to_number2 = room:askToChoosePlayers(player, {
       skill_name = shujian.name,
       min_num = 1,
       max_num = 1,
@@ -72,8 +72,8 @@ end,
       prompt = "shujian2",
       cancelable = true,
     })
-    if #to2 > 0 then
-        to2:drawCards(1, shujian.name)
+    if #to_number2 > 0 then
+        to_number2:drawCards(1, shujian.name)
     end
   end
   end
