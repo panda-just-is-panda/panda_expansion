@@ -52,6 +52,5 @@ gangzao:addEffect(fk.CardRespondFinished, gangzao_spec)
 Fk:loadTranslationTable {["xiaobai_gangzao"] = "疏谏",
 [":xiaobai_gangzao"] = "你使用或打出牌后，你可以奔置一名手牌数为×的角色一张牌（×为你上次发动 “疏谏”所满足的项数）",
 ["#gangzao_choose"] = "你可以弃置一名手牌数为x的角色一张牌",
-["gangzao_discard"] = "弃置其中一张牌",
 }
 return gangzao
