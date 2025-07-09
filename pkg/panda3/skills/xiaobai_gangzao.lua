@@ -19,7 +19,7 @@ end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
     local x = player:getMark("@shujian")
-    local targets = table.filter(room.alive_player, function (p)
+    local targets = table.filter(room.alive_players, function (p)
       return p:getHandcardNum() == x
     end)
     local to = room:askToChoosePlayers(player, {
