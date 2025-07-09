@@ -73,7 +73,7 @@ end,
       cancelable = true,
     })
     if #to2 > 0 then
-        to1:drawCards(1, shujian.name)
+        to2[1]:drawCards(1, shujian.name)
     end
   end
   end
