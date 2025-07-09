@@ -20,8 +20,8 @@ Fk:loadTranslationTable{
 }
 
 local fuxuan = General:new(extension, "xiaobai_fuxuan", "jin", 3, 3, General.Male)
-huzhi:addSkill("xiaobai_shujian")
-huzhi:addSkill("xiaobai_gangzao")
+fuxuan:addSkill("xiaobai_shujian")
+fuxuan:addSkill("xiaobai_gangzao")
 Fk:loadTranslationTable{
 ["xiaobai_fuxuan"] = "傅玄",
 ["#xiaobai_fuxuan"] = "素业贞粹",
@@ -29,5 +29,6 @@ Fk:loadTranslationTable{
 ["cv:xiaobai_fuxuan"] = "无",
 ["illustrator:xiaobai_fuxuan"] = "",
 }
+fuxuan.hidden = true
 
 return extension
