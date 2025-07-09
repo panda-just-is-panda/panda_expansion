@@ -24,7 +24,7 @@ fuxuan:addSkill("xiaobai_shujian")
 fuxuan:addSkill("xiaobai_gangzao")
 Fk:loadTranslationTable{
 ["xiaobai_fuxuan"] = "傅玄",
-["#xiaobai_fuxuan"] = "素业贞粹",
+["#xiaobai_fuxuan"] = "",
 ["designer:xiaobai_fuxuan"] = "小汤不圆",
 ["cv:xiaobai_fuxuan"] = "无",
 ["illustrator:xiaobai_fuxuan"] = "",
