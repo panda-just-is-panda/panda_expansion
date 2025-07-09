@@ -9,13 +9,16 @@ shujian:addEffect(fk.TargetConfirmed, {
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
+    local valid_target = table.filter(room.alive_player, function (p)
+      return not p == target
+    end)
     local to = room:askToChoosePlayers(player, {
-      skill_name = shujian.name,
-      min_num = 1,
-      max_num = 1,
-      targets = not target,
-      prompt = "shujian1",
-      cancelable = true,
+        targets = valid_target,
+        skill_name = shujian.name,
+        min_num = 1,
+        max_num = 1,
+        prompt = "shujian1",
+        cancelable = true,
     })
     if #to > 0 then
         player.room:setPlayerMark(player, "@shujian", 0)
