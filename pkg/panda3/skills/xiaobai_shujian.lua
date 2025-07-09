@@ -64,7 +64,7 @@ end,
         local valid_target2 = table.filter(room.alive_players, function (p2)
       return p2 ~= room.current and p2 ~= to1
     end)
-    local to_number2 = room:askToChoosePlayers(player, {
+    local to2 = room:askToChoosePlayers(player, {
       skill_name = shujian.name,
       min_num = 1,
       max_num = 1,
@@ -72,8 +72,8 @@ end,
       prompt = "shujian2",
       cancelable = true,
     })
-    if #to_number2 > 0 then
-        to_number2:drawCards(1, shujian.name)
+    if #to2 > 0 then
+        room:loseHp(to2, 1, shujian.name)
     end
   end
   end
@@ -81,7 +81,7 @@ end,
 
 Fk:loadTranslationTable {["xiaobai_shujian"] = "疏谏",
 [":xiaobai_shujian"] = "当你成为红桃牌、基本牌或你使用的牌的目标后你可以令一名不为当前回合的角色摸一张牌，若该牌：仅满足两项，你可以多选择一名角色；均满足，被选择的角色可改为回复1点体力。",
-["shujian1"] = "令一名不为当前回合的角色摸一张牌",
+["shujian1"] = "你可以令一名不为当前回合的角色摸一张牌",
 ["shujian2"] = "你可多选择一名不为当前回合的角色",
 ["shujian_ask"] = "回复体力或摸牌",
 ["@shujian"] = "疏谏",
