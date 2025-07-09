@@ -46,8 +46,8 @@ end,
         room:throwCard(card, gangzao.name, to1, player)
 end,
 }
-gangzao:addEffect(fk.CardUsing, gangzao_spec)
-gangzao:addEffect(fk.CardResponding, gangzao_spec)
+gangzao:addEffect(fk.CardUseFinished, gangzao_spec)
+gangzao:addEffect(fk.CardRespondFinished, gangzao_spec)
 
 Fk:loadTranslationTable {["xiaobai_gangzao"] = "疏谏",
 [":xiaobai_gangzao"] = "你使用或打出牌后，你可以奔置一名手牌数为×的角色一张牌（×为你上次发动 “疏谏”所满足的项数）",
