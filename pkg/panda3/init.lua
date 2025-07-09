@@ -29,6 +29,5 @@ Fk:loadTranslationTable{
 ["cv:xiaobai_fuxuan"] = "无",
 ["illustrator:xiaobai_fuxuan"] = "",
 }
-fuxuan.hidden = true
 
 return extension
