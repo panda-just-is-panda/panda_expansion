@@ -10,7 +10,7 @@ shujian:addEffect(fk.TargetConfirmed, {
   on_cost = function(self, event, target, player, data)
     local room = player.room
     local valid_target = table.filter(room.alive_players, function (p)
-      return not p == room.current
+      return p ~= room.current
     end)
     local to = room:askToChoosePlayers(player, {
         targets = valid_target,
