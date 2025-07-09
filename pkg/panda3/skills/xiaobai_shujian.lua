@@ -61,14 +61,14 @@ end,
     end
   end
   if player:getMark("@shujian") == 2 then
-        local valid_target = table.filter(room.alive_players, function (p)
-      return p ~= room.current and p ~= to1
+        local valid_target2 = table.filter(room.alive_players, function (p2)
+      return p2 ~= room.current and p2 ~= to1
     end)
     local to2 = room:askToChoosePlayers(player, {
       skill_name = shujian.name,
       min_num = 1,
       max_num = 1,
-      targets = valid_target,
+      targets = valid_target2,
       prompt = "shujian2",
       cancelable = true,
     })
