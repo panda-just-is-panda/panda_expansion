@@ -11,7 +11,7 @@ prompt = "#qietian_invoke",
     local card_pick = Fk:getCardById(id)
         return card_pick and card_pick.color == card_pick.Black and not player:prohibitDiscard(id)
         end)
-    return target ~= player and player:hasSkill(qietian.name) and target.phase == Player.Finish and #card > 0
+    return player:hasSkill(qietian.name) and target.phase == Player.Finish and #card > 0
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
@@ -27,7 +27,7 @@ prompt = "#qietian_invoke",
       })
         tian:addSubcards(cards)
         room:useVirtualCard("ex_nihilo", tian, player, player, qietian.name, true)
-    if not player.dead and not target.dead then
+    if not player.dead and not target.dead and not target == player then
         local cards = room:askToCards(player, {
         min_num = 1,
         max_num = 1,
@@ -53,7 +53,7 @@ prompt = "#qietian_invoke",
 })
 
 Fk:loadTranslationTable {["pang_qietian"] = "且佃",
-[":pang_qietian"] = "其他角色的结束阶段，你可将一张黑色牌作为【无中生有】使用并交给其一张牌，然后若其没有“且守”，你可以失去此技能并令其获得“且守”。",
+[":pang_qietian"] = "一名角色的结束阶段，你可将一张黑色牌作为【无中生有】使用并交给其一张牌，然后若其没有“且守”，你可以失去此技能并令其获得“且守”。",
 ["qietian_asking"] = "将一张黑色牌作为【无中生有】使用",
 ["qietian_2"] = "你需交给当前回合角色一张牌",
 ["give_skill"] = "你可以失去“且佃”并令其获得“且守”"
