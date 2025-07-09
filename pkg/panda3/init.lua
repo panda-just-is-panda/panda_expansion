@@ -19,5 +19,15 @@ Fk:loadTranslationTable{
 ["illustrator:pang__huzhi"] = "率土之滨",
 }
 
+local fuxuan = General:new(extension, "xiaobai_fuxuan", "jin", 3, 3, General.Male)
+huzhi:addSkill("xiaobai_shujian")
+huzhi:addSkill("xiaobai_gangzao")
+Fk:loadTranslationTable{
+["xiaobai_fuxuan"] = "傅玄",
+["#xiaobai_fuxuan"] = "素业贞粹",
+["designer:xiaobai_fuxuan"] = "小汤不圆",
+["cv:xiaobai_fuxuan"] = "无",
+["illustrator:xiaobai_fuxuan"] = "",
+}
 
 return extension
