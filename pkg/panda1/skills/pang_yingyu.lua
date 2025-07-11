@@ -25,7 +25,6 @@ yingyu:addEffect(fk.RoundStart, {
     end
 end,
   on_use = function(self, event, target, player, data)
-    player:broadcastSkillInvoke(yingyu.name, 1)
     local room = player.room
         local tos = room:askToChoosePlayers(player, {
       min_num = 1,
@@ -68,7 +67,6 @@ yingyu:addEffect(fk.RoundStart, {
     end
 end,
   on_use = function(self, event, target, player, data)
-    player:broadcastSkillInvoke(yingyu.name, 2)
     local room = player.room
         local tos = room:askToChoosePlayers(player, {
       min_num = 1,
