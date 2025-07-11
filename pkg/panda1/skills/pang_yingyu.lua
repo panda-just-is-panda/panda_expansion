@@ -18,15 +18,14 @@ yingyu:addEffect(fk.RoundStart, {
       local cards = player:getCardIds("h")
        if #cards > 0 then
         room:throwCard(cards, yingyu.name, player, player)
-        player:broadcastSkillInvoke(yingyu.name, 1)
         return true
        else
-        player:broadcastSkillInvoke(yingyu.name, 1)
       return true
        end
     end
 end,
   on_use = function(self, event, target, player, data)
+    player:broadcastSkillInvoke(yingyu.name, 1)
     local room = player.room
         local tos = room:askToChoosePlayers(player, {
       min_num = 1,
@@ -62,15 +61,14 @@ yingyu:addEffect(fk.RoundStart, {
       local cards = player:getCardIds("h")
        if #cards > 0 then
         room:throwCard(cards, yingyu.name, player, player)
-                player:broadcastSkillInvoke(yingyu.name, 2)
         return true
        else
-                player:broadcastSkillInvoke(yingyu.name, 2)
       return true
        end
     end
 end,
   on_use = function(self, event, target, player, data)
+    player:broadcastSkillInvoke(yingyu.name, 2)
     local room = player.room
         local tos = room:askToChoosePlayers(player, {
       min_num = 1,
