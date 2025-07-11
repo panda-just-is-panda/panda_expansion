@@ -27,7 +27,7 @@ prompt = "#qietian_invoke",
       })
         tian:addSubcards(cards)
         room:useVirtualCard("ex_nihilo", tian, player, player, qietian.name, true)
-    if not player.dead and not target.dead then
+    if target ~= player and not player.dead and not target.dead then
         local cards = room:askToCards(player, {
         min_num = 1,
         max_num = 1,
