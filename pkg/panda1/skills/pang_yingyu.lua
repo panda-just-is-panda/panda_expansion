@@ -39,7 +39,8 @@ end,
       return not p.dead
     end)
     for _, p2 in ipairs(targets) do
-    p2:gainAnExtraTurn(true, yingyu.name)
+      player:broadcastSkillInvoke(yingyu.name, 1)
+      p2:gainAnExtraTurn(true, yingyu.name)
     end
     end
   end
@@ -81,6 +82,7 @@ end,
       return not p.dead
     end)
     for _, p2 in ipairs(target2) do
+      player:broadcastSkillInvoke(yingyu.name, 2)
       local cards = player.room:getCardsFromPileByRule("slash", 1, "discardPile")
     if #cards > 0 then
       player.room:obtainCard(p2, cards[1], true, fk.ReasonJustMove, p2, yingyu.name)
