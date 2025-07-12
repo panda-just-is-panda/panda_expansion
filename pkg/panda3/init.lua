@@ -4,7 +4,7 @@ extension.extensionName = "panda"
 extension:loadSkillSkelsByPath("./packages/panda/pkg/panda3/skills")
 
 Fk:loadTranslationTable{
-  ["panda3"] = "历史胖",
+  ["panda3"] = "神人胖",
   ["pang"] = "胖"
 }
 
