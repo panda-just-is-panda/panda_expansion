@@ -21,20 +21,12 @@ mozong:addEffect(fk.TargetSpecified, {
   mute = true,
   anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
+    if target == player and player:hasSkill(mozong.name) and
+      data.card.trueName == "slash" and not data.to.dead then
     player:broadcastSkillInvoke(mozong.name, 1)
-    return target == player and player:hasSkill(mozong.name) and
-      data.card.trueName == "slash" and not data.to.dead and not data.to:isNude()
-      and player.shield < 1
+    return not data.to:isNude() and player.shield < 1
+      end
   end,
-     on_cost = function(self, event, target, player, data)
-    local room = player.room
-    if room:askToSkillInvoke(player, {
-      skill_name = mozong.name,
-      cancelable = false,
-    }) then
-      return true
-    end
-    end,
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = data.to
