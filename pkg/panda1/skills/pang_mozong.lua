@@ -43,7 +43,7 @@ mozong:addEffect(fk.TargetSpecified, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = data.to
-    local card = event:getCostData(self).cards[1]
+    local card = event:getCostData(self).cards
         room:throwCard(card, mozong.name, to, player)   
   end,
 })
