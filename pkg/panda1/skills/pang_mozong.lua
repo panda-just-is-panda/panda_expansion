@@ -27,17 +27,26 @@ mozong:addEffect(fk.TargetSpecified, {
     return not data.to:isNude() and player.shield < 1
       end
   end,
-  on_use = function(self, event, target, player, data)
-    local room = player.room
+  on_cost = function(self, event, target, player, data)
+     local room = player.room
     local to = data.to
+    player:broadcastSkillInvoke(mozong.name, 2)
     local card = room:askToChooseCard(player, {
           target = to,
           skill_name = mozong.name,
           flag = "he",
           cancelable = false,
         })
-        room:throwCard(card, mozong.name, to, player)
-        player:broadcastSkillInvoke(mozong.name, 2)
+    if #card > 0 then
+      event:setCostData(self, {cards = card})
+    return true
+    end
+  end,
+  on_use = function(self, event, target, player, data)
+    local room = player.room
+    local to = data.to
+    local card = event:getCostData(self).cards[1]
+        room:throwCard(card, mozong.name, to, player)   
   end,
 })
 
