@@ -18,8 +18,10 @@ mozong:addEffect("targetmod", {
 })
 
 mozong:addEffect(fk.TargetSpecified, {
+  mute = true,
   anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
+    player:broadcastSkillInvoke(mozong.name, 1)
     return target == player and player:hasSkill(mozong.name) and
       data.card.trueName == "slash" and not data.to.dead and not data.to:isNude()
       and player.shield < 1
@@ -30,7 +32,6 @@ mozong:addEffect(fk.TargetSpecified, {
       skill_name = mozong.name,
       cancelable = false,
     }) then
-      player:broadcastSkillInvoke(mozong.name, 1)
       return true
     end
     end,
