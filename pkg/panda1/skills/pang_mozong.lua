@@ -37,10 +37,8 @@ mozong:addEffect(fk.TargetSpecified, {
           flag = "he",
           cancelable = false,
         })
-    if #card > 0 then
       event:setCostData(self, {cards = card})
     return true
-    end
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
