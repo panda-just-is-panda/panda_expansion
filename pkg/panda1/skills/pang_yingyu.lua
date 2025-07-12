@@ -4,6 +4,7 @@ local yingyu = fk.CreateSkill({
 })
 
 yingyu:addEffect(fk.RoundStart, {
+  mute = true,
   anim_type = "control",
   can_trigger = function(self, event, target, player, data)
     return player:hasSkill(yingyu.name) and #player.room:getOtherPlayers(player, false) > 0
@@ -47,6 +48,7 @@ end,
 })
 
 yingyu:addEffect(fk.RoundStart, {
+  mute = true,
   anim_type = "control",
   can_trigger = function(self, event, target, player, data)
     return player:hasSkill(yingyu.name) and #player.room:getOtherPlayers(player, false) > 0
