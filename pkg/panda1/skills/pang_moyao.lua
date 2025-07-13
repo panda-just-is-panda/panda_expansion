@@ -43,6 +43,14 @@ moyao:addEffect(fk.TurnEnd, {
         cancelable = false,
         })
         if #tos > 0 then
+        room:askToDiscard(p, {
+          skill_name = moyao.name,
+          prompt = "#moyao_discard",
+          cancelable = false,
+          min_num = 1,
+          max_num = 1,
+          include_equip = true,
+        })
         room:loseHp(tos[1], 1, moyao.name)
         end
     else
@@ -58,6 +66,7 @@ moyao:addEffect(fk.TurnEnd, {
         cancelable = false,
         })
         if #tos > 0 then
+        player:drawCards(1, moyao.name)
         room:recover({who = tos[1], num = 1, recoverBy = player, skillName = moyao.name})
         end
     end
@@ -65,8 +74,9 @@ moyao:addEffect(fk.TurnEnd, {
 })
 
 Fk:loadTranslationTable {["pang_moyao"] = "魔药",
-[":pang_moyao"] = "回合结束时，若你本回合因弃置失去过牌，你可以令一名角色失去1点体力，否则你可以令一名角色回复1点体力。",
+[":pang_moyao"] = "回合结束时，若你本回合因弃置失去过牌，你可以弃置一张牌并令一名角色失去1点体力，否则你可以摸一张牌并令一名角色回复1点体力。",
 ["#moyao1"] = "令一名角色失去1点体力",
 ["#moyao2"] = "令一名角色回复1点体力",
+["#moyao_discard"] = "弃置一张牌",
 }
 return moyao
