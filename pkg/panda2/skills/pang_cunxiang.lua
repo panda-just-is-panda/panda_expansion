@@ -9,7 +9,7 @@ cunxiang:addEffect("viewas", {
   pattern = "analeptic",
   card_filter = Util.FalseFunc,
   before_use = function(self, player)
-    if player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang then 
+    if player:getSwitchSkillState(cunxiang.name, true) == fk.SwitchYang then 
         player:turnOver()
     else
         player:drawCards(2, cunxiang.name)
@@ -21,7 +21,7 @@ cunxiang:addEffect("viewas", {
     return c
   end,
   enabled_at_play = function (self, player)
-    return player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang and player.faceup or player:getSwitchSkillState(cunxiang.name, true) == fk.SwitchYang
+    return player:getSwitchSkillState(cunxiang.name, true) == fk.SwitchYang and player.faceup or player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang
   end,
   enabled_at_response = function (self, player, response)
     return not response
