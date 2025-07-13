@@ -26,7 +26,7 @@ Fk:loadTranslationTable{
 ["pang__meilanni"] = "梅兰妮",
 ["#pang__meilanni"] = "狡猾的绒兽",
 ["designer:pang__meilanni"] = "胖即是胖",
-["cv:pang__meilanni"] = "无",
+["cv:pang__meilanni"] = "深蓝",
 ["illustrator:pang__meilanni"] = "深蓝",
 }
 
@@ -37,7 +37,7 @@ Fk:loadTranslationTable{
 ["pang__quniang"] = "曲娘",
 ["#pang__quniang"] = "石子的顽然",
 ["designer:pang__quniang"] = "胖即是胖",
-["cv:pang__quniang"] = "无",
+["cv:pang__quniang"] = "深蓝",
 ["illustrator:pang__quniang"] = "深蓝",
 }
 
