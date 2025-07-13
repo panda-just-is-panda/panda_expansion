@@ -31,6 +31,28 @@ moyao:addEffect(fk.TurnEnd, {
   can_trigger = function(self, event, target, player, data)
     return player:hasSkill(moyao.name) and target == player
   end,
+  on_cost = function(self, event, target, player, data)
+    local room = player.room
+    if player:getMark("moyao_losehp-turn") > 0 then
+        local card = room:askToDiscard(player, {
+          skill_name = moyao.name,
+          prompt = "#moyao_discard",
+          cancelable = true,
+          min_num = 1,
+          max_num = 1,
+          include_equip = true,
+        })
+        if #card > 0 then return true
+        end
+    else
+       if room:askToSkillInvoke(player, {
+      skill_name = moyao.name,
+      prompt = "#moyao_ask",
+      }) then
+      return true
+    end
+    end
+  end,
    on_use = function(self, event, target, player, data)
     local room = player.room
     if player:getMark("moyao_losehp-turn") > 0 then
@@ -43,14 +65,6 @@ moyao:addEffect(fk.TurnEnd, {
         cancelable = false,
         })
         if #tos > 0 then
-        room:askToDiscard(player, {
-          skill_name = moyao.name,
-          prompt = "#moyao_discard",
-          cancelable = false,
-          min_num = 1,
-          max_num = 1,
-          include_equip = true,
-        })
         room:loseHp(tos[1], 1, moyao.name)
         end
     else
@@ -79,6 +93,7 @@ Fk:loadTranslationTable {["pang_moyao"] = "魔药",
 [":pang_moyao"] = "回合结束时，若你本回合因弃置失去过牌，你可以弃置一张牌并令一名角色失去1点体力，否则你可以摸一张牌并令一名角色回复1点体力。",
 ["#moyao1"] = "令一名角色失去1点体力",
 ["#moyao2"] = "令一名角色回复1点体力",
-["#moyao_discard"] = "弃置一张牌",
+["#moyao_discard"] = "你可以弃置一张牌并令一名角失去1点体力",
+["#moyao_ask"] = "你可以摸一张牌并令一名角色回复1点体力",
 }
 return moyao
