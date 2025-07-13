@@ -132,7 +132,6 @@ Fk:loadTranslationTable{
 ["cv:pang__ravager"] = "我的世界",
 ["illustrator:pang__ravager"] = "我的世界",
 }
-witch.hidden = true
 
 local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)
 archillager.subkingdom = "jin"
