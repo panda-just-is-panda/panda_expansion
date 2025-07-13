@@ -14,9 +14,9 @@ dizhu:addSkill("pang_paixing")
 Fk:loadTranslationTable{
 ["pang__dizhu"] = "地主",
 ["#pang__dizhu"] = "超级加倍",
-["designer:pang__quniang"] = "胖即是胖",
-["cv:pang__quniang"] = "欢乐斗地主",
-["illustrator:pang__quniang"] = "欢乐斗地主",
+["designer:pang__dizhu"] = "胖即是胖",
+["cv:pang__dizhu"] = "欢乐斗地主",
+["illustrator:pang__dizhu"] = "欢乐斗地主",
 }
 
 return extension
