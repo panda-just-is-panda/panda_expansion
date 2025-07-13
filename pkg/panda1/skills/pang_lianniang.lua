@@ -19,8 +19,10 @@ lianniang:addEffect("active", {
   on_use = function(self, room, effect)
     local player = effect.from
     local target = effect.tos[1]
-    local card1 = room:askToChooseCard(player, {
+    local card1 = room:askToChooseCards(player, {
           target = target,
+           min = 1,
+            max = 1,
           skill_name = lianniang.name,
           prompt = "lian_ask",
           flag = "he",
