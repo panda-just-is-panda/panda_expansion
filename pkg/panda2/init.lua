@@ -30,4 +30,16 @@ Fk:loadTranslationTable{
 ["illustrator:pang__meilanni"] = "深蓝",
 }
 
+local quniang = General:new(extension, "pang__quniang", "qun", 3, 3, General.Female)
+quniang:addSkill("pang_cunxiang")
+quniang:addSkill("pang_jinxing")
+Fk:loadTranslationTable{
+["pang__quniang"] = "曲娘",
+["#pang__quniang"] = "石子的顽然",
+["designer:pang__quniang"] = "胖即是胖",
+["cv:pang__quniang"] = "无",
+["illustrator:pang__quniang"] = "深蓝",
+}
+quniang.hidden = true
+
 return extension
