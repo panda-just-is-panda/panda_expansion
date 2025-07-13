@@ -6,7 +6,7 @@ local qiaoshou = fk.CreateSkill({
 qiaoshou:addEffect("viewas", {
   anim_type = "offensive",
   prompt = "#pang_qiaoshou",
-  mute_card = true,
+  mute_card = false,
   pattern = "slash",
   handly_pile = true,
   include_equip = false,

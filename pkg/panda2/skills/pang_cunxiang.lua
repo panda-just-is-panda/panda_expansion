@@ -4,6 +4,7 @@ local cunxiang = fk.CreateSkill({
 })
 
 cunxiang:addEffect("viewas", {
+    mute_card = false,
   anim_type = "support",
   prompt = "#cunxiang1",
   pattern = "analeptic",
