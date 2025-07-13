@@ -25,7 +25,7 @@ lianniang:addEffect("active", {
           prompt = "lian_ask",
           flag = "he",
         })
-    if card1[1].color == card.Black then
+    if card1.color == card.Black then
         room:addPlayerMark(player, "lianniang_black-turn", 1)
     else
         room:addPlayerMark(player, "lianniang_red-turn", 1)
