@@ -43,7 +43,7 @@ moyao:addEffect(fk.TurnEnd, {
         cancelable = false,
         })
         if #tos > 0 then
-        room:askToDiscard(p, {
+        room:askToDiscard(player, {
           skill_name = moyao.name,
           prompt = "#moyao_discard",
           cancelable = false,
@@ -55,8 +55,10 @@ moyao:addEffect(fk.TurnEnd, {
         end
     else
         local targets = table.filter(room.alive_players, function (p)
-      return p:isWounded()
-    end)
+          return p:isWounded()
+        end)
+        player:drawCards(1, moyao.name)
+        if #targets > 0 then
         local tos = room:askToChoosePlayers(player, {
         min_num = 1,
         max_num = 1,
@@ -66,8 +68,8 @@ moyao:addEffect(fk.TurnEnd, {
         cancelable = false,
         })
         if #tos > 0 then
-        player:drawCards(1, moyao.name)
         room:recover({who = tos[1], num = 1, recoverBy = player, skillName = moyao.name})
+        end
         end
     end
    end
