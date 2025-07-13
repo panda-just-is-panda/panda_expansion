@@ -1,0 +1,86 @@
+local moyao = fk.CreateSkill({
+  name = "pang_moyao", ---技能内部名称，要求唯一性
+  tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
+})
+
+moyao:addEffect(fk.AfterCardsMove, {
+  can_trigger = function(self, event, target, player, data)
+    local room = player.room
+    if player:hasSkill(moyao.name) then
+      for _, move in ipairs(data) do
+        if move.toArea == Card.DiscardPile then
+          if move.moveReason == fk.ReasonDiscard and move.from and move.from == player then
+            for _, info in ipairs(move.moveInfo) do
+              if (info.fromArea == Card.PlayerHand or info.fromArea == Card.PlayerEquip) then
+                return true
+              end
+            end
+        end
+    end
+end
+end
+end,
+    on_use = function(self, event, target, player, data)
+    local room = player.room
+    room:addPlayerMark(player, "moyao_losehp-turn", 1)
+    end,
+        })
+
+moyao:addEffect(fk.TurnEnd, {
+  anim_type = "support",
+  can_trigger = function(self, event, target, player, data)
+    if player:hasSkill(moyao.name) and 
+    #player.room.logic:getEventsOfScope(GameEvent.MoveCards, 1, function(e)
+        for _, move in ipairs(e.data) do
+          if move.from == player and
+            not (move.to == player and (move.toArea == Card.PlayerHand or move.toArea == Card.PlayerEquip)) then
+            for _, info in ipairs(move.moveInfo) do
+              if info.fromArea == Card.PlayerHand or info.fromArea == Card.PlayerEquip then
+                return true
+              end
+            end
+          end
+        end
+      end, Player.HistoryTurn) > 0 then
+        return true
+      end
+  end,
+   on_use = function(self, event, target, player, data)
+    local room = player.room
+    if player:getMark("moyao_losehp-turn") > 0 then
+        local tos = room:askToChoosePlayers(player, {
+        min_num = 1,
+        max_num = 1,
+        targets = room.alive_players,
+        skill_name = moyao.name,
+        prompt = "#moyao1",
+        cancelable = false,
+        })
+        if #tos > 0 then
+        room:loseHp(tos, 1, moyao.name)
+        end
+    else
+        local targets = table.filter(room.alive_players, function (p)
+      return p:isWounded()
+    end)
+        local tos = room:askToChoosePlayers(player, {
+        min_num = 1,
+        max_num = 1,
+        targets = targets,
+        skill_name = moyao.name,
+        prompt = "#moyao2",
+        cancelable = false,
+        })
+        if #tos > 0 then
+        room:recover({who = tos, num = 1, recoverBy = player, skillName = moyao.name})
+        end
+    end
+   end
+})
+
+Fk:loadTranslationTable {["pang_moyao"] = "魔药",
+[":pang_moyao"] = "你失去过牌的回合结束时，若你本回合因弃置失去过牌，你可以令一名角色失去1点体力，否则你可以令一名角色回复1点体力。",
+["#moyao1"] = "你可以令一名角色失去1点体力",
+["#moyao2"] = "你可以令一名角色回复1点体力",
+}
+return moyao
