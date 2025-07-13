@@ -9,7 +9,7 @@ jinxing:addEffect(fk.RoundStart, {
     return player:hasSkill(jinxing.name)
   end,
   on_refresh = function (self, event, target, player, data)
-    player.room:addPlayerMark(player, "@jinxing_huihe")
+    player.room:addPlayerMark(player, "@@jinxing_huihe")
   end
 })
 
@@ -18,7 +18,7 @@ jinxing:addEffect(fk.TurnStart, {
     return target == player and player:hasSkill(jinxing.name) and player:getMark("@jinxing_huihe") > 0
     end,
     on_refresh = function (self, event, target, player, data)
-        player.room:setPlayerMark(player, "@jinxing_huihe", 0)
+        player.room:setPlayerMark(player, "@@jinxing_huihe", 0)
     end
 })
 
@@ -27,13 +27,13 @@ jinxing:addEffect(fk.TurnEnd, {
     return target == player and player:hasSkill(jinxing.name) and player:getMark("@huihe_infinite") > 0
     end,
     on_refresh = function (self, event, target, player, data)
-        player.room:setPlayerMark(player, "@huihe_infinite", 0)
+        player.room:setPlayerMark(player, "@@huihe_infinite", 0)
     end
 })
 
 jinxing:addEffect(fk.RoundEnd, {
     can_trigger = function (self, event, target, player, data)
-    return player:hasSkill(jinxing.name) and player:getMark("@jinxing_huihe") > 0
+    return player:hasSkill(jinxing.name) and player:getMark("@@jinxing_huihe") > 0
 end,
     on_cost = function(self, event, target, player, data)
         if player.room:askToSkillInvoke(player, {
@@ -45,15 +45,15 @@ end,
 end,
     on_use = function (self, event, target, player, data)
     local room = player.room
-    room:setPlayerMark(player, "@jinxing_huihe", 0)
-    room:addPlayerMark(player, "@huihe_infinite")
+    room:setPlayerMark(player, "@@jinxing_huihe", 0)
+    room:addPlayerMark(player, "@@huihe_infinite")
     player:gainAnExtraTurn(true, jinxing.name)
   end
 })
 
 jinxing:addEffect('targetmod', {
   bypass_times = function(self, player, skill, scope, card)
-    if card and player:hasSkill(jinxing.name) and scope == Player.HistoryPhase and player:getMark("@huihe_infinite") > 0 then
+    if card and player:hasSkill(jinxing.name) and scope == Player.HistoryTurn and player:getMark("@huihe_infinite") > 0 then
       return true
     end
   end,
@@ -62,7 +62,7 @@ jinxing:addEffect('targetmod', {
 Fk:loadTranslationTable {["pang_jinxing"] = "尽兴",
 [":pang_jinxing"] = "每轮结束时，若你本轮未执行过回合，你执行一个额外的回合；你于此回合内使用牌无次数限制。",
 ["#jinxing"] = "你可以执行一个额外的回合",
-[ "@jinxing_huihe"] = "尽兴",
-["@huihe_infinite"] = "尽兴回合"
+["@@jinxing_huihe"] = "尽兴",
+["@@huihe_infinite"] = "尽兴回合"
 }
 return jinxing
