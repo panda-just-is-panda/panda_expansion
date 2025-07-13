@@ -50,6 +50,6 @@ dizhu:addEffect(fk.AfterCardsMove, {
 })
 
 Fk:loadTranslationTable {["pang_dizhu"] = "地主",
-[":pang_dizhu"] = "锁定技，游戏开始时，你将手牌摸至17张；你的手牌上限为54；当你失去最后一张手牌时，你获得游戏胜利。",
+[":pang_dizhu"] = "锁定技，游戏开始时，你将手牌摸至17张；你的手牌上限为54；当你失去最后一张手牌后，你获得游戏胜利。",
 }
 return dizhu
