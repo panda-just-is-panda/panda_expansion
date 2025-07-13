@@ -3,11 +3,11 @@ local paixing = fk.CreateSkill{
 }
 
 
-paixing:addEffect(fk.GameStart, {
-can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(paixing.name)
+paixing:addEffect(fk.TurnStart, {
+can_refresh = function(self, event, target, player, data)
+    return player:hasSkill(paixing.name) and player:usedSkillTimes(paixing.name, Player.HistoryGame) == 0
   end,
-  on_use = function(self, event, target, player, data)
+  on_refresh = function(self, event, target, player, data)
     local room = player.room
     room:handleAddLoseSkills(target, "pang_duizi", nil, true, false)
     room:handleAddLoseSkills(target, "pang_feiji", nil, true, false)

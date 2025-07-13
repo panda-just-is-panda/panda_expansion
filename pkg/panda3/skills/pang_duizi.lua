@@ -21,7 +21,7 @@ duizi:addEffect("viewas", {
     if #cards < 2 or #cards > 2 then return end
     local card = Fk:cloneCard("dismantlement")
     card.skillName = duizi.name
-    card:addSubcard(cards)
+    card:addSubcards(cards)
     return card
   end,
   enabled_at_response = function (self, player, response)

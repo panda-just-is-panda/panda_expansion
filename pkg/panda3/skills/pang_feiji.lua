@@ -24,7 +24,7 @@ feiji:addEffect("viewas", {
     if #cards < 3 or #cards > 3 then return end
     local card = Fk:cloneCard("ex_nihilo")
     card.skillName = feiji.name
-    card:addSubcard(cards)
+    card:addSubcards(cards)
     return card
   end,
   enabled_at_response = function (self, player, response)

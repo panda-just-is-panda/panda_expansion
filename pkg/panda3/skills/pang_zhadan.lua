@@ -28,7 +28,7 @@ zhadan:addEffect("viewas", {
     if #cards < 4 or #cards > 4 then return end
     local card = Fk:cloneCard("nullification")
     card.skillName = zhadan.name
-    card:addSubcard(cards)
+    card:addSubcards(cards)
     return card
   end,
   enabled_at_response = function (self, player, response)
