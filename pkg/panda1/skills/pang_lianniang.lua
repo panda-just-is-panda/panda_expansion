@@ -25,8 +25,13 @@ lianniang:addEffect("active", {
           prompt = "lian_ask",
           flag = "he",
         })
-        room:throwCard(card1, lianniang.name, target, player)
-    if not target:isNude() and card1[1].color == card.Black then
+    if card1[1].color == card.Black then
+        room:addPlayerMark(player, "lianniang_black-turn", 1)
+    else
+        room:addPlayerMark(player, "lianniang_red-turn", 1)
+    end
+    room:throwCard(card1, lianniang.name, target, player)
+    if not target:isNude() and player:getMark("lianniang_black-turn") > 0 then
         local card2 = room:askToCards(target, {
         min_num = 1,
         max_num = 1,
@@ -40,7 +45,7 @@ lianniang:addEffect("active", {
             room:throwCard(card, lianniang.name, target, target)
             target:drawCards(3)
         end
-    elseif not target:isNude() and card1[1].color == card.Red then
+    elseif not target:isNude() and player:getMark("lianniang_red-turn") > 0 then
         local card2 = room:askToCards(target, {
         min_num = 1,
         max_num = 1,
@@ -55,6 +60,8 @@ lianniang:addEffect("active", {
             target:drawCards(3)
         end
     end
+    room:setPlayerMark(player, "lianniang_red-turn", 0)
+    room:setPlayerMark(player, "lianniang_black-turn", 0)
   end,
 })
 
