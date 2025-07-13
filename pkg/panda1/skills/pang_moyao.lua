@@ -29,21 +29,7 @@ end,
 moyao:addEffect(fk.TurnEnd, {
   anim_type = "support",
   can_trigger = function(self, event, target, player, data)
-    if player:hasSkill(moyao.name) and 
-    #player.room.logic:getEventsOfScope(GameEvent.MoveCards, 1, function(e)
-        for _, move in ipairs(e.data) do
-          if move.from == player and
-            not (move.to == player and (move.toArea == Card.PlayerHand or move.toArea == Card.PlayerEquip)) then
-            for _, info in ipairs(move.moveInfo) do
-              if info.fromArea == Card.PlayerHand or info.fromArea == Card.PlayerEquip then
-                return true
-              end
-            end
-          end
-        end
-      end, Player.HistoryTurn) > 0 then
-        return true
-      end
+    return player:hasSkill(moyao.name) and target == player
   end,
    on_use = function(self, event, target, player, data)
     local room = player.room
@@ -79,7 +65,7 @@ moyao:addEffect(fk.TurnEnd, {
 })
 
 Fk:loadTranslationTable {["pang_moyao"] = "魔药",
-[":pang_moyao"] = "你失去过牌的回合结束时，若你本回合因弃置失去过牌，你可以令一名角色失去1点体力，否则你可以令一名角色回复1点体力。",
+[":pang_moyao"] = "回合结束时，若你本回合因弃置失去过牌，你可以令一名角色失去1点体力，否则你可以令一名角色回复1点体力。",
 ["#moyao1"] = "你可以令一名角色失去1点体力",
 ["#moyao2"] = "你可以令一名角色回复1点体力",
 }
