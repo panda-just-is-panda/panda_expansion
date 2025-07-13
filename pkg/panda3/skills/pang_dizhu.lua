@@ -24,10 +24,10 @@ dizhu:addEffect("maxcards", {
   end,
 })
 
-dizhu:addEffect(fk.GameOverJudge, {
+dizhu:addEffect(fk.AfterCardsMove, {
     mute = true,
   can_refresh = function(self, event, target, player, data)
-    return player:isKongcheng()
+    return player:hasSkill(dizhu.name) and player:isKongcheng()
   end,
   on_refresh = function(self, event, target, player, data)
     player:broadcastSkillInvoke(dizhu.name, 2)
