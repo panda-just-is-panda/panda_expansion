@@ -53,7 +53,7 @@ end,
 
 jinxing:addEffect('targetmod', {
   bypass_times = function(self, player, skill, scope, card)
-    if card and player:hasSkill(jinxing.name) and scope == Player.HistoryTurn and player:getMark("@@huihe_infinite") > 0 then
+    if card and player:hasSkill(jinxing.name) and player:getMark("@@huihe_infinite") > 0 then
       return true
     end
   end,
