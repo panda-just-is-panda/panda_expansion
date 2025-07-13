@@ -1,0 +1,26 @@
+local paixing = fk.CreateSkill{
+  name = "pang_paixing",
+}
+
+
+paixing:addEffect(fk.GameStart, {
+can_trigger = function(self, event, target, player, data)
+    return player:hasSkill(paixing.name)
+  end,
+  on_use = function(self, event, target, player, data)
+    local room = player.room
+    room:handleAddLoseSkills(target, "pang_duizi", nil, true, false)
+    room:handleAddLoseSkills(target, "pang_feiji", nil, true, false)
+    room:handleAddLoseSkills(target, "pang_zhadan", nil, true, false)
+  end,
+})
+
+
+Fk:loadTranslationTable {["pang_paixing"] = "牌型",
+[":pang_paixing"] = "你可以将：" ..
+        "两张点数相同的牌作为【过河拆桥】使用；" ..
+        "三张点数相同的牌作为【无中生有】使用；" ..
+        "四张点数相同的牌作为【无懈可击】使用；",
+}
+
+return paixing

@@ -8,6 +8,16 @@ Fk:loadTranslationTable{
   ["pang"] = "胖"
 }
 
-
+local dizhu = General:new(extension, "pang__dizhu", "qun", 4, 4, General.Male)
+dizhu:addSkill("pang_dizhu")
+dizhu:addSkill("pang_paixing")
+Fk:loadTranslationTable{
+["pang__quniang"] = "地主",
+["#pang__quniang"] = "超级加倍",
+["designer:pang__quniang"] = "胖即是胖",
+["cv:pang__quniang"] = "欢乐斗地主",
+["illustrator:pang__quniang"] = "欢乐斗地主",
+}
+dizhu.hidden = true
 
 return extension

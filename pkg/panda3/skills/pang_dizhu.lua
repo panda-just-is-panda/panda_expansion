@@ -1,0 +1,42 @@
+local dizhu = fk.CreateSkill({
+  name = "pang_dizhu", ---技能内部名称，要求唯一性
+  tags = {Skill.Compulsory}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
+})
+
+dizhu:addEffect(fk.GameStart, {
+    mute = true,
+  anim_type = "drawcard",
+  can_trigger = function(self, event, target, player, data)
+    return player:hasSkill(dizhu.name)
+  end,
+  on_use = function(self, event, target, player, data)
+    player:broadcastSkillInvoke(dizhu.name, 1)
+    local num = 17 - player:getHandcardNum()
+    player.room:drawCards(player, num, dizhu.name)
+  end,
+})
+
+dizhu:addEffect("maxcards", {
+  fixed_func = function(self, player)
+    if player:hasSkill(dizhu.name) then
+        return 54
+    end
+  end,
+})
+
+dizhu:addEffect(fk.GameOverJudge, {
+    mute = true,
+  can_refresh = function(self, event, target, player, data)
+    return player:isKongcheng()
+  end,
+  on_refresh = function(self, event, target, player, data)
+    player:broadcastSkillInvoke(dizhu.name, 2)
+    local room = player.room
+    room:gameOver(player)
+  end,
+})
+
+Fk:loadTranslationTable {["pang_dizhu"] = "地主",
+[":pang_dizhu"] = "锁定技，游戏开始时，你将手牌摸至17张；你的手牌上限为54；当你失去最后一张手牌时，你获得游戏胜利。",
+}
+return dizhu
