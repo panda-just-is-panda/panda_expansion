@@ -18,6 +18,5 @@ Fk:loadTranslationTable{
 ["cv:pang__quniang"] = "欢乐斗地主",
 ["illustrator:pang__quniang"] = "欢乐斗地主",
 }
-dizhu.hidden = true
 
 return extension
