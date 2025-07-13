@@ -5,11 +5,15 @@ local cunxiang = fk.CreateSkill({
 
 cunxiang:addEffect("viewas", {
   anim_type = "support",
-  prompt = "#cunxiang1",
+  prompt = "#cunxiang1" and player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang or "#cunxiang2",
   pattern = "analeptic",
   card_filter = Util.FalseFunc,
   before_use = function(self, player)
-     player:turnOver()
+    if player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang then 
+        player:turnOver()
+    else
+        player:drawCards(2, cunxiang.name)
+    end
   end,
   view_as = function(self, player)
     local c = Fk:cloneCard("analeptic")
@@ -17,33 +21,13 @@ cunxiang:addEffect("viewas", {
     return c
   end,
   enabled_at_play = function (self, player)
-    return player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang and player.faceup
+    return player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang and player.faceup or player:getSwitchSkillState(cunxiang.name, true) == fk.SwitchYang
   end,
   enabled_at_response = function (self, player, response)
     return not response
   end,
 })
 
-cunxiang:addEffect("viewas", {
-  anim_type = "support",
-  prompt = "#cunxiang2",
-  pattern = "analeptic",
-  card_filter = Util.FalseFunc,
-  before_use = function(self, player)
-    player:drawCards(2, cunxiang.name)
-  end,
-  view_as = function(self, player)
-    local c = Fk:cloneCard("analeptic")
-    c.skillName = cunxiang.name
-    return c
-  end,
-  enabled_at_play = function (self, player)
-    return player:getSwitchSkillState(cunxiang.name, true) == fk.SwitchYang
-  end,
-  enabled_at_response = function (self, player, response)
-    return not response
-  end,
-})
 
 Fk:loadTranslationTable {["pang_cunxiang"] = "存想",
 [":pang_cunxiang"] = "转换技，当你需要使用【酒】时，你可以①将武将牌翻至背面②摸两张牌，然后你视为使用之。",

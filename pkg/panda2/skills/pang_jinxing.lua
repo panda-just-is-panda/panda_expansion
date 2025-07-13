@@ -5,18 +5,17 @@ local jinxing = fk.CreateSkill({
 
 jinxing:addEffect(fk.RoundStart, {
   anim_type = "support",
-  can_trigger = function (self, event, target, player, data)
+  can_refresh = function (self, event, target, player, data)
     return player:hasSkill(jinxing.name)
   end,
-  on_use = function (self, event, target, player, data)
-    local room = player.room
-    player.room:addPlayerMark(player, "@jinxing_huihe")
+  on_refresh = function (self, event, target, player, data)
+    player.room:addPlayerMark(player, "@jinxing_huihe", 1)
   end
 })
 
 jinxing:addEffect(fk.TurnStart, {
      can_refresh = function (self, event, target, player, data)
-    return player:hasSkill(jinxing.name) and player:getMark("@jinxing_huihe") > 0
+    return target == player and player:hasSkill(jinxing.name) and player:getMark("@jinxing_huihe") > 0
     end,
     on_refresh = function (self, event, target, player, data)
         player.room:setPlayerMark(player, "@jinxing_huihe", 0)
