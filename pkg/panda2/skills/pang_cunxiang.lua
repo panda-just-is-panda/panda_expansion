@@ -21,9 +21,9 @@ cunxiang:addEffect("viewas", {
     return c
   end,
   enabled_at_play = function (self, player)
-    if player:getSwitchSkillState(cunxiang.name, true) == fk.SwitchYang and player.faceup then
+    if player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang and player.faceup then
         return true
-    elseif player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang then
+    elseif player:getSwitchSkillState(cunxiang.name, true) == fk.SwitchYang then
         return true
     end
     end,
