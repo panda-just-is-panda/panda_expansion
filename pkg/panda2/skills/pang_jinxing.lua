@@ -15,7 +15,7 @@ jinxing:addEffect(fk.RoundStart, {
 
 jinxing:addEffect(fk.TurnStart, {
      can_refresh = function (self, event, target, player, data)
-    return target == player and player:hasSkill(jinxing.name) and player:getMark("@jinxing_huihe") > 0
+    return target == player and player:hasSkill(jinxing.name) and player:getMark("@@jinxing_huihe") > 0
     end,
     on_refresh = function (self, event, target, player, data)
         player.room:setPlayerMark(player, "@@jinxing_huihe", 0)
@@ -24,7 +24,7 @@ jinxing:addEffect(fk.TurnStart, {
 
 jinxing:addEffect(fk.TurnEnd, {
      can_refresh = function (self, event, target, player, data)
-    return target == player and player:hasSkill(jinxing.name) and player:getMark("@huihe_infinite") > 0
+    return target == player and player:hasSkill(jinxing.name) and player:getMark("@@huihe_infinite") > 0
     end,
     on_refresh = function (self, event, target, player, data)
         player.room:setPlayerMark(player, "@@huihe_infinite", 0)
@@ -53,7 +53,7 @@ end,
 
 jinxing:addEffect('targetmod', {
   bypass_times = function(self, player, skill, scope, card)
-    if card and player:hasSkill(jinxing.name) and scope == Player.HistoryTurn and player:getMark("@huihe_infinite") > 0 then
+    if card and player:hasSkill(jinxing.name) and scope == Player.HistoryTurn and player:getMark("@@huihe_infinite") > 0 then
       return true
     end
   end,
