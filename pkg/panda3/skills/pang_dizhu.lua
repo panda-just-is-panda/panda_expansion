@@ -27,12 +27,25 @@ dizhu:addEffect("maxcards", {
 dizhu:addEffect(fk.AfterCardsMove, {
     mute = true,
   can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(dizhu.name) and player:isKongcheng()
+    if player:hasSkill(dizhu.name) and player:isKongcheng() then
+        for _, move in ipairs(data) do
+            if move.from == player then
+                for _, info in ipairs(move.moveInfo) do
+                if info.fromArea == Card.PlayerHand then
+                    return true
+                end
+                end
+            end
+        end
+    end
   end,
   on_refresh = function(self, event, target, player, data)
     player:broadcastSkillInvoke(dizhu.name, 2)
-    local room = player.room
-    room:gameOver(player)
+     if player.role == "lord" or player.role == "loyalist" then
+      player.room:gameOver("lord+loyalist")
+    else
+      player.room:gameOver(player.role)
+    end
   end,
 })
 
