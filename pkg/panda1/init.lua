@@ -122,7 +122,7 @@ Fk:loadTranslationTable{
 ["illustrator:pang__ravager"] = "我的世界",
 }
 
-local witch = General:new(extension, "pang__witch", "wu", 8, 8, General.Female)
+local witch = General:new(extension, "pang__witch", "wu", 3, 3, General.Female)
 witch:addSkill("pang_moyao")
 witch:addSkill("pang_lianniang")
 Fk:loadTranslationTable{

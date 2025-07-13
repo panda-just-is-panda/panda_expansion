@@ -4,7 +4,7 @@ local moyao = fk.CreateSkill({
 })
 
 moyao:addEffect(fk.AfterCardsMove, {
-  can_trigger = function(self, event, target, player, data)
+  can_refresh = function (self, event, target, player, data)
     local room = player.room
     if player:hasSkill(moyao.name) then
       for _, move in ipairs(data) do
@@ -20,7 +20,7 @@ moyao:addEffect(fk.AfterCardsMove, {
 end
 end
 end,
-    on_use = function(self, event, target, player, data)
+    on_refresh = function(self, event, target, player, data)
     local room = player.room
     room:addPlayerMark(player, "moyao_losehp-turn", 1)
     end,
@@ -43,7 +43,7 @@ moyao:addEffect(fk.TurnEnd, {
         cancelable = false,
         })
         if #tos > 0 then
-        room:loseHp(tos, 1, moyao.name)
+        room:loseHp(tos[1], 1, moyao.name)
         end
     else
         local targets = table.filter(room.alive_players, function (p)
@@ -58,7 +58,7 @@ moyao:addEffect(fk.TurnEnd, {
         cancelable = false,
         })
         if #tos > 0 then
-        room:recover({who = tos, num = 1, recoverBy = player, skillName = moyao.name})
+        room:recover({who = tos[1], num = 1, recoverBy = player, skillName = moyao.name})
         end
     end
    end

@@ -26,7 +26,7 @@ lianniang:addEffect("active", {
           flag = "he",
         })
         room:throwCard(card, lianniang.name, target, player)
-    if not target:isNude() and card.color == card.Black then
+    if not target:isNude() and card[1].color == card.Black then
         local card2 = room:askToCards(target, {
         min_num = 1,
         max_num = 1,
@@ -40,7 +40,7 @@ lianniang:addEffect("active", {
             room:throwCard(card, lianniang.name, target, target)
             target:drawCards(3)
         end
-    elseif not target:isNude() and card.color == card.Red then
+    elseif not target:isNude() and card[1].color == card.Red then
         local card2 = room:askToCards(target, {
         min_num = 1,
         max_num = 1,
