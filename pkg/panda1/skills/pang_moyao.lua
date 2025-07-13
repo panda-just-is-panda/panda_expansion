@@ -66,7 +66,7 @@ moyao:addEffect(fk.TurnEnd, {
 
 Fk:loadTranslationTable {["pang_moyao"] = "魔药",
 [":pang_moyao"] = "回合结束时，若你本回合因弃置失去过牌，你可以令一名角色失去1点体力，否则你可以令一名角色回复1点体力。",
-["#moyao1"] = "你可以令一名角色失去1点体力",
-["#moyao2"] = "你可以令一名角色回复1点体力",
+["#moyao1"] = "令一名角色失去1点体力",
+["#moyao2"] = "令一名角色回复1点体力",
 }
 return moyao
