@@ -5,7 +5,7 @@ local cunxiang = fk.CreateSkill({
 
 cunxiang:addEffect("viewas", {
   anim_type = "support",
-  prompt = "#cunxiang1" and player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang or "#cunxiang2",
+  prompt = "#cunxiang1",
   pattern = "analeptic",
   card_filter = Util.FalseFunc,
   before_use = function(self, player)
@@ -31,7 +31,6 @@ cunxiang:addEffect("viewas", {
 
 Fk:loadTranslationTable {["pang_cunxiang"] = "存想",
 [":pang_cunxiang"] = "转换技，当你需要使用【酒】时，你可以①将武将牌翻至背面②摸两张牌，然后你视为使用之。",
-["#cunxiang1"] = "你可以翻面并视为使用一张【酒】",
-["#cunxiang2"] = "你可以摸两张牌并视为使用一张【酒】",
+["#cunxiang1"] = "你可以视为使用一张【酒】",
 }
 return cunxiang
