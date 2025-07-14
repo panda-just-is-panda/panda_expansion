@@ -13,7 +13,7 @@ gouyao:addEffect(fk.Damage, {
       local x = math.min(data.to:getLostHp(), 3)
     room:drawCards(player, x, gouyao.name)
     local to = data.to
-    if not to.dead and not to:isNude() then
+    if not to.dead and not to:isNude() and to:getMark("@@gouyao") < 1 then
     local card = room:askToCards(to, {
         min_num = 1,
         max_num = 1,
