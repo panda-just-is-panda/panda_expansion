@@ -10,17 +10,20 @@ gouyao:addEffect(fk.Damage, {
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-      local x = math.max(data.to:getLostHp(), 1)
+      local x = math.min(data.to:getLostHp(), 3)
     room:drawCards(player, x, gouyao.name)
     local to = data.to
     if not to.dead then
-    local card = room:askToChooseCard(player, {
-          target = to,
+    local card = room:askToDiscard(player, {
           skill_name = gouyao.name,
-          flag = "he",
+          prompt = "#gouyao_discard",
+          cancelable = false,
+          min_num = 1,
+          max_num = 1,
+          include_equip = true,
         })
         room:throwCard(card, gouyao.name, to, player)
-    if Fk:getCardById(card).type == Card.TypeBasic then
+    if Fk:getCardById(card).type ~= Card.TypeBasic then
       room:addPlayerMark(to, "@@gouyao")
     end
   end
@@ -47,7 +50,8 @@ gouyao:addEffect("targetmod", {
 
 Fk:loadTranslationTable{
   ["pang_gouyao"] = "狗咬",
-  [":pang_gouyao"] = "持恒技，锁定技，当你对一名角色造成伤害后，你摸X张牌（X为其已损失的体力值且至少为1）并弃置其一张牌；若此牌为基本牌，你本回合对其使用牌无次数限制。",
+  [":pang_gouyao"] = "持恒技，锁定技，当你对一名角色造成伤害后，你摸X张牌（X为其已损失的体力值且至多为3）并令其弃置一张牌；若此牌为非基本牌，你本回合对其使用牌无次数限制。",
+  ["#gouyao_discard"] = "你被咬住了！弃置一张基本牌脱身或等死！",
   ["@@gouyao"] = "被咬住",
   ["$pang_gouyao1"] = "百战生豪意，一戟破万军！",
   ["$pang_gouyao2"] = "烽烟既起，吾当独擎沙场！",
