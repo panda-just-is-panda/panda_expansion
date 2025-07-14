@@ -4,9 +4,15 @@ local paixing = fk.CreateSkill{
 
 paixing:addAcquireEffect(function (self, player, is_start)
   local room = player.room
+  if not player:hasSkill("pang_duizi") then
     room:handleAddLoseSkills(player, "pang_duizi", nil, true, false)
+  end
+  if not player:hasSkill("pang_feiji") then
     room:handleAddLoseSkills(player, "pang_feiji", nil, true, false)
+  end
+  if not player:hasSkill("pang_zhadan") then
     room:handleAddLoseSkills(player, "pang_zhadan", nil, true, false)
+  end
 end)
 
 
