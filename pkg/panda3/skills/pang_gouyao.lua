@@ -8,19 +8,20 @@ gouyao:addEffect(fk.Damage, {
   can_trigger = function(self, event, target, player, data)
     return player:hasSkill(gouyao.name) and target == player
   end,
-  on_cost = function(self, event, target, player, data)
-    local room = player.room
-    if data.to:getLostHp() == 1 or data.to:getLostHp() < 1 then
-      player.room:addPlayerMark(data.to, "@@gouyao")
-      return true
-    else
-      return true
-    end
-  end,
   on_use = function(self, event, target, player, data)
     local room = player.room
       local x = math.max(data.to:getLostHp(), 1)
-    player.room:drawCards(player, x, gouyao.name)
+    room:drawCards(player, x, gouyao.name)
+    local to = data.to
+    local card = room:askToChooseCard(player, {
+          target = to,
+          skill_name = gouyao.name,
+          flag = "he",
+        })
+        room:throwCard(card, gouyao.name, to, player)
+    if card.type == Card.TypeBasic then
+      room:addPlayerMark(to, "@@gouyao")
+    end
   end,
 })
 
@@ -44,7 +45,7 @@ gouyao:addEffect("targetmod", {
 
 Fk:loadTranslationTable{
   ["pang_gouyao"] = "狗咬",
-  [":pang_gouyao"] = "持恒技，锁定技，当你对一名角色造成伤害后，你摸X张牌（X为其已损失的体力值且至少为1）；若X为1，你本回合对其使用牌无次数限制。",
+  [":pang_gouyao"] = "持恒技，锁定技，当你对一名角色造成伤害后，你摸X张牌（X为其已损失的体力值且至少为1）并弃置其一张牌；若此牌为基本牌，你本回合对其使用牌无次数限制。",
   ["@@gouyao"] = "被咬住",
   ["$pang_gouyao1"] = "百战生豪意，一戟破万军！",
   ["$pang_gouyao2"] = "烽烟既起，吾当独擎沙场！",
