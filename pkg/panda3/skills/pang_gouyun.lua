@@ -50,7 +50,7 @@ gouyun:addEffect(fk.EventPhaseStart, {
 
 Fk:loadTranslationTable{
   ["pang_gouyun"] = "狗运",
-  [":pang_gouyun"] = "持恒技，判定阶段开始时或摸牌阶段开始时，你观看牌堆底的十张牌并可以将其中一张置于牌堆顶；结束阶段，你洗牌。",
+  [":pang_gouyun"] = "持恒技，判定阶段或摸牌阶段开始时，你可以观看牌堆底的十张牌并将其中一张置于牌堆顶；结束阶段，你洗牌。",
   ["#gouyun"] = "将其中一张置于牌堆顶",
   ["$pang_gouyun1"] = "百战生豪意，一戟破万军！",
   ["$pang_gouyun2"] = "烽烟既起，吾当独擎沙场！",
