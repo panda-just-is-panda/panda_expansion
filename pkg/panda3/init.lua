@@ -11,6 +11,9 @@ Fk:loadTranslationTable{
 local dizhu = General:new(extension, "pang__dizhu", "qun", 4, 4, General.Male)
 dizhu:addSkill("pang_dizhu")
 dizhu:addSkill("pang_paixing")
+dizhu:addRelatedSkill("pang_duizi")
+dizhu:addRelatedSkill("pang_feiji")
+dizhu:addRelatedSkill("pang_zhadan")
 Fk:loadTranslationTable{
 ["pang__dizhu"] = "地主",
 ["#pang__dizhu"] = "超级加倍",

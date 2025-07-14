@@ -18,7 +18,7 @@ can_refresh = function(self, event, target, player, data)
 
 
 Fk:loadTranslationTable {["pang_paixing"] = "牌型",
-[":pang_paixing"] = "你可以将两/三/四张点数相同的牌作为【过河拆桥】/【无中生有】/【无懈可击】使用。",
+[":pang_paixing"] = "游戏开始时，你获得“对子”、“三带”和“炸弹”。",
 }
 
 return paixing
