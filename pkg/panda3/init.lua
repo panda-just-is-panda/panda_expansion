@@ -22,4 +22,17 @@ Fk:loadTranslationTable{
 ["illustrator:pang__dizhu"] = "欢乐斗地主",
 }
 
+local wild_dog = General:new(extension, "pang__wild_dog", "qun", 4, 4, General.Male)
+wild_dog:addSkill("pang_gouyao")
+wild_dog:addSkill("pang_gouyun")
+wild_dog.endnote = "哈哈，被我咬住了吧？"
+Fk:loadTranslationTable{
+["pang__wild_dog"] = "野狗",
+["#pang__wild_dog"] = "路边一条",
+["designer:pang__wild_dog"] = "胖即是胖",
+["cv:pang__wild_dog"] = "官方",
+["illustrator:pang__wild_dog"] = "豆包",
+}
+wild_dog.hidden = true
+
 return extension
