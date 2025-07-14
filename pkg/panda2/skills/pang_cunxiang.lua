@@ -29,7 +29,11 @@ cunxiang:addEffect("viewas", {
     end
     end,
   enabled_at_response = function (self, player, response)
-    return not response
+    if player:getSwitchSkillState(cunxiang.name, true) ~= fk.SwitchYang and player.faceup and not response then
+        return true
+    elseif player:getSwitchSkillState(cunxiang.name, true) == fk.SwitchYang and not response then
+        return true
+    end
   end,
 })
 
