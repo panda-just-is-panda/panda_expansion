@@ -16,7 +16,7 @@ gouyun:addEffect(fk.EventPhaseStart, {
       card_map = {room:getNCards(10, "bottom"), "Bottom", "Top"},
       prompt = "#gouyun",
       free_arrange = true,
-      max_limit = {10, 9},
+      max_limit = {1, 1},
       min_limit = {0, 1},
     })
     local top, bottom = ret[2], ret[1]

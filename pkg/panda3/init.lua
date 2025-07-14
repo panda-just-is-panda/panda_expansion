@@ -32,6 +32,8 @@ Fk:loadTranslationTable{
 ["designer:pang__wild_dog"] = "胖即是胖",
 ["cv:pang__wild_dog"] = "官方",
 ["illustrator:pang__wild_dog"] = "豆包",
+
+["~pang__wild_dog"] = "虓虎失落尽，日暮无归途。"
 }
 wild_dog.hidden = true
 
