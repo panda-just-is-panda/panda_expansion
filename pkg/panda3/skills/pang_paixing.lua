@@ -2,18 +2,17 @@ local paixing = fk.CreateSkill{
   name = "pang_paixing",
 }
 
-paixing:addAcquireEffect(function (self, player, is_start)
-  local room = player.room
-  if not player:hasSkill("pang_duizi") then
-    room:handleAddLoseSkills(player, "pang_duizi")
-  end
-  if not player:hasSkill("pang_feiji") then
-    room:handleAddLoseSkills(player, "pang_feiji")
-  end
-  if not player:hasSkill("pang_zhadan") then
-    room:handleAddLoseSkills(player, "pang_zhadan")
-  end
-end)
+paixing:addEffect(fk.TurnStart, {
+can_refresh = function(self, event, target, player, data)
+    return player:hasSkill(paixing.name) and player:usedSkillTimes(paixing.name, Player.HistoryGame) == 0
+  end,
+  on_refresh = function(self, event, target, player, data)
+    local room = player.room
+    room:handleAddLoseSkills(target, "pang_duizi", nil, true, false)
+    room:handleAddLoseSkills(target, "pang_feiji", nil, true, false)
+    room:handleAddLoseSkills(target, "pang_zhadan", nil, true, false)
+  end,
+})
 
 
 
