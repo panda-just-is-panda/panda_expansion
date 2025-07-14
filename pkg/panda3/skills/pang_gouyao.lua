@@ -19,7 +19,7 @@ gouyao:addEffect(fk.Damage, {
           flag = "he",
         })
         room:throwCard(card, gouyao.name, to, player)
-    if card.type == Card.TypeBasic then
+    if Fk:getCardById(card).type == Card.TypeBasic then
       room:addPlayerMark(to, "@@gouyao")
     end
   end,
