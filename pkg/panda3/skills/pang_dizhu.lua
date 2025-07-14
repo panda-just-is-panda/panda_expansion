@@ -1,6 +1,6 @@
 local dizhu = fk.CreateSkill({
   name = "pang_dizhu", ---技能内部名称，要求唯一性
-  tags = {Skill.Compulsory}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
+  tags = {Skill.Compulsory, Skill.Permanent}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 
 dizhu:addEffect(fk.GameStart, {
@@ -50,6 +50,6 @@ dizhu:addEffect(fk.AfterCardsMove, {
 })
 
 Fk:loadTranslationTable {["pang_dizhu"] = "地主",
-[":pang_dizhu"] = "锁定技，游戏开始时，你将手牌摸至17张；你的手牌上限为54；当你失去最后一张手牌后，你获得游戏胜利。",
+[":pang_dizhu"] = "持恒技，锁定技，游戏开始时，你将手牌摸至17张；你的手牌上限为54；当你失去最后一张手牌后，你获得游戏胜利。",
 }
 return dizhu

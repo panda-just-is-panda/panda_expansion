@@ -1,5 +1,6 @@
 local paixing = fk.CreateSkill{
   name = "pang_paixing",
+  tags = {},
 }
 
 paixing:addEffect(fk.TurnStart, {
