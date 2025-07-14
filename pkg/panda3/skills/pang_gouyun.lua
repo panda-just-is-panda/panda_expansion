@@ -40,8 +40,8 @@ gouyun:addEffect(fk.EventPhaseStart, {
 gouyun:addEffect(fk.EventPhaseStart, {
     can_refresh = function(self, event, target, player, data)
     return target == player and player:hasSkill(gouyun.name) and
-    player.phase == Player.End
-  end,
+    player.phase == Player.Finish
+    end,
   on_refresh = function(self, event, target, player, data)
     player.room:shuffleDrawPile()
   end,

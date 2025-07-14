@@ -11,7 +11,7 @@ gouyao:addEffect(fk.Damage, {
   on_cost = function(self, event, target, player, data)
     local room = player.room
     if data.to:getLostHp() == 1 or data.to:getLostHp() < 1 then
-      player.room:addPlayerMark(player, "@@gouyao")
+      player.room:addPlayerMark(data.to, "@@gouyao")
       return true
     else
       return true

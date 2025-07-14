@@ -35,6 +35,5 @@ Fk:loadTranslationTable{
 
 ["~pang__wild_dog"] = "虓虎失落尽，日暮无归途。"
 }
-wild_dog.hidden = true
 
 return extension
