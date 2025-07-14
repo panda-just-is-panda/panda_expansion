@@ -13,7 +13,7 @@ gouyao:addEffect(fk.Damage, {
       local x = math.min(data.to:getLostHp(), 3)
     room:drawCards(player, x, gouyao.name)
     local to = data.to
-    if not to.dead and not to.isnude() then
+    if not to.dead and not to.isNude() then
     local card = room:askToDiscard(to, {
           skill_name = gouyao.name,
           prompt = "#gouyao_discard",
