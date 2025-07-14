@@ -13,6 +13,7 @@ gouyao:addEffect(fk.Damage, {
       local x = math.max(data.to:getLostHp(), 1)
     room:drawCards(player, x, gouyao.name)
     local to = data.to
+    if not to.dead then
     local card = room:askToChooseCard(player, {
           target = to,
           skill_name = gouyao.name,
@@ -22,6 +23,7 @@ gouyao:addEffect(fk.Damage, {
     if Fk:getCardById(card).type == Card.TypeBasic then
       room:addPlayerMark(to, "@@gouyao")
     end
+  end
   end,
 })
 
