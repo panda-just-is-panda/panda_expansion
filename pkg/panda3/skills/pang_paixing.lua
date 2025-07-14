@@ -2,7 +2,7 @@ local paixing = fk.CreateSkill{
   name = "pang_paixing",
 }
 
-paixing:addEffect(fk.TurnStart, {
+paixing:addEffect(fk.RoundStart, {
 can_refresh = function(self, event, target, player, data)
     return player:hasSkill(paixing.name) and player:usedSkillTimes(paixing.name, Player.HistoryGame) == 0
   end,
