@@ -5,6 +5,7 @@ local niliu = fk.CreateSkill({
 
 niliu:addEffect(fk.AfterCardsMove, {
   anim_type = "drawcard",
+  mute = true,
   can_refresh = function(self, event, target, player, data)
     if player:hasSkill(niliu.name) then
       for _, move in ipairs(data) do
@@ -12,7 +13,7 @@ niliu:addEffect(fk.AfterCardsMove, {
             for _, info in ipairs(move.moveInfo) do
                 if (info.fromArea == Card.PlayerHand or info.fromArea == Card.PlayerEquip) and
                 move.from:getMark("@@niliu") == 0 then
-                    event:setCostData(self, {from = move.from})
+                    player.room:addPlayerMark(move.from, "@@niliu")
                     return true
                 end
             end
@@ -20,10 +21,8 @@ niliu:addEffect(fk.AfterCardsMove, {
           end
       end
   end,
-  on_refresh = function(self, event, target, player, data)
-        local room = player.room
-        local to = table.simpleClone(event:getCostData(self).from)[1]
-        room:addPlayerMark(to, "@@niliu")
+    on_refresh = function(self, event, target, player, data)
+        player:broadcastSkillInvoke(niliu.name, 2)
   end,
 })
 
