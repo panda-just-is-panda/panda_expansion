@@ -41,7 +41,7 @@ niliu:addEffect(fk.DamageCaused, {
   anim_type = "offensive",
   is_delay_effect = true,
   can_trigger = function(self, event, target, player, data)
-    return target == player and data.from == player and data.to:getMark("@@niliu") > 0
+    return target == player and player:hasSkill(niliu.name) and data.to:getMark("@@niliu") > 0
   end,
   on_use = function(self, event, target, player, data)
     data:changeDamage(1)
@@ -52,7 +52,7 @@ niliu:addEffect(fk.DamageInflicted, {
   anim_type = "defensive",
   is_delay_effect = true,
   can_trigger = function(self, event, target, player, data)
-    return player == target and data.to == player and data.from:getMark("@@niliu") > 0
+    return player == target and player:hasSkill(niliu.name) and data.from:getMark("@@niliu") > 0
   end,
   on_use = function(self, event, target, player, data)
     data:changeDamage(-1)
