@@ -55,6 +55,7 @@ Fk:loadTranslationTable{
 local xugouji = General:new(extension, "pang__xugouji", "qun", 4, 4, General.Female)
 xugouji:addSkill("pang_cuiyu")
 xugouji:addSkill("pang_biyi")
+xugouji.endnote = "仪式队拐力低，电能队才是数值怪"
 Fk:loadTranslationTable{
 ["pang__xugouji"] = "虚构集",
 ["#pang__xugouji"] = "往日的幽灵",
@@ -62,6 +63,7 @@ Fk:loadTranslationTable{
 ["cv:pang__xugouji"] = "深蓝",
 ["illustrator:pang__xugouji"] = "深蓝",
 }
+xugouji.hidden = true
 
 local barcarola = General:new(extension, "pang__barcarola", "wei", 3, 3, General.Female)
 barcarola:addSkill("pang_yinzhui")

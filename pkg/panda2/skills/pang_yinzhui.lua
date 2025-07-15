@@ -17,12 +17,17 @@ anim_type = "switch",
             return true
         end
         else
-            if player.room:askToSkillInvoke(player, {
-            skill_name = yinzhui.name,
-            prompt = "#yinzhui2",})
-        then 
-            return true
-        end
+            local to = player.room.current
+            if to:getMaxCards() > 0 or not to:isNude() then
+                if player.room:askToSkillInvoke(player, {
+                skill_name = yinzhui.name,
+                prompt = "#yinzhui2",})
+                then 
+                    return true
+                end
+            else
+                return false
+            end
         end
     end,
     on_use = function(self, event, target, player, data)
@@ -40,7 +45,13 @@ anim_type = "switch",
             to:drawCards(2)
         end
     else
-        local choices = {"max_card_nerf", "yinzhui_discard"}
+        local choices = {}
+        if not to:isNude() then
+            table.insert(choices, 1, "yinzhui_discard")
+        end
+        if to:getMaxCards() > 0 then
+            table.insert(choices, 1, "max_card_nerf")
+        end
         local choice = room:askToChoice(player, {
             choices = choices,
             skill_name = yinzhui.name,
