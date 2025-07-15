@@ -32,7 +32,7 @@ cuiyu:addEffect(fk.AfterCardsMove, {
 cuiyu:addEffect(fk.CardUsing, {
     can_trigger = function(self, event, target, player, data)
     return player:hasSkill(cuiyu.name) and player:getMark("@@cuiyu") > 0 
-    and data.card and data.cardId:getMark("@@cuiyu-inhand-turn") > 0
+    and data.card and Fk:getCardById(data.card):getMark("@@cuiyu-inhand-turn") > 0
   end,
     on_cost = Util.TrueFunc,
     on_use = function(self, event, target, player, data)
