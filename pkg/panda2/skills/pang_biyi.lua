@@ -13,6 +13,7 @@ biyi:addEffect(fk.TargetSpecified, {
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     room:addPlayerMark(data.to, "biyi_used-turn", 1)
+    player:drawCards(1)
   end,
 })
 

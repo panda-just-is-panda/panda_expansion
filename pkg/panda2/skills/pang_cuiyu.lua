@@ -36,6 +36,7 @@ cuiyu:addEffect(fk.CardUsing, {
     on_refresh = function(self, event, target, player, data)
         local room = player.room
         room:addPlayerMark(player, "cuiyu_ban-turn", 1)
+        player:drawCards(1)
     end,
 })
 
