@@ -63,6 +63,6 @@ Fk:loadTranslationTable{
 ["cv:pang__barcarola"] = "深蓝",
 ["illustrator:pang__barcarola"] = "深蓝",
 }
-barcarola.hidden = true
+
 
 return extension
