@@ -24,7 +24,7 @@ jianmi:addEffect("active", {
       choices = {"jianmi_discard"},
       skill_name = jianmi.name,
       prompt = "#jianmi-view::" .. target1.id,
-      cancel_choices = {"jianmi_Cancel1"},
+      cancel_choices = {"jianmi_Cancel1" and #effect.tos > 1},
       min_num = 1,
       max_num = 1,
       all_cards = cards1
@@ -73,6 +73,7 @@ jianmi:addEffect("active", {
             choices = {"jianmi_discard"},
             skill_name = jianmi.name,
             prompt = "#jianmi-view::" .. target1.id,
+            cancel_choices = {},
             min_num = 1,
             max_num = 1,
             all_cards = cards1

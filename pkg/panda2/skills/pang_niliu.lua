@@ -22,7 +22,6 @@ niliu:addEffect(fk.AfterCardsMove, {
       end
   end,
     on_refresh = function(self, event, target, player, data)
-        player:broadcastSkillInvoke(niliu.name, 2)
   end,
 })
 
