@@ -92,8 +92,8 @@ jianmi:addEffect("active", {
 })
 
 Fk:loadTranslationTable{
-  ["jianmi"] = "监秘",
-  [":jianmi"] = "出牌阶段限一次，你可以观看至多两名其他角色的所有手牌，然后你选择其中一张牌并弃置这些角色手牌中所有此牌名的牌。",
+  ["pang_jianmi"] = "监秘",
+  [":pang_jianmi"] = "出牌阶段限一次，你可以观看至多两名其他角色的所有手牌，然后你选择其中一张牌并弃置这些角色手牌中所有此牌名的牌。",
   ["#jianmi"] = "选择至多两名角色",
   ["jianmi_Cancel1"] = "继续观看2号手牌",
   ["jianmi_Cancel2"] = "返回1号手牌",
