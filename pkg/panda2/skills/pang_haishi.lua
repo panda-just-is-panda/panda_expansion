@@ -31,7 +31,7 @@ haishi:addEffect(fk.EventPhaseStart, {
     })
 
 Fk:loadTranslationTable {["pang_haishi"] = "海诗",
-[":pang_haishi"] = "弃牌阶段开始时，你可以摸三张牌，然后若你的手牌数小于你的手牌上限，你可以依次视为使用至多X张【杀】（X为你的手牌数和手牌上限之差）。",
+[":pang_haishi"] = "弃牌阶段开始时，你可以摸三张牌，然后若你的手牌数小于你的手牌上限，你可以依次视为使用至多X张【杀】（X为此时你的手牌数和手牌上限之差）。",
 ["#haishi-slash"] = "你可以视为使用一张【杀】",
 }
 
