@@ -31,12 +31,11 @@ cuiyu:addEffect(fk.AfterCardsMove, {
 
 cuiyu:addEffect(fk.CardUsing, {
     can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(cuiyu.name, true) and player:getMark("@@cuiyu") > 0 and data.card and data.card:getMark("@@cuiyu-inhand-turn") > 0
+    return player:hasSkill(cuiyu.name) and player:getMark("@@cuiyu") > 0 and data.card and data.card:getMark("@@cuiyu-inhand-turn") > 0
   end,
     on_refresh = function(self, event, target, player, data)
         local room = player.room
         room:addPlayerMark(player, "cuiyu_ban-turn", 1)
-        player:drawCards(1)
     end,
 })
 

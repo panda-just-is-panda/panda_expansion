@@ -7,13 +7,12 @@ biyi:addEffect(fk.TargetSpecified, {
   anim_type = "offensive",
   can_refresh = function(self, event, target, player, data)
     return target == player and player:hasSkill(biyi.name) and data.to ~= player
-    and data.to:getMark("biyi_used-turn") > 0
+    and data.to:getMark("biyi_used-turn") < 1
     and player.room.current == player and player.phase == Player.Play
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     room:addPlayerMark(data.to, "biyi_used-turn", 1)
-    player:drawCards(1)
   end,
 })
 
