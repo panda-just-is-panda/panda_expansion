@@ -28,7 +28,7 @@ niliu:addEffect(fk.AfterCardsMove, {
 niliu:addEffect(fk.TurnEnd, {
   anim_type = "special",
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(niliu.name)
+    return player:hasSkill(niliu.name)
   end,
   on_refresh = function(self, event, target, player, data)
     for _, p in ipairs(player.room.alive_players) do

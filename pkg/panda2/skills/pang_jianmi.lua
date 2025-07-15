@@ -24,7 +24,7 @@ jianmi:addEffect("active", {
       choices = {"jianmi_discard"},
       skill_name = jianmi.name,
       prompt = "#jianmi-view::" .. target1.id,
-      cancel_choices = {"jianmi_Cancel1" and #effect.tos > 1},
+      cancel_choices = {"jianmi_Cancel1"},
       min_num = 1,
       max_num = 1,
       all_cards = cards1
@@ -73,7 +73,7 @@ jianmi:addEffect("active", {
             choices = {"jianmi_discard"},
             skill_name = jianmi.name,
             prompt = "#jianmi-view::" .. target1.id,
-            cancel_choices = {},
+            cancel_choices = {"Cancel"},
             min_num = 1,
             max_num = 1,
             all_cards = cards1
@@ -94,7 +94,7 @@ jianmi:addEffect("active", {
 
 Fk:loadTranslationTable{
   ["pang_jianmi"] = "监秘",
-  [":pang_jianmi"] = "出牌阶段限一次，你可以观看至多两名其他角色的所有手牌，然后你选择其中一张牌并弃置这些角色手牌中所有此牌名的牌。",
+  [":pang_jianmi"] = "出牌阶段限一次，你可以观看至多两名其他角色的所有手牌，然后你可以选择其中一张牌并弃置这些角色手牌中所有此牌名的牌。",
   ["#jianmi"] = "选择至多两名角色",
   ["jianmi_Cancel1"] = "继续观看2号手牌",
   ["jianmi_discard"] = "弃置此牌",

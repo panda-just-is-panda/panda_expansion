@@ -45,7 +45,7 @@ gouyao:addEffect(fk.Damage, {
 gouyao:addEffect(fk.TurnEnd, {
   anim_type = "special",
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(gouyao.name)
+    return player:hasSkill(gouyao.name)
   end,
   on_refresh = function(self, event, target, player, data)
     for _, p in ipairs(player.room.alive_players) do
