@@ -31,7 +31,8 @@ cuiyu:addEffect(fk.AfterCardsMove, {
 
 cuiyu:addEffect(fk.CardUsing, {
     can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(cuiyu.name) and player:getMark("@@cuiyu") > 0 and data.card:getMark("@@cuiyu-inhand-turn") > 0
+    return player:hasSkill(cuiyu.name) and player:getMark("@@cuiyu") > 0 
+    and (data.extra_data or {}).usingcuiyu
   end,
     on_cost = Util.TrueFunc,
     on_use = function(self, event, target, player, data)
@@ -41,7 +42,7 @@ cuiyu:addEffect(fk.CardUsing, {
 })
 cuiyu:addEffect(fk.PreCardUse, {
   can_refresh = function (self, event, target, player, data)
-    return target == player and player:hasSkill(cuiyu.name, true) and (data.extra_data or {}).usingcuiyu
+    return target == player and player:hasSkill(cuiyu.name, true) and data.card:getMark("@@cuiyu-inhand-turn") > 0
   end,
   on_refresh = function (self, event, target, player, data)
     data.extra_data = data.extra_data or {}

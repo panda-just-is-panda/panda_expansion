@@ -48,13 +48,13 @@ biyi:addEffect(fk.EventPhaseEnd, {
         end
     end
     else
-        room:addPlayerMark(player, MarkEnum.AddMaxCards, 1)
+        room:addPlayerMark(player, MarkEnum.AddMaxCards, 2)
     end
     end,
 })
 
 Fk:loadTranslationTable {["pang_biyi"] = "笔意",
-[":pang_biyi"] = "出牌阶段结束时，若你此阶段使用牌指定过所有其他角色为目标，你可以对至多三名其他角色各造成1点伤害并令手牌上限-1，否则你的手牌上限+1。",
+[":pang_biyi"] = "出牌阶段结束时，若你此阶段使用牌指定过所有其他角色为目标，你可以对至多三名其他角色各造成1点伤害并令手牌上限-1，否则你的手牌上限+2。",
 ["#biyi"] = "你可以对至多三名其他角色各造成1点伤害并令手牌上限-1",
 }
 
