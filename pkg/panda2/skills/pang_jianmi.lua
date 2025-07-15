@@ -19,12 +19,18 @@ jianmi:addEffect("active", {
     local player = effect.from
     local target1 = effect.tos[1]
     local cards1 = target1:getCardIds("h")
+    local cancel_choice = {}
+    if #effect.tos > 1 then
+        table.insert(cancel_choice, 1, "jianmi_Cancel1")
+    else
+        table.insert(cancel_choice, 1, "Cancel")
+    end
     local ids, choice = room:askToChooseCardsAndChoice(player, {
       cards = cards1,
       choices = {"jianmi_discard"},
       skill_name = jianmi.name,
       prompt = "#jianmi-view::" .. target1.id,
-      cancel_choices = {"jianmi_Cancel1" and #effect.tos > 1 or "Cancel"},
+      cancel_choices = cancel_choice,
       min_num = 1,
       max_num = 1,
       all_cards = cards1
@@ -42,7 +48,7 @@ jianmi:addEffect("active", {
         end)
         room:throwCard(discard2, jianmi.name, target2, player)
         end
-    elseif choice == "jianmi_Cancel1" and #effect.tos > 1 then
+    elseif choice == "jianmi_Cancel1" then
         local target2 = effect.tos[2]
         local cards2 = target2:getCardIds("h")
         local ids2, choice2 = room:askToChooseCardsAndChoice(player, {
