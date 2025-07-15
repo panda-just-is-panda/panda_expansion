@@ -25,7 +25,7 @@ biyi:addEffect(fk.EventPhaseEnd, {
     local used_tos = table.filter(room:getOtherPlayers(player, false), function (p)
       return p:getMark("biyi_used-turn") > 0
     end)
-    if #used_tos == #room:getOtherPlayers(player, false) then
+    if #used_tos == #room:getOtherPlayers(player, false) or #used_tos > #room:getOtherPlayers(player, false) then
         local tos = room:askToChoosePlayers(player, {
       min_num = 1,
       max_num = 3,
