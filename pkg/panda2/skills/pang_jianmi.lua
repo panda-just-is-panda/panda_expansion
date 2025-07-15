@@ -24,7 +24,7 @@ jianmi:addEffect("active", {
       choices = {"jianmi_discard"},
       skill_name = jianmi.name,
       prompt = "#jianmi-view::" .. target1.id,
-      cancel_choices = {"jianmi_Cancel1"},
+      cancel_choices = {"jianmi_Cancel1" and #effect.tos > 1 or "Cancel"},
       min_num = 1,
       max_num = 1,
       all_cards = cards1
@@ -45,7 +45,7 @@ jianmi:addEffect("active", {
     elseif choice == "jianmi_Cancel1" and #effect.tos > 1 then
         local target2 = effect.tos[2]
         local cards2 = target2:getCardIds("h")
-        local ids2, choice = room:askToChooseCardsAndChoice(player, {
+        local ids2, choice2 = room:askToChooseCardsAndChoice(player, {
         cards = cards2,
         choices = {"jianmi_discard"},
         skill_name = jianmi.name,
@@ -55,7 +55,7 @@ jianmi:addEffect("active", {
         max_num = 1,
         all_cards = cards2
         })
-        if choice == "jianmi_discard" then
+        if choice2 == "jianmi_discard" then
             local discard1 = table.filter(cards1, function (id)
             return Fk:getCardById(id).trueName == Fk:getCardById(ids2[1]).trueName
             end)
@@ -66,8 +66,7 @@ jianmi:addEffect("active", {
             return Fk:getCardById(id2).trueName == Fk:getCardById(ids2[1]).trueName
             end)
             room:throwCard(discard2, jianmi.name, target2, player)
-            end
-        elseif choice == "jianmi_Cancel2" then
+        else
             local ids3, choice = room:askToChooseCardsAndChoice(player, {
             cards = cards1,
             choices = {"jianmi_discard"},
@@ -89,6 +88,7 @@ jianmi:addEffect("active", {
             end)
             room:throwCard(discard2, jianmi.name, target2, player)
     end
+    end
   end,
 })
 
@@ -96,9 +96,9 @@ Fk:loadTranslationTable{
   ["pang_jianmi"] = "监秘",
   [":pang_jianmi"] = "出牌阶段限一次，你可以观看至多两名其他角色的所有手牌，然后你可以选择其中一张牌并弃置这些角色手牌中所有此牌名的牌。",
   ["#jianmi"] = "选择至多两名角色",
-  ["jianmi_Cancel1"] = "继续观看2号手牌",
+  ["jianmi_Cancel1"] = "继续观看下一名角色的手牌",
   ["jianmi_discard"] = "弃置此牌",
-  ["jianmi_Cancel2"] = "返回1号手牌",
+  ["jianmi_Cancel2"] = "返回上一名角色的手牌",
   ["#jianmi-view::"] = "监秘：观看%dest的手牌",
 }
 
