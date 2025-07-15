@@ -11,7 +11,8 @@ biyi:addEffect(fk.TargetSpecified, {
     and player.room.current == player and player.phase == Player.Play
   end,
   on_refresh = function(self, event, target, player, data)
-    player.room:addPlayerMark(data.to, "biyi_used-turn", 1)
+    local room = player.room
+    room:addPlayerMark(data.to, "biyi_used-turn", 1)
   end,
 })
 
