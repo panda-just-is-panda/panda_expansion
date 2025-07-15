@@ -42,7 +42,7 @@ jianmi:addEffect("active", {
         end)
         room:throwCard(discard2, jianmi.name, target2, player)
         end
-    elseif choice == "Cancel" and #effect.tos > 1 then
+    elseif choice == "jianmi_Cancel1" and #effect.tos > 1 then
         local target2 = effect.tos[2]
         local cards2 = target2:getCardIds("h")
         local ids2, choice = room:askToChooseCardsAndChoice(player, {
@@ -67,7 +67,7 @@ jianmi:addEffect("active", {
             end)
             room:throwCard(discard2, jianmi.name, target2, player)
             end
-        elseif choice == "Cancel" then
+        elseif choice == "jianmi_Cancel2" then
             local ids3, choice = room:askToChooseCardsAndChoice(player, {
             cards = cards1,
             choices = {"jianmi_discard"},
@@ -96,6 +96,7 @@ Fk:loadTranslationTable{
   [":pang_jianmi"] = "出牌阶段限一次，你可以观看至多两名其他角色的所有手牌，然后你选择其中一张牌并弃置这些角色手牌中所有此牌名的牌。",
   ["#jianmi"] = "选择至多两名角色",
   ["jianmi_Cancel1"] = "继续观看2号手牌",
+  ["jianmi_discard"] = "弃置此牌",
   ["jianmi_Cancel2"] = "返回1号手牌",
   ["#jianmi-view::"] = "监秘：观看%dest的手牌",
 }
