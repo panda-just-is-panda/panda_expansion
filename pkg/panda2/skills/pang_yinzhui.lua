@@ -28,7 +28,7 @@ anim_type = "switch",
     on_use = function(self, event, target, player, data)
     local room = player.room
     local to = room.current
-    if player:getSwitchSkillState(yinzhui.name, true) ~= fk.SwitchYang then
+    if player:getSwitchSkillState(yinzhui.name, true) == fk.SwitchYang then
         local choices = {"max_card_buff", "draw_card"}
         local choice = room:askToChoice(player, {
             choices = choices,
@@ -45,7 +45,7 @@ anim_type = "switch",
             choices = choices,
             skill_name = yinzhui.name,
         })
-        if choice == "max_card_buff" then
+        if choice == "max_card_nerf" then
             room:addPlayerMark(to, "yinzhui_cardnerf-turn", 1)
         else
             if #player:getCardIds("he") > 1 then
@@ -70,11 +70,13 @@ yinzhui:addEffect(fk.CardRespondFinished, yinzhui_spec)
 
 yinzhui:addEffect("maxcards", {
   correct_func = function(self, player)
-    if player:getMark("yinzhui_cardnerf-turn") then
     return -player:getMark("yinzhui_cardnerf-turn")
-    elseif player:getMark("yinzhui_cardbuff-turn") then
+  end,
+})
+
+yinzhui:addEffect("maxcards", {
+  correct_func = function(self, player)
     return player:getMark("yinzhui_cardbuff-turn")
-    end
   end,
 })
 
