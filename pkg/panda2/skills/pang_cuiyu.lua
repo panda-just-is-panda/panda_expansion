@@ -39,6 +39,15 @@ cuiyu:addEffect(fk.CardUsing, {
         room:addPlayerMark(player, "cuiyu_ban-turn", 1)
     end,
 })
+cuiyu:addEffect(fk.PreCardUse, {
+  can_refresh = function (self, event, target, player, data)
+    return target == player and player:hasSkill(cuiyu.name, true) and (data.extra_data or {}).usingcuiyu
+  end,
+  on_refresh = function (self, event, target, player, data)
+    data.extra_data = data.extra_data or {}
+    data.extra_data.usingcuiyu = true
+  end,
+})
 
 cuiyu:addEffect("prohibit", {
   prohibit_use = function(self, player, card)
