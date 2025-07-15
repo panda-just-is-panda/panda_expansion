@@ -41,4 +41,16 @@ Fk:loadTranslationTable{
 ["illustrator:pang__quniang"] = "深蓝",
 }
 
+local bolinyidong = General:new(extension, "pang__bolinyidong", "wu", 3, 3, General.Female)
+bolinyidong:addSkill("pang_niliu")
+bolinyidong:addSkill("pang_jianmi")
+Fk:loadTranslationTable{
+["pang__bolinyidong"] = "柏林以东",
+["#pang__bolinyidong"] = "野菊的低语",
+["designer:pang__bolinyidong"] = "胖即是胖",
+["cv:pang__bolinyidong"] = "深蓝",
+["illustrator:pang__bolinyidong"] = "深蓝",
+}
+bolinyidong.hidden = true
+
 return extension
