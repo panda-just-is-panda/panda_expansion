@@ -51,6 +51,5 @@ Fk:loadTranslationTable{
 ["cv:pang__bolinyidong"] = "深蓝",
 ["illustrator:pang__bolinyidong"] = "深蓝",
 }
-bolinyidong.hidden = true
 
 return extension
