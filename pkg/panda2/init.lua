@@ -52,6 +52,17 @@ Fk:loadTranslationTable{
 ["illustrator:pang__bolinyidong"] = "深蓝",
 }
 
+local xugouji = General:new(extension, "pang__xugouji", "qun", 4, 4, General.Female)
+xugouji:addSkill("pang_cuiyu")
+xugouji:addSkill("pang_biyi")
+Fk:loadTranslationTable{
+["pang__xugouji"] = "虚构集",
+["#pang__xugouji"] = "往日的幽灵",
+["designer:pang__xugouji"] = "胖即是胖",
+["cv:pang__xugouji"] = "深蓝",
+["illustrator:pang__xugouji"] = "深蓝",
+}
+
 local barcarola = General:new(extension, "pang__barcarola", "wei", 3, 3, General.Female)
 barcarola:addSkill("pang_yinzhui")
 barcarola:addSkill("pang_haishi")
