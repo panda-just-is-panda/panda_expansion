@@ -12,14 +12,16 @@ gouyao:addEffect(fk.Damage, {
     local room = player.room
       local x = math.min(data.to.hp, 2)
     room:drawCards(player, 3, gouyao.name)
-    local card = room:askToDiscard(player, {
+    if x > 0 then
+    local card2 = room:askToDiscard(player, {
           skill_name = gouyao.name,
-          prompt = "#gouyao_discard2"..x,
+          prompt = "#gouyao_discard2:::"..x,
           cancelable = false,
           min_num = x,
           max_num = x,
           include_equip = true,
         })
+    end
     local to = data.to
     if not to.dead and not to:isNude() and to:getMark("@@gouyao") < 1 then
     local card = room:askToCards(to, {
