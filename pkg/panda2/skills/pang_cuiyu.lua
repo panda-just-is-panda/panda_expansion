@@ -20,8 +20,8 @@ cuiyu:addEffect(fk.AfterCardsMove, {
     for _, move in ipairs(data) do
       if move.to == player and move.toArea == Player.Hand then
         for _, info in ipairs(move.moveInfo) do
-          if table.contains(player:getCardIds("h"), info.cardId) then
-            room:setCardMark(Fk:getCardById(info.cardId), "@@cuiyu-inhand-turn", 1)
+          if table.contains(player:getCardIds("h"), info) then
+            room:setCardMark(Fk:getCardById(info), "@@cuiyu-inhand-turn", 1)
           end
         end
       end
@@ -32,13 +32,12 @@ cuiyu:addEffect(fk.AfterCardsMove, {
 cuiyu:addEffect(fk.CardUsing, {
     can_trigger = function(self, event, target, player, data)
     return player:hasSkill(cuiyu.name) and player:getMark("@@cuiyu") > 0 
-    and data.card
+    and data.card and data.card:getMark("@@cuiyu-inhand-turn") > 0
   end,
     on_cost = Util.TrueFunc,
     on_use = function(self, event, target, player, data)
         local room = player.room
         room:addPlayerMark(player, "cuiyu_ban-turn", 1)
-        player:drawCards(2)
     end,
 })
 
