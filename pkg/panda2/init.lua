@@ -52,4 +52,17 @@ Fk:loadTranslationTable{
 ["illustrator:pang__bolinyidong"] = "深蓝",
 }
 
+local barcarola = General:new(extension, "pang__barcarola", "wei", 3, 3, General.Female)
+barcarola:addSkill("pang_yinzhui")
+barcarola:addSkill("pang_haishi")
+barcarola.endnote = "是的，启示队就是数值怪"
+Fk:loadTranslationTable{
+["pang__barcarola"] = "芭卡洛儿",
+["#pang__barcarola"] = "自由的音符",
+["designer:pang__barcarola"] = "胖即是胖",
+["cv:pang__barcarola"] = "深蓝",
+["illustrator:pang__barcarola"] = "深蓝",
+}
+barcarola.hidden = true
+
 return extension
