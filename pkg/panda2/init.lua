@@ -64,6 +64,34 @@ Fk:loadTranslationTable{
 ["illustrator:pang__xugouji"] = "深蓝",
 }
 
+local luxi = General:new(extension, "pang__luxi", "god", 4, 4, General.Female)
+luxi:addSkill("pang_diedai")
+luxi:addRelatedSkill("pang_zhisu")
+luxi:addRelatedSkill("pang_hedao")
+luxi:addRelatedSkill("pang_jiejin")
+luxi.endnote = "电能队要暖机，烧血队才是数值怪"
+Fk:loadTranslationTable{
+["pang__luxi"] = "露西",
+["#pang__luxi"] = "金属的智识",
+["designer:pang__luxi"] = "胖即是胖",
+["cv:pang__luxi"] = "深蓝",
+["illustrator:pang__luxi"] = "深蓝",
+}
+luxi.hidden = true
+
+local nuodika = General:new(extension, "pang__nuodika", "jin", 4, 4, General.Female)
+nuodika:addSkill("pang_zhiguang")
+nuodika:addSkill("pang_shengji")
+nuodika.endnote = "烧血队梅子煲，启示队才是数值怪"
+Fk:loadTranslationTable{
+["pang__nuodika"] = "诺谛卡",
+["#pang__nuodika"] = "地母的荧芒",
+["designer:pang__nuodika"] = "胖即是胖",
+["cv:pang__nuodika"] = "深蓝",
+["illustrator:pang__nuodika"] = "深蓝",
+}
+nuodika.hidden = true
+
 local barcarola = General:new(extension, "pang__barcarola", "wei", 3, 3, General.Female)
 barcarola:addSkill("pang_yinzhui")
 barcarola:addSkill("pang_haishi")

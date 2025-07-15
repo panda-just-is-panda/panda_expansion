@@ -52,7 +52,7 @@ tanta:addEffect(fk.Damage, {
 
 
 Fk:loadTranslationTable{["pang_tanta"] = "坦踏",
-  [":pang_tanta"] = "你可以将四张牌作为无次数限制的【杀】使用，然后若此【杀】造成了伤害，你可以获得1点护甲。",
+  [":pang_tanta"] = "你可以将四张牌作为无次数限制的【杀】使用；当此【杀】造成伤害时，你可以获得1点护甲。",
   ["#pang_tanta"] = "坦踏：将四张牌作为【杀】使用，若造成伤害则获得护甲",
   ["#tanta_shield"] = "你可以获得1点护甲"
 }
