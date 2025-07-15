@@ -29,7 +29,7 @@ anim_type = "switch",
     local room = player.room
     local to = room.current
     if player:getSwitchSkillState(yinzhui.name, true) == fk.SwitchYang then
-        local choices = {"max_card_buff", "draw_card"}
+        local choices = {"max_card_buff", "yinzhui_drawcard"}
         local choice = room:askToChoice(player, {
             choices = choices,
             skill_name = yinzhui.name,
@@ -40,7 +40,7 @@ anim_type = "switch",
             to:drawCards(2)
         end
     else
-        local choices = {"max_card_nerf", "discard_card"}
+        local choices = {"max_card_nerf", "yinzhui_discard"}
         local choice = room:askToChoice(player, {
             choices = choices,
             skill_name = yinzhui.name,
@@ -86,9 +86,9 @@ Fk:loadTranslationTable {["pang_yinzhui"] = "音缀",
 ["#yinzhui2"] = "你可以令当前回合角色执行一项减益",
 ["#yinzhui_discard"] = "弃置两张牌",
 ["max_card_buff"] = "当前回合角色手牌上限+1",
-["draw_card"] = "当前回合角色摸两张牌",
+["yinzhui_drawcard"] = "当前回合角色摸两张牌",
 ["max_card_nerf"] = "当前回合角色手牌上限-1",
-["discard_card"] = "当前回合角色弃置两张牌",
+["yinzhui_discard"] = "当前回合角色弃置两张牌",
 }
 
 return yinzhui
