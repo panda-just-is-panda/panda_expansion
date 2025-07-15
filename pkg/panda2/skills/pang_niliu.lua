@@ -21,8 +21,9 @@ niliu:addEffect(fk.AfterCardsMove, {
       end
   end,
   on_refresh = function(self, event, target, player, data)
+        local room = player.room
         local to = table.simpleClone(event:getCostData(self).from)[1]
-        player.room:addPlayerMark(to, "@@niliu")
+        room:addPlayerMark(to, "@@niliu")
   end,
 })
 
