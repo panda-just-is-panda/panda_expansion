@@ -41,8 +41,8 @@ dunnu:addEffect(fk.TurnStart, {
 })
 
 Fk:loadTranslationTable{
-  ["pang_aiganglie"] = "惇怒",
-  [":pang_aiganglie"] = "回合开始时，你可以选择一名角色，然后你依次对该角色和你各造成1点伤害。",
+  ["pang_dunnu"] = "惇怒",
+  [":pang_dunnu"] = "回合开始时，你可以选择一名角色，然后你依次对该角色和你各造成1点伤害。",
   ["#dunnu"] = "惇怒！",
 }
 
