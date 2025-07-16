@@ -74,11 +74,11 @@ exxiahoudun:addSkill("guicai")
 exxiahoudun:addSkill("pang_dunnu")
 exxiahoudun.endnote = "我不能受二三屈辱！"
 Fk:loadTranslationTable{
-["pang__xiahoudun"] = "界夏侯惇",
-["#pang__xiahoudun"] = "惇怒！",
-["designer:pang__xiahoudun"] = "胖即是胖",
-["cv:pang__xiahoudun"] = "官方",
-["illustrator:pang__xiahoudun"] = "官方",
+["pang__exxiahoudun"] = "界夏侯惇",
+["#pang__exxiahoudun"] = "惇怒！",
+["designer:pang__exxiahoudun"] = "胖即是胖",
+["cv:pang__exxiahoudun"] = "官方",
+["illustrator:pang__exxiahoudun"] = "官方",
 }
 exxiahoudun.hidden = true
 
