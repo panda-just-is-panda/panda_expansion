@@ -5,7 +5,7 @@ local aiganglie = fk.CreateSkill{
 aiganglie:addEffect(fk.DamageInflicted, {
   anim_type = "negative",
   can_refresh = function (self, event, target, player, data)
-    return player:hasSkill(aiganglie.name) and player == target and player:usedSkillTimes(aiganglie.name, Player.HistoryTurn) == 0
+    return player:hasSkill(aiganglie.name) and player == target
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
@@ -21,7 +21,7 @@ aiganglie:addEffect(fk.DamageInflicted, {
 
 Fk:loadTranslationTable{
   ["pang_aiganglie"] = "唉刚烈",
-  [":pang_aiganglie"] = "持恒技，锁定技，你每回合首次受到伤害时，你将牌堆中的一张红桃牌置于牌堆顶。",
+  [":pang_aiganglie"] = "持恒技，锁定技，当你受到伤害时，你将牌堆中的一张红桃牌置于牌堆顶。",
 }
 
 return aiganglie
