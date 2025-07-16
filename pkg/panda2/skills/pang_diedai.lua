@@ -52,7 +52,7 @@ diedai:addEffect(fk.Damage, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     room:addPlayerMark(player, "@dianchi", 2)
-    if player:getMark("@dianchi") == 10 or player:getMark("@dianchi") == 20 then
+    if player:getMark("@dianchi") == 10 or player:getMark("@dianchi") == 20 or player:getMark("@dianchi") == 30 then
       local choices = {}
     if not player:hasSkill("pang_jiejin") then
       table.insert(choices, 1, "jiejin")

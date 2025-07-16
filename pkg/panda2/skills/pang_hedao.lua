@@ -7,7 +7,7 @@ hedao:addEffect(fk.CardUsing, {
   anim_type = "control",
   is_delay_effect = true,
   can_trigger = function(self, event, target, player, data)
-    if target == player and player:hasSkill(zhisu.name) then
+    if target == player and player:hasSkill(hedao.name) then
       local use_events = player.room.logic:getEventsOfScope(GameEvent.UseCard, 1, function (e)
         local use = e.data
         return use.from == player and use.card.type ~= Card.TypeBasic
