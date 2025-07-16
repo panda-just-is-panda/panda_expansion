@@ -78,7 +78,6 @@ Fk:loadTranslationTable{
 ["cv:pang__luxi"] = "深蓝",
 ["illustrator:pang__luxi"] = "深蓝",
 }
-luxi.hidden = true
 
 local nuodika = General:new(extension, "pang__nuodika", "jin", 4, 4, General.Female)
 nuodika:addSkill("pang_zhiguang")

@@ -28,11 +28,11 @@ diedai:addEffect(fk.GameStart, {
       skill_name = diedai.name,
     })
     if choice == "zhisu" then
-      room:handleAddLoseSkills(target, "pang_zhisu", nil, true, false)
+      room:handleAddLoseSkills(player, "pang_zhisu", nil, true, false)
     elseif choice == "hedao" then
-      room:handleAddLoseSkills(target, "pang_hedao", nil, true, false)
+      room:handleAddLoseSkills(player, "pang_hedao", nil, true, false)
     elseif choice == "jiejin" then
-      room:handleAddLoseSkills(target, "pang_jiejin", nil, true, false)
+      room:handleAddLoseSkills(player, "pang_jiejin", nil, true, false)
     end
   end,
 })
@@ -68,11 +68,11 @@ diedai:addEffect(fk.Damage, {
       skill_name = diedai.name,
     })
     if choice == "zhisu" then
-      room:handleAddLoseSkills(target, "pang_zhisu", nil, true, false)
+      room:handleAddLoseSkills(player, "pang_zhisu", nil, true, false)
     elseif choice == "hedao" then
-      room:handleAddLoseSkills(target, "pang_hedao", nil, true, false)
+      room:handleAddLoseSkills(player, "pang_hedao", nil, true, false)
     elseif choice == "jiejin" then
-      room:handleAddLoseSkills(target, "pang_jiejin", nil, true, false)
+      room:handleAddLoseSkills(player, "pang_jiejin", nil, true, false)
     end
     end
     if player:hasSkill("pang_jiejin") and player:hasSkill("pang_hedao") and player:hasSkill("pang_zhisu") then
@@ -110,6 +110,7 @@ diedai:addEffect(fk.Damaged, {
 })
 
 diedai:addEffect("filter", {
+  mute = true,
   card_filter = function(self, to_select, player)
     return player:hasSkill(diedai.name) and to_select.name == "slash" and
       table.contains(player:getCardIds("h"), to_select.id)
