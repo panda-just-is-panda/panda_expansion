@@ -20,8 +20,8 @@ can_refresh = function(self, event, target, player, data)
 })
 
 Fk:loadTranslationTable{
-  ["pang_gouyao"] = "请神",
-  [":pang_gouyao"] = "持恒技，游戏开始时，你获得有持恒技标签的“酣战”，“战烈”，“振锋”，“缚豕”，“东道”，“裂穹”和“斩决”。",
+  ["pang_qingshen"] = "请神",
+  [":pang_qingshen"] = "持恒技，游戏开始时，你获得有持恒技标签的“酣战”，“战烈”，“振锋”，“缚豕”，“东道”，“裂穹”和“斩决”。",
 }
 
 
