@@ -1,11 +1,11 @@
 local fushi = fk.CreateSkill{
-  name = "guan_fushi",
+  name = "fushi",
   tags = {Skill.Permanent},
 }
 
 Fk:loadTranslationTable{
-  ["guan_fushi"] = "缚豕",
-  [":guan_fushi"] = "持恒技，当一名角色使用【杀】后，若你至其距离小于2，你将此【杀】置于你的武将牌上。"..
+  ["fushi"] = "缚豕",
+  [":fushi"] = "持恒技，当一名角色使用【杀】后，若你至其距离小于2，你将此【杀】置于你的武将牌上。"..
   "你可以重铸任意张“缚豕”牌，视为使用一张具有以下等量项效果的【杀】：1.目标数+1；2.对一个目标造成的伤害-1；3.对一个目标造成的伤害+1。"..
   "若你选择的选项相邻且目标均相邻，此【杀】不计入限制的次数。",
 
@@ -17,8 +17,8 @@ Fk:loadTranslationTable{
   ["#fushi2-choose"] = "缚豕：选择一个目标，此【杀】对其伤害-1",
   ["#fushi3-choose"] = "缚豕：选择一个目标，此【杀】对其伤害+1",
 
-  ["$guan_fushi1"] = "缚豕待宰，要让阿瞒吃个肚儿溜圆。",
-  ["$guan_fushi2"] = "今儿个呀，咱们吃油汪汪的猪肉！",
+  ["$fushi1"] = "缚豕待宰，要让阿瞒吃个肚儿溜圆。",
+  ["$fushi2"] = "今儿个呀，咱们吃油汪汪的猪肉！",
 }
 
 fushi:addEffect("viewas", {

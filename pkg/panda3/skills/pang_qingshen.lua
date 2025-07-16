@@ -10,7 +10,7 @@ can_refresh = function(self, event, target, player, data)
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     room:handleAddLoseSkills(player, "guan_lieqiong", nil, true, false)
-    room:handleAddLoseSkills(player, "guan_fushi", nil, true, false)
+    room:handleAddLoseSkills(player, "fushi", nil, true, false)
     room:handleAddLoseSkills(player, "mobile__hanzhan", nil, true, false)
   end,
 })

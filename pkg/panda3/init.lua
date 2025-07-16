@@ -38,7 +38,7 @@ Fk:loadTranslationTable{
 
 local wither = General:new(extension, "pang__wither", "god", 4, 4, General.Male)
 wither:addSkill("pang_qingshen")
-wither:addRelatedSkill("guan_fushi")
+wither:addRelatedSkill("fushi")
 wither:addRelatedSkill("guan_lieqiong")
 wither:addRelatedSkill("mobile__hanzhan")
 wither.endnote = "我东道呢？我战烈和振锋呢？我斩决呢？<br>\
