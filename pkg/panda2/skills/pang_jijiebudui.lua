@@ -23,10 +23,10 @@ jijie:addEffect("viewas", {
         return card
     end,
     enabled_at_play = function(self, player)
-        return player:usedSkillTimes(jijie.name, Player.HistoryTurn) == 0
+        return player:usedSkillTimes(jijie.name, Player.HistoryTurn) == 0 and not player:isKongcheng()
     end,
     enabled_at_response = function(self, player, response)
-        return player:usedSkillTimes(jijie.name, Player.HistoryTurn) == 0
+        return player:usedSkillTimes(jijie.name, Player.HistoryTurn) == 0 and not player:isKongcheng()
     end,
     after_use = function(self, player, use)
     player:broadcastSkillInvoke(jijie.name, 1)
