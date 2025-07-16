@@ -13,7 +13,7 @@ diedai:addEffect(fk.GameStart, {
     local room = player.room
     room:notifySkillInvoked(player, diedai.name)
     player:broadcastSkillInvoke(diedai.name, 1)
-    local choices = {}
+    local choices = {"jiejin", "hedao", "zhisu"}
     if not player:hasSkill("pang_jiejin") then
       table.insert(choices, 1, "jiejin")
     elseif not player:hasSkill("pang_hedao") then
@@ -83,7 +83,7 @@ diedai:addEffect(fk.Damage, {
 })
 
 diedai:addEffect(fk.Damaged, {
-  anim_type = "masochism",
+  mute = true,
   trigger_times = function(self, event, target, player, data)
     return data.damage
   end,
