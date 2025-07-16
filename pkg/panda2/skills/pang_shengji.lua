@@ -45,7 +45,7 @@ shengji:addEffect(fk.Damage, {
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, shengji.name)
   end,
   on_refresh = function(self, event, target, player, data)
-      room:recover({
+      player.room:recover({
         who = player,
         num = 1,
         recoverBy = player,
