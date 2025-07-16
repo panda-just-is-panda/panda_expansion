@@ -19,6 +19,18 @@ Fk:loadTranslationTable{
 ["illustrator:pang__ouliege"] = "红色警戒3",
 }
 
+local artanis = General:new(extension, "pang__artanis", "wei", 4)
+artanis:addSkill("pang_jijiebudui")
+artanis:addSkill("pang_zhandourongyao")
+artanis:addRelatedSkill("pang_jiang")
+Fk:loadTranslationTable{
+["pang__ouliege"] = "阿塔尼斯",
+["#pang__ouliege"] = "大主教",
+["designer:pang__ouliege"] = "胖即是胖",
+["cv:pang__ouliege"] = "星际争霸2",
+["illustrator:pang__ouliege"] = "星际争霸2",
+}
+
 local meilanni = General:new(extension, "pang__meilanni", "shu", 4, 4, General.Female)
 meilanni:addSkill("pang_qiaoshou")
 meilanni:addSkill("pang_chengxi")
