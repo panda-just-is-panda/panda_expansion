@@ -13,12 +13,14 @@ diedai:addEffect(fk.GameStart, {
     local room = player.room
     room:notifySkillInvoked(player, diedai.name)
     player:broadcastSkillInvoke(diedai.name, 1)
-    local choices = {"jiejin", "hedao", "zhisu"}
+    local choices = {}
     if not player:hasSkill("pang_jiejin") then
       table.insert(choices, 1, "jiejin")
-    elseif not player:hasSkill("pang_hedao") then
+    end
+    if not player:hasSkill("pang_hedao") then
       table.insert(choices, 1, "hedao")
-    elseif not player:hasSkill("pang_zhisu") then
+    end
+    if not player:hasSkill("pang_zhisu") then
       table.insert(choices, 1, "zhisu")
     end
     local choice = room:askToChoice(player, {
@@ -54,9 +56,11 @@ diedai:addEffect(fk.Damage, {
       local choices = {}
     if not player:hasSkill("pang_jiejin") then
       table.insert(choices, 1, "jiejin")
-    elseif not player:hasSkill("pang_hedao") then
+    end
+    if not player:hasSkill("pang_hedao") then
       table.insert(choices, 1, "hedao")
-    elseif not player:hasSkill("pang_zhisu") then
+    end
+    if not player:hasSkill("pang_zhisu") then
       table.insert(choices, 1, "zhisu")
     end
     local choice = room:askToChoice(player, {
