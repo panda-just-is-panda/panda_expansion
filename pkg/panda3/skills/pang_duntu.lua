@@ -44,6 +44,7 @@ duntu:addEffect(fk.Death, {
   on_refresh = function(self, event, target, player, data)
     player:broadcastSkillInvoke(duntu.name, 1)
     local room = player.room
+    room:handleAddLoseSkills(player, "-pang_duntu|-pang_ganglie|pang_ganglieex|pang_dunnu", nil, true, false)
     if player.general == "pang__xiahoudun" then
       player.general = "pang__exxiahoudun"
       room:broadcastProperty(player, "general")
@@ -64,6 +65,7 @@ duntu:addEffect(fk.EnterDying, {
   mute = true,
   on_use = function(self, event, target, player, data)
     local room = player.room
+    room:handleAddLoseSkills(player, "-pang_duntu|-pang_ganglie|pang_ganglieex|pang_dunnu", nil, true, false)
     player:broadcastSkillInvoke(duntu.name, 1)
     if player.general == "pang__xiahoudun" then
       player.general = "pang__exxiahoudun"

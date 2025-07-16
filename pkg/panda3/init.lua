@@ -69,8 +69,7 @@ Fk:loadTranslationTable{
 }
 
 local exxiahoudun = General:new(extension, "pang__exxiahoudun", "wei", 4, 4, General.Male)
-exxiahoudun:addSkill("pang_ganglie")
-exxiahoudun:addSkill("guicai")
+exxiahoudun:addSkill("pang_ganglieex")
 exxiahoudun:addSkill("pang_dunnu")
 exxiahoudun.endnote = "我不能受二三屈辱！"
 Fk:loadTranslationTable{
