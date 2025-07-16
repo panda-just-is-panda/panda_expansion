@@ -15,7 +15,7 @@ can_refresh = function(self, event, target, player, data)
 
 duntu:addEffect(fk.CardUseFinished, {
 can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(duntu.name) and not player:hasSkill("tiandu")
+    return target == player and player:hasSkill(duntu.name) and not player:hasSkill("tiandu")
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
