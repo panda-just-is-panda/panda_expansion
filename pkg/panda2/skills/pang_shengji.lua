@@ -29,9 +29,11 @@ anim_type = "offensive",
             max_num = to_discard,
             include_equip = false,
             })
-      local targets = table.filter(room:getOtherPlayers(player, false), function (p)
+      local tos = table.filter(room:getOtherPlayers(player, false), function (p)
       return player:canUseTo("savage_assault", p)
       end)
+      local targets = tos
+      room:sortByAction(targets)
       room:useVirtualCard("savage_assault", nil, player, targets, shengji.name, true)
     end
     end
