@@ -29,8 +29,9 @@ anim_type = "offensive",
             max_num = to_discard,
             include_equip = false,
             })
+      local savage_assault = Fk:cloneCard("savage_assault")
       local tos = table.filter(room:getOtherPlayers(player, false), function (p)
-      return player:canUseTo("savage_assault", p)
+      return player:canUseTo(savage_assault, p)
       end)
       local targets = tos
       room:sortByAction(targets)
