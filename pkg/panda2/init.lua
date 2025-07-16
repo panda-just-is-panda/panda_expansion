@@ -90,7 +90,6 @@ Fk:loadTranslationTable{
 ["cv:pang__nuodika"] = "深蓝",
 ["illustrator:pang__nuodika"] = "深蓝",
 }
-nuodika.hidden = true
 
 local barcarola = General:new(extension, "pang__barcarola", "wei", 3, 3, General.Female)
 barcarola:addSkill("pang_yinzhui")
