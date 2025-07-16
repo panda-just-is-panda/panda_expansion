@@ -69,6 +69,7 @@ luxi:addSkill("pang_diedai")
 luxi:addRelatedSkill("pang_zhisu")
 luxi:addRelatedSkill("pang_hedao")
 luxi:addRelatedSkill("pang_jiejin")
+luxi:addRelatedSkill("pang_shenghua")
 luxi.endnote = "电能队要暖机，烧血队才是数值怪"
 Fk:loadTranslationTable{
 ["pang__luxi"] = "露西",

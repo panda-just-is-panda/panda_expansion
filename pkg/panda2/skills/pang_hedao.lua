@@ -20,7 +20,7 @@ hedao:addEffect(fk.CardUsing, {
   end,
 })
 
-Fk:loadTranslationTable {["pang_hedao"] = "质速",
+Fk:loadTranslationTable {["pang_hedao"] = "荷导",
 [":pang_hedao"] = "锁定技，你每回合首次使用非基本牌时摸两张牌。",
 }
 
