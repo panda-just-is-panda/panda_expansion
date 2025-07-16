@@ -1,5 +1,6 @@
 local aiganglie = fk.CreateSkill{
   name = "pang_aiganglie",
+    tags = {Skill.Permanent, Skill.Compulsory},
 }
 
 aiganglie:addEffect(fk.DamageInflicted, {
