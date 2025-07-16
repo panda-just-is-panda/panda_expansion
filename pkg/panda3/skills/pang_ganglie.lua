@@ -24,7 +24,7 @@ ganglie:addEffect(fk.Damaged, {
     local judge = {
       who = player,
       reason = ganglie.name,
-      pattern = ".",
+      pattern = ".|.|spade,club,diamond",
     }
     room:judge(judge)
     if not data.from or data.from.dead then return false end
@@ -38,7 +38,7 @@ Fk:loadTranslationTable{
   ["pang_ganglie"] = "缸裂",
   [":pang_ganglie"] = "当你受到1点伤害后，你可以进行一次判定，若判定结果不为红桃，你摸20张牌。",
 
-  ["pang_ganglie1"] = "哪个敢动我！",
+  ["$pang_ganglie1"] = "哪个敢动我！",
   ["$pang_ganglie2"] = "伤我者，十倍奉还！",
 }
 

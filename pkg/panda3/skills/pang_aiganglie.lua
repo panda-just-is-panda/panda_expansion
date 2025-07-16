@@ -4,10 +4,10 @@ local aiganglie = fk.CreateSkill{
 
 aiganglie:addEffect(fk.DamageInflicted, {
   anim_type = "negative",
-  can_trigger = function (self, event, target, player, data)
+  can_refresh = function (self, event, target, player, data)
     return player:hasSkill(aiganglie.name) and player == target and player:usedSkillTimes(aiganglie.name, Player.HistoryTurn) == 0
   end,
-  on_use = function(self, event, target, player, data)
+  on_refresh = function(self, event, target, player, data)
     local room = player.room
     local cards = room:getCardsFromPileByRule(".|.|heart")
     if #cards > 0 then
