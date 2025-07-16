@@ -53,8 +53,19 @@ Fk:loadTranslationTable{
 ["designer:pang__wither"] = "胖即是胖",
 ["cv:pang__wither"] = "官方",
 ["illustrator:pang__wither"] = "我的世界&官方",
+}
 
-["~pang__wither"] = ""
+local xiahoudun = General:new(extension, "pang__xiahoudun", "wei", 4, 4, General.Male)
+xiahoudun:addSkill("pang_ganglie")
+xiahoudun:addSkill("pang_aiganglie")
+xiahoudun.endnote = "有的武将的台词是可怜兮兮的“向隅而泣，困于隅角。”，效果为每轮摸80张牌；<br>\
+有的武将的台词是狠辣的“鼠辈，尽敢伤我？”，效果为亮出牌堆顶一张红桃然后无事发生。"
+Fk:loadTranslationTable{
+["pang__xiahoudun"] = "夏侯惇",
+["#pang__xiahoudun"] = "红桃蹲",
+["designer:pang__xiahoudun"] = "胖即是胖",
+["cv:pang__xiahoudun"] = "官方",
+["illustrator:pang__xiahoudun"] = "官方",
 }
 
 return extension
