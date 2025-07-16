@@ -4,6 +4,7 @@ local duntu = fk.CreateSkill{
 }
 
 duntu:addEffect(fk.GameStart, {
+  mute = true,
 can_refresh = function(self, event, target, player, data)
     return player:hasSkill(duntu.name)
   end,
@@ -14,6 +15,7 @@ can_refresh = function(self, event, target, player, data)
 })
 
 duntu:addEffect(fk.CardUseFinished, {
+  mute = true,
 can_refresh = function(self, event, target, player, data)
     return target == player and player:hasSkill(duntu.name) and not player:hasSkill("tiandu")
   end,
@@ -24,6 +26,7 @@ can_refresh = function(self, event, target, player, data)
 })
 
 duntu:addEffect(fk.TurnEnd, {
+  mute = true,
 can_refresh = function(self, event, target, player, data)
     return player:hasSkill(duntu.name) and player:hasSkill("tiandu")
   end,
@@ -34,10 +37,12 @@ can_refresh = function(self, event, target, player, data)
 })
 
 duntu:addEffect(fk.Death, {
+  mute = true,
   can_refresh = function(self, event, target, player, data)
     return player:hasSkill(duntu.name) and data.killer == player
   end,
   on_refresh = function(self, event, target, player, data)
+    player:broadcastSkillInvoke(duntu.name, 1)
     local room = player.room
     if player.general == "pang__xiahoudun" then
       player.general = "pang__exxiahoudun"
@@ -56,11 +61,10 @@ duntu:addEffect(fk.Death, {
 })
 
 duntu:addEffect(fk.EnterDying, {
-  can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(duntu.name)
-  end,
-  on_refresh = function(self, event, target, player, data)
+  mute = true,
+  on_use = function(self, event, target, player, data)
     local room = player.room
+    player:broadcastSkillInvoke(duntu.name, 1)
     if player.general == "pang__xiahoudun" then
       player.general = "pang__exxiahoudun"
       room:broadcastProperty(player, "general")
