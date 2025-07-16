@@ -36,4 +36,25 @@ Fk:loadTranslationTable{
 ["~pang__wild_dog"] = "虓虎失落尽，日暮无归途。"
 }
 
+local wither = General:new(extension, "pang__wither", "god", 4, 4, General.Male)
+wither:addSkill("pang_qingshen")
+wither:addRelatedSkill("guan_fushi")
+wither:addRelatedSkill("guan_dongdao")
+wither:addRelatedSkill("guan_zhanjue")
+wither:addRelatedSkill("guan_lieqiong")
+wither:addRelatedSkill("mobile__hanzhan")
+wither:addRelatedSkill("mobile__zhenfeng")
+wither:addRelatedSkill("zhanlie")
+wither.endnote = "“势太史慈是来干嘛的？”<br>\
+“别尬黑，没有人家手杀的持恒技，你们如何对抗神皇甫嵩大人？”"
+Fk:loadTranslationTable{
+["pang__wither"] = "凋灵",
+["#pang__wither"] = "三仙合体",
+["designer:pang__wither"] = "胖即是胖",
+["cv:pang__wither"] = "官方",
+["illustrator:pang__wither"] = "我的世界&官方",
+
+["~pang__wither"] = ""
+}
+
 return extension
