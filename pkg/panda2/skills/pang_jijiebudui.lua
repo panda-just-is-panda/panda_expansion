@@ -9,7 +9,7 @@ jijie:addEffect("viewas", {
     pattern = "slash,jink",
     prompt = "#pang_jijiebudui",
     interaction = function(self, player)
-        local names = player.getViewAsCardNames(player, self.name, { "slash", "jink" })
+    local names = player.getViewAsCardNames(player, self.name, { "slash", "jink" })
     if #names > 0 then
       return UI.CardNameBox { choices = names }
     end
@@ -21,6 +21,12 @@ jijie:addEffect("viewas", {
         card.skillName = jijie.name
         card:addSubcards(player:getCardIds("h"))
         return card
+    end,
+    enabled_at_play = function(self, player)
+        return player:usedSkillTimes(jijie.name, Player.HistoryTurn) == 0
+    end,
+    enabled_at_response = function(self, player, response)
+        return player:usedSkillTimes(jijie.name, Player.HistoryTurn) == 0
     end,
     after_use = function(self, player, use)
     player:broadcastSkillInvoke(jijie.name, 1)
