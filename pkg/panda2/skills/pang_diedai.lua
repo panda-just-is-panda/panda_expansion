@@ -115,7 +115,7 @@ diedai:addEffect("filter", {
       table.contains(player:getCardIds("h"), to_select.id)
   end,
   view_as = function(self, player, to_select)
-    local card = Fk:cloneCard("slash", to_select.suit, to_select.number)
+    local card = Fk:cloneCard("thunder__slash", to_select.suit, to_select.number)
     card.skillName = diedai.name
     return card
   end,

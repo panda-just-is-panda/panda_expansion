@@ -32,7 +32,7 @@ jiejin:addEffect(fk.Death, {
     local room = player.room
     local targets = event:getCostData(self).tos
     room:sortByAction(targets)
-    room:useVirtualCard("slash", nil, player, targets, jiejin.name, true)
+    room:useVirtualCard("thunder__slash", nil, player, targets, jiejin.name, true)
   end,
 })
 
