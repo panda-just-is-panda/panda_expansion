@@ -39,6 +39,7 @@ ganglie:addEffect(fk.Damaged, {
         max_num = 1,
         targets = tos,
         skill_name = ganglie.name,
+        prompt = "#dunnu!",
         })
         if #to > 0 then
             for _, p in ipairs(to) do
@@ -48,6 +49,7 @@ ganglie:addEffect(fk.Damaged, {
             max = 10,
             flag = "he",
             skill_name = ganglie.name,
+            prompt = "#dunnu!",
             })
             room:throwCard(cid, ganglie.name, data.from, player)
             end
@@ -59,6 +61,7 @@ ganglie:addEffect(fk.Damaged, {
 Fk:loadTranslationTable{
   ["pang_ganglieex"] = "刚烈",
   [":pang_ganglieex"] = "当你受到1点伤害后，你可以进行一次判定，然后若判定结果为：红色，你摸10张牌；黑色，你弃置一名其他角色至多10张牌。",
+  ["#dunnu!"] = "惇怒！",
 
   ["$pang_ganglieex1"] = "哪个敢动我！",
   ["$pang_ganglieex2"] = "伤我者，十倍奉还！",
