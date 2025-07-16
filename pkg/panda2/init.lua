@@ -24,11 +24,11 @@ artanis:addSkill("pang_jijiebudui")
 artanis:addSkill("pang_zhandourongyao")
 artanis:addRelatedSkill("pang_jiang")
 Fk:loadTranslationTable{
-["pang__ouliege"] = "阿塔尼斯",
-["#pang__ouliege"] = "大主教",
-["designer:pang__ouliege"] = "胖即是胖",
-["cv:pang__ouliege"] = "星际争霸2",
-["illustrator:pang__ouliege"] = "星际争霸2",
+["pang__artanis"] = "阿塔尼斯",
+["#pang__artanis"] = "大主教",
+["designer:pang__artanis"] = "胖即是胖",
+["cv:pang__artanis"] = "星际争霸2",
+["illustrator:pang__artanis"] = "星际争霸2",
 }
 
 local meilanni = General:new(extension, "pang__meilanni", "shu", 4, 4, General.Female)
