@@ -7,7 +7,7 @@ cuiyu:addEffect(fk.DrawNCards, {
   anim_type = "drawcard",
   on_use = function(self, event, target, player, data)
     player.room:addPlayerMark(player, "@@cuiyu")
-    data.n = data.n + 4
+    data.n = data.n + 2
   end,
 })
 
@@ -70,7 +70,7 @@ cuiyu:addEffect(fk.TurnEnd, {
 })
 
 Fk:loadTranslationTable {["pang_cuiyu"] = "萃喻",
-[":pang_cuiyu"] = "摸牌阶段，你可以多摸四张牌；若如此做，当你使用本回合获得的牌时，你不能再使用牌。",
+[":pang_cuiyu"] = "摸牌阶段，你可以多摸两张牌；若如此做，当你使用本回合获得的牌时，你不能再使用牌。",
 ["@@cuiyu"] = "萃喻",
 ["@@cuiyu-inhand-turn"] = "萃喻",
 }
