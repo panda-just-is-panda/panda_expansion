@@ -9,7 +9,7 @@ can_refresh = function(self, event, target, player, data)
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
-    room:handleAddLoseSkills(player, "ai_ganglie", nil, true, false)
+    room:handleAddLoseSkills(player, "pang_aiganglie", nil, true, false)
   end,
 })
 
@@ -79,7 +79,7 @@ duntu:addEffect(fk.EnterDying, {
 
 Fk:loadTranslationTable{
   ["pang_duntu"] = "惇途",
-  [":pang_aiganglie"] = "游戏开始时，你获得“唉刚烈”；<br>\
+  [":pang_duntu"] = "游戏开始时，你获得“唉刚烈”；<br>\
   当你使用一张牌后，本回合你获得“天妒”；<br>\
   当你杀死角色或进入濒死状态时，你界限突破！",
 }
