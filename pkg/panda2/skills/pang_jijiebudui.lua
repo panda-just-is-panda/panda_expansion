@@ -53,9 +53,23 @@ jijie:addEffect(fk.DamageInflicted, {
     end,
 })
 
+jijie:addEffect(fk.CardEffectCancelledOut, {
+  mute = true,
+  anim_type = "negative",
+  can_refresh = function(self, event, target, player, data)
+    return target == player and player:hasSkill(mengjin.name) and #player:getCardIds("h") > 0 and data.card and table.contains(data.card.skillNames, jijie.name)
+    or target == player and player:hasSkill(mengjin.name) and #player:getCardIds("h") > 0 and player:getMark("jijieing-turn") > 0
+  end,
+  on_refresh = function(self, event, target, player, data)
+        player:broadcastSkillInvoke(jijie.name, 2)
+        player.room:setPlayerMark(player, "jijieing-turn", 0)
+        player.room:throwCard(player:getCardIds("h"), jijie.name, player, player)
+    end,
+})
+
 Fk:loadTranslationTable{
   ["pang_jijiebudui"] = "集结部队",
-  [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌作为【杀】或【闪】使用或打出，然后你将手牌摸至体力上限；若如此做，你本回合下次受到伤害时弃置所有手牌。",
+  [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌作为【杀】或【闪】使用或打出，然后你将手牌摸至体力上限；若如此做，你本回合下次被其他角色抵消牌或受到伤害时弃置所有手牌。",
 
   ["#pang_jijiebudui"] = "集结部队：将所有手牌作为【杀】或【闪】使用或打出",
 
