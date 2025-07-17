@@ -95,7 +95,7 @@ jijie:addEffect(fk.AfterCardsMove, {
 
 Fk:loadTranslationTable{
   ["pang_jijiebudui"] = "集结部队",
-  [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌作为【杀】或【闪】使用或打出；若如此做，你可以将手牌摸至体力上限，然后你本回合下次不因使用失去手牌或受到伤害时弃置所有手牌。",
+  [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌当【杀】或【闪】使用或打出；若如此做，你可以将手牌摸至体力上限，然后你本回合下次不因使用失去手牌或受到伤害时弃置所有手牌。",
   ["draw_tomax"] = "将手牌摸至体力上限",
   ["#pang_jijiebudui"] = "集结部队：将所有手牌作为【杀】或【闪】使用或打出",
 
