@@ -57,8 +57,8 @@ jijie:addEffect(fk.CardEffectCancelledOut, {
   mute = true,
   anim_type = "negative",
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(mengjin.name) and #player:getCardIds("h") > 0 and data.card and table.contains(data.card.skillNames, jijie.name)
-    or target == player and player:hasSkill(mengjin.name) and #player:getCardIds("h") > 0 and player:getMark("jijieing-turn") > 0
+    return target == player and player:hasSkill(jijie.name) and #player:getCardIds("h") > 0 and data.card and table.contains(data.card.skillNames, jijie.name)
+    or target == player and player:hasSkill(jijie.name) and #player:getCardIds("h") > 0 and player:getMark("jijieing-turn") > 0
   end,
   on_refresh = function(self, event, target, player, data)
         player:broadcastSkillInvoke(jijie.name, 2)
