@@ -33,7 +33,7 @@ Fk:loadTranslationTable{
 ["~pang__artanis"] = "战局对我们的战士太不利了。",
 }
 
-local mengsk = General:new(extension, "pang__mengsk", "mengsk", 4)
+local mengsk = General:new(extension, "pang__mengsk", "shu", 4)
 mengsk:addSkill("pang_tiewantongzhi")
 mengsk:addSkill("pang_zhaozhaotailun")
 mengsk.endnote = "“你们这群家伙别老是把声优和角色关联到一起啊！”"

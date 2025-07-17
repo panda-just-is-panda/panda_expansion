@@ -5,7 +5,7 @@ local zhaohan = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_zhaozhaotailun"] = "昭昭泰伦",
-  [":zpang_zhaozhaotailun"] = "主公技，锁定技，游戏开始后的前X个准备阶段，你加1点体力上限并回复1点体力；泰伦势力角色死亡时，你减2点体力上限（X为场上泰伦势力角色数）。",
+  [":pang_zhaozhaotailun"] = "主公技，锁定技，游戏开始后的前X个准备阶段，你加1点体力上限并回复1点体力；泰伦势力角色死亡时，你减2点体力上限（X为场上泰伦势力角色数）。",
 
   ["$pang_zhaozhaotailun1"] = "天道昭昭，再兴如光武亦可期。",
   ["$pang_zhaozhaotailun2"] = "汉祚将终，我又岂能无憾。",
