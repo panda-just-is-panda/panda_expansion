@@ -44,32 +44,51 @@ jijie:addEffect(fk.DamageInflicted, {
     mute = true,
     anim_type = "negative",
     can_refresh = function (self, event, target, player, data)
-        return player:hasSkill(jijie.name) and player == target and #player:getCardIds("h") > 0 and player:getMark("jijieing-turn") > 0
+        return player:hasSkill(jijie.name) and player == target and player:getMark("jijieing-turn") > 0
     end,
     on_refresh = function (self, event, target, player, data)
         player:broadcastSkillInvoke(jijie.name, 2)
         player.room:setPlayerMark(player, "jijieing-turn", 0)
-        player.room:throwCard(player:getCardIds("h"), jijie.name, player, player)
+        if #player:getCardIds("h") > 0 then
+          player.room:throwCard(player:getCardIds("h"), jijie.name, player, player)
+        end
     end,
 })
 
-jijie:addEffect(fk.CardEffectCancelledOut, {
+jijie:addEffect(fk.AfterCardsMove, {
   mute = true,
   anim_type = "negative",
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(jijie.name) and #player:getCardIds("h") > 0 and data.card and table.contains(data.card.skillNames, jijie.name)
-    or target == player and player:hasSkill(jijie.name) and #player:getCardIds("h") > 0 and player:getMark("jijieing-turn") > 0
+    local yes = false
+    if player:hasSkill(jijie.name) and player:getMark("jijieing-turn") > 0 then
+      for _, move in ipairs(data) do
+        if move.from == player and
+          not table.contains({fk.ReasonUse}, move.moveReason) then
+          for _, info in ipairs(move.moveInfo) do
+            if info.fromArea == Card.PlayerHand then
+                yes = true
+              break
+            end
+          end
+        end
+      end
+    end
+    if yes then
+      return true
+    end
   end,
   on_refresh = function(self, event, target, player, data)
         player:broadcastSkillInvoke(jijie.name, 2)
         player.room:setPlayerMark(player, "jijieing-turn", 0)
-        player.room:throwCard(player:getCardIds("h"), jijie.name, player, player)
+        if #player:getCardIds("h") > 0 then
+          player.room:throwCard(player:getCardIds("h"), jijie.name, player, player)
+        end
     end,
 })
 
 Fk:loadTranslationTable{
   ["pang_jijiebudui"] = "集结部队",
-  [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌作为【杀】或【闪】使用或打出，然后你将手牌摸至体力上限；若如此做，你本回合下次被其他角色抵消牌或受到伤害时弃置所有手牌。",
+  [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌作为【杀】或【闪】使用或打出，然后你将手牌摸至体力上限；若如此做，你本回合下次不因使用失去手牌或受到伤害时弃置所有手牌。",
 
   ["#pang_jijiebudui"] = "集结部队：将所有手牌作为【杀】或【闪】使用或打出",
 
