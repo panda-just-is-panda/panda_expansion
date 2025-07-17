@@ -6,7 +6,7 @@ local diedai = fk.CreateSkill {
 diedai:addEffect(fk.GameStart, {
   mute = true,
   can_trigger = function (self, event, target, player, data)
-    return player:hasSkill(diedai.name)
+    return player:hasSkill(diedai.name) and player:getMark("@dianchi") > 1
   end,
   on_cost = Util.TrueFunc,
   on_use = function (self, event, target, player, data)
@@ -52,7 +52,7 @@ diedai:addEffect(fk.Damage, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     room:addPlayerMark(player, "@dianchi", 2)
-    if player:getMark("@dianchi") == 10 or player:getMark("@dianchi") == 20 or player:getMark("@dianchi") == 30 then
+    if player:getMark("@dianchi") == 6 or player:getMark("@dianchi") == 12 or player:getMark("@dianchi") == 18 then
       local choices = {}
     if not player:hasSkill("pang_jiejin") then
       table.insert(choices, 1, "jiejin")
@@ -123,7 +123,7 @@ diedai:addEffect("filter", {
 })
 
 Fk:loadTranslationTable {["pang_diedai"] = "迭代",
-[":pang_diedai"] = "使命技，你的普通【杀】均视为雷【杀】；游戏开始时，或场上所有角色每造成共计5点雷电伤害后，你获得“质速”、“荷导”和“阶进”中的一个技能。<br>\
+[":pang_diedai"] = "使命技，你的普通【杀】均视为雷【杀】；场上所有角色每造成共计3点雷电伤害后，你获得“质速”、“荷导”和“阶进”中的一个技能。<br>\
   　成功：你因此获得三个技能后，你获得“升华”。<br>\
   　失败：你受到共计5点伤害后，你减1点体力上限。",
 ["zhisu"] = "获得“质速”",
