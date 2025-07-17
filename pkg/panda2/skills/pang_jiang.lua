@@ -5,6 +5,9 @@ local jiang = fk.CreateSkill {
 Fk:loadTranslationTable{
   ["pang_jiang"] = "激昂",
   [":pang_jiang"] = "当你使用【决斗】或红色【杀】指定目标后，或成为【决斗】或红色【杀】的目标后，你可以摸一张牌。",
+
+  ["$pang_jiang1"] = "艾尔之光照耀着我们。",
+  ["$pang_jiang2"] = "为了艾尔之光！",
 }
 
 jiang:addEffect(fk.TargetSpecified, {

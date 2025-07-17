@@ -29,6 +29,8 @@ Fk:loadTranslationTable{
 ["designer:pang__artanis"] = "胖即是胖",
 ["cv:pang__artanis"] = "星际争霸2",
 ["illustrator:pang__artanis"] = "星际争霸2",
+
+["~pang__artanis"] = "战局对我们的战士太不利了。",
 }
 
 local meilanni = General:new(extension, "pang__meilanni", "shu", 4, 4, General.Female)
