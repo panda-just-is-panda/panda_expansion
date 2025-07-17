@@ -29,13 +29,20 @@ jijie:addEffect("viewas", {
         return player:usedSkillTimes(jijie.name, Player.HistoryTurn) == 0 and not player:isKongcheng()
     end,
     after_use = function(self, player, use)
+    local choices = {"draw_tomax", "Cancel"}
     player:broadcastSkillInvoke(jijie.name, 1)
-    player.room:addPlayerMark(player, "jijieing-turn", 1)
-    if not player.dead and use.card then
-    local num = player.maxHp - #player:getCardIds("h")
-    if num > 0 then
-        player:drawCards(num, jijie.name)
-    end
+    local choice = player.room:askToChoice(player, {
+      choices = choices,
+      skill_name = jijie.name,
+    })
+    if choice ~= "Cancel" then
+      player.room:addPlayerMark(player, "jijieing-turn", 1)
+      if not player.dead and use.card then
+        local num = player.maxHp - #player:getCardIds("h")
+        if num > 0 then
+          player:drawCards(num, jijie.name)
+        end
+      end
     end
   end,
 })
@@ -62,8 +69,7 @@ jijie:addEffect(fk.AfterCardsMove, {
     local yes = false
     if player:hasSkill(jijie.name) and player:getMark("jijieing-turn") > 0 then
       for _, move in ipairs(data) do
-        if move.from == player and
-          not table.contains({fk.ReasonUse}, move.moveReason) then
+        if move.from == player then
           for _, info in ipairs(move.moveInfo) do
             if info.fromArea == Card.PlayerHand then
                 yes = true
@@ -88,7 +94,8 @@ jijie:addEffect(fk.AfterCardsMove, {
 
 Fk:loadTranslationTable{
   ["pang_jijiebudui"] = "集结部队",
-  [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌作为【杀】或【闪】使用或打出，然后你将手牌摸至体力上限；若如此做，你本回合下次不因使用失去手牌或受到伤害时弃置所有手牌。",
+  [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌作为【杀】或【闪】使用或打出；若如此做，你可以将手牌摸至体力上限，然后你本回合下次失去手牌或受到伤害时弃置所有手牌。",
+  ["draw_tomax"] = "将手牌摸至体力上限",
 
   ["#pang_jijiebudui"] = "集结部队：将所有手牌作为【杀】或【闪】使用或打出",
 
