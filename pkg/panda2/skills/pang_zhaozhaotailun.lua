@@ -15,7 +15,7 @@ zhaohan:addEffect(fk.EventPhaseStart, {
   mute = true,
   can_trigger = function(self, event, target, player, data)
     local num = 0
-    for _, p in ipairs(room:getAlivePlayers()) do
+    for _, p in ipairs(player.room:getAlivePlayers()) do
             if p.kingdom == "shu" then
                 num = num + 1
             end
