@@ -12,7 +12,6 @@ Fk:loadTranslationTable{
 }
 
 zhaohan:addEffect(fk.EventPhaseStart, {
-  mute = true,
   can_trigger = function(self, event, target, player, data)
     local num = 0
     for _, p in ipairs(player.room:getAlivePlayers()) do
@@ -29,7 +28,6 @@ zhaohan:addEffect(fk.EventPhaseStart, {
   on_use = function(self, event, target, player, data)
     local skillName = zhaohan.name
     local room = player.room
-      player:broadcastSkillInvoke(skillName, 1)
       room:notifySkillInvoked(player, skillName, "support")
       room:changeMaxHp(player, 1)
       room:recover{
