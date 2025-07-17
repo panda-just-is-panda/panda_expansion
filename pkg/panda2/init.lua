@@ -33,6 +33,21 @@ Fk:loadTranslationTable{
 ["~pang__artanis"] = "战局对我们的战士太不利了。",
 }
 
+local mengsk = General:new(extension, "pang__mengsk", "mengsk", 4)
+mengsk:addSkill("pang_tiewantongzhi")
+mengsk:addSkill("pang_zhaozhaotailun")
+mengsk.endnote = "“你们这群家伙别老是把声优和角色关联到一起啊！”"
+Fk:loadTranslationTable{
+["pang__mengsk"] = "蒙斯克",
+["#pang__mengsk"] = "泰伦帝皇",
+["designer:pang__mengsk"] = "胖即是胖",
+["cv:pang__mengsk"] = "星际争霸2",
+["illustrator:pang__artanis"] = "星际争霸2",
+
+["~pang__mengsk"] = "",
+}
+mengsk.hidden = true
+
 local meilanni = General:new(extension, "pang__meilanni", "shu", 4, 4, General.Female)
 meilanni:addSkill("pang_qiaoshou")
 meilanni:addSkill("pang_chengxi")
