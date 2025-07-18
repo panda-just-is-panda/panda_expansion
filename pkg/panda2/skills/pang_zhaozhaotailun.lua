@@ -35,6 +35,7 @@ zhaohan:addEffect(fk.EventPhaseStart, {
             end
     end
       room:notifySkillInvoked(player, skillName, "support")
+      player:drawCards(num)
       if player:usedSkillTimes(zhaohan.name, Player.HistoryGame) < num then
         room:changeMaxHp(player, 1)
         room:recover{
