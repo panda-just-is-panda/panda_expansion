@@ -19,11 +19,6 @@ zhaohan:addEffect(fk.EventPhaseStart, {
                 num = num + 1
             end
         end
-    for _, p in ipairs(player.room.players) do
-            if p.kingdom == "shu" and p.dead then
-                num = num + 1
-            end
-        end
     return
       target == player and
       player:hasSkill(zhaohan.name) and

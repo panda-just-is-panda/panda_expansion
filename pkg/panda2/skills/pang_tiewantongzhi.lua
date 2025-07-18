@@ -172,6 +172,7 @@ Fk:loadTranslationTable{["pang_tiewantongzhi"] = "铁腕统治",
   ["tiewan_attack2"] = "你可以视为对 %dest 使用一张无中生有或过河拆桥",
   ["tiewan_defense1"] = "你可以视为使用一张无中生有或过河拆桥",
   ["tiewan_defense2"] = "你可以视为对自己使用一张无中生有或过河拆桥",
+  ["#tiewan_chai"] = "无需对敌人仁慈",
 }
 
 return tiewan

@@ -46,7 +46,7 @@ Fk:loadTranslationTable{
 
 ["~pang__mengsk"] = "",
 }
-mengsk.hidden = true
+
 
 local meilanni = General:new(extension, "pang__meilanni", "shu", 4, 4, General.Female)
 meilanni:addSkill("pang_qiaoshou")
