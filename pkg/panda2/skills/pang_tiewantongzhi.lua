@@ -165,7 +165,7 @@ tiewan:addEffect(fk.Damaged, {
 })
 
 Fk:loadTranslationTable{["pang_tiewantongzhi"] = "铁腕统治",
-  [":pang_tiewantongzhi"] = "当你造成或受到伤害后，你可以视为使用一张【无中生有】或【过河拆桥】；若你本回合发动过此技能，改为你对受到伤害的角色使用之。",
+  [":pang_tiewantongzhi"] = "当你造成或受到伤害后，你可以视为使用一张【无中生有】或【过河拆桥】；若你本回合发动过此技能，此牌的目标角色改为受到伤害的角色。",
   ["wuzhongshengyou"] = "无中生有",
   ["guohechaiqiao"] = "过河拆桥",
   ["tiewan_attack1"] = "你可以视为使用一张无中生有或过河拆桥",
