@@ -12,7 +12,7 @@ tiewan:addEffect(fk.Damage, {
     local room = player.room
     local choices = {"wuzhongshengyou", "Cancel"}
     if player:usedSkillTimes(tiewan.name, Player.HistoryTurn) > 0 then
-      if player:canUseTo(Fk:cloneCard("dismantlement"), data.to) then
+      if player:canUseTo(Fk:cloneCard("dismantlement"), data.to) or player == data.to and not player:isAllNude() then
         table.insert(choices, 2, "guohechaiqiao")
       end
       local choice = room:askToChoice(player, {
