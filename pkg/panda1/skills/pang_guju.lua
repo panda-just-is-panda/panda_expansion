@@ -77,14 +77,13 @@ guju:addEffect("targetmod", {
 })
 
 guju:addEffect(fk.CardUsing, {
-  prompt = "qiangming_trigger",
   anim_type = "offensive",
-  can_trigger = function(self, event, target, player, data)
+  can_refresh = function(self, event, target, player, data)
     return target == player and
     (data.card.trueName == "slash" or data.card:isCommonTrick()) and 
     player:getMark("guju_qiangming-turn") > 0
   end,
-  on_use = function(self, event, target, player, data)
+  on_refresh = function(self, event, target, player, data)
     local room = player.room
     data.disresponsiveList = table.simpleClone(room.players)
   end,
@@ -92,13 +91,12 @@ guju:addEffect(fk.CardUsing, {
 
 
 Fk:loadTranslationTable {["pang_guju"] = "骨狙",
-[":pang_guju"] = "出牌阶段开始时，你可以失去1点体力或弃置一张牌，然后你依次选择两项：本回合使用牌无距离限制；本回合使用牌时可令此牌不能被响应；摸一张牌。",
+[":pang_guju"] = "出牌阶段开始时，你可以失去1点体力或弃置一张牌，然后你依次选择两项：本回合使用牌无距离限制；本回合使用牌不能被响应；摸一张牌。",
 ["#pang_guju"] = "你可以发动“骨狙”",
 ["guju_beng"] = "失去体力",
 ["guju_qizhi"] = "弃牌",
 ["guju_qiangming"] = "使用牌不能被响应",
 ["guju_juli"] = "使用牌无距离限制",
 ["draw1"] = "摸一张牌",
-["qiangming_trigger"] = "你可以令此牌不能被响应",
 }
 return guju  --不要忘记返回做好的技能对象哦
