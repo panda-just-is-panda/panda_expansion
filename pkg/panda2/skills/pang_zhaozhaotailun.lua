@@ -5,7 +5,7 @@ local zhaohan = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_zhaozhaotailun"] = "昭昭泰伦",
-  [":pang_zhaozhaotailun"] = "主公技，锁定技，游戏开始后的前X个准备阶段，你加1点体力上限并回复1点体力；蜀势力角色死亡时，你减2点体力上限（X为蜀势力角色数）。",
+  [":pang_zhaozhaotailun"] = "主公技，锁定技，游戏开始后的前X个准备阶段，你加1点体力上限并回复1点体力；之后的X个准备阶段，你减2点体力上限（X为场上蜀势力角色数）。",
 
   ["$pang_zhaozhaotailun1"] = "",
   ["$pang_zhaozhaotailun2"] = "",
@@ -23,30 +23,31 @@ zhaohan:addEffect(fk.EventPhaseStart, {
       target == player and
       player:hasSkill(zhaohan.name) and
       player.phase == Player.Start and
-      player:usedSkillTimes(zhaohan.name, Player.HistoryGame) < num
+      player:usedSkillTimes(zhaohan.name, Player.HistoryGame) < num + num
   end,
   on_use = function(self, event, target, player, data)
     local skillName = zhaohan.name
     local room = player.room
+    local num = 0
+    for _, p in ipairs(player.room:getAlivePlayers()) do
+            if p.kingdom == "shu" then
+                num = num + 1
+            end
+    end
       room:notifySkillInvoked(player, skillName, "support")
-      room:changeMaxHp(player, 1)
-      room:recover{
-        who = player,
-        num = 1,
-        recoverBy = player,
-        skillName = skillName,
-      }
+      if player:usedSkillTimes(zhaohan.name, Player.HistoryGame) < num then
+        room:changeMaxHp(player, 1)
+        room:recover{
+          who = player,
+          num = 1,
+          recoverBy = player,
+          skillName = skillName,
+        }
+      else
+        player.room:changeMaxHp(player, -2)
+      end
   end,
 })
 
-zhaohan:addEffect(fk.Death, {
-    anim_type = "drawcard",
-  can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(zhaohan.name) and target.kingdom == "shu"
-  end,
-  on_refresh = function(self, event, target, player, data)
-    player.room:changeMaxHp(player, -2)
-  end,
-})
 
 return zhaohan
