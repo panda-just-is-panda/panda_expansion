@@ -45,20 +45,21 @@ tiewan:addEffect(fk.Damage, {
     on_use = function(self, event, target, player, data)
       local room = player.room
       local choice = event:getCostData(self).choice
-      if player:usedSkillTimes(tiewan.name, Player.HistoryTurn) > 0 then
+      if player:usedSkillTimes(tiewan.name, Player.HistoryTurn) > 1 then
         local target = data.to
         if choice == "wuzhongshengyou" then
-          room:useVirtualCard("ex_nihilo", nil, player, target, tiewan.name, true)
           player:broadcastSkillInvoke(tiewan.name, 3)
+          room:useVirtualCard("ex_nihilo", nil, player, target, tiewan.name, true)
         elseif choice == "guohechaiqiao" then
-          room:useVirtualCard("dismantlement", nil, player, target, tiewan.name, true)
           player:broadcastSkillInvoke(tiewan.name, 4)
+          room:useVirtualCard("dismantlement", nil, player, target, tiewan.name, true)
         end
       else
         if choice == "wuzhongshengyou" then
-          room:useVirtualCard("ex_nihilo", nil, player, player, tiewan.name, true)
           player:broadcastSkillInvoke(tiewan.name, 1)
+          room:useVirtualCard("ex_nihilo", nil, player, player, tiewan.name, true)
         elseif choice == "wuzhongshengyou" then
+          player:broadcastSkillInvoke(tiewan.name, 2)
           local targets = table.filter(room:getOtherPlayers(player, false), function (p)
           return player:canUseTo(Fk:cloneCard("dismantlement"), p)
           end)
@@ -75,7 +76,6 @@ tiewan:addEffect(fk.Damage, {
               local targets = tos
               room:sortByAction(targets)
               room:useVirtualCard("dismantlement", nil, player, targets, tiewan.name, true)
-              player:broadcastSkillInvoke(tiewan.name, 2)
             end
           end
         end
@@ -125,20 +125,22 @@ tiewan:addEffect(fk.Damaged, {
     on_use = function(self, event, target, player, data)
       local room = player.room
       local choice = event:getCostData(self).choice
-      if player:usedSkillTimes(tiewan.name, Player.HistoryTurn) > 0 then
+      if player:usedSkillTimes(tiewan.name, Player.HistoryTurn) > 1 then
         local target = player
         if choice == "wuzhongshengyou" then
-          room:useVirtualCard("ex_nihilo", nil, player, target, tiewan.name, true)
           player:broadcastSkillInvoke(tiewan.name, 7)
+          room:useVirtualCard("ex_nihilo", nil, player, target, tiewan.name, true)
         elseif choice == "guohechaiqiao" then
-          room:useVirtualCard("dismantlement", nil, player, target, tiewan.name, true)
           player:broadcastSkillInvoke(tiewan.name, 8)
+          room:useVirtualCard("dismantlement", nil, player, target, tiewan.name, true)
+
         end
       else
         if choice == "wuzhongshengyou" then
-          room:useVirtualCard("ex_nihilo", nil, player, player, tiewan.name, true)
           player:broadcastSkillInvoke(tiewan.name, 5)
+          room:useVirtualCard("ex_nihilo", nil, player, player, tiewan.name, true)
         elseif choice == "wuzhongshengyou" then
+          player:broadcastSkillInvoke(tiewan.name, 6)
           local targets = table.filter(room:getOtherPlayers(player, false), function (p)
           return player:canUseTo(Fk:cloneCard("dismantlement"), p)
           end)
@@ -155,7 +157,6 @@ tiewan:addEffect(fk.Damaged, {
               local targets = tos
               room:sortByAction(targets)
               room:useVirtualCard("dismantlement", nil, player, targets, tiewan.name, true)
-              player:broadcastSkillInvoke(tiewan.name, 6)
             end
           end
         end
