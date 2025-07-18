@@ -5,10 +5,10 @@ local zhaohan = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_zhaozhaotailun"] = "昭昭泰伦",
-  [":pang_zhaozhaotailun"] = "主公技，锁定技，游戏开始后的前X个准备阶段，你加1点体力上限并回复1点体力；泰伦势力角色死亡时，你减2点体力上限（X为场上泰伦势力角色数）。",
+  [":pang_zhaozhaotailun"] = "主公技，锁定技，游戏开始后的前X个准备阶段，你加1点体力上限并回复1点体力；蜀势力角色死亡时，你减2点体力上限（X为蜀势力角色数）。",
 
-  ["$pang_zhaozhaotailun1"] = "天道昭昭，再兴如光武亦可期。",
-  ["$pang_zhaozhaotailun2"] = "汉祚将终，我又岂能无憾。",
+  ["$pang_zhaozhaotailun1"] = "",
+  ["$pang_zhaozhaotailun2"] = "",
 }
 
 zhaohan:addEffect(fk.EventPhaseStart, {
@@ -16,6 +16,11 @@ zhaohan:addEffect(fk.EventPhaseStart, {
     local num = 0
     for _, p in ipairs(player.room:getAlivePlayers()) do
             if p.kingdom == "shu" then
+                num = num + 1
+            end
+        end
+    for _, p in ipairs(player.room.players) do
+            if p.kingdom == "shu" and p.dead then
                 num = num + 1
             end
         end
