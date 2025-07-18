@@ -47,7 +47,7 @@ zhaohan:addEffect(fk.EventPhaseStart, {
 zhaohan:addEffect(fk.Death, {
     anim_type = "drawcard",
   can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(zhaohan.name) and not target.kingdom == "shu"
+    return player:hasSkill(zhaohan.name) and target.kingdom == "shu"
   end,
   on_refresh = function(self, event, target, player, data)
     player.room:changeMaxHp(player, -2)

@@ -58,7 +58,7 @@ tiewan:addEffect(fk.Damage, {
         if choice == "wuzhongshengyou" then
           player:broadcastSkillInvoke(tiewan.name, 1)
           room:useVirtualCard("ex_nihilo", nil, player, player, tiewan.name, true)
-        elseif choice == "wuzhongshengyou" then
+        elseif choice == "guohechaiqiao" then
           player:broadcastSkillInvoke(tiewan.name, 2)
           local targets = table.filter(room:getOtherPlayers(player, false), function (p)
           return player:canUseTo(Fk:cloneCard("dismantlement"), p)
@@ -139,7 +139,7 @@ tiewan:addEffect(fk.Damaged, {
         if choice == "wuzhongshengyou" then
           player:broadcastSkillInvoke(tiewan.name, 5)
           room:useVirtualCard("ex_nihilo", nil, player, player, tiewan.name, true)
-        elseif choice == "wuzhongshengyou" then
+        elseif choice == "guohechaiqiao" then
           player:broadcastSkillInvoke(tiewan.name, 6)
           local targets = table.filter(room:getOtherPlayers(player, false), function (p)
           return player:canUseTo(Fk:cloneCard("dismantlement"), p)
