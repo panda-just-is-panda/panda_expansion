@@ -28,14 +28,13 @@ zhaohan:addEffect(fk.EventPhaseStart, {
   on_use = function(self, event, target, player, data)
     local skillName = zhaohan.name
     local room = player.room
-    local num = 1
+    local num = 2
     for _, p in ipairs(player.room:getAlivePlayers()) do
             if p.kingdom == "shu" then
                 num = num + 1
             end
     end
       room:notifySkillInvoked(player, skillName, "support")
-      player:drawCards(num)
       if player:usedSkillTimes(zhaohan.name, Player.HistoryGame) < num then
         room:changeMaxHp(player, 1)
         room:recover{
