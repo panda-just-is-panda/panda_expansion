@@ -26,7 +26,7 @@ biyi:addEffect(fk.EventPhaseEnd, {
       return p:getMark("biyi_used-turn") > 0
     end)
     if #used_tos == #room:getOtherPlayers(player, false) or #used_tos > #room:getOtherPlayers(player, false) then
-    local tos = room:askToChoosePlayers(player, {
+      local tos = room:askToChoosePlayers(player, {
       min_num = 1,
       max_num = 3,
       targets = room:getOtherPlayers(player, false),
@@ -34,6 +34,19 @@ biyi:addEffect(fk.EventPhaseEnd, {
       prompt = "#biyi1",
       cancelable = true,
     })
+    if #tos > 0 then
+          for _, p in ipairs(tos) do
+            if not p.dead then
+              room:damage{
+              from = player,
+              to = p,
+              damage = 1,
+              skillName = biyi.name,
+              }
+            end
+          end
+        room:addPlayerMark(player, MarkEnum.AddMaxCards, 1)
+    end
     else
       local tos = room:askToChoosePlayers(player, {
       min_num = 1,
@@ -54,11 +67,7 @@ biyi:addEffect(fk.EventPhaseEnd, {
               }
             end
           end
-      if #used_tos == #room:getOtherPlayers(player, false) or #used_tos > #room:getOtherPlayers(player, false) then
-        room:addPlayerMark(player, MarkEnum.AddMaxCards, 1)
-      else
         room:addPlayerMark(player, MarkEnum.MinusMaxCards, 3)
-      end
     end
   end
   end,
