@@ -48,7 +48,7 @@ biyi:addEffect(fk.EventPhaseEnd, {
         end
     end
     else
-        room:addPlayerMark(data.to, "biyu_plus-turn", 1)
+        room:addPlayerMark(player, "biyu_plus-turn", 1)
     end
     end,
 })
