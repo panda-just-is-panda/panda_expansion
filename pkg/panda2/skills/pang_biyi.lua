@@ -25,8 +25,7 @@ biyi:addEffect(fk.EventPhaseEnd, {
     local used_tos = table.filter(room:getOtherPlayers(player, false), function (p)
       return p:getMark("biyi_used-turn") > 0
     end)
-    if #used_tos == #room:getOtherPlayers(player, false) or #used_tos > #room:getOtherPlayers(player, false) then
-        local tos = room:askToChoosePlayers(player, {
+    local tos = room:askToChoosePlayers(player, {
       min_num = 1,
       max_num = 3,
       targets = used_tos,
@@ -34,28 +33,29 @@ biyi:addEffect(fk.EventPhaseEnd, {
       prompt = "#biyi",
       cancelable = true,
     })
-        if #tos > 0 then
-        room:addPlayerMark(player, MarkEnum.MinusMaxCards, 3)
-        for _, p in ipairs(tos) do
-      if not p.dead then
-        room:damage{
-          from = player,
-          to = p,
-          damage = 1,
-          skillName = biyi.name,
-        }
-      end
-        end
-    end
-    else
+    if #tos > 0 then
+          for _, p in ipairs(tos) do
+            if not p.dead then
+              room:damage{
+              from = player,
+              to = p,
+              damage = 1,
+              skillName = biyi.name,
+              }
+            end
+          end
+      if #used_tos == #room:getOtherPlayers(player, false) or #used_tos > #room:getOtherPlayers(player, false) then
         room:addPlayerMark(player, MarkEnum.AddMaxCards, 1)
+      else
+        room:addPlayerMark(player, MarkEnum.MinusMaxCards, 3)
+      end
     end
-    end,
+  end,
 })
 
 Fk:loadTranslationTable {["pang_biyi"] = "笔意",
-[":pang_biyi"] = "出牌阶段结束时，若你此阶段使用牌指定过所有其他角色为目标，你可以对至多三名其他角色各造成1点伤害并令手牌上限-3，否则你的手牌上限+1。",
-["#biyi"] = "你可以对至多三名其他角色各造成1点伤害并令手牌上限-3",
+[":pang_biyi"] = "出牌阶段结束时，你可以对至多三名其他角色各造成1点伤害，然后若你此阶段使用牌指定过所有其他角色为目标，你的手牌上限+1，否则手牌上限-3。",
+["#biyi"] = "你可以对至多三名其他角色各造成1点伤害",
 }
 
 return biyi
