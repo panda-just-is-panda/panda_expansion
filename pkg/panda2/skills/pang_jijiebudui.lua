@@ -77,7 +77,7 @@ jijie:addEffect(fk.AfterCardsMove, {
         if #player:getCardIds("h") > 0 then
           local card = room:askToDiscard(player, {
           skill_name = jijie.name,
-          prompt = "#jijie_discard",
+          prompt = "#jijie_discard:::" .. X,
           cancelable = false,
           min_num = player.hp,
           max_num = player.hp,
@@ -92,7 +92,7 @@ Fk:loadTranslationTable{
   [":pang_jijiebudui"] = "每回合限一次，你可以将所有手牌当【杀】或【闪】使用或打出；若如此做，你可以将手牌摸至体力上限，然后你本回合下次失去手牌时弃置X张手牌（X为你的体力值）。",
   ["draw_tomax"] = "将手牌摸至体力上限",
   ["#pang_jijiebudui"] = "集结部队：将所有手牌作为【杀】或【闪】使用或打出",
-  ["#jijie_discard"] = "弃置X张手牌",
+  ["#jijie_discard"] = "弃置%arg张手牌",
 
   ["$pang_jijiebudui1"] = "敌人扑过来了，圣堂武士，亮出光刃！",
   ["$pang_jijiebudui2"] = "我得重新集结部队。",
