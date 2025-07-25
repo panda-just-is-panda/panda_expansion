@@ -164,6 +164,26 @@ tiewan:addEffect(fk.Damaged, {
      end
 })
 
+tiewan:addEffect(fk.CardUsing, {
+mute = true,
+can_refresh = function(self, event, target, player, data)
+  return target == player and player:hasSkill(tiewan.name) and data.card.trueName == "archery_attack"
+end,
+on_refresh = function(self, event, target, player, data)
+  player:broadcastSkillInvoke(tiewan.name, 9)
+end,
+})
+
+tiewan:addEffect(fk.CardUsing, {
+mute = true,
+can_refresh = function(self, event, target, player, data)
+  return target == player and player:hasSkill(tiewan.name) and data.card.trueName == "savage_assault"
+end,
+on_refresh = function(self, event, target, player, data)
+  player:broadcastSkillInvoke(tiewan.name, 10)
+end,
+})
+
 Fk:loadTranslationTable{["pang_tiewantongzhi"] = "铁腕统治",
   [":pang_tiewantongzhi"] = "当你造成或受到伤害后，你可以视为使用一张【无中生有】或【过河拆桥】；若你本回合发动过此技能，此牌的目标角色改为受到伤害的角色。",
   ["wuzhongshengyou"] = "无中生有",
