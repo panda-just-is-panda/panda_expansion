@@ -42,7 +42,7 @@ eying:addEffect("active", {
           cancelable = false,
           min_num = 1,
           max_num = 1,
-          include_equip = false,
+          include_equip = true,
         })
         end
         end
@@ -53,7 +53,7 @@ end
 
 
 Fk:loadTranslationTable {["pang_eying"] = "厄影",
-[":pang_eying"] = "出牌阶段限一次，你可以令至多两名有手牌且没有护甲的角色各获得1点护甲并选择一项：弃置一张手牌；使用一张【杀】。",
+[":pang_eying"] = "出牌阶段限一次，你可以令至多两名有牌且没有护甲的角色各获得1点护甲并选择一项：弃置一张牌；使用一张【杀】。",
 ["#eying_choose"] = "使用一张【杀】，或点取消然后弃置一张牌",
 ["#eying"] = "令至多两名角色获得护甲或用杀",
 ["#eying_discard"] = "弃置一张牌",
