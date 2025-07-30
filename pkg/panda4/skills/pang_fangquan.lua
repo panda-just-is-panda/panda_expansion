@@ -5,7 +5,7 @@ local fangquan = fk.CreateSkill {
 Fk:loadTranslationTable{
   ["pang_fangquan"] = "放权",
   [":pang_fangquan"] = "回合开始时，你可以将一张牌作为【乐不思蜀】对自己使用，然后此回合结束时，你可以令一名其他角色执行一个额外的回合。",
-  ["#fangquan-le"] = "你可以将一张牌作为【乐不思蜀】对自己使用",
+  ["#fangquan-le"] = "将一张牌作为【乐不思蜀】对自己使用",
   ["#fangquan-choose"] = "放权：你可以令一名其他角色获得一个额外回合",
 
   ["$pang_fangquan1"] = "唉，这可如何是好啊！",
@@ -35,7 +35,7 @@ fangquan:addEffect(fk.TurnStart, {
       include_equip = true,
       skill_name = fangquan.name,
       prompt = "#fangquan-le",
-      cancelable = true,
+      cancelable = false,
     })
         if #to_select > 0 then
             local card2 = Fk:cloneCard("indulgence")
