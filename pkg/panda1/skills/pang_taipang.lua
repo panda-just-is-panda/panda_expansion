@@ -17,7 +17,7 @@ taipang:addEffect(fk.TargetSpecifying, {
       skill_name = taipang.name,
     })
     if choice == "#pang_taipang1" then
-        local to_draw = player:getHandcardNum() - player:getMaxCards()
+        local to_draw = player:getMaxCards() - player:getHandcardNum()
         if to_draw > 0 then
              player:drawCards(to_draw, taipang.name)
         end
