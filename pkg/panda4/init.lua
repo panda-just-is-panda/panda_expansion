@@ -8,5 +8,16 @@ Fk:loadTranslationTable{
   ["pang"] = "胖"
 }
 
+local liushan = General:new(extension, "pang__liushan", "shu", 3, 3, General.Male)
+liushan:addSkill("pang_xiangle")
+liushan:addSkill("pang_fangquan")
+liushan:addSkill("pang_xunli")
+Fk:loadTranslationTable{
+["pang__liushan"] = "刘禅",
+["#pang__liushan"] = "胖胖的天命主",
+["designer:pang__liushan"] = "胖即是胖",
+["cv:pang__liushan"] = "官方",
+["illustrator:pang__liushan"] = "官方",
+}
 
 return extension
