@@ -57,7 +57,7 @@ anzuo:addEffect(fk.AfterCardsMove, {
         recoverBy = player,
         skillName = anzuo.name
       })
-      player.room:addPlayerMark(target, "anzuo_buff-turn", 1)
+      player.room:addPlayerMark(player, "anzuo_buff-turn", 1)
     end
   end,
 })

@@ -91,11 +91,11 @@ cuanhe:addEffect("viewas", {
         end
     end
     if player:getMark("cuanhe_used-turn") < 3 then
-        return cuanhe.name
+        player:drawCards(2)
     else
         player:drawCards(1)
     end 
-    if not #player:getCardIds("h") < card_preuse_num then
+    if #player:getCardIds("h") > card_preuse_num or #player:getCardIds("h") == card_preuse_num then
         room:invalidateSkill(player, cuanhe.name, "-round")
     end
   end,
