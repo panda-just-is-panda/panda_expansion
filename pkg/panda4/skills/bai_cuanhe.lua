@@ -95,6 +95,8 @@ cuanhe:addEffect("viewas", {
     end
     if player:getMark("cuanhe_used-turn") < 3 then
         return cuanhe.name
+    else
+        room:setPlayerMark(player, "cuanhe_used-turn", 0)
     end 
   end,
   enabled_at_play = function(self, player)
