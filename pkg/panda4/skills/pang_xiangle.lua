@@ -5,7 +5,7 @@ local xiangle = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_xiangle"] = "享乐",
-  [":pang_xiangle"] = "锁定技，当你成为【杀】或锦囊牌的目标后，你令使用者选择：1. 弃置一张基本牌；2. 此【杀】对你无效。",
+  [":pang_xiangle"] = "锁定技，当其他角色使用【杀】或锦囊牌指定你为目标后，除非其弃置一张基本牌，否则此牌对你无效。",
 
   ["#xiangle-discard"] = "享乐：你须弃置一张基本牌，否则此牌对 %src 无效",
 
@@ -13,11 +13,11 @@ Fk:loadTranslationTable{
   ["$pang_xiangle2"] = "我爸爸是刘备！",
 }
 
-xiangle:addEffect(fk.TargetConfirmed, {
+xiangle:addEffect(fk.TargetSpecified, {
   anim_type = "defensive",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(xiangle.name) and data.card.trueName == "slash"
-    or target == player and player:hasSkill(xiangle.name) and data.card.type == Card.TypeTrick
+    return target ~= player and data.to == player and player:hasSkill(xiangle.name) and data.card.trueName == "slash"
+    or target ~= player and data.to == player and player:hasSkill(xiangle.name) and data.card.type == Card.TypeTrick
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
