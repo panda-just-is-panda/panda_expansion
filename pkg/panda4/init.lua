@@ -22,4 +22,15 @@ Fk:loadTranslationTable{
 ["~pang__liushan"] = "别打脸，我投降还不行吗？",
 }
 
+local feishi = General:new(extension, "feishi", "shu", 3, 3, General.Male)
+feishi:addSkill("bai_cuanhe")
+feishi:addSkill("bai_anzuo")
+Fk:loadTranslationTable{
+["feishi"] = "费诗",
+["#feishi"] = "蜀无忌",
+["designer:feishi"] = "食马者",
+
+}
+
+
 return extension
