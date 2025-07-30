@@ -8,8 +8,6 @@ Fk:loadTranslationTable{
   [":bai_anzuo"] = "限定技，出牌阶段，你可令一名角色加1点体力上限，其每回合首次：失去所有手牌后，回复1点体力；回满体力后，减1点体力上限。",
 
   ["#anzuo"] = "你可以令一名角色加1点体力上限",
-  ["#bai_cuanhe2"] = "你可以和一名手牌数相差二的其他角色交换手牌",
-  ["#bai_cuanhe3"] = "你可以和一名手牌数相差三的其他角色交换手牌",
   ["@@anzuo"] = "被按祚"
 
 }
@@ -35,7 +33,7 @@ anzuo:addEffect("active", {
 anzuo:addEffect(fk.AfterCardsMove, {
   anim_type = "control",
   can_refresh = function(self, event, target, player, data)
-    if player:getMark("@@anzuo") < 1 or not player:isKongcheng() then return end
+    if player:getMark("@@anzuo") < 1 or player:getMark("anzuo_buff-turn") > 0 or not player:isKongcheng() then return end
     local ret = false
     for _, move in ipairs(data) do
       if move.from == player then
@@ -59,6 +57,7 @@ anzuo:addEffect(fk.AfterCardsMove, {
         recoverBy = player,
         skillName = anzuo.name
       })
+      player.room:addPlayerMark(target, "anzuo_buff-turn", 1)
     end
   end,
 })
@@ -66,11 +65,13 @@ anzuo:addEffect(fk.AfterCardsMove, {
 anzuo:addEffect(fk.HpRecover, {
   anim_type = "negative",
   can_refresh = function(self, event, target, player, data)
-    return target:getMark("@@anzuo") > 0
+    return target:getMark("@@anzuo") > 0 and player:getMark("anzuo_negative-turn") < 1
   end,
   on_refresh = function(self, event, target, player, data)
     local to = target
+    local room = player.room
     room:changeMaxHp(target, -1)
+    room:addPlayerMark(target, "anzuo_negative-turn", 1)
   end,
 })
 
