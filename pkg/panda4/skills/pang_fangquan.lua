@@ -9,18 +9,18 @@ Fk:loadTranslationTable{
   ["#fangquan-choose"] = "放权：你可以令一名其他角色获得一个额外回合",
 
   ["$pang_fangquan1"] = "唉，这可如何是好啊！",
-  ["pang_fangquan2"] = "哎，你办事儿，我放心~",
+  ["$pang_fangquan2"] = "哎，你办事儿，我放心~",
 }
 
 fangquan:addEffect(fk.TurnStart, {
   anim_type = "support",
   audio_index = 1,
   can_trigger = function(self, event, target, player, data)
-    local card = table.filter(to:getCardIds("he"), function(id)
+    local card = table.filter(player:getCardIds("he"), function(id)
         local card_pick = Fk:getCardById(id)
         return card_pick
         end)
-    if target == player and player:hasSkill(fangquan.name)
+    if player.room.current == player and target == player and player:hasSkill(fangquan.name)
     and not player:hasDelayedTrick("indulgence") 
     and not table.contains(player.sealedSlots, player.JudgeSlot)
     and #card > 0 then

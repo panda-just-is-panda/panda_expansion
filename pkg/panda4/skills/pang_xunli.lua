@@ -8,8 +8,8 @@ Fk:loadTranslationTable{
   [":pang_xunli"] = "主公技，每回合限一次，当一名蜀势力角色弃置任意角色的牌后，其可以交给你一张牌并摸一张牌。",
   ["#xunli-give"] = "你可以交给刘禅一张牌并摸一张牌",
 
-  ["$pang_xunli1"] = "",
-  ["$pang_xunli2"] = "",
+  ["$pang_xunli1"] = "蜀汉有相父在，我可安心。",
+  ["$pang_xunli2"] = "这些事情，你们安排就好。",
 }
 
 xunli:addEffect(fk.AfterCardsMove,{
@@ -50,3 +50,5 @@ xunli:addEffect(fk.AfterCardsMove,{
         user:drawCards(1)
       end,
     })
+
+    return xunli
