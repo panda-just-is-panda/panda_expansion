@@ -65,7 +65,7 @@ anzuo:addEffect(fk.AfterCardsMove, {
 anzuo:addEffect(fk.HpRecover, {
   anim_type = "negative",
   can_refresh = function(self, event, target, player, data)
-    return target:getMark("@@anzuo") > 0 and player:getMark("anzuo_negative-turn") < 1 and not player:isWounded()
+    return target:getMark("@@anzuo") > 0 and target:getMark("anzuo_negative-turn") < 1 and not target:isWounded()
   end,
   on_refresh = function(self, event, target, player, data)
     local to = target
