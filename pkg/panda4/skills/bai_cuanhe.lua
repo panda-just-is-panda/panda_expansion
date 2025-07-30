@@ -23,15 +23,8 @@ cuanhe:addEffect("viewas", {
     return UI.CardNameBox {choices = names, all_names = all_names}
   end,
   view_as = function(self, player, cards)
-    if not self.interaction.data or #cards ~= 1 or player:getMark("cuanhe_used-turn") < 3 then return end
-    local card = Fk:cloneCard(self.interaction.data)
-    card.skillName = cuanhe.name
-    card:addFakeSubcards(cards)
-    return card
-  end,
-  before_use = function (self, player, use)
+    if not self.interaction.data or #cards ~= 1 then return end
     local room = player.room
-    local use_times = 0
     local card_preuse_num = #player:getCardIds("h")
     local valid_targets1 = table.filter(room:getOtherPlayers(player, false), function (p)
       return #player:getCardIds("h") - #p:getCardIds("h") == 1 or #p:getCardIds("h") - #player:getCardIds("h") == 1
@@ -93,7 +86,12 @@ cuanhe:addEffect("viewas", {
     if #player:getCardIds("h") < card_preuse_num then
         room:invalidateSkill(player, cuanhe.name, "-round")
     end
-  end,
+    if player:getMark("cuanhe_used-turn") < 3 then return end
+    local card = Fk:cloneCard(self.interaction.data)
+    card.skillName = cuanhe.name
+    card:addFakeSubcards(cards)
+    return card
+  end,  
   enabled_at_play = function(self, player)
     return true
   end,
