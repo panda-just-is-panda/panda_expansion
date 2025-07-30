@@ -13,11 +13,11 @@ taipang:addEffect(fk.TargetSpecifying, {
     local room = player.room
     data:cancelTarget(player)
     local choices = {}
+    if player:getMark("taipang2-turn") == 0 then
+        table.insert(choices, 1, "#pang_taipang2")
+    end
     if player:getMark("taipang1-turn") == 0 then
         table.insert(choices, 1, "#pang_taipang1")
-    end
-    if player:getMark("taipang2-turn") == 0 then
-        table.insert(choices, 2, "#pang_taipang2")
     end
     local choice = room:askToChoice(player, {
       choices = choices,
