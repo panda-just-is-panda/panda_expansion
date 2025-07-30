@@ -15,7 +15,6 @@ Fk:loadTranslationTable{
 
 cuanhe:addEffect("viewas", {
   pattern = ".|.|.|.|.|basic",
-  prompt = "#bai_cuanhe1",
   interaction = function(self, player)
     local all_names = Fk:getAllCardNames("b")
     local names = player:getViewAsCardNames(cuanhe.name, all_names, nil)
@@ -45,7 +44,7 @@ cuanhe:addEffect("viewas", {
         })
         if #tos > 0 then
             room:addPlayerMark(player, "cuanhe_used-turn", 1)
-            room:swapAllCards(player, tos[1], cuanhe.name)
+            room:swapAllCards(player, tos, cuanhe.name)
             local valid_targets2 = table.filter(room:getOtherPlayers(player, false), function (p)
             return #player:getCardIds("h") - #p:getCardIds("h") == 2 or #p:getCardIds("h") - #player:getCardIds("h") == 2
             end)
@@ -60,7 +59,7 @@ cuanhe:addEffect("viewas", {
                 })
                 if #tos2 > 0 then
                     room:addPlayerMark(player, "cuanhe_used-turn", 1)
-                    room:swapAllCards(player, tos2[1], cuanhe.name)
+                    room:swapAllCards(player, tos2, cuanhe.name)
                     local valid_targets3 = table.filter(room:getOtherPlayers(player, false), function (p)
                     return #player:getCardIds("h") - #p:getCardIds("h") == 3 or #p:getCardIds("h") - #player:getCardIds("h") == 3
                     end)
@@ -75,7 +74,7 @@ cuanhe:addEffect("viewas", {
                         })
                         if #tos3 > 0 then
                             room:addPlayerMark(player, "cuanhe_used-turn", 1)
-                            room:swapAllCards(player, tos3[1], cuanhe.name)
+                            room:swapAllCards(player, tos3, cuanhe.name)
                         else
                             player.room:setPlayerMark(player, "cuanhe_used-turn", 0)
                         end
@@ -93,7 +92,7 @@ cuanhe:addEffect("viewas", {
     else
         player:drawCards(1)
     end 
-    if #player:getCardIds("h") < card_preuse_num then
+    if not #player:getCardIds("h") < card_preuse_num then
         room:invalidateSkill(player, cuanhe.name, "-round")
     end
   end,
