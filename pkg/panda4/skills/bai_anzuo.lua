@@ -35,7 +35,7 @@ anzuo:addEffect("active", {
 anzuo:addEffect(fk.AfterCardsMove, {
   anim_type = "control",
   can_refresh = function(self, event, target, player, data)
-    if not player:getMark("@@anzuo") > 0 or not player:isKongcheng() then return end
+    if not #player:getMark("@@anzuo") > 0 or not player:isKongcheng() then return end
     local ret = false
     for _, move in ipairs(data) do
       if move.from == player then

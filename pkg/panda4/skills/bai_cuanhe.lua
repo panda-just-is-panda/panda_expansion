@@ -95,13 +95,7 @@ cuanhe:addEffect("viewas", {
     end
   end,
   enabled_at_play = function(self, player)
-    local room = player.room
-    local valid_targets = table.filter(room:getOtherPlayers(player, false), function (p)
-      return #player:getCardIds("h") - #p:getCardIds("h") == 1 or #p:getCardIds("h") - #player:getCardIds("h") == 1
-    end)
-    if #valid_targets > 0 then
-        return true
-    end
+    return true
   end,
   enabled_at_response = function(self, player, response)
     return not response
