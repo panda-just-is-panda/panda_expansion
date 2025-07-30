@@ -158,8 +158,9 @@ Fk:loadTranslationTable{
 ["illustrator:pang__steve"] = "我的世界",
 }
 
-local panda = General:new(extension, "pang__panda", "god", 64, 64, General.Male)
-panda:addSkill("pang_touxiang")
+local panda = General:new(extension, "pang__panda", "wu", 4, 64, General.Male)
+panda:addSkill("pang_taipang")
+panda:addSkill("pang_pangnu")
 Fk:loadTranslationTable{
 ["pang__panda"] = "熊猫胖",
 ["#pang__panda"] = "太胖太胖",
