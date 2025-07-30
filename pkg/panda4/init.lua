@@ -32,5 +32,17 @@ Fk:loadTranslationTable{
 
 }
 
+local jiangwei = General:new(extension, "mo_jiangwei", "shu", 4, 4, General.Male)
+jiangwei:addSkill("mo_zhuri")
+Fk:loadTranslationTable{
+["mo_jiangwei"] = "姜维",
+["#mo_jiangwei"] = "尽途天涯",
+["designer:mo_jiangwei"] = "墨客",
+["cv:mo_jiangwei"] = "官方",
+["illustrator:mo_jiangwei"] = "官方",
+
+["~mo_jiangwei"] = "姜维姜维，又将何为？",
+}
+
 
 return extension
