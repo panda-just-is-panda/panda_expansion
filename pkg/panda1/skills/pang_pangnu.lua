@@ -11,12 +11,14 @@ pangnu:addEffect(fk.RoundEnd, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local fire_attack = Fk:cloneCard("fire_attack")
-      local tos = table.filter(room:getOtherPlayers(player, false), function (p)
+      local tos = table.filter(room.alive_players, function (p)
       return player:canUseTo(fire_attack, p) and p:getMark("pangnu_fire-round") > 0
       end)
       local targets = tos
-      room:sortByAction(targets)
-      room:useVirtualCard("fire_attack", nil, player, targets, pangnu.name, true)
+      if #targets > 0 then
+        room:sortByAction(targets)
+        room:useVirtualCard("fire_attack", nil, player, targets, pangnu.name, true)
+      end
     if player:getMark("pangnu_firedealt-round") == 0 then
         room:handleAddLoseSkills(player, "-pang_pangnu", nil, false, true)
     end

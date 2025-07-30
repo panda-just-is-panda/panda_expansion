@@ -6,7 +6,7 @@ local taipang = fk.CreateSkill {
 taipang:addEffect(fk.TargetSpecifying, {
   anim_type = "offensive",
    can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(taipang.name) and data.use.to == player
+    return target == player and player:hasSkill(taipang.name) and table.contains(data.use.tos, player)
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
