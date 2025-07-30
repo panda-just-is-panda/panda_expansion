@@ -27,9 +27,9 @@ feishi:addSkill("bai_cuanhe")
 feishi:addSkill("bai_anzuo")
 Fk:loadTranslationTable{
 ["feishi"] = "费诗",
-["#feishi"] = "蜀无忌",
+["#feishi"] = "率意而言",
 ["designer:feishi"] = "食马者",
-
+["illustrator:pang__liushan"] = "NOVART",
 }
 
 local jiangwei = General:new(extension, "mo_jiangwei", "shu", 4, 4, General.Male)

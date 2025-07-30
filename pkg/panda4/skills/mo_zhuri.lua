@@ -29,7 +29,7 @@ zhuri:addEffect(fk.TargetSpecifying, {
     })
     if #to > 0 then
         local pindian = player:pindian({to[1]}, zhuri.name)
-        if pindian.results[target].winner ~= player then
+        if pindian.results[to[1]].winner ~= player then
             room:addTableMarkIfNeed(player, "@mo_zhuri", data.card.number)
         end
         return true
