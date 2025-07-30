@@ -90,14 +90,12 @@ cuanhe:addEffect("viewas", {
             player.room:setPlayerMark(player, "cuanhe_used-turn", 0)
         end
     end
-    if player:getMark("cuanhe_used-turn") < 3 then
-        player:drawCards(2)
-    else
-        player:drawCards(1)
-    end 
     if #player:getCardIds("h") > card_preuse_num or #player:getCardIds("h") == card_preuse_num then
         room:invalidateSkill(player, cuanhe.name, "-round")
     end
+    if player:getMark("cuanhe_used-turn") < 3 then
+        return cuanhe.name
+    end 
   end,
   enabled_at_play = function(self, player)
     return true
