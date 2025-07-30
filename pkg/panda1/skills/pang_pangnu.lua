@@ -27,7 +27,7 @@ pangnu:addEffect(fk.RoundEnd, {
 
 pangnu:addEffect(fk.Damage, {
   can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(pangnu.name) and target:getMark("pangnu_fire-round") == 0
+    return player:hasSkill(pangnu.name) and target and target:getMark("pangnu_fire-round") == 0
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
