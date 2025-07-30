@@ -43,8 +43,9 @@ cuanhe:addEffect("viewas", {
             cancelable = true,
         })
         if #tos > 0 then
+            local victim1 = {player, tos[1]}
             room:addPlayerMark(player, "cuanhe_used-turn", 1)
-            room:swapAllCards(player, tos, cuanhe.name)
+            room:swapAllCards(player, victim1, cuanhe.name)
             local valid_targets2 = table.filter(room:getOtherPlayers(player, false), function (p)
             return #player:getCardIds("h") - #p:getCardIds("h") == 2 or #p:getCardIds("h") - #player:getCardIds("h") == 2
             end)
@@ -58,8 +59,9 @@ cuanhe:addEffect("viewas", {
                 cancelable = true,
                 })
                 if #tos2 > 0 then
+                    local victim2 = {player, tos2[1]}
                     room:addPlayerMark(player, "cuanhe_used-turn", 1)
-                    room:swapAllCards(player, tos2, cuanhe.name)
+                    room:swapAllCards(player, victim2, cuanhe.name)
                     local valid_targets3 = table.filter(room:getOtherPlayers(player, false), function (p)
                     return #player:getCardIds("h") - #p:getCardIds("h") == 3 or #p:getCardIds("h") - #player:getCardIds("h") == 3
                     end)
@@ -73,8 +75,9 @@ cuanhe:addEffect("viewas", {
                         cancelable = true,
                         })
                         if #tos3 > 0 then
+                            local victim3 = {player, tos3[1]}
                             room:addPlayerMark(player, "cuanhe_used-turn", 1)
-                            room:swapAllCards(player, tos3, cuanhe.name)
+                            room:swapAllCards(player, victim3, cuanhe.name)
                         else
                             player.room:setPlayerMark(player, "cuanhe_used-turn", 0)
                         end
