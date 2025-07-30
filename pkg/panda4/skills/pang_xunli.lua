@@ -52,7 +52,10 @@ xunli:addEffect(fk.AfterCardsMove,{
         end
       end,
       on_use = function (self, event, target, player, data)
-        local user = data.move.proposer
+        local user_collection = table.filter(room:getOtherPlayers(player, false), function (p)
+      return p:getMark("xunli-turn") > 0
+        end)
+        local user = user_collection[1]
         user:drawCards(1)
       end,
     })

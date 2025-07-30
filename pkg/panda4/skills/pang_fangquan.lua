@@ -34,7 +34,6 @@ fangquan:addEffect(fk.TurnStart, {
       max_num = 1,
       include_equip = true,
       skill_name = fangquan.name,
-      pattern = "he",
       prompt = "#fangquan-le",
       cancelable = true,
     })
