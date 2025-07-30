@@ -21,6 +21,7 @@ xunli:addEffect(fk.AfterCardsMove,{
                   if move.proposer and  move.proposer.kingdom == "shu" and move.proposer ~= player and move.moveReason == fk.ReasonDiscard and move.from then
                   for _, info in ipairs(move.moveInfo) do
                     if table.contains({Card.PlayerEquip,Card.PlayerHand},info.fromArea) then
+                        player.room:addPlayerMark(move.proposer, "xunli-turn", 1)
                       return true
                     end
                 end
@@ -31,7 +32,10 @@ xunli:addEffect(fk.AfterCardsMove,{
       end,
       on_cost = function (self, event, target, player, data)
         local room = player.room
-        local user = data.move.proposer
+        local user_collection = table.filter(room:getOtherPlayers(player, false), function (p)
+      return p:getMark("xunli-turn") > 0
+        end)
+        local user = user_collection[1]
         local cards = room:askToCards(user, {
             min_num = 1,
             max_num = 1,
@@ -43,6 +47,8 @@ xunli:addEffect(fk.AfterCardsMove,{
         if #cards > 0 then
             room:obtainCard(player, cards, false, fk.ReasonGive)
             return true
+        else
+            player.room:setPlayerMark(user, "xunli-turn", 0)
         end
       end,
       on_use = function (self, event, target, player, data)

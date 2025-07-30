@@ -18,6 +18,8 @@ Fk:loadTranslationTable{
 ["designer:pang__liushan"] = "胖即是胖",
 ["cv:pang__liushan"] = "官方",
 ["illustrator:pang__liushan"] = "官方",
+
+["~pang__liushan"] = "别打脸，我投降还不行吗？",
 }
 
 return extension
