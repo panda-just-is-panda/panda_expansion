@@ -3,10 +3,10 @@ local zhuri = fk.CreateSkill {
   tags = {},
 }
 
-zhuri:addEffect(fk.CardUsing, {
+zhuri:addEffect(fk.TargetSpecifying, {
   anim_type = "offensive",
    can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(zhuri.name) and
+    return target == player and player:hasSkill(zhuri.name) and data.firstTarget and
       player:usedSkillTimes(zhuri.name, Player.HistoryTurn) < 2 and
       (data.card.type == Card.TypeBasic or data.card:isCommonTrick()) and
       (#data.use.tos > 1 or #data.use.tos == 1 and data.use.tos[1] ~= player)
@@ -38,7 +38,7 @@ zhuri:addEffect(fk.CardUsing, {
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    data.additionalEffect = (data.additionalEffect or 0) + 1
+    data.use.additionalEffect = (data.use.additionalEffect or 0) + 1
   end,
 })
 
