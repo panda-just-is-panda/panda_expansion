@@ -4,7 +4,7 @@ local ciyong = fk.CreateSkill({
 })
 
 ciyong:addEffect("viewas", {
-  pattern = "thunder__slash,jink|0|nosuit",
+  pattern = "thunder__slash,jink",
   prompt = "#ciyong",
   interaction = function(self, player)
     local names = player:getViewAsCardNames(ciyong.name, {"thunder__slash", "jink"})
