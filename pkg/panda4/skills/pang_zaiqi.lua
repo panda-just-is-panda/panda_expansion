@@ -8,7 +8,7 @@ Fk:loadTranslationTable {
 
   ["#zaiqi_prevent-invoke"] = "你可以防止对%dest造成的伤害并选择一项",
   ["zaiqi_recover"] = "回复1点体力",
-  ["zaiqi_draw"] = "和%dest各摸一张牌",
+  ["zaiqi_draw"] = "%dest选择令你或其摸一张牌",
   ["player_draw"] = "令孟获摸一张牌",
   ["self_draw"] = "摸一张牌",
 
@@ -87,7 +87,7 @@ zaiqi:addEffect(fk.DamageCaused, {
       choices = choices2,
       skill_name = zaiqi.name,
       })
-      if choice == "player_draw" then
+      if choice2 == "player_draw" then
         player:drawCards(1, zaiqi.name)
       else
         target:drawCards(1, zaiqi.name)

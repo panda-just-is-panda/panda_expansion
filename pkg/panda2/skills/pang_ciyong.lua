@@ -26,10 +26,14 @@ ciyong:addEffect("viewas", {
     end
   end,
   enabled_at_play = function(self, player)
-    return not player.room.current.chained
+    local room = player.room
+    local targeting = room.current
+    return not targeting.chained
   end,
   enabled_at_response = function(self, player, response)
-    return not player.room.current.chained
+    local room = player.room
+    local targeting = room.current
+    return not targeting.chained
   end,
 })
 
