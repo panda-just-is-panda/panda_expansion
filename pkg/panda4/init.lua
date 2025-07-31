@@ -22,6 +22,19 @@ Fk:loadTranslationTable{
 ["~pang__liushan"] = "别打脸，我投降还不行吗？",
 }
 
+local menghuo = General:new(extension, "pang__menghuo", "shu", 4, 4, General.Male)
+menghuo:addSkill("pang_zaiqi")
+menghuo:addSkill("pang_huoshou")
+Fk:loadTranslationTable{
+["pang__menghuo"] = "孟获",
+["#pang__menghuo"] = "胖蛮王",
+["designer:pang__menghuo"] = "胖即是胖",
+["cv:pang__menghuo"] = "官方",
+["illustrator:pang__menghuo"] = "官方",
+
+["~pang__liushan"] = "七纵之恩，来世再报了……",
+}
+
 local feishi = General:new(extension, "xiaobai_feishi", "shu", 3, 3, General.Male)
 feishi:addSkill("bai_cuanhe")
 feishi:addSkill("bai_anzuo")
