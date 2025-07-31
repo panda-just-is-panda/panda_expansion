@@ -19,6 +19,16 @@ Fk:loadTranslationTable{
 ["illustrator:pang__ouliege"] = "红色警戒3",
 }
 
+local moskvin = General:new(extension, "pang__moskvin", "shu", 4)
+moskvin:addSkill("pang_ciyong")
+Fk:loadTranslationTable{
+["pang__moskvin"] = "摩斯克芬",
+["#pang__moskvin"] = "震波专家",
+["designer:pang__moskvin"] = "胖即是胖",
+["cv:pang__moskvin"] = "红色警戒3",
+["illustrator:pang__moskvin"] = "红色警戒3",
+}
+
 local artanis = General:new(extension, "pang__artanis", "wei", 4)
 artanis:addSkill("pang_jijiebudui")
 artanis:addSkill("pang_zhandourongyao")

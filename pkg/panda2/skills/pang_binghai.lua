@@ -32,7 +32,7 @@ skill:addEffect(fk.CardUsing, {
 
 
 Fk:loadTranslationTable {["pang_binghai"] = "兵海",
-[":pang_binghai"] = "当你使用一张牌后，你可以摸两张牌并展示所有手牌，然后你弃置所有非红色牌。",
+[":pang_binghai"] = "当你使用一张牌时，你可以摸两张牌并展示所有手牌，然后你弃置所有非红色牌。",
 ["#pang_binghai"] = "你可以摸两张牌并弃置所有非红色牌"
 }
 return skill  --不要忘记返回做好的技能对象哦
