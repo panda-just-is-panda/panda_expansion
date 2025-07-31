@@ -6,7 +6,8 @@ local huoshou = fk.CreateSkill {
 huoshou:addEffect(fk.TargetSpecifying, {
 anim_type = "offensive",
 can_trigger = function(self, event, target, player, data)
-    return target ~= player and target.kingdom ~= "shu" and player:hasSkill(huoshou.name) and data.firstTarget
+    return target ~= player and target.kingdom ~= "shu" and player:hasSkill(huoshou.name) 
+    and data.lastTarget and data.card.name == "savage_assault"
   end,
 on_use = function(self, event, target, player, data)
     local room = player.room
