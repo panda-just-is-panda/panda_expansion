@@ -32,7 +32,7 @@ Fk:loadTranslationTable{
 ["cv:pang__menghuo"] = "官方",
 ["illustrator:pang__menghuo"] = "官方",
 
-["~pang__liushan"] = "七纵之恩，来世再报了……",
+["~pang__menghuo"] = "七纵之恩，来世再报了……",
 }
 
 local feishi = General:new(extension, "xiaobai_feishi", "shu", 3, 3, General.Male)
