@@ -30,7 +30,7 @@ ciyong:addEffect("viewas", {
         return not Fk:currentRoom().current.chained
     end,
     enabled_at_response = function(self, player, response)
-        return response and not Fk:currentRoom().current.chained or not response and not Fk:currentRoom().current.chained
+        return true
     end,
 })
 
