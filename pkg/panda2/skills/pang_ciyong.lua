@@ -5,7 +5,7 @@ local ciyong = fk.CreateSkill({
 
 ciyong:addEffect("viewas", {
     mute_card = false,
-    pattern = "thunder__slash,jink",
+    pattern = "slash,jink",
     prompt = "#ciyong",
     interaction = function(self, player)
         local names = player:getViewAsCardNames(ciyong.name, {"thunder__slash", "jink"})
@@ -24,13 +24,25 @@ ciyong:addEffect("viewas", {
     after_use = function(self, player, use)
         if not player.chained then
             player:drawCards(1, ciyong.name)
+        elseif player.chained and #player:getCardIds("he") > 1 then
+            local discards = player.room:askToDiscard(player, {
+                min_num = 2,
+                max_num = 2,
+                include_equip = true,
+                skill_name = ciyong.name,
+                prompt = "#ciyong_discard",
+                cancelable = true,
+            })
+            if #discards > 0 then
+                player:setChainState(false)
+            end
         end
     end,
     enabled_at_play = function(self, player)
         return not Fk:currentRoom().current.chained
     end,
     enabled_at_response = function(self, player, response)
-        return true
+        return not Fk:currentRoom().current.chained
     end,
 })
 
@@ -38,7 +50,8 @@ ciyong:addEffect("viewas", {
 
 
 Fk:loadTranslationTable {["pang_ciyong"] = "磁涌",
-[":pang_ciyong"] = "你可以横置当前回合角色并视为使用或打出一张雷【杀】或【闪】，然后若你未横置，你摸一张牌。",
+[":pang_ciyong"] = "你可以横置当前回合角色并视为使用或打出一张雷【杀】或【闪】，然后若你：未横置，你摸一张牌；已横置，你可以弃置两张牌并重置。",
 ["#ciyong"] = "磁涌：你可以视为使用或打出雷【杀】或【闪】",
+["#ciyong_discard"] = "你可以弃置两张牌并重置",
 }
 return ciyong
