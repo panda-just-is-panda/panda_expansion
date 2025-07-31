@@ -4,33 +4,34 @@ local ciyong = fk.CreateSkill({
 })
 
 ciyong:addEffect("viewas", {
-  pattern = "thunder__slash,jink",
-  prompt = "#ciyong",
-  interaction = function(self, player)
-    local names = player:getViewAsCardNames(ciyong.name, {"thunder__slash", "jink"})
-    return UI.CardNameBox {choices = names, all_choices = {"thunder__slash", "jink"}}
-  end,
-  card_filter = Util.FalseFunc,
-  view_as = function(self)
-    if not self.interaction.data then return end
-    local card = Fk:cloneCard(self.interaction.data)
-    card.skillName = ciyong.name
-    return card
-  end,
-  before_use = function (self, player, use)
-    player.room.current:setChainState(true)
-  end,
-  after_use = function(self, player, use)
-    if not player.chained then
-        player:drawCards(1, ciyong.name)
-    end
-  end,
-  enabled_at_play = function(self, player)
-    return not Fk:currentRoom().current.chained
-  end,
-  enabled_at_response = function(self, player, response)
-    return not Fk:currentRoom().current.chained
-  end,
+    mute_card = false,
+    pattern = "thunder__slash,jink",
+    prompt = "#ciyong",
+    interaction = function(self, player)
+        local names = player:getViewAsCardNames(ciyong.name, {"thunder__slash", "jink"})
+        return UI.CardNameBox {choices = names, all_choices = {"thunder__slash", "jink"}}
+    end,
+    card_filter = Util.FalseFunc,
+    view_as = function(self)
+        if not self.interaction.data then return end
+        local card = Fk:cloneCard(self.interaction.data)
+        card.skillName = ciyong.name
+        return card
+    end,
+    before_use = function (self, player, use)
+        player.room.current:setChainState(true)
+    end,
+    after_use = function(self, player, use)
+        if not player.chained then
+            player:drawCards(1, ciyong.name)
+        end
+    end,
+    enabled_at_play = function(self, player)
+        return not Fk:currentRoom().current.chained
+    end,
+    enabled_at_response = function(self, player, response)
+        return response and not Fk:currentRoom().current.chained or not response and not Fk:currentRoom().current.chained
+    end,
 })
 
 
