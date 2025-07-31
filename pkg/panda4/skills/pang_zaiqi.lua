@@ -6,9 +6,9 @@ Fk:loadTranslationTable {
   ["pang_zaiqi"] = "再起",
   [":pang_zaiqi"] = "弃牌阶段结束时，若本回合进入弃牌堆的牌数不小于你的体力值，你可以视为使用一张【南蛮入侵】；当你使用【南蛮入侵】对其他角色造成伤害时，你可以防止此伤害并选择一项：和其各摸一张牌；你回复1点体力。",
 
-  ["#zaiqi_prevent-invoke"] = "你可以防止对 %dest 造成的伤害并选择一项",
+  ["#zaiqi_prevent-invoke"] = "你可以防止对%dest造成的伤害并选择一项",
   ["zaiqi_recover"] = "回复1点体力",
-  ["zaiqi_draw"] = "和 %dest 各摸一张牌",
+  ["zaiqi_draw"] = "和%dest各摸一张牌",
 
   ["$pang_zaiqi1"] = "丞相助我！",
   ["$pang_zaiqi2"] = "起！",

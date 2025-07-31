@@ -7,15 +7,11 @@ huoshou:addEffect(fk.TargetSpecifying, {
 anim_type = "offensive",
 can_trigger = function(self, event, target, player, data)
     return target ~= player and target.kingdom ~= "shu" and player:hasSkill(huoshou.name) 
-    and data.lastTarget and data.card.name == "savage_assault"
+    and data.firstTarget and data.card.name == "savage_assault"
   end,
 on_use = function(self, event, target, player, data)
     local room = player.room
-    for _, p in ipairs(data.use.tos) do
-        if not p.dead then
-          data:cancelTarget(p)
-        end
-    end
+    data:cancelAllTarget()
     local savage_assault = Fk:cloneCard("savage_assault")
       local tos = table.filter(room:getOtherPlayers(player, false), function (ids)
       return player:canUseTo(savage_assault, ids)
