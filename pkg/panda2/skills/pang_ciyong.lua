@@ -18,15 +18,7 @@ ciyong:addEffect("viewas", {
     return card
   end,
   before_use = function (self, player, use)
-    local room = player.room
-    local current = nil
-    local turn_event = room.logic:getCurrentEvent():findParent(GameEvent.Turn, true)
-    if turn_event then
-        current = turn_event.data.who
-    end
-    if current and not current.dead then
     player.room.current:setChainState(true)
-    end
   end,
   after_use = function(self, player, use)
     if not player.chained then
@@ -34,22 +26,10 @@ ciyong:addEffect("viewas", {
     end
   end,
   enabled_at_play = function(self, player)
-    local room = player.room
-    local current = nil
-    local turn_event = room.logic:getCurrentEvent():findParent(GameEvent.Turn, true)
-    if turn_event then
-        current = turn_event.data.who
-    end
-    return current and not current.dead and not current.chained
+    return Fk:currentRoom().current.chained
   end,
   enabled_at_response = function(self, player, response)
-    local room = player.room
-    local current = nil
-    local turn_event = room.logic:getCurrentEvent():findParent(GameEvent.Turn, true)
-    if turn_event then
-        current = turn_event.data.who
-    end
-    return current and not current.dead and not current.chained
+    return Fk:currentRoom().current.chained
   end,
 })
 
