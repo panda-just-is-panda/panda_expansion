@@ -35,6 +35,19 @@ Fk:loadTranslationTable{
 ["~pang__menghuo"] = "七纵之恩，来世再报了……",
 }
 
+local yuanshao = General:new(extension, "pang__yuanshao", "qun", 4, 4, General.Male)
+yuanshao:addSkill("pang_luanji")
+yuanshao:addSkill("pang_xueyi")
+Fk:loadTranslationTable{
+["pang__yuanshao"] = "袁绍",
+["#pang__yuanshao"] = "胖胖的名门",
+["designer:pang__yuanshao"] = "胖即是胖",
+["cv:pang__yuanshao"] = "官方",
+["illustrator:pang__yuanshao"] = "官方",
+
+["~pang__menghuo"] = "七纵之恩，来世再报了……",
+}
+
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{
