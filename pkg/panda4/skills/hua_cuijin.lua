@@ -38,7 +38,7 @@ cuijin:addEffect("active", {
             flag = "h",
           skill_name = cuijin.name,
         })
-    DIY.showCards(player, card_chosen)
+    DIY.showCards(target, card_chosen)
     local choices = {}
     if player:getMark("cuijin_shanghai-phase") == 0 then
         table.insert(choices, 1, "damageplus")
@@ -51,12 +51,12 @@ cuijin:addEffect("active", {
       skill_name = cuijin.name,
     })
     if choice == "damageplus" then
-        room:addPlayerMark(target, "cuijin_shanghai-phase", 1)
+        room:addPlayerMark(player, "cuijin_shanghai-phase", 1)
         for _, id in ipairs(card_chosen) do
             room:setCardMark(Fk:getCardById(id), "@@shanghai-inhand", 1)
         end
     else
-        room:addPlayerMark(target, "cuijin_cishu-phase", 1)
+        room:addPlayerMark(player, "cuijin_cishu-phase", 1)
         for _, id in ipairs(card_chosen) do
             room:setCardMark(Fk:getCardById(id), "@@cishu-inhand", 1)
         end
@@ -68,17 +68,26 @@ cuijin:addEffect(fk.CardUsing, {
   anim_type = "offensive",
   is_delay_effect = true,
   can_refresh = function(self, event, target, player, data)
-    return data.card:getMark("@@shanghai-inhand") > 0
+    return (data.extra_data or {}).usingcuijin
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     data.additionalDamage = (data.additionalDamage or 0) + 1
   end,
 })
+cuijin:addEffect(fk.PreCardUse, {
+  can_refresh = function (self, event, target, player, data)
+    return data.card:getMark("@@shanghai-inhand") > 0
+  end,
+  on_refresh = function (self, event, target, player, data)
+    data.extra_data = data.extra_data or {}
+    data.extra_data.usingcuijin = true
+  end,
+})
 
 cuijin:addEffect("targetmod", {
   bypass_times = function(self, player, skill, scope, card, to)
-    return card and card:getMark("cuijin_cishu-phase") > 0
+    return card and card:getMark("@@cishu-inhand") > 0
   end,
 })
 
