@@ -37,12 +37,11 @@ cuijin:addEffect("active", {
     local cards = table.filter(target:getCardIds("h"), function (id)
         return not table.contains(DIY.getShownCards(target), id)
       end)
-      p(cards)
-    local card_chosen = room:askToChooseCards(player, {
+    local card_chosen = room:askToCards(player, {
             target = target,
-            min = 1,
-            max = 4,
-            flag = "h",
+            min_num = 1,
+            max_num = 4,
+          include_equip = false,
             pattern = tostring(Exppattern{ id = cards }),
           skill_name = cuijin.name,
         })
