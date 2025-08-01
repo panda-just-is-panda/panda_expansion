@@ -38,10 +38,9 @@ luanji:addEffect(fk.CardUseFinished, {
             include_equip = true,
             pattern = ".|.|"..suit,
             skill_name = luanji.name,
-            prompt = "#luanji-discard:"..suit,
+            prompt = "#luanji-discard::"..suit,
             })
             if #discard > 0 then
-                room:throwCard(discard, luanji.name, player, player)
                 local choices = {"luanji_jin", "luanji_tui"}
                 local choice = room:askToChoice(player, {
                     choices = choices,
