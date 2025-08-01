@@ -26,16 +26,23 @@ cuijin:addEffect("active", {
     or player:getMark("cuijin_shanghai-phase") == 0
   end,
   target_filter = function(self, player, to_select, selected, selected_cards)
-    return #selected == 0 and not to_select:isKongcheng()
+    local cards = table.filter(to_select:getCardIds("h"), function (id)
+        return not table.contains(DIY.getShownCards(to_select), id)
+      end)
+    return #selected == 0 and #cards > 0
   end,
   on_use = function(self, room, effect)
     local player = effect.from
     local target = effect.tos[1]
+    local cards = table.filter(target:getCardIds("h"), function (id)
+        return not table.contains(DIY.getShownCards(target), id)
+      end)
     local card_chosen = room:askToChooseCards(player, {
             target = target,
             min = 1,
             max = 4,
             flag = "h",
+            pattern = tostring(Exppattern{ id = cards }),
           skill_name = cuijin.name,
         })
     DIY.showCards(target, card_chosen)
@@ -68,20 +75,11 @@ cuijin:addEffect(fk.CardUsing, {
   anim_type = "offensive",
   is_delay_effect = true,
   can_refresh = function(self, event, target, player, data)
-    return (data.extra_data or {}).usingcuijin
+    return data.card:getMark("@@shanghai-inhand") > 0
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     data.additionalDamage = (data.additionalDamage or 0) + 1
-  end,
-})
-cuijin:addEffect(fk.PreCardUse, {
-  can_refresh = function (self, event, target, player, data)
-    return data.card:getMark("@@shanghai-inhand") > 0
-  end,
-  on_refresh = function (self, event, target, player, data)
-    data.extra_data = data.extra_data or {}
-    data.extra_data.usingcuijin = true
   end,
 })
 
