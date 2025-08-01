@@ -52,10 +52,14 @@ cuijin:addEffect("active", {
     })
     if choice == "damageplus" then
         room:addPlayerMark(target, "cuijin_shanghai-phase", 1)
-        room:setCardMark(Fk:getCardById(card_chosen), "@@shanghai-inhand", 1)
+        for _, id in ipairs(card_chosen) do
+            room:setCardMark(Fk:getCardById(id), "@@shanghai-inhand", 1)
+        end
     else
         room:addPlayerMark(target, "cuijin_cishu-phase", 1)
-        room:setCardMark(Fk:getCardById(card_chosen), "@@cishu-inhand", 1)
+        for _, id in ipairs(card_chosen) do
+            room:setCardMark(Fk:getCardById(id), "@@cishu-inhand", 1)
+        end
     end
   end,
 })
@@ -64,7 +68,7 @@ cuijin:addEffect(fk.CardUsing, {
   anim_type = "offensive",
   is_delay_effect = true,
   can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(cuijin.name) and Fk:getCardById(data.card):getMark("@@shanghai-inhand") > 0
+    return data.card:getMark("@@shanghai-inhand") > 0
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
