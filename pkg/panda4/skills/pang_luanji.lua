@@ -22,7 +22,7 @@ luanji:addEffect("viewas", {
     after_use = function(self, player, use)
         local room = player.room
         local cards = table.filter(player:getCardIds("he"), function (id)
-            return Fk:getCardById(id):compareSuitWith(Fk:getCardById(use))
+            return Fk:getCardById(id):compareSuitWith(Fk:getCardById(use[1]))
         end)
         if #cards > 0 then
             local discard = room:askToCards(player, {

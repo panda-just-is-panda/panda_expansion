@@ -19,7 +19,7 @@ xueyi:addEffect("maxcards", {
                 test = 1
             end
         end
-        if test == 0 then
+        if test == 1 then
             n = n - 1
         end
       end
