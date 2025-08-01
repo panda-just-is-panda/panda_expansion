@@ -40,7 +40,7 @@ lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{
 ["hua_lejiu"] = "乐就",
 ["#hua_lejiu"] = "急急国王",
-["designer:hua_lejiu"] = "花研",
+["designer:hua_lejiu"] = "花姸",
 ["cv:hua_lejiu"] = "官方",
 ["illustrator:hua_lejiu"] = "官方",
 }
