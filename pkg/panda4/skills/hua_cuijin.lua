@@ -38,7 +38,7 @@ cuijin:addEffect("active", {
         return not table.contains(DIY.getShownCards(target), id)
       end)
     local card_chosen = room:askToChooseCards(player, {
-            target = player,
+            target = target,
             min = 1,
             max = 4,
             flag = "h",
@@ -75,7 +75,7 @@ cuijin:addEffect(fk.CardUsing, {
   anim_type = "offensive",
   is_delay_effect = true,
   can_refresh = function(self, event, target, player, data)
-    return (data.extra_data or {}).usingcuijin
+    return player:hasSkill(cuijin.name) and (data.extra_data or {}).usingcuijin
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
@@ -84,7 +84,7 @@ cuijin:addEffect(fk.CardUsing, {
 })
 cuijin:addEffect(fk.PreCardUse, {
   can_refresh = function (self, event, target, player, data)
-    return player:hasSkill(cuijin.name) and data.card:getMark("@@shanghai-inhand") > 0
+    return data.card:getMark("@@shanghai-inhand") > 0
   end,
   on_refresh = function (self, event, target, player, data)
     data.extra_data = data.extra_data or {}
