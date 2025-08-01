@@ -38,11 +38,11 @@ Fk:loadTranslationTable{
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{
-["hua_cuijin"] = "乐就",
-["#hua_cuijin"] = "急急国王",
-["designer:hua_cuijin"] = "花研",
-["cv:hua_cuijin"] = "官方",
-["illustrator:hua_cuijin"] = "官方",
+["hua_lejiu"] = "乐就",
+["#hua_lejiu"] = "急急国王",
+["designer:hua_lejiu"] = "花研",
+["cv:hua_lejiu"] = "官方",
+["illustrator:hua_lejiu"] = "官方",
 
 ["~pang__menghuo"] = "七纵之恩，来世再报了……",
 }
