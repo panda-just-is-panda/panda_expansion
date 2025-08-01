@@ -124,6 +124,14 @@ cuijin:addEffect("targetmod", {
     return card and card:getMark("@@cishu-inhand") > 0
   end,
 })
+cuijin:addEffect(fk.PreCardUse, {
+  can_refresh = function(self, event, target, player, data)
+    return data.card:getMark("@@cishu-inhand") > 0
+  end,
+  on_refresh = function(self, event, target, player, data)
+    data.extraUse = true
+  end,
+})
 
 cuijin:addEffect(fk.TurnEnd, {
   mute = true,
