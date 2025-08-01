@@ -31,7 +31,7 @@ luanji:addEffect(fk.CardUseFinished, {
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     local card = data.card
-    local suit = Fk:getCardById(card):getSuitString()
+    local suit = Fk:getCardById(card[1]):getSuitString()
     local discard = room:askToDiscard(player, {
             min_num = 1,
             max_num = 1,
