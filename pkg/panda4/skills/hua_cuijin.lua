@@ -34,11 +34,11 @@ cuijin:addEffect("active", {
   on_use = function(self, room, effect)
     local player = effect.from
     local target = effect.tos[1]
-    local cards = table.filter(target:getCardIds("h"), function (id)
-        return not table.contains(DIY.getShownCards(target), id)
+    local cards = table.filter(player:getCardIds("h"), function (id)
+        return not table.contains(DIY.getShownCards(player), id)
       end)
     local card_chosen = room:askToChooseCards(player, {
-            target = target,
+            target = player,
             min = 1,
             max = 4,
             flag = "h",
