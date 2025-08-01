@@ -10,11 +10,11 @@ lianniang:addEffect("active", {
   card_num = 0,
   target_num = 1,
   can_use = function(self, player)
-    return not player:isNude() and player:usedSkillTimes(lianniang.name, Player.HistoryPhase) == 0
+    return player:usedSkillTimes(lianniang.name, Player.HistoryPhase) == 0
   end,
   card_filter = Util.FalseFunc,
   target_filter = function(self, player, to_select, selected, selected_cards)
-    return #selected == 0
+    return #selected == 0 and not to_select:isNude()
   end,
   on_use = function(self, room, effect)
     local player = effect.from

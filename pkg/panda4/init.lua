@@ -35,6 +35,18 @@ Fk:loadTranslationTable{
 ["~pang__menghuo"] = "七纵之恩，来世再报了……",
 }
 
+local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
+lejiu:addSkill("hua_cuijin")
+Fk:loadTranslationTable{
+["hua_cuijin"] = "乐就",
+["#hua_cuijin"] = "急急国王",
+["designer:hua_cuijin"] = "花研",
+["cv:hua_cuijin"] = "官方",
+["illustrator:hua_cuijin"] = "官方",
+
+["~pang__menghuo"] = "七纵之恩，来世再报了……",
+}
+
 local feishi = General:new(extension, "xiaobai_feishi", "shu", 3, 3, General.Male)
 feishi:addSkill("bai_cuanhe")
 feishi:addSkill("bai_anzuo")

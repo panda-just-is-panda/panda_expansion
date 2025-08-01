@@ -1,0 +1,98 @@
+local cuijin = fk.CreateSkill{
+  name = "hua_cuijin",
+}
+
+Fk:loadTranslationTable{
+  ["hua_cuijin"] = "催进",
+  [":hua_cuijin"] = "出牌阶段各限一次，你可以明置一名角色至多四张手牌，并令其使用这些牌时无次数限制或伤害基数+1。其回合结束时，弃置这些牌。",
+
+  ["#hua_cuijin"] = "催进：你可以明置一名角色至多四张手牌并令这些牌获得你选择的一项效果",
+  ["wucishu"] = "令这些牌无次数限制",
+  ["damageplus"] = "令这些牌伤害基数+1",
+  ["@@shanghai-inhand"] = "伤害+1",
+  ["@@cishu-inhand"] = "无次数限制",
+
+}
+
+cuijin:addEffect("active", {
+  anim_type = "control",
+  card_num = 0,
+  target_num = 1,
+  prompt = "#hua_cuijin",
+  can_use = function(self, player)
+    return player:getMark("cuijin_cishu-phase") == 0 
+    or player:getMark("cuijin_shanghai-phase") == 0
+  end,
+  target_filter = function(self, player, to_select, selected, selected_cards)
+    return #selected == 0 and not to_select:isKongcheng()
+  end,
+  on_use = function(self, room, effect)
+    local player = effect.from
+    local target = effect.tos[1]
+    local card_chosen = room:askToChooseCards(player, {
+            target = target,
+            min = 1,
+            max = 4,
+            flag = "h",
+          skill_name = cuijin.name,
+        })
+    DIY.showCards(player, card_chosen)
+    local choices = {}
+    if player:getMark("cuijin_shanghai-phase") == 0 then
+        table.insert(choices, 1, "damageplus")
+    end
+    if player:getMark("cuijin_cishu-phase") == 0 then
+        table.insert(choices, 1, "wucishu")
+    end
+    local choice = room:askToChoice(player, {
+      choices = choices,
+      skill_name = cuijin.name,
+    })
+    if choice == "damageplus" then
+        room:addPlayerMark(target, "cuijin_shanghai-phase", 1)
+        room:setCardMark(Fk:getCardById(card_chosen), "@@shanghai-inhand", 1)
+    else
+        room:addPlayerMark(target, "cuijin_cishu-phase", 1)
+        room:setCardMark(Fk:getCardById(card_chosen), "@@cishu-inhand", 1)
+    end
+  end,
+})
+
+cuijin:addEffect(fk.CardUsing, {
+  anim_type = "offensive",
+  is_delay_effect = true,
+  can_refresh = function(self, event, target, player, data)
+    return player:hasSkill(cuijin.name) and Fk:getCardById(data.card):getMark("@@shanghai-inhand") > 0
+  end,
+  on_refresh = function(self, event, target, player, data)
+    local room = player.room
+    data.additionalDamage = (data.additionalDamage or 0) + 1
+  end,
+})
+
+cuijin:addEffect("targetmod", {
+  bypass_times = function(self, player, skill, scope, card, to)
+    return card and card:getMark("cuijin_cishu-phase") > 0
+  end,
+})
+
+cuijin:addEffect(fk.TurnEnd, {
+  mute = true,
+  is_delay_effect = true,
+  can_refresh = function(self, event, target, player, data)
+    return table.find(target:getCardIds("h"), function(id)
+        return Fk:getCardById(id):getMark("@@cishu-inhand") > 0 and not player:prohibitDiscard(id)
+        or Fk:getCardById(id):getMark("@@shanghai-inhand") > 0 and not player:prohibitDiscard(id)
+      end)
+  end,
+  on_refresh = function (self, event, target, player, data)
+    local room = player.room
+    local ids = table.filter(player:getCardIds("h"), function(id)
+      return Fk:getCardById(id):getMark("@@cishu-inhand") > 0 and not player:prohibitDiscard(id)
+        or Fk:getCardById(id):getMark("@@shanghai-inhand") > 0 and not player:prohibitDiscard(id)
+    end)
+    room:throwCard(ids, cuijin.name, target, target)
+  end,
+})
+
+return cuijin
