@@ -36,8 +36,8 @@ cuijin:addEffect("active", {
     local target = effect.tos[1]
     local to = target
     local card_chosen
-    local cards = table.filter(target:getCardIds("h"), function (id)
-        return not table.contains(DIY.getShownCards(target), id)
+    local cards = table.filter(to:getCardIds("h"), function (id)
+        return not table.contains(DIY.getShownCards(to), id)
       end)
     if target == player then
       card_chosen = room:askToCards(player, {
@@ -61,13 +61,14 @@ cuijin:addEffect("active", {
         extra_data.visible_data = visible_data
         extra_data.min = 1
         extra_data.max = 4
-        card_chosen = room:askToPoxi(player, {
+        local result = room:askToPoxi(player, {
           poxi_type = "AskForCardsChosen",
           data = card_data,
           extra_data = extra_data,
           cancelable = false,
         })
-        DIY.showCards(target, card_chosen)
+        DIY.showCards(to, result)
+        card_chosen = result
     end
     local choices = {}
     if player:getMark("cuijin_shanghai-phase") == 0 then
