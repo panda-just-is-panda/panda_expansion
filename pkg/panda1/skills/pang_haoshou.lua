@@ -11,7 +11,6 @@ haoshou:addEffect(fk.EventPhaseStart, { --
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    local duel = Fk:cloneCard("duel")
     local slash = Fk:cloneCard("slash")
     local choices = {"useduel", "Cancel"}
     local targets = table.filter(room:getOtherPlayers(player, false), function (p)
@@ -25,6 +24,7 @@ haoshou:addEffect(fk.EventPhaseStart, { --
       skill_name = haoshou.name,
     })
     if choice_made ~= "Cancel" then
+      local duel = Fk:cloneCard("duel")
          local cards = room:askToCards(tos, {
         min_num = 1,
         max_num = 1,
