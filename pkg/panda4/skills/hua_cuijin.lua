@@ -80,6 +80,7 @@ cuijin:addEffect(fk.CardUsing, {
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     data.additionalDamage = (data.additionalDamage or 0) + 1
+    player:drawCards(1, cuijin.name)
   end,
 })
 cuijin:addEffect(fk.PreCardUse, {
