@@ -37,17 +37,13 @@ Fk:loadTranslationTable{
 
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
-lejiu.endnote = "注：未完成"
 Fk:loadTranslationTable{
 ["hua_lejiu"] = "乐就",
 ["#hua_lejiu"] = "急急国王",
 ["designer:hua_lejiu"] = "花研",
 ["cv:hua_lejiu"] = "官方",
 ["illustrator:hua_lejiu"] = "官方",
-
-
 }
-lejiu.hidden = true
 
 local feishi = General:new(extension, "xiaobai_feishi", "shu", 3, 3, General.Male)
 feishi:addSkill("bai_cuanhe")
