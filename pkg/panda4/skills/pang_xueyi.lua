@@ -14,10 +14,12 @@ xueyi:addEffect("maxcards", {
       local n = #Fk:currentRoom().alive_players
       for _, p in ipairs(Fk:currentRoom().alive_players) do
         local test = 0
-        for _, s in ipairs(Fk.generals[p.general]:getSkillNameList(true)) do
-            if Fk.skills[s]:hasTag(Skill.Lord) then
-                test = 1
-            end
+        if #p:getSkillNameList() > 0 then
+          for _, s in ipairs(Fk.generals[p.general]:getSkillNameList(true)) do
+              if Fk.skills[s]:hasTag(Skill.Lord) then
+                  test = 1
+              end
+          end
         end
         if test == 1 then
             n = n - 1

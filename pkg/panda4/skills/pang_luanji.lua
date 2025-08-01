@@ -19,10 +19,20 @@ luanji:addEffect("viewas", {
         c:addSubcards(cards)
         return c
     end,
-    after_use = function(self, player, use)
-        local room = player.room
-        local suit = Fk:getCardById(use[1]):getSuitString()
-        local discard = room:askToDiscard(player, {
+  enabled_at_play = function(self, player)
+        return player:usedSkillTimes(luanji.name, Player.HistoryTurn) == 0
+    end,
+})
+luanji:addEffect(fk.CardUseFinished, {
+    anim_type = "control",
+  can_refresh = function(self, event, target, player, data)
+    return target == player and player:hasSkill(luanji.name) and data.card and table.contains(data.card.skillNames, luanji.name)
+  end,
+  on_refresh = function(self, event, target, player, data)
+    local room = player.room
+    local card = data.card
+    local suit = Fk:getCardById(card):getSuitString()
+    local discard = room:askToDiscard(player, {
             min_num = 1,
             max_num = 1,
             include_equip = true,
@@ -43,12 +53,8 @@ luanji:addEffect("viewas", {
                     player:drawCards(2, luanji.name)
                 end
             end
-    end,
-  enabled_at_play = function(self, player)
-        return player:usedSkillTimes(luanji.name, Player.HistoryTurn) == 0
-    end,
+  end,
 })
-
 
 
 Fk:loadTranslationTable{
