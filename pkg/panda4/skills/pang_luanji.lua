@@ -21,17 +21,14 @@ luanji:addEffect("viewas", {
     end,
     after_use = function(self, player, use)
         local room = player.room
-        local cards = table.filter(player:getCardIds("he"), function (id)
-            return Fk:getCardById(id):compareSuitWith(Fk:getCardById(use[1]))
-        end)
-        if #cards > 0 then
-            local discard = room:askToCards(player, {
-            target = player,
+        local suit = Fk:getCardById(use[1]):getSuitString()
+        local discard = room:askToDiscard(player, {
             min_num = 1,
             max_num = 1,
             include_equip = true,
-            pattern = tostring(Exppattern{ id = cards }),
+            pattern = ".|.|"..suit,
             skill_name = luanji.name,
+            prompt = "#luanji-discard:"..suit,
             })
             if #discard > 0 then
                 room:throwCard(discard, luanji.name, player, player)
@@ -46,7 +43,6 @@ luanji:addEffect("viewas", {
                     player:drawCards(2, luanji.name)
                 end
             end
-        end
     end,
   enabled_at_play = function(self, player)
         return player:usedSkillTimes(luanji.name, Player.HistoryTurn) == 0
@@ -62,6 +58,7 @@ Fk:loadTranslationTable{
   ["#luanji"] = "你可以将一张手牌作为【万箭齐发】使用",
   ["luanji_jin"] = "令“乱击”视为本回合未发动过",
   ["luanji_tui"] = "摸两张牌",
+  ["#luanji-discard"] = "你可以弃置一张%arg牌并选择一项",
 
   ["$pang_luanji1"] = "弓箭手，准备放箭！",
   ["$pang_luanji2"] = "全都去死吧！",
