@@ -7,6 +7,7 @@ Fk:loadTranslationTable{
   [":hua_cuijin"] = "出牌阶段各限一次，你可以明置一名角色至多四张手牌，并令其使用这些牌时无次数限制或伤害基数+1。其回合结束时，弃置这些牌。",
 
   ["#hua_cuijin"] = "催进：你可以明置一名角色至多四张手牌并令这些牌获得你选择的一项效果",
+  ["#cuijin-show"] = "催进：明置%dest的至多四张手牌",
   ["wucishu"] = "令这些牌无次数限制",
   ["damageplus"] = "令这些牌伤害基数+1",
   ["@@shanghai-inhand"] = "伤害+1",
@@ -61,6 +62,7 @@ cuijin:addEffect("active", {
         extra_data.visible_data = visible_data
         extra_data.min = 1
         extra_data.max = 4
+        extra_data.prompt = "#cuijin-show::"..to.id
         local result = room:askToPoxi(player, {
           poxi_type = "AskForCardsChosen",
           data = card_data,
