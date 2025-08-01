@@ -37,15 +37,36 @@ cuijin:addEffect("active", {
     local cards = table.filter(target:getCardIds("h"), function (id)
         return not table.contains(DIY.getShownCards(target), id)
       end)
-    local card_chosen = room:askToCards(player, {
-            target = target,
-            min_num = 1,
-            max_num = 4,
-          include_equip = false,
-            pattern = tostring(Exppattern{ id = cards }),
-          skill_name = cuijin.name,
-        })
-    DIY.showCards(target, card_chosen)
+    if target == player then
+      local card_chosen = room:askToCards(player, {
+        target = target,
+        min_num = 1,
+        max_num = 4,
+        include_equip = false,
+        pattern = tostring(Exppattern{ id = cards }),
+        kill_name = cuijin.name,
+      })
+      DIY.showCards(target, card_chosen)
+    else
+      local card_data, extra_data, visible_data = {}, {}, {}
+          table.insert(card_data, { "$Hand", cards })
+          for _, id in ipairs(cards) do
+            if not player:cardVisible(id) then
+              visible_data[tostring(id)] = false
+            end
+          end
+          if next(visible_data) == nil then visible_data = nil end
+          extra_data.visible_data = visible_data
+          extra_data.min = 1
+          extra_data.max = 4
+          local card_chosen = room:askToPoxi(player, {
+            poxi_type = "AskForCardsChosen",
+            data = card_data,
+            extra_data = extra_data,
+            cancelable = false,
+          })
+          DIY.showCards(target, card_chosen)
+    end
     local choices = {}
     if player:getMark("cuijin_shanghai-phase") == 0 then
         table.insert(choices, 1, "damageplus")
