@@ -14,6 +14,8 @@ Fk:loadTranslationTable{
 
 }
 
+local DIY = require "packages/diy_utility/diy_utility"
+
 cuijin:addEffect("active", {
   anim_type = "control",
   card_num = 0,
