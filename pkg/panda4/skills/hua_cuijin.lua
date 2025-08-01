@@ -34,11 +34,12 @@ cuijin:addEffect("active", {
   on_use = function(self, room, effect)
     local player = effect.from
     local target = effect.tos[1]
+    local card_chosen
     local cards = table.filter(target:getCardIds("h"), function (id)
         return not table.contains(DIY.getShownCards(target), id)
       end)
     if target == player then
-      local card_chosen = room:askToCards(player, {
+      card_chosen = room:askToCards(player, {
         target = target,
         min_num = 1,
         max_num = 4,
@@ -48,24 +49,24 @@ cuijin:addEffect("active", {
       })
       DIY.showCards(target, card_chosen)
     else
-      local card_data, extra_data, visible_data = {}, {}, {}
-          table.insert(card_data, { "$Hand", cards })
-          for _, id in ipairs(cards) do
-            if not player:cardVisible(id) then
-              visible_data[tostring(id)] = false
-            end
+        local card_data, extra_data, visible_data = {}, {}, {}
+        table.insert(card_data, {"$Hand", cards})
+        for _, id in ipairs(cards) do
+          if not player:cardVisible(id) then
+            visible_data[tostring(id)] = false
           end
-          if next(visible_data) == nil then visible_data = nil end
-          extra_data.visible_data = visible_data
-          extra_data.min = 1
-          extra_data.max = 4
-          local card_chosen = room:askToPoxi(player, {
-            poxi_type = "AskForCardsChosen",
-            data = card_data,
-            extra_data = extra_data,
-            cancelable = false,
-          })
-          DIY.showCards(target, card_chosen)
+        end
+        if next(visible_data) == nil then visible_data = nil end
+        extra_data.visible_data = visible_data
+        extra_data.min = 1
+        extra_data.max = 4
+        card_chosen = room:askToPoxi(player, {
+          poxi_type = "AskForCardsChosen",
+          data = card_data,
+          extra_data = extra_data,
+          cancelable = false,
+        })
+        DIY.showCards(target, card_chosen)
     end
     local choices = {}
     if player:getMark("cuijin_shanghai-phase") == 0 then
