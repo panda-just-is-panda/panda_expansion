@@ -26,7 +26,7 @@ xueyi:addEffect(fk.GameStart, {
               end
           end
         end
-        if test == 1 then
+        if test == 0 then
           local card_give
           card_give = room:askToCards(p, {
             min_num = 1,
