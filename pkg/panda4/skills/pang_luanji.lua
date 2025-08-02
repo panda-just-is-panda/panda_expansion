@@ -8,7 +8,7 @@ luanji:addEffect("viewas", {
     prompt = "#luanji",
     handly_pile = true,
     card_filter = function(self, player, to_select, selected)
-        return #selected == 0
+        return #selected == 0 and table.contains(player:getHandlyIds(), to_select)
     end,
     view_as = function(self, player, cards)
         if #cards ~= 1 then
@@ -58,7 +58,7 @@ luanji:addEffect(fk.CardUseFinished, {
 
 Fk:loadTranslationTable{
   ["pang_luanji"] = "乱击",
-  [":pang_luanji"] = "每回合限一次，你可以将一张手牌当【万箭齐发】使用；此牌结算结束后，你可以弃置一张和此牌花色相同的牌并选择一项：此技能本回合视为未发动过；摸两张牌。",
+  [":pang_luanji"] = "每回合限一次，你可以将一张手牌当【万箭齐发】使用；此牌结算结束后，你可以弃置一张和此牌花色相同的牌并选择一项：此技能视为本回合未发动过；摸两张牌。",
 
   ["#luanji"] = "你可以将一张手牌作为【万箭齐发】使用",
   ["luanji_jin"] = "令“乱击”视为本回合未发动过",
