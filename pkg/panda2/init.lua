@@ -152,7 +152,7 @@ Fk:loadTranslationTable{
 ["cv:ying_dasitin"] = "雷索纳斯",
 ["illustrator:ying_dasitin"] = "雷索纳斯",
 
-["~ying_dasitin"] = "七纵之恩，来世再报了……",
+["~ying_dasitin"] = "你们快逃，我还能阻挡他们一会儿……",
 }
 
 
