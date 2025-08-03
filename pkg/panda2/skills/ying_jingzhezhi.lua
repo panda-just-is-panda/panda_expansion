@@ -50,6 +50,16 @@ jingzhezhi:addEffect("active", {
   end,
 })
 
+jingzhezhi:addEffect(fk.CardUsing, {
+  mute = true,
+  can_trigger = function(self, event, target, player, data)
+    return target == player and player:hasSkill(jingzhezhi.name)
+    and table.contains(data.card.skillNames, jingzhezhi.name)
+  end,
+  on_use = function(self, event, target, player, data)
+  end,
+})
+
 jingzhezhi:addEffect(fk.DamageCaused, {
   can_trigger = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, jingzhezhi.name)
@@ -59,7 +69,7 @@ jingzhezhi:addEffect(fk.DamageCaused, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     data:changeDamage(-1)
-    if player:getSwitchSkillState(jingzhezhi.name, true) ~= fk.SwitchYang then
+    if player:getSwitchSkillState(jingzhezhi.name, true) == fk.SwitchYang then
         for _, p in ipairs(Fk:currentRoom().alive_players) do
             if p:getMark("jingzhezhi-turn") > 0 and not p:isNude() then
                 local cards = room:askToCards(p, {
@@ -73,7 +83,7 @@ jingzhezhi:addEffect(fk.DamageCaused, {
                 room:recastCard(cards, p, jingzhezhi.name)
             end
         end
-    elseif player:getSwitchSkillState(jingzhezhi.name, true) == fk.SwitchYang then
+    elseif player:getSwitchSkillState(jingzhezhi.name, true) ~= fk.SwitchYang then
         for _, p in ipairs(Fk:currentRoom().alive_players) do
             if p:getMark("jingzhezhi-turn") > 0 then
                  p:drawCards(1, jingzhezhi.name)
