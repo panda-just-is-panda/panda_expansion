@@ -142,5 +142,16 @@ Fk:loadTranslationTable{
 ["illustrator:pang__barcarola"] = "深蓝",
 }
 
+local dasitin = General:new(extension, "ying_dasitin", "xi", 4, 4, General.Female)
+dasitin:addSkill("pang_yinzhui")
+dasitin:addSkill("pang_haishi")
+Fk:loadTranslationTable{
+["ying_dasitin"] = "达斯廷",
+["#ying_dasitin"] = "引领者",
+["designer:ying_dasitin"] = "英历",
+["cv:ying_dasitin"] = "雷索纳斯",
+["illustrator:ying_dasitin"] = "雷索纳斯",
+}
+
 
 return extension
