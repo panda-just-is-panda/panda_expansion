@@ -42,7 +42,7 @@ jingzhezhi:addEffect("active", {
       end)
       local targets = tos
       room:sortByAction(targets)
-      room:useVirtualCard(archery_attack, nil, player, targets, jingzhezhi.name, true)
+      room:useVirtualCard("archery_attack", nil, player, targets, jingzhezhi.name, true)
   end,
 })
 
