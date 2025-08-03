@@ -56,7 +56,7 @@ jingzhezhi:addEffect(fk.DamageCaused, {
     and player:hasSkill(jingzhezhi.name)
   end,
   on_cost = Util.TrueFunc,
-  on_trigger = function(self, event, target, player, data)
+  on_use = function(self, event, target, player, data)
     local room = player.room
     data:changeDamage(-1)
     if player:getSwitchSkillState(jingzhezhi.name, true) ~= fk.SwitchYang then
