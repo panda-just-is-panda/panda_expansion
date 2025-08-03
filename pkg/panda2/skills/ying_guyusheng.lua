@@ -9,12 +9,24 @@ Fk:loadTranslationTable{
 
 }
 
+guyusheng:addLoseEffect(function (self, player)
+  local room = player.room
+  if player:getMark(guyusheng.name) ~= 0 then
+    local to = room:getPlayerById(player:getMark(guyusheng.name))
+    if not table.find(room:getOtherPlayers(player, false), function (p)
+      return p:getMark(guyusheng.name) == to.id
+    end) then
+      room:setPlayerMark(to, "@@jingzhezhi", 0)
+    end
+  end
+end)
+
 guyusheng:addEffect(fk.AfterCardsMove, {
   anim_type = "defensive",
-  can_refresh = function(self, event, target, player, data)
-    if player:isWounded() and player:getMark("@@jingzhezhi") > 0 then
+  can_trigger = function(self, event, target, player, data)
+    if player:hasSkill(guyusheng.name) and player:isWounded() and player:getMark(guyusheng.name) ~= 0 then
       for _, move in ipairs(data) do
-        if move.from and player:getMark("@@jingzhezhi") == move.from.id and move.from:isKongcheng() then
+        if move.from and player:getMark(guyusheng.name) == move.from.id and move.from:isKongcheng() then
           for _, info in ipairs(move.moveInfo) do
             if info.fromArea == Card.PlayerHand then
               return true

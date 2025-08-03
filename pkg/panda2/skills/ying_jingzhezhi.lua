@@ -1,6 +1,6 @@
 Fk:loadTranslationTable{
     ["ying_jingzhezhi"] = "惊蛰至",
-    [":ying_jingzhezhi"] = "转换技，出牌阶段限一次，你可以选择一名角色，然后你弃置所有手牌（无牌则不弃）并视为使用一张【万箭齐发】；当此牌造成伤害时，其防止此伤害并①重铸②摸一张牌",
+    [":ying_jingzhezhi"] = "转换技，出牌阶段限一次，你可以选择一名角色，然后你弃置所有手牌（无牌则不弃）并视为使用一张【万箭齐发】；当此牌造成伤害时，其防止此伤害并①重铸②摸一张牌。",
 
     [":ying_jingzhezhi_yang"] = "转换技，出牌阶段限一次，你可以选择一名角色，然后你弃置所有手牌并视为使用一张【万箭齐发】；当此牌造成伤害时，其防止此伤害并<font color=\"#E0DB2F\">①重铸</font>②摸一张牌",
     [":ying_jingzhezhi_yin"] = "转换技，出牌阶段限一次，你可以选择一名角色，然后你弃置所有手牌并视为使用一张【万箭齐发】；当此牌造成伤害时，其防止此伤害并①重铸<font color=\"#E0DB2F\">②摸</font>一张牌",
@@ -36,13 +36,13 @@ jingzhezhi:addEffect("active", {
         room:addPlayerMark(target, "@@jingzhezhi", 1)
     end
     local archery_attack = Fk:cloneCard("archery_attack")
-     archery_attack.skillName = jingzhezhi.name
       local tos = table.filter(room:getOtherPlayers(player, false), function (p)
       return player:canUseTo(archery_attack, p)
       end)
       local targets = tos
       room:sortByAction(targets)
-      room:useVirtualCard("archery_attack", nil, player, targets, jingzhezhi.name, true)
+      local card_use = room:useVirtualCard("archery_attack", nil, player, targets, jingzhezhi.name, true)
+      card_use.skillName = jingzhezhi.name
   end,
 })
 
