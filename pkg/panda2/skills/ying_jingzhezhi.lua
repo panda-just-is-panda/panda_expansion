@@ -66,7 +66,7 @@ jingzhezhi:addEffect(fk.DamageCaused, {
                 min_num = 1,
                 max_num = 1,
                 include_equip = true,
-                skill_name = zhubi.name,
+                skill_name = jingzhezhi.name,
                 prompt = "#jingzhezhi-ask",
                 cancelable = false,
                 })
