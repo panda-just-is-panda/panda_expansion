@@ -20,6 +20,7 @@ local jingzhezhi = fk.CreateSkill{
 
 jingzhezhi:addEffect("active", {
   anim_type = "control",
+  card_num = 0,
   target_num = 1,
   prompt = "#jingzhezhi",
   can_use = function(self, player)
@@ -56,6 +57,7 @@ jingzhezhi:addEffect(fk.CardUsing, {
     return target == player and player:hasSkill(jingzhezhi.name)
     and table.contains(data.card.skillNames, jingzhezhi.name)
   end,
+  on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
   end,
 })
