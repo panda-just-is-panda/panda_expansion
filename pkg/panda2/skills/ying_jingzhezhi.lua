@@ -9,10 +9,13 @@ Fk:loadTranslationTable{
   ["#jingzhezhi-ask"] = "重铸一张牌",
   ["@@jingzhezhi"] = "惊蛰至",
 
+    ["$ying_jingzhezhi1"] = "新的未来不需要你们，化为灰烬吧！",
+    ["$ying_jingzhezhi2"] = "让开，别挡着孩子们的路。",
 }
 
 local jingzhezhi = fk.CreateSkill{
   name = "ying_jingzhezhi",
+  tags = {Skill.Switch},
 }
 
 jingzhezhi:addEffect("active", {
@@ -32,8 +35,9 @@ jingzhezhi:addEffect("active", {
         player:throwAllCards("h", jingzhezhi.name)
     end
     room:addPlayerMark(target, "jingzhezhi-turn", 1)
-    if player:usedSkillTimes(jingzhezhi.name, Player.HistoryGame) == 1 then
-        room:addPlayerMark(target, "@@jingzhezhi", 1)
+    if player:getMark("ying_guyusheng") == 0 then
+      room:setPlayerMark(player, "ying_guyusheng", target.id)
+      room:setPlayerMark(target, "@@jingzhezhi", 1)
     end
     local archery_attack = Fk:cloneCard("archery_attack")
       local tos = table.filter(room:getOtherPlayers(player, false), function (p)
@@ -47,11 +51,12 @@ jingzhezhi:addEffect("active", {
 })
 
 jingzhezhi:addEffect(fk.DamageCaused, {
-  can_refresh = function (self, event, target, player, data)
+  can_trigger = function (self, event, target, player, data)
     return target == player and not data.chain and data.card and table.contains(data.card.skillNames, jingzhezhi.name)
     and player:hasSkill(jingzhezhi.name)
   end,
-  on_refresh = function(self, event, target, player, data)
+  on_cost = Util.TrueFunc,
+  on_trigger = function(self, event, target, player, data)
     local room = player.room
     data:changeDamage(-1)
     if player:getSwitchSkillState(jingzhezhi.name, true) ~= fk.SwitchYang then

@@ -7,6 +7,8 @@ Fk:loadTranslationTable{
   ["ying_guyusheng"] = "谷雨声",
   [":ying_guyusheng"] = "锁定技，当首名被〖惊蛰至〗指定的角色失去所有手牌后，你回复1点体力。",
 
+  ["$ying_guyusheng1"] = "“连自己都无法照亮的人，却想着也许能够去照亮别人”。自不量力吗？我反而很欣赏呢。",
+  ["$ying_guyusheng2"] = "请到我身后来。我会保护你们的！",
 }
 
 guyusheng:addLoseEffect(function (self, player)

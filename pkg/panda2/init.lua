@@ -151,6 +151,8 @@ Fk:loadTranslationTable{
 ["designer:ying_dasitin"] = "英历",
 ["cv:ying_dasitin"] = "雷索纳斯",
 ["illustrator:ying_dasitin"] = "雷索纳斯",
+
+["~ying_dasitin"] = "七纵之恩，来世再报了……",
 }
 
 
