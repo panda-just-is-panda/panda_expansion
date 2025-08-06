@@ -24,7 +24,7 @@ jingzhezhi:addEffect("active", {
   target_num = 1,
   prompt = "#jingzhezhi",
   can_use = function(self, player)
-    return player:usedSkillTimes(jingzhezhi.name, Player.HistoryPhase) == 0 and not player:isKongcheng()
+    return player:usedSkillTimes(jingzhezhi.name, Player.HistoryPhase) == 0
   end,
   target_filter = function(self, player, to_select, selected)
     return #selected == 0
