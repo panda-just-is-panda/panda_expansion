@@ -30,8 +30,18 @@ zhuri:addEffect(fk.TargetSpecifying, {
     if #to > 0 then
         local pindian = player:pindian({to[1]}, zhuri.name)
         if pindian.results[to[1]].winner ~= player then
+            room:addPlayerMark(player, "ranji_count", 1)
             room:addTableMarkIfNeed(player, "@mo_zhuri", data.card.number)
-            player:setSkillUseHistory(zhuri.name, 0, Player.HistoryTurn)
+            local choices = {"zhuri_reset", "ranji_reset"}
+                local choice = room:askToChoice(player, {
+                    choices = choices,
+                    skill_name = zhuri.name,
+                })
+            if choice == "zhuri_reset" then
+            player:setSkillUseHistory(zhuri.name, 0, Player.HistoryGame)
+            else
+              player:setSkillUseHistory("mo_ranji", 0, Player.HistoryGame)
+            end
         end
         return true
     end

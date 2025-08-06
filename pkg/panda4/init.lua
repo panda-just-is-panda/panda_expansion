@@ -60,6 +60,7 @@ Fk:loadTranslationTable{
 
 local jiangwei = General:new(extension, "mo_jiangwei", "shu", 4, 4, General.Male)
 jiangwei:addSkill("mo_zhuri")
+jiangwei:addSkill("mo_ranji")
 Fk:loadTranslationTable{
 ["mo_jiangwei"] = "姜维",
 ["#mo_jiangwei"] = "尽途天涯",
