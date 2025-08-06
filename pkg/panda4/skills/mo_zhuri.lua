@@ -38,7 +38,7 @@ zhuri:addEffect(fk.TargetSpecifying, {
                     skill_name = zhuri.name,
                 })
             if choice == "zhuri_reset" then
-            player:setSkillUseHistory(zhuri.name, 0, Player.HistoryGame)
+            player:setSkillUseHistory(zhuri.name, 0, Player.HistoryTurn)
             else
               player:setSkillUseHistory("mo_ranji", 0, Player.HistoryGame)
             end
@@ -80,6 +80,8 @@ Fk:loadTranslationTable {["mo_zhuri"] = "逐日",
 ["#zhuri_pindian"] = "你可以和一名目标角色拼点",
  ["@mo_zhuri"] = "逐日",
  ["@@ranjin"] = "燃尽",
+ ["zhuri_reset"] = "重置逐日",
+ ["ranji_reset"] = "重置燃己",
 }
 
 return zhuri
