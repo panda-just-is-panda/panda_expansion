@@ -12,7 +12,7 @@ local zhanma = fk.CreateSkill{
 zhanma:addEffect(fk.DrawNCards, {
   anim_type = "drawcard",
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(zhanma.name)
+    return target == player and player:hasSkill(zhanma.name)
   end,
   on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)

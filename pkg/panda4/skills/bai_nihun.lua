@@ -14,7 +14,7 @@ Fk:loadTranslationTable{
 nihun:addEffect(fk.AfterDying, {
   anim_type = "drawcard",
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(nihun.name)
+    return target == player and player:hasSkill(nihun.name)
   end,
   on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
