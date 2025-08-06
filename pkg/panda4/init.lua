@@ -71,5 +71,18 @@ Fk:loadTranslationTable{
 ["~mo_jiangwei"] = "姜维姜维，又将何为？",
 }
 
+local gaoyang = General:new(extension, "bai_gaoyang", "qun", 4, 4, General.Male)
+gaoyang:addSkill("bai_zhanma")
+gaoyang:addSkill("bai_nihun")
+gaoyang.endnote = "这给我干哪来了，这还是三国吗？<br>\
+本来是齐的，但是废物胖不会引用非三国的势力图标，所以跑到三国来了。"
+Fk:loadTranslationTable{
+["bai_gaoyang"] = "高洋",
+["#bai_gaoyang"] = "英雄天子",
+["designer:bai_gaoyang"] = "白小贝",
+["cv:bai_gaoyang"] = "官方",
+["illustrator:bai_gaoyang"] = "帝成2",
+
+}
 
 return extension
