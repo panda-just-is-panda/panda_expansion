@@ -17,23 +17,23 @@ haoshou:addEffect(fk.EventPhaseStart, { --
       return p:canUseTo(slash, player, {bypass_times = true}) and not p:isNude()
     end)
     if #targets > 0 then
-        for _, tos in ipairs(targets) do
-    local choice_made = room:askToChoice(tos, {
-      choices = choices,
-      prompt = "duel_question",
-      skill_name = haoshou.name,
-    })
-    if choice_made ~= "Cancel" then
-      local duel = Fk:cloneCard("duel")
-         local cards = room:askToCards(tos, {
-        min_num = 1,
-        max_num = 1,
-        include_equip = true,
+      for _, tos in ipairs(targets) do
+        local choice_made = room:askToChoice(tos, {
+        choices = choices,
+        prompt = "duel_question",
         skill_name = haoshou.name,
-        prompt = "duel_asking",
-        cancelable = false,
-      })
-        duel:addSubcards(cards)
+        })
+        if choice_made ~= "Cancel" then
+          local duel = Fk:cloneCard("duel")
+          local cards = room:askToCards(tos, {
+            min_num = 1,
+            max_num = 1,
+            include_equip = true,
+            skill_name = haoshou.name,
+            prompt = "duel_asking",
+            cancelable = false,
+          })
+          duel:addSubcards(cards)
         room:useVirtualCard("duel", duel, tos, player, haoshou.name, true)
         if player:getMark("haoshou-turn") == 0 then
         room:addPlayerMark(player, "haoshou-turn", 1)
@@ -42,7 +42,8 @@ haoshou:addEffect(fk.EventPhaseStart, { --
     end
   end
     if player:getMark("haoshou-turn") == 0 then
-        local targets2 = table.filter(room:getOtherPlayers(player, false), function (p)
+      local duel = Fk:cloneCard("duel")
+      local targets2 = table.filter(room:getOtherPlayers(player, false), function (p)
       return player:canUseTo(duel, p)
     end)
     local tos2 = room:askToChoosePlayers(player, {
