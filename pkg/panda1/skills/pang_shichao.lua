@@ -23,5 +23,8 @@ shichao:addEffect(fk.TurnEnd, {
 Fk:loadTranslationTable {["pang_shichao"] = "尸潮",
 [":pang_shichao"] = "每轮限X次，回合结束时，你可以执行一个额外的回合（X为你已损失的体力值）。",
 ["#pang_shichao"] = "你可以执行一个额外的回合。",
+
+["$pang_shichao1"] = "僵尸嘶吼",
+["$pang_shichao2"] = "僵尸低吼",
 }
 return shichao  --不要忘记返回做好的技能对象哦

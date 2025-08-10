@@ -127,6 +127,9 @@ Fk:loadTranslationTable{["pang_jigao"] = "饥槁",
   ["shortage"] = "获得饥饿",
   ["use_shortage"] = "将一张黑色牌作为兵粮寸断使用",
   ["#pang_jigao2"] = "你可以摸一张牌并选择失去体力或对自己用【兵粮寸断】",
+
+  ["$pang_jigao1"] = "尸壳嘶吼",
+  ["$pang_jigao2"] = "尸壳嘶吼",
 }
 
 return jigao

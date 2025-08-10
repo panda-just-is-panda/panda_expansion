@@ -52,5 +52,8 @@ Fk:loadTranslationTable {["pang_shifu"] = "尸腐",
 ["shifu_submit"] = "交牌",
 ["shifu_asking"] = "你可以交给对方一张牌并和其各回复1点体力",
 ["shifu_asking2"] = "交给对方一张牌",
+
+["$pang_shifu1"] = "僵尸嚎叫",
+["$pang_shifu2"] = "僵尸敲门",
 }
 return shifu  --不要忘记返回做好的技能对象哦

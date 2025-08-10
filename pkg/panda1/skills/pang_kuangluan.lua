@@ -59,5 +59,8 @@ kuangluan:addEffect(fk.Damaged, {
 Fk:loadTranslationTable {["pang_kuangluan"] = "狂乱",
 [":pang_kuangluan"] = "锁定技，结束阶段或当你受到伤害后，你摸一张牌并选择一项：使用一张【杀】；失去1点体力。",
 ["#kuangluan_sha"] = "你需使用一张【杀】，否则失去1点体力",
+
+["$pang_kuangluan1"] = "僵尸疣猪兽嘶吼",
+["$pang_kuangluan2"] = "僵尸疣猪兽嘶吼",
 }
 return kuangluan  --不要忘记返回做好的技能对象哦
