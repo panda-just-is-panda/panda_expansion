@@ -53,5 +53,8 @@ Fk:loadTranslationTable {["pang_ciyong"] = "磁涌",
 [":pang_ciyong"] = "你可以横置当前回合角色并视为使用或打出一张雷【杀】或【闪】，然后若你：未横置，你摸一张牌；已横置，你可以弃置两张牌并重置。",
 ["#ciyong"] = "磁涌：你可以视为使用或打出雷【杀】或【闪】",
 ["#ciyong_discard"] = "你可以弃置两张牌并重置",
+
+["$pang_ciyong1"] = "Extermination commencing.",
+["$pang_ciyong2"] = "I will take great pleasure in seeing them in pieces.",
 }
 return ciyong

@@ -23,6 +23,9 @@ zhisu:addEffect(fk.CardUsing, {
 
 Fk:loadTranslationTable {["pang_zhisu"] = "质速",
 [":pang_zhisu"] = "锁定技，你每回合首次使用的基本牌额外结算一次。",
+
+["$pang_zhisu1"] = "Loading.",
+["$pang_zhisu2"] = "Target Confirmed.",
 }
 
 return zhisu

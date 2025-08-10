@@ -61,6 +61,9 @@ niliu:addEffect(fk.DamageInflicted, {
 
 Fk:loadTranslationTable {["pang_niliu"] = "逆流",
 [":pang_niliu"] = "锁定技，本回合因弃置失去过牌的角色：对你造成的伤害-1；受到你造成的伤害+1。",
-["@@niliu"] = "逆流"
+["@@niliu"] = "逆流",
+
+  ["$pang_niliu1"] = "Agents have guns. It's called common sense.",
+  ["$pang_niliu2"] = "Radio waves are everywhere, everywehere.",
 }
 return niliu

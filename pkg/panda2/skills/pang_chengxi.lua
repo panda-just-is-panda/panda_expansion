@@ -64,6 +64,9 @@ Fk:loadTranslationTable{["pang_chengxi"] = "乘隙",
   ["#chengxi_chai"] = "你可以弃置其一张牌",
   ["meilanni_qiao"] = "巧",
   ["#chengxi_obtain"] = "你可以移除一张”巧“并获得其一张牌",
+
+  ["$pang_chengxi1"] = "a mice party.",
+  ["$pang_chengxi2"] = "梅兰妮模仿老鼠叫",
 }
 
 return chengxi

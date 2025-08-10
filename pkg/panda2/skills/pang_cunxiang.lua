@@ -41,5 +41,8 @@ cunxiang:addEffect("viewas", {
 Fk:loadTranslationTable {["pang_cunxiang"] = "存想",
 [":pang_cunxiang"] = "转换技，当你需要使用【酒】时，你可以①将武将牌翻至背面②摸两张牌，然后你视为使用之。",
 ["#cunxiang1"] = "你可以视为使用一张【酒】",
+
+["$pang_cunxiang1"] = "You don't wanna miss it!",
+["$pang_cunxiang2"] = "Let's get it over quick!",
 }
 return cunxiang

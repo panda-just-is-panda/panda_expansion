@@ -106,6 +106,9 @@ Fk:loadTranslationTable{
   ["jianmi_discard"] = "弃置此牌名的所有牌",
   ["jianmi_Cancel2"] = "返回上一名角色的手牌",
   ["#jianmi-view"] = "监秘：观看%dest的手牌",
+
+  ["$pang_jianmi1"] = "Don't be so furious.",
+  ["$pang_jianmi2"] = "Talking out calms people down.",
 }
 
 return jianmi

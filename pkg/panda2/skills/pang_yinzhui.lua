@@ -106,6 +106,9 @@ Fk:loadTranslationTable {["pang_yinzhui"] = "音缀",
 ["yinzhui_drawcard"] = "当前回合角色摸两张牌",
 ["max_card_nerf"] = "当前回合角色手牌上限-1",
 ["yinzhui_discard"] = "当前回合角色弃置两张牌",
+
+["$pang_yinzhui1"] = "Listen to the melodies of wind and waves.",
+  ["$pang_yinzhui2"] = "Please enjoy!",
 }
 
 return yinzhui

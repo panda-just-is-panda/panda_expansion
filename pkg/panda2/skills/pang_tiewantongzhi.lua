@@ -193,6 +193,17 @@ Fk:loadTranslationTable{["pang_tiewantongzhi"] = "铁腕统治",
   ["tiewan_defense1"] = "你可以视为使用一张无中生有或过河拆桥",
   ["tiewan_defense2"] = "你可以视为对自己使用一张无中生有或过河拆桥",
   ["#tiewan_chai"] = "无需对敌人仁慈",
+
+  ["$pang_tiewantongzhi1"] = "决定性的胜利。",
+  ["$pang_tiewantongzhi2"] = "什么，都阻挡不了我！",
+  ["$pang_tiewantongzhi3"] = "我向你们承诺过，我会守护你们，我没有食言。",
+  ["$pang_tiewantongzhi4"] = "没人能质疑我的权威，我的力量是无穷的。",
+  ["$pang_tiewantongzhi5"] = "帝国的子民们，拿起武器，保卫你们的家园！",
+  ["$pang_tiewantongzhi6"] = "不会有人，被打措手不及的！",
+  ["$pang_tiewantongzhi7"] = "这场战争，已经没有平民可言！",
+  ["$pang_tiewantongzhi8"] = "我无数的子民做出了终极牺牲。",
+  ["$pang_tiewantongzhi9"] = "发射导弹，继续发，全射出去！",
+  ["$pang_tiewantongzhi10"] = "这是他们逼我们的。释放异虫。",
 }
 
 return tiewan

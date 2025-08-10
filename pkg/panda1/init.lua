@@ -17,6 +17,8 @@ Fk:loadTranslationTable{
 ["designer:pang__zoglin"] = "胖即是胖",
 ["cv:pang__zoglin"] = "我的世界",
 ["illustrator:pang__zoglin"] = "我的世界",
+
+["~pang__zoglin"] = "僵尸疣猪兽阵亡",
 }
 
 local drowned = General:new(extension, "pang__drowned", "wu", 4, 4, General.Male)
@@ -28,6 +30,8 @@ Fk:loadTranslationTable{
 ["designer:pang__drowned"] = "胖即是胖",
 ["cv:pang__drowned"] = "我的世界",
 ["illustrator:pang__drowned"] = "我的世界",
+
+["~pang__drowned"] = "溺尸阵亡",
 }
 
 local husk = General:new(extension, "pang__husk", "wu", 4, 4, General.Male)
@@ -39,6 +43,8 @@ Fk:loadTranslationTable{
 ["designer:pang__husk"] = "胖即是胖",
 ["cv:pang__husk"] = "我的世界",
 ["illustrator:pang__husk"] = "我的世界",
+
+["~pang__husk"] = "尸壳阵亡",
 }
 
 local zombie = General:new(extension, "pang__zombie", "wu", 3, 3, General.Male)
@@ -51,6 +57,8 @@ Fk:loadTranslationTable{
 ["designer:pang__zombie"] = "胖即是胖",
 ["cv:pang__zombie"] = "我的世界",
 ["illustrator:pang__zombie"] = "我的世界",
+
+["~pang__zombie"] = "僵尸阵亡",
 }
 
 local stray = General:new(extension, "pang__stray", "wu", 3, 3, General.Male)
@@ -63,6 +71,8 @@ Fk:loadTranslationTable{
 ["designer:pang__stray"] = "胖即是胖",
 ["cv:pang__stray"] = "我的世界",
 ["illustrator:pang__stray"] = "我的世界",
+
+["~pang__stray"] = "流髑阵亡",
 }
 
 local skeleton = General:new(extension, "pang__skeleton", "wu", 3, 3, General.Male)
@@ -75,6 +85,8 @@ Fk:loadTranslationTable{
 ["designer:pang__skeleton"] = "胖即是胖",
 ["cv:pang__skeleton"] = "我的世界",
 ["illustrator:pang__skeleton"] = "我的世界",
+
+["~pang__skeleton"] = "骷髅阵亡",
 }
 
 local evoker = General:new(extension, "pang__evoker", "wu", 3, 3, General.Male)
@@ -86,6 +98,8 @@ Fk:loadTranslationTable{
 ["designer:pang__evoker"] = "胖即是胖",
 ["cv:pang__evoker"] = "我的世界",
 ["illustrator:pang__evoker"] = "我的世界",
+
+["~pang__evoker"] = "唤魔者阵亡",
 }
 
 local pillager = General:new(extension, "pang__pillager", "wu", 3, 3, General.Male)
@@ -97,6 +111,8 @@ Fk:loadTranslationTable{
 ["designer:pang__pillager"] = "胖即是胖",
 ["cv:pang__pillager"] = "我的世界",
 ["illustrator:pang__pillager"] = "我的世界",
+
+["~pang__pillager"] = "掠夺者阵亡",
 }
 
 local vindicator = General:new(extension, "pang__vindicator", "wu", 3, 3, General.Male)
@@ -109,6 +125,8 @@ Fk:loadTranslationTable{
 ["designer:pang__vindicator"] = "胖即是胖",
 ["cv:pang__vindicator"] = "我的世界",
 ["illustrator:pang__vindicator"] = "我的世界",
+
+["~pang__vindicator"] = "卫道士阵亡",
 }
 
 local ravager = General:new(extension, "pang__ravager", "wu", 8, 8, General.Male)
@@ -120,6 +138,8 @@ Fk:loadTranslationTable{
 ["designer:pang__ravager"] = "胖即是胖",
 ["cv:pang__ravager"] = "我的世界",
 ["illustrator:pang__ravager"] = "我的世界",
+
+["~pang__ravager"] = "劫掠兽阵亡",
 }
 
 local witch = General:new(extension, "pang__witch", "wu", 3, 3, General.Female)
@@ -145,6 +165,8 @@ Fk:loadTranslationTable{
 ["designer:pang__archillager"] = "胖即是胖",
 ["cv:pang__archillager"] = "我的世界",
 ["illustrator:pang__archillager"] = "我的世界",
+
+["~pang__archillager"] = "奇厄教主被击败",
 }
 
 local steve = General:new(extension, "pang__steve", "wu", 4, 4, General.Male)
@@ -156,6 +178,8 @@ Fk:loadTranslationTable{
 ["designer:pang__steve"] = "胖即是胖",
 ["cv:pang__steve"] = "我的世界",
 ["illustrator:pang__steve"] = "我的世界",
+
+["~pang__steve"] = "史蒂夫死亡声",
 }
 
 local panda = General:new(extension, "pang__panda", "god", 4, 4, General.Male)
@@ -167,6 +191,8 @@ Fk:loadTranslationTable{
 ["designer:pang__panda"] = "胖即是胖",
 ["cv:pang__panda"] = "我的世界",
 ["illustrator:pang__panda"] = "我的世界",
+
+["~pang__panda"] = "胖悲",
 }
 
 

@@ -46,6 +46,9 @@ Fk:loadTranslationTable{["pang_qiaoshou"] = "巧手",
   ["#pang_qiaoshou"] = "巧手：将若干张牌作为【杀】使用，若造成伤害则获得“巧”",
   ["meilanni_qiao"] = "巧",
   ["qiaoshou_gain_qiao"] = "你可以将这些牌作为”巧“置于武将牌上",
+
+  ["$pang_qiaoshou1"] = "Three, two, one, down.",
+  ["$pang_qiaoshou2"] = "An unconventional choice.",
 }
 
 return qiaoshou

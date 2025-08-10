@@ -132,6 +132,10 @@ Fk:loadTranslationTable {["pang_diedai"] = "迭代",
 ["jiejin"] = "获得“阶进”",
 ["@dianchi"] = "电能",
 ["@diedai_xiu"] = "朽",
+
+  ["$pang_diedai1"] = "Program activating.",
+  ["$pang_diedai2"] = "I, robot, child of science.",
+  ["$pang_diedai3"] = "And now to return to my long term mission: rest.",
 }
 
 return diedai

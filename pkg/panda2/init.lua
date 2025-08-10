@@ -17,6 +17,8 @@ Fk:loadTranslationTable{
 ["designer:pang__ouliege"] = "胖即是胖",
 ["cv:pang__ouliege"] = "红色警戒3",
 ["illustrator:pang__ouliege"] = "红色警戒3",
+
+["~pang__ouliege"] = "I guess that's it.",
 }
 
 local moskvin = General:new(extension, "pang__moskvin", "shu", 4)
@@ -27,6 +29,8 @@ Fk:loadTranslationTable{
 ["designer:pang__moskvin"] = "胖即是胖",
 ["cv:pang__moskvin"] = "红色警戒3",
 ["illustrator:pang__moskvin"] = "红色警戒3",
+
+["~pang__moskvin"] = "Yes sir. But one day, I will be giving orders.",
 }
 
 local artanis = General:new(extension, "pang__artanis", "wei", 4)
@@ -54,7 +58,7 @@ Fk:loadTranslationTable{
 ["cv:pang__mengsk"] = "星际争霸2",
 ["illustrator:pang__artanis"] = "星际争霸2",
 
-["~pang__mengsk"] = "",
+["~pang__mengsk"] = "我们的人正在成群的倒下。我必须回撤休整。",
 }
 
 
@@ -67,6 +71,8 @@ Fk:loadTranslationTable{
 ["designer:pang__meilanni"] = "胖即是胖",
 ["cv:pang__meilanni"] = "深蓝",
 ["illustrator:pang__meilanni"] = "深蓝",
+
+["~pang__meilanni"] = "The plan failed……",
 }
 
 local quniang = General:new(extension, "pang__quniang", "qun", 3, 3, General.Female)
@@ -78,6 +84,8 @@ Fk:loadTranslationTable{
 ["designer:pang__quniang"] = "胖即是胖",
 ["cv:pang__quniang"] = "深蓝",
 ["illustrator:pang__quniang"] = "深蓝",
+
+["~pang__quniang"] = "It's wrong!",
 }
 
 local bolinyidong = General:new(extension, "pang__bolinyidong", "wu", 3, 3, General.Female)
@@ -89,6 +97,8 @@ Fk:loadTranslationTable{
 ["designer:pang__bolinyidong"] = "胖即是胖",
 ["cv:pang__bolinyidong"] = "深蓝",
 ["illustrator:pang__bolinyidong"] = "深蓝",
+
+["~pang__bolinyidong"] = "Retreat! What? I can't make the call?",
 }
 
 local xugouji = General:new(extension, "pang__xugouji", "qun", 4, 4, General.Female)
@@ -101,6 +111,8 @@ Fk:loadTranslationTable{
 ["designer:pang__xugouji"] = "胖即是胖",
 ["cv:pang__xugouji"] = "深蓝",
 ["illustrator:pang__xugouji"] = "深蓝",
+
+
 }
 
 local luxi = General:new(extension, "pang__luxi", "god", 4, 4, General.Female)
@@ -116,6 +128,8 @@ Fk:loadTranslationTable{
 ["designer:pang__luxi"] = "胖即是胖",
 ["cv:pang__luxi"] = "深蓝",
 ["illustrator:pang__luxi"] = "深蓝",
+
+["~pang__luxi"] = "Shell, damaged.",
 }
 
 local nuodika = General:new(extension, "pang__nuodika", "jin", 4, 4, General.Female)
@@ -140,6 +154,8 @@ Fk:loadTranslationTable{
 ["designer:pang__barcarola"] = "胖即是胖",
 ["cv:pang__barcarola"] = "深蓝",
 ["illustrator:pang__barcarola"] = "深蓝",
+
+["~pang__barcarola"] = "This is a breach of “Free breeze” passenger etiquette!",
 }
 
 local dasitin = General:new(extension, "ying_dasitin", "shu", 4, 4, General.Male)

@@ -20,6 +20,8 @@ Fk:loadTranslationTable{
 ["designer:pang__dizhu"] = "胖即是胖",
 ["cv:pang__dizhu"] = "欢乐斗地主",
 ["illustrator:pang__dizhu"] = "欢乐斗地主",
+
+["~pang__dizhu"] = "豆子-600",
 }
 
 local wild_dog = General:new(extension, "pang__wild_dog", "qun", 4, 4, General.Male)
@@ -49,6 +51,8 @@ Fk:loadTranslationTable{
 ["designer:pang__wither"] = "胖即是胖",
 ["cv:pang__wither"] = "官方",
 ["illustrator:pang__wither"] = "我的世界&官方",
+
+["~pang__wither"] = "隐藏语音",
 }
 
 

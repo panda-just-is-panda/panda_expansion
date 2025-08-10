@@ -63,6 +63,9 @@ Fk:loadTranslationTable {["pang_jinxing"] = "尽兴",
 [":pang_jinxing"] = "每轮结束时，若你本轮未执行过回合，你执行一个额外的回合；你于此回合内使用牌无次数限制。",
 ["#jinxing"] = "你可以执行一个额外的回合",
 ["@@jinxing_huihe"] = "尽兴",
-["@@huihe_infinite"] = "尽兴回合"
+["@@huihe_infinite"] = "尽兴回合",
+
+["$pang_jinxing1"] = "There it are!",
+["$pang_jinxing2"] = "Got you!",
 }
 return jinxing

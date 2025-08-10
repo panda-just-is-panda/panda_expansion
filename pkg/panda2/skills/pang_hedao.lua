@@ -22,6 +22,9 @@ hedao:addEffect(fk.CardUsing, {
 
 Fk:loadTranslationTable {["pang_hedao"] = "荷导",
 [":pang_hedao"] = "锁定技，你每回合首次使用非基本牌时摸两张牌。",
+
+["$pang_hedao1"] = "Charging.",
+["$pang_hedao2"] = "The light that illuminates all.",
 }
 
 return hedao

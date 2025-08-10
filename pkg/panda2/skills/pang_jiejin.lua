@@ -39,6 +39,9 @@ jiejin:addEffect(fk.Death, {
 Fk:loadTranslationTable {["pang_jiejin"] = "阶进",
 [":pang_jiejin"] = "锁定技，当一名角色死亡时，你视为使用一张无距离限制且可以额外指定任意名角色为目标的雷【杀】。",
 ["#jiejin-choose"] = "你可以视为对任意名角色使用一张雷【杀】",
+
+["$pang_jiejin1"] = "Aim and shoot.",
+["$pang_jiejin2"] = "Faraday's miracle.",
 }
 
 return jiejin
