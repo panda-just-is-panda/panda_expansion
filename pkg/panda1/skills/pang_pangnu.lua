@@ -48,6 +48,9 @@ Fk:loadTranslationTable {["pang_pangnu"] = "胖怒",
 [":pang_pangnu"] = "每轮结束时，你可以视为对所有本轮造成过伤害的角色使用一张【火攻】；若你未因此造成伤害，你失去此技能。",
 ["#pang_pangnu1"] = "将手牌摸至手牌上限",
 ["#pang_taipang2"] = "令你的手牌上限+1",
+
+["$pang_pangnu1"] = "胖怒！",
+["$pang_pangnu2"] = "太怒！",
 }
 
 return pangnu

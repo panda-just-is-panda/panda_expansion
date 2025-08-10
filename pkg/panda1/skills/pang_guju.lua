@@ -98,5 +98,8 @@ Fk:loadTranslationTable {["pang_guju"] = "骨狙",
 ["guju_qiangming"] = "使用牌不能被响应",
 ["guju_juli"] = "使用牌无距离限制",
 ["draw1"] = "摸一张牌",
+
+["$pang_guju1"] = "骷髅杂音",
+["$pang_guju2"] = "骷髅噪音",
 }
 return guju  --不要忘记返回做好的技能对象哦

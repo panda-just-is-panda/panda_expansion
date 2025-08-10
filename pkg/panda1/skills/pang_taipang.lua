@@ -40,6 +40,9 @@ Fk:loadTranslationTable {["pang_taipang"] = "太胖",
 [":pang_taipang"] = "每回合各限一次，当你使用牌指定自己为目标时，你可以取消之并选择一项：将手牌摸至手牌上限；令你的手牌上限+1。",
 ["#pang_taipang1"] = "将手牌摸至手牌上限",
 ["#pang_taipang2"] = "令你的手牌上限+1",
+
+["$pang_taipang1"] = "何故胖",
+["$pang_taipang2"] = "唉太胖",
 }
 
 return taipang

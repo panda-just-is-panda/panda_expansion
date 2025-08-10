@@ -44,6 +44,9 @@ end
 
 Fk:loadTranslationTable {["pang_huifu"] = "挥斧",
 [":pang_huifu"] = "每回合结束时，若你本回合：造成过伤害，你获得弃牌堆中的一张【杀】；受到过伤害，你可以视为使用一张【杀】。",
-["#huifu_choose"] = "视为使用一张【杀】"
+["#huifu_choose"] = "视为使用一张【杀】",
+
+["$pang_huifu1"] = "哼哼～",
+["$pang_huifu2"] = "哼哼！",
 }
 return huifu  --不要忘记返回做好的技能对象哦

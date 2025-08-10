@@ -57,5 +57,8 @@ Fk:loadTranslationTable {["pang_eying"] = "厄影",
 ["#eying_choose"] = "使用一张【杀】，或点取消然后弃置一张牌",
 ["#eying"] = "令至多两名角色获得护甲或用杀",
 ["#eying_discard"] = "弃置一张牌",
+
+["$pang_eying1"] = "魔法吟唱声",
+["$pang_eying2"] = "魔法声",
 }
 return eying

@@ -51,6 +51,9 @@ mozong:addEffect(fk.TargetSpecified, {
 
 Fk:loadTranslationTable {["pang_mozong"] = "末纵",
 [":pang_mozong"] = "你使用【杀】无距离限制且可以额外指定至多两名角色为目标；若你没有护甲，你使用【杀】指定目标后弃置所有目标角色各一张牌。",
-["#mozong_choose"] = "弃置其一张牌"
+["#mozong_choose"] = "弃置其一张牌",
+
+["$pang_mozong1"] = "光球发射声",
+["$pang_mozong2"] = "末影之心嘶吼",
 }
 return mozong  --不要忘记返回做好的技能对象哦

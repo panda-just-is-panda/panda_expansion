@@ -41,5 +41,8 @@ anim_type = "switch",
 Fk:loadTranslationTable {["pang_dangli"] = "荡力",
 [":pang_dangli"] = "转换技，①当你受到伤害时②当你造成伤害时，你可以令此伤害+1并获得弃牌堆中的一张【杀】。",
 ["#dangli"] = "你可以令此伤害+1并获得【杀】",
+
+["$pang_dangli1"] = "哈～",
+["$pang_dangli2"] = "哈——",
 }
 return dangli  --不要忘记返回做好的技能对象哦

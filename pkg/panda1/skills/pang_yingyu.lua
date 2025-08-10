@@ -99,5 +99,8 @@ end,
 Fk:loadTranslationTable {["pang_yingyu"] = "影驭",
 [":pang_yingyu"] = "每轮开始时，你可以弃置所有手牌（无牌则不弃）并令一名角色执行一个额外的回合；若你没有护甲，其从弃牌堆中获得一张【杀】。",
 ["#yingyu_choose"] = "弃置所有手牌并令一名角色执行一个额外的回合",
+
+["$pang_yingyu1"] = "奇厄教主嚣张的笑声",
+["$pang_yingyu2"] = "奇厄教主的笑声（末影化）",
 }
 return yingyu  --不要忘记返回做好的技能对象哦

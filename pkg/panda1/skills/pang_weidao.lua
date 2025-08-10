@@ -49,6 +49,9 @@ anim_type = "switch",
 Fk:loadTranslationTable {["pang_weidao"] = "卫道",
 [":pang_weidao"] = "转换技，①准备阶段，你可以视为使用一张【决斗】②其他角色的结束阶段，你可以令其视为对你使用一张【决斗】。",
 ["#weidao1"] = "你可以视为使用一张【决斗】",
-["#weidao2"] = "你可以令一名角色视为对你使用一张【决斗】"
+["#weidao2"] = "你可以令一名角色视为对你使用一张【决斗】",
+
+["$pang_weidao1"] = "哼哼！",
+["$pang_weidao2"] = "哼哼——！",
 }
 return weidao  --不要忘记返回做好的技能对象哦

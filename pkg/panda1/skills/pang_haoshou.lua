@@ -70,6 +70,9 @@ Fk:loadTranslationTable {["pang_haoshou"] = "浩兽",
 ["useduel"] = "使用决斗",
 ["duel_asking"] = "将一张牌作为【决斗】对劫掠兽使用",
 ["duel_question"] = "你可以将一张牌作为【决斗】对劫掠兽使用",
-["#haoshou2"] = "你可以视为使用一张【决斗】"
+["#haoshou2"] = "你可以视为使用一张【决斗】",
+
+["$pang_haoshou1"] = "哼～哈～哈～",
+["$pang_haoshou2"] = "哼～哈～",
 }
 return haoshou  --不要忘记返回做好的技能对象哦

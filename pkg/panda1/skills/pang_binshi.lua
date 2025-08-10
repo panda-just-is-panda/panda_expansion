@@ -67,5 +67,8 @@ Fk:loadTranslationTable {["pang_binshi"] = "冰蚀",
 ["binshi_chai"] = "弃置其牌，你失去体力",
 ["binshi_beng"] = "你弃置牌，其失去体力",
 ["binshi_chai2"] = "弃置其两张牌",
+
+["$pang_binshi1"] = "流髑杂音",
+["$pang_binshi2"] = "流髑杂音",
 }
 return binshi  --不要忘记返回做好的技能对象哦

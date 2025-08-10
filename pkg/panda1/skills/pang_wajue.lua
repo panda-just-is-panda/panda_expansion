@@ -57,5 +57,8 @@ wajue:addEffect(fk.CardUseFinished, {
 Fk:loadTranslationTable {["pang_wajue"] = "挖掘",
 [":pang_wajue"] = "锁定技，结束阶段或当你使用一张装备牌后，你亮出牌堆底的X张牌并获得其中一张（X为你装备区内的牌数）。",
 ["#wajue-choose"] = "获得其中一张牌",
+
+["$pang_wajue1"] = "挖矿声",
+["$pang_wajue2"] = "挖方块声",
 }
 return wajue  --不要忘记返回做好的技能对象哦

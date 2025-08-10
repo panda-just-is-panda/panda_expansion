@@ -23,5 +23,8 @@ moya:addEffect(fk.TurnEnd, {
 Fk:loadTranslationTable {["pang_moya"] = "魔牙",
 [":pang_moya"] = "其他角色的回合结束时，若你的手牌数小于体力值，你可以摸两张牌并视为对当前回合角色使用一张【杀】。",
 ["#pang_moya"] = "你可以摸两张牌并视为对当前回合角色使用一张【杀】",
+
+["$pang_moya1"] = "魔法吟唱声",
+["$pang_moya2"] = "魔法吟唱声",
 }
 return moya
