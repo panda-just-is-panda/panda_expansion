@@ -148,9 +148,9 @@ witch:addSkill("pang_lianniang")
 Fk:loadTranslationTable{
 ["pang__witch"] = "女巫",
 ["#pang__witch"] = "酝药滋害",
-["designer:pang__ravager"] = "胖即是胖",
-["cv:pang__ravager"] = "我的世界",
-["illustrator:pang__ravager"] = "我的世界",
+["designer:pang__witch"] = "胖即是胖",
+["cv:pang__witch"] = "我的世界",
+["illustrator:pang__witch"] = "我的世界",
 }
 
 local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)
