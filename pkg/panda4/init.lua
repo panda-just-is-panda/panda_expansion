@@ -52,7 +52,7 @@ local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{
 ["hua_lejiu"] = "乐就",
-["#hua_lejiu"] = "急急国王",
+["#hua_lejiu"] = "仲家军督",
 ["designer:hua_lejiu"] = "花姸",
 ["cv:hua_lejiu"] = "官方",
 ["illustrator:hua_lejiu"] = "官方",

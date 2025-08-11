@@ -31,7 +31,9 @@ duizi:addEffect("viewas", {
 
 Fk:loadTranslationTable {["pang_duizi"] = "对子",
 [":pang_duizi"] = "你可以将两张点数相同的牌作为【过河拆桥】使用。",
-["#duizi"] = "你可以将两张点数相同的牌作为【过河拆桥】使用"
+["#duizi"] = "你可以将两张点数相同的牌作为【过河拆桥】使用",
+
+["$pang_duizi1"] = "顺风的小曲～",
 }
 
 return duizi

@@ -34,7 +34,9 @@ feiji:addEffect("viewas", {
 
 Fk:loadTranslationTable {["pang_feiji"] = "三带",
 [":pang_feiji"] = "你可以将三张点数相同的牌作为【无中生有】使用。",
-["#feiji"] = "你可以将三张点数相同的牌作为【无中生有】使用"
+["#feiji"] = "你可以将三张点数相同的牌作为【无中生有】使用",
+
+["$pang_feiji1"] = "悠闲的小曲～",
 }
 
 return feiji

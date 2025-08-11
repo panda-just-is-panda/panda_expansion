@@ -38,7 +38,9 @@ zhadan:addEffect("viewas", {
 
 Fk:loadTranslationTable {["pang_zhadan"] = "炸弹",
 [":pang_zhadan"] = "你可以将四张点数相同的牌作为【无懈可击】使用。",
-["#zhadan"] = "你可以将四张点数相同的牌作为【无懈可击】使用"
+["#zhadan"] = "你可以将四张点数相同的牌作为【无懈可击】使用",
+
+["$pang_zhadan1"] = "炸弹的小曲～",
 }
 
 return zhadan
