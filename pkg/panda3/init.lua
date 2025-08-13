@@ -55,6 +55,23 @@ Fk:loadTranslationTable{
 ["~pang__wither"] = "隐藏语音",
 }
 
+local luxi = General:new(extension, "pang__laoluxi", "god", 4, 4, General.Female)
+luxi:addSkill("pang_diedaier")
+luxi:addRelatedSkill("pang_zhisu")
+luxi:addRelatedSkill("pang_hedao")
+luxi:addRelatedSkill("pang_jiejin")
+luxi:addRelatedSkill("pang_shenghua")
+luxi.endnote = "每当场上出现能频繁造成雷电伤害的角色时，人们总是会想：“要是牢露在这局里该多好啊！”"
+Fk:loadTranslationTable{
+["pang__laoluxi"] = "牢露",
+["#pang__laoluxi"] = "想你了牢露",
+["designer:pang__laoluxi"] = "胖即是胖",
+["cv:pang__laoluxi"] = "深蓝",
+["illustrator:pang__laoluxi"] = "深蓝",
+
+["~pang__luxi"] = "Shell, damaged.",
+}
+
 
 
 return extension
