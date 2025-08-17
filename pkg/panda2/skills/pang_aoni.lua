@@ -5,24 +5,25 @@ local aoni = fk.CreateSkill({
 
 aoni:addAcquireEffect(function (self, player)
   local room = player.room
-  for _, p in ipairs(room:getAlivePlayers()) do
+    for _, p in ipairs(room:getAlivePlayers()) do
             if p:getMark("@@zhengxie_kuanggu") > 0 then
                 room:handleAddLoseSkills(p, "pang_kuanggu", nil, false, true)
             else
                 room:handleAddLoseSkills(p, "pang_kuanggu", nil, false, true)
             end
+    end
+    for _, p in ipairs(room:getAlivePlayers()) do
+        if p:getMark("@@zhengxie_gukuang") > 0 then
+            room:handleAddLoseSkills(p, "pang_gukuang", nil, false, true)
+        else
+            room:handleAddLoseSkills(p, "pang_gukuang", nil, false, true)
         end
+    end
 end)
 
 aoni:addAcquireEffect(function (self, player)
   local room = player.room
-  for _, p in ipairs(room:getAlivePlayers()) do
-            if p:getMark("@@zhengxie_gukuang") > 0 then
-                room:handleAddLoseSkills(p, "pang_gukuang", nil, false, true)
-            else
-                room:handleAddLoseSkills(p, "pang_gukuang", nil, false, true)
-            end
-        end
+  
 end)
 
 aoni:addEffect(fk.AfterCardTargetDeclared, {
