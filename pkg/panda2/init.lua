@@ -158,6 +158,18 @@ Fk:loadTranslationTable{
 ["~pang__barcarola"] = "This is a breach of “Free breeze” passenger etiquette!",
 }
 
+local guirenzhengxie = General:new(extension, "pang__guirenzhengxie", "qun", 4, 4, General.Female)
+guirenzhengxie:addSkill("pang_aoni")
+guirenzhengxie:addRelatedSkill("pang_kuanggu")
+guirenzhengxie:addRelatedSkill("pang_gukuang")
+Fk:loadTranslationTable{
+["pang__guirenzhengxie"] = "鬼人正邪",
+["#pang__guirenzhengxie"] = "悖逆的天邪鬼",
+["designer:pang__guirenzhengxie"] = "胖即是胖",
+["cv:pang__guirenzhengxie"] = "官方",
+["illustrator:pang__guirenzhengxie"] = "东方",
+}
+
 local dasitin = General:new(extension, "ying_dasitin", "shu", 4, 4, General.Male)
 dasitin:addSkill("ying_jingzhezhi")
 dasitin:addSkill("ying_guyusheng")
