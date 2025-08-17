@@ -60,6 +60,15 @@ aoni:addEffect(fk.TurnStart, {
   end,
 })
 
+aoni:addLoseEffect(function (self, player, is_death)
+  for _, p in ipairs(player.room.alive_players) do
+      player.room:setPlayerMark(p, "@@zhengxie_kuanggu", 0)
+      player.room:setPlayerMark(p, "@@zhengxie_gukuang", 0)
+      player.room:handleAddLoseSkills(p, "-pang_kuanggu", nil, false, true)
+      player.room:handleAddLoseSkills(p, "-pang_gukuang", nil, false, true)
+    end
+end)
+
 Fk:loadTranslationTable {["pang_aoni"] = "骜逆",
 [":pang_aoni"] = "当你于回合内使用牌指定目标后，你可以令其中一个目标获得每回合限一次的“狂骨”或“骨狂”直到你的下个回合开始。",
 ["#aoni_choose"] = "骜逆：你可以令一名目标角色获得“狂骨”或骨狂",
