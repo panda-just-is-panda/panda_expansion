@@ -5,7 +5,7 @@ local gukuang = fk.CreateSkill{
 
 Fk:loadTranslationTable {
   ["pang_gukuang"] = "骨狂",
-  [":pang_gukuang"] = "锁定技，当你受到1点伤害后，你需弃置一张牌或失去1点体力。",
+  [":pang_gukuang"] = "锁定技，每回合限一次，当你受到1点伤害后，你需弃置一张牌或失去1点体力。",
 
   ["losehp"] = "失去1点体力",
   ["discard1"] = "弃置一张牌",
@@ -14,11 +14,8 @@ Fk:loadTranslationTable {
 
 gukuang:addEffect(fk.Damaged, {
   anim_type = "negative",
-  trigger_times = function(self, event, target, player, data)
-    return data.damage
-  end,
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(gukuang.name)
+    return target == player and player:hasSkill(gukuang.name) and player:usedSkillTimes(gukuang.name, Player.HistoryTurn) == 0
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room

@@ -4,16 +4,14 @@ local kuanggu = fk.CreateSkill{
 
 Fk:loadTranslationTable {
   ["pang_kuanggu"] = "狂骨",
-  [":pang_kuanggu"] = "当你对距离不大于1的角色造成1点伤害后，你可以摸一张牌或回复1点体力。",
+  [":pang_kuanggu"] = "每回合限一次，当你对距离不大于1的角色造成1点伤害后，你可以摸一张牌或回复1点体力。",
 }
 
 kuanggu:addEffect(fk.Damage, {
   anim_type = "drawcard",
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(kuanggu.name) and (data.extra_data or {}).kuangguCheck
-  end,
-  trigger_times = function(self, event, target, player, data)
-    return data.damage
+    and player:usedSkillTimes(kuanggu.name, Player.HistoryTurn) == 0
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
