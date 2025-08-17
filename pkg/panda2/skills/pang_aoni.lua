@@ -4,7 +4,7 @@ local aoni = fk.CreateSkill({
 })
 
 
-aoni:addAcquireEffect(function (self, player)
+aoni:addAcquireEffect(function (self, player, is_start)
   local room = player.room
   for _, p in ipairs(room:getAlivePlayers()) do
             if p:getMark("@@zhengxie_kuanggu") > 0 then
