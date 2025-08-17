@@ -33,12 +33,12 @@ aoni:addEffect(fk.AfterCardTargetDeclared, {
       skill_name = aoni.name,
     })
     if choice == "kuanggu" then
-        if not player:hasSkill("pang_kuanggu") then
+        if not to:hasSkill("pang_kuanggu") then
             room:addPlayerMark(to, "@@zhengxie_kuanggu", 1)
             room:handleAddLoseSkills(to, "pang_kuanggu", nil, false, true)
         end
     else
-        if not player:hasSkill("pang_gukuang") then
+        if not to:hasSkill("pang_gukuang") then
             room:addPlayerMark(to, "@@zhengxie_gukuang", 1)
             room:handleAddLoseSkills(to, "pang_gukuang", nil, false, true)
         end
