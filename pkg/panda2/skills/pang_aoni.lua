@@ -3,27 +3,23 @@ local aoni = fk.CreateSkill({
   tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 
+
 aoni:addAcquireEffect(function (self, player)
   local room = player.room
-    for _, p in ipairs(room:getAlivePlayers()) do
+  for _, p in ipairs(room:getAlivePlayers()) do
             if p:getMark("@@zhengxie_kuanggu") > 0 then
                 room:handleAddLoseSkills(p, "pang_kuanggu", nil, false, true)
             else
-                room:handleAddLoseSkills(p, "pang_kuanggu", nil, false, true)
+                room:handleAddLoseSkills(p, "-pang_kuanggu", nil, false, true)
             end
     end
     for _, p in ipairs(room:getAlivePlayers()) do
         if p:getMark("@@zhengxie_gukuang") > 0 then
             room:handleAddLoseSkills(p, "pang_gukuang", nil, false, true)
         else
-            room:handleAddLoseSkills(p, "pang_gukuang", nil, false, true)
+            room:handleAddLoseSkills(p, "-pang_gukuang", nil, false, true)
         end
     end
-end)
-
-aoni:addAcquireEffect(function (self, player)
-  local room = player.room
-  
 end)
 
 aoni:addEffect(fk.AfterCardTargetDeclared, {
@@ -55,9 +51,9 @@ aoni:addEffect(fk.AfterCardTargetDeclared, {
       skill_name = aoni.name,
     })
     if choice == "kuanggu" then
-      room:addPlayerMark(player, "@@zhengxie_kuanggu", 1)
+      room:addPlayerMark(to, "@@zhengxie_kuanggu", 1)
     else
-      room:addPlayerMark(player, "@@zhengxie_gukuang", 1)
+      room:addPlayerMark(to, "@@zhengxie_gukuang", 1)
     end
   end,
 })
