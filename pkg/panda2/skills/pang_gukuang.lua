@@ -4,8 +4,8 @@ local gukuang = fk.CreateSkill{
 }
 
 Fk:loadTranslationTable {
-  ["pang_kuanggu"] = "骨狂",
-  [":pang_kuanggu"] = "锁定技，当你受到1点伤害后，你需弃置一张牌或失去1点体力。",
+  ["pang_gukuang"] = "骨狂",
+  [":pang_gukuang"] = "锁定技，当你受到1点伤害后，你需弃置一张牌或失去1点体力。",
 
   ["losehp"] = "失去1点体力",
   ["discard1"] = "弃置一张牌",
