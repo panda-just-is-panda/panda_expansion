@@ -70,4 +70,18 @@ rende:addEffect("active", {
   end,
 })
 
+rende:addEffect("targetmod", {
+  bypass_times = function(self, player, skill, scope, card, to)
+    return card and table.contains(card.skillNames, rende.name)
+  end,
+})
+rende:addEffect(fk.PreCardUse, {
+  can_refresh = function(self, event, target, player, data)
+    return table.contains(card.skillNames, rende.name)
+  end,
+  on_refresh = function(self, event, target, player, data)
+    data.extraUse = true
+  end,
+})
+
 return rende

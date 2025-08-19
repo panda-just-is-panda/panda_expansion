@@ -17,8 +17,7 @@ Fk:loadTranslationTable{
 zhangwu:addEffect(fk.Damage,{
     anim_type = "offensive",
     can_trigger = function (self, event, target, player, data)
-              return player:hasSkill(zhangwu.name) and target.kingdom == "shu" and data.card and data.card.trueName == "slash"
-              or player:hasSkill(zhangwu.name) and target.kingdom == "han" and data.card and data.card.trueName == "slash"
+              return player:hasSkill(zhangwu.name) and data.card and data.card.trueName == "slash" and (data.extra_data or {}).zhangwuCheck
     end,
     on_use = function (self, event, target, player, data)
         local room = player.room
@@ -45,5 +44,17 @@ zhangwu:addEffect(fk.Damage,{
         end
     end,
     })
+
+zhangwu:addEffect(fk.BeforeHpChanged, {
+  can_refresh = function(self, event, target, player, data)
+    if data.damageEvent and (data.damageEvent.from.kingdom == "shu" or data.damageEvent.from.kingdom == "han") then
+      return true
+    end
+  end,
+  on_refresh = function(self, event, target, player, data)
+    data.damageEvent.extra_data = data.damageEvent.extra_data or {}
+    data.damageEvent.extra_data.zhangwuCheck = true
+  end,
+})
 
     return zhangwu
