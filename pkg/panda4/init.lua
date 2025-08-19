@@ -58,7 +58,7 @@ Fk:loadTranslationTable{
 ["cv:pang__liubei"] = "官方",
 ["illustrator:pang__liubei"] = "官方",
 
-["~pang__yuanshao"] = "",
+["~pang__liubei"] = "汉室之兴，皆仰望丞相了……",
 }
 
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)

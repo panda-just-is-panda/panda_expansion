@@ -10,15 +10,15 @@ Fk:loadTranslationTable{
   ["discard_hand1"] = "弃置一张手牌",
   ["#zhangwu_discard"] = "章武：你需要弃置一张手牌",
 
-  ["$pang_zhangwu1"] = "蜀汉有相父在，我可安心。",
-  ["$pang_zhangwu2"] = "这些事情，你们安排就好。",
+  ["$pang_zhangwu1"] = "匡扶汉室，岂能无诸将之助！",
+  ["$pang_zhangwu2"] = "大汉将士，何人敢战！",
 }
 
 zhangwu:addEffect(fk.Damage,{
     anim_type = "offensive",
     can_trigger = function (self, event, target, player, data)
-              return player:hasSkill(zhangwu.name) and (target.kingdom == "shu" or target.kingdom == "han")
-              and data.card and data.card.trueName == "slash"
+              return player:hasSkill(zhangwu.name) and target.kingdom == "shu" and data.card and data.card.trueName == "slash"
+              or player:hasSkill(zhangwu.name) and target.kingdom == "han" and data.card and data.card.trueName == "slash"
     end,
     on_use = function (self, event, target, player, data)
         local room = player.room

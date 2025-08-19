@@ -3,13 +3,13 @@ local U = require "packages/utility/utility"
 Fk:loadTranslationTable{
   ["pang_rende"] = "仁德",
   [":pang_rende"] = "出牌阶段每名角色限一次，你可以将任意张手牌交给一名其他角色；每阶段你以此法给出至少两张牌后，你可以令一名角色视为使用一张基本牌。",
-  ["#pang_rende"] = "仁德：将任意张手牌交给一名角色，若此阶段交出达到两张，你可以视为使用一张基本牌",
+  ["#pang_rende"] = "仁德：将任意张手牌交给一名角色，若此阶段交出达到两张，你可以令一名角色视为使用一张基本牌",
 
   ["#pang_rende-ask"] = "仁德：你可视为使用一张基本牌",
   ["#rende-choose"] = "仁德：令一名角色可以视为使用一张基本牌",
 
-  ["$pang_rende1"] = "同心同德，救困扶危！",
-  ["$pang_rende2"] = "施仁布泽，乃我大汉立国之本！",
+  ["$pang_rende1"] = "仁德为政，自得民心！",
+  ["$pang_rende2"] = "民心所望，乃吾政所向！",
 }
 
 local rende = fk.CreateSkill{
@@ -40,7 +40,7 @@ rende:addEffect("active", {
       local tos = room:askToChoosePlayers(player, {
       min_num = 1,
       max_num = 1,
-      targets = room:getOtherPlayers(player, false),
+      targets = room.alive_players,
       skill_name = rende.name,
       prompt = "#rende-choose",
       cancelable = true,
@@ -50,8 +50,8 @@ rende:addEffect("active", {
         skill_name = rende.name,
         prompt = "#pang_rende-ask",
         extra_data = {
-          bypass_times = false,
-          extraUse = false,
+          bypass_times = true,
+          extraUse = true,
           expand_pile = cards,
         },
         cancelable = true,
