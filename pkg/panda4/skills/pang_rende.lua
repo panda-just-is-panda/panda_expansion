@@ -77,7 +77,7 @@ rende:addEffect("targetmod", {
 })
 rende:addEffect(fk.PreCardUse, {
   can_refresh = function(self, event, target, player, data)
-    return table.contains(card.skillNames, rende.name)
+    return table.contains(data.card.skillNames, rende.name)
   end,
   on_refresh = function(self, event, target, player, data)
     data.extraUse = true
