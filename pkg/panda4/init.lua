@@ -48,6 +48,19 @@ Fk:loadTranslationTable{
 ["~pang__yuanshao"] = "老天不助我袁家啊！",
 }
 
+local liubei = General:new(extension, "pang__liubei", "shu", 4, 4, General.Male)
+liubei:addSkill("pang_rende")
+liubei:addSkill("pang_zhangwu")
+Fk:loadTranslationTable{
+["pang__liubei"] = "刘备",
+["#pang__liubei"] = "胖才盖世",
+["designer:pang__liubei"] = "胖即是胖",
+["cv:pang__liubei"] = "官方",
+["illustrator:pang__liubei"] = "官方",
+
+["~pang__yuanshao"] = "",
+}
+
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{

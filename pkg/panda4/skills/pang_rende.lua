@@ -2,11 +2,10 @@ local U = require "packages/utility/utility"
 
 Fk:loadTranslationTable{
   ["pang_rende"] = "仁德",
-  [":pang_rende"] = "出牌阶段每名角色限一次，你可以将任意张手牌交给一名其他角色，然后其可以交给你至多等量张手牌；每阶段你以此法给出第二张牌时，你可以令一名角色视为使用一张基本牌。",
+  [":pang_rende"] = "出牌阶段每名角色限一次，你可以将任意张手牌交给一名其他角色；每阶段你以此法给出至少两张牌后，你可以令一名角色视为使用一张基本牌。",
   ["#pang_rende"] = "仁德：将任意张手牌交给一名角色，若此阶段交出达到两张，你可以视为使用一张基本牌",
 
   ["#pang_rende-ask"] = "仁德：你可视为使用一张基本牌",
-  ["#pang_rende-return"] = "仁德：你可以交给刘备一张手牌",
   ["#rende-choose"] = "仁德：令一名角色可以视为使用一张基本牌",
 
   ["$pang_rende1"] = "同心同德，救困扶危！",
@@ -36,16 +35,6 @@ rende:addEffect("active", {
     local n = player:getMark("ex__rende_num-phase")
     room:moveCardTo(cards, Player.Hand, target, fk.ReasonGive, rende.name, nil, false, player)
     room:addPlayerMark(player, "ex__rende_num-phase", #cards)
-    local max_num = #cards
-    local card_return = room:askToCards(target, {
-        min_num = max_num,
-        max_num = max_num,
-        include_equip = false,
-        skill_name = rende.name,
-        prompt = "#pang_rende-return",
-        cancelable = true,
-      })
-    room:obtainCard(player, card_return, false, fk.ReasonGive)
     if n < 2 and n + #cards >= 2 then
       cards = U.getUniversalCards(room, "b")
       local tos = room:askToChoosePlayers(player, {
