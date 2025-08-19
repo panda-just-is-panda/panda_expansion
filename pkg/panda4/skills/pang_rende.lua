@@ -45,7 +45,7 @@ rende:addEffect("active", {
       prompt = "#rende-choose",
       cancelable = true,
     })
-      local use = room:askToUseRealCard(tos, {
+      local use = room:askToUseRealCard(tos[1], {
         pattern = cards,
         skill_name = rende.name,
         prompt = "#pang_rende-ask",
