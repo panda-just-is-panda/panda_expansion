@@ -23,7 +23,7 @@ zhangwu:addEffect(fk.Damage,{
         local room = player.room
         local to = data.to
         local choices = {"liubei_draw1"}
-        if not to:isKongcheng() then
+        if not to:isKongcheng() and not to.dead then
             table.insert(choices, 2, "discard_hand1")
         end
         local choice = room:askToChoice(to, {
