@@ -33,7 +33,7 @@ zhangwu:addEffect(fk.Damage,{
         if choice == "liubei_draw1" then
             player:drawCards(1)
         else
-            local card = room:askToDiscard(player, {
+            local card = room:askToDiscard(to, {
                 skill_name = zhangwu.name,
                 prompt = "#zhangwu_discard",
                 cancelable = false,
