@@ -33,6 +33,8 @@ muken:addEffect("active", {
     local player = effect.from
     local cards = effect.cards
     local num = #cards
+    local card1
+    local card2
     local to1 = room:askToChoosePlayers(player, {
         min_num = 1,
         max_num = 1,
@@ -44,14 +46,14 @@ muken:addEffect("active", {
     local mark1 = to1[1]:getTableMark("@feng_muken")
     local suits = {}
     local suit = ""
-    local card1 = room:askToCards(player, {
-        min_card_num = 1,
-        max_card_num = #cards,
+    card1 = room:askToCards(player, {
+        min_num = 1,
+        max_num = #cards,
         target = player,
         pattern = tostring(Exppattern{ id = cards }),
+        include_equip = false,
         skill_name = muken.name,
         cancelable = false,
-        expand_pile = cards,
       })
     for _, id in ipairs(card1) do
           table.removeOne(cards, id)
@@ -76,14 +78,14 @@ muken:addEffect("active", {
     local mark2 = to2[1]:getTableMark("@feng_muken")
     local suits = {}
     local suit = ""
-    local card2 = room:askToCards(player, {
-        min_card_num = 1,
-        max_card_num = 1,
+    card2 = room:askToCards(player, {
+        min_num = 1,
+        max_num = 1,
         target = player,
         pattern = tostring(Exppattern{ id = cards }),
         skill_name = muken.name,
+        include_equip = false,
         cancelable = false,
-        expand_pile = cards,
       })
     room:moveCardTo(card2, Card.PlayerHand, to1[1], fk.ReasonGive, muken.name, nil, false, player)
     for _, info in ipairs(card2) do
