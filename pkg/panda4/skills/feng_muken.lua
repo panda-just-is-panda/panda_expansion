@@ -19,6 +19,9 @@ muken:addEffect("active", {
   max_card_num = 2,
   target_num = 0,
   prompt = "#feng_muken",
+  can_use = function(self, player)
+    return player:usedSkillTimes(muken.name, Player.HistoryPhase) == 0
+  end,
   card_filter = function(self, player, to_select, selected)
     if #selected >= 2 then return false end
     local card = Fk:getCardById(to_select)
@@ -41,13 +44,18 @@ muken:addEffect("active", {
     local mark1 = to1[1]:getTableMark("@feng_muken")
     local suits = {}
     local suit = ""
-    local card1 = room:askToYiji(player, {
-      cards = cards,
-      targets = to1[1],
-      skill_name = muken.name,
-      min_num = 1,
-      max_num = num,
-    })
+    local card1 = room:askToCards(player, {
+        min_card_num = 1,
+        max_card_num = #cards,
+        pattern = tostring(Exppattern{ id = cards }),
+        skill_name = muken.name,
+        cancelable = false,
+        expand_pile = cards,
+      })
+    for _, id in ipairs(card1) do
+          table.removeOne(cards, id)
+    end
+    room:moveCardTo(card1, Card.PlayerHand, to1[1], fk.ReasonGive, muken.name, nil, false, player)
     for _, info in ipairs(card1) do
             suit = Fk:getCardById(info.cardId):getSuitString(true)
             if suit ~= "log_nosuit" and not table.contains(mark1, suit) then
@@ -67,13 +75,15 @@ muken:addEffect("active", {
     local mark2 = to2[1]:getTableMark("@feng_muken")
     local suits = {}
     local suit = ""
-    local card2 = room:askToYiji(player, {
-      cards = cards,
-      targets = to2[1],
-      skill_name = muken.name,
-      min_num = 1,
-      max_num = 1,
-    })
+    local card2 = room:askToCards(player, {
+        min_card_num = 1,
+        max_card_num = 1,
+        pattern = tostring(Exppattern{ id = cards }),
+        skill_name = muken.name,
+        cancelable = false,
+        expand_pile = cards,
+      })
+    room:moveCardTo(card2, Card.PlayerHand, to1[1], fk.ReasonGive, muken.name, nil, false, player)
     for _, info in ipairs(card2) do
             suit = Fk:getCardById(info.cardId):getSuitString(true)
             if suit ~= "log_nosuit" and not table.contains(mark2, suit) then
