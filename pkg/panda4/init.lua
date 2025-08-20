@@ -98,4 +98,16 @@ Fk:loadTranslationTable{
 
 }
 
+local zaodirenjun = General:new(extension, "feng_zaodirenjun", "wei", 4, 4, General.Male)
+zaodirenjun:addSkill("feng_muken")
+Fk:loadTranslationTable{
+["feng_zaodirenjun"] = "枣祗任峻",
+["#feng_zaodirenjun"] = "屯田供辎",
+["designer:feng_zaodirenjun"] = "凤栖梧桐",
+["cv:feng_zaodirenjun"] = "官方",
+["illustrator:feng_zaodirenjun"] = "DH",
+
+}
+zaodirenjun.hidden = true
+
 return extension
