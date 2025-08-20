@@ -47,6 +47,7 @@ muken:addEffect("active", {
     local card1 = room:askToCards(player, {
         min_card_num = 1,
         max_card_num = #cards,
+        target = player,
         pattern = tostring(Exppattern{ id = cards }),
         skill_name = muken.name,
         cancelable = false,
@@ -78,6 +79,7 @@ muken:addEffect("active", {
     local card2 = room:askToCards(player, {
         min_card_num = 1,
         max_card_num = 1,
+        target = player,
         pattern = tostring(Exppattern{ id = cards }),
         skill_name = muken.name,
         cancelable = false,
