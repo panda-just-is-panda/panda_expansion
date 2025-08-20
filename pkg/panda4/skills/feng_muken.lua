@@ -65,6 +65,7 @@ muken:addEffect("active", {
               table.insertIfNeed(suits, suit)
             end
     end
+    table.insertTable(mark1, suits)
     num = num - #card1
     if num > 0 then
         local to2 = room:askToChoosePlayers(player, {
@@ -94,6 +95,7 @@ muken:addEffect("active", {
               table.insertIfNeed(suits, suit)
             end
     end
+    table.insertTable(mark2, suits)
     end
   end,
 })
