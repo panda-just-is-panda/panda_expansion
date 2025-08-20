@@ -118,7 +118,8 @@ muken:addEffect(fk.CardUsing, {
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     local suit = data.card:getSuitString(true)
-    if suit == target:getTableMark("@feng_muken")[1] or suit == target:getTableMark("@feng_muken")[2] then
+    local mark = target:getTableMark("@feng_muken")
+    if table.contains(mark, suit) then
       data.extra_data = data.extra_data or {}
       data.extra_data.mukenCheck = true
     end
