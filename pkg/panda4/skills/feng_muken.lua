@@ -89,7 +89,7 @@ muken:addEffect("active", {
         include_equip = false,
         cancelable = false,
       })
-    room:moveCardTo(card2, Card.PlayerHand, to1[1], fk.ReasonGive, muken.name, nil, false, player)
+    room:moveCardTo(card2, Card.PlayerHand, to2[1], fk.ReasonGive, muken.name, nil, false, player)
     for _, info in ipairs(card2) do
             suit = Fk:getCardById(info):getSuitString(true)
             if suit ~= "log_nosuit" and not table.contains(mark2, suit) then
@@ -107,6 +107,7 @@ muken:addEffect(fk.CardUsing, {
   can_trigger = function(self, event, target, player, data)
     return player:hasSkill(muken.name) and data.extra_data and data.extra_data.mukenCheck
   end,
+    on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
     player:drawCards(1, muken.name)
   end,

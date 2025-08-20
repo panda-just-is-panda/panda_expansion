@@ -108,6 +108,5 @@ Fk:loadTranslationTable{
 ["illustrator:feng_zaodirenjun"] = "DH",
 
 }
-zaodirenjun.hidden = true
 
 return extension
