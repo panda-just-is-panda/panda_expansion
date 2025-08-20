@@ -60,7 +60,7 @@ muken:addEffect("active", {
     end
     room:moveCardTo(card1, Card.PlayerHand, to1[1], fk.ReasonGive, muken.name, nil, false, player)
     for _, info in ipairs(card1) do
-            suit = Fk:getCardById(info.cardId):getSuitString(true)
+            suit = Fk:getCardById(info):getSuitString(true)
             if suit ~= "log_nosuit" and not table.contains(mark1, suit) then
               table.insertIfNeed(suits, suit)
             end
@@ -89,7 +89,7 @@ muken:addEffect("active", {
       })
     room:moveCardTo(card2, Card.PlayerHand, to1[1], fk.ReasonGive, muken.name, nil, false, player)
     for _, info in ipairs(card2) do
-            suit = Fk:getCardById(info.cardId):getSuitString(true)
+            suit = Fk:getCardById(info):getSuitString(true)
             if suit ~= "log_nosuit" and not table.contains(mark2, suit) then
               table.insertIfNeed(suits, suit)
             end
