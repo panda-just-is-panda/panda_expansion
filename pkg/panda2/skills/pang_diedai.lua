@@ -15,23 +15,23 @@ diedai:addEffect(fk.GameStart, {
     player:broadcastSkillInvoke(diedai.name, 1)
     local choices = {}
     if not player:hasSkill("pang_jiejin") then
-      table.insert(choices, 1, "jiejin")
+      table.insert(choices, 1, "pang_(jiejin")
     end
     if not player:hasSkill("pang_hedao") then
-      table.insert(choices, 1, "hedao")
+      table.insert(choices, 1, "pang_(hedao")
     end
     if not player:hasSkill("pang_zhisu") then
-      table.insert(choices, 1, "zhisu")
+      table.insert(choices, 1, "pang_(zhisu")
     end
     local choice = room:askToChoice(player, {
       choices = choices,
       skill_name = diedai.name,
     })
-    if choice == "zhisu" then
+    if choice == "pang_(zhisu" then
       room:handleAddLoseSkills(player, "pang_zhisu", nil, true, false)
-    elseif choice == "hedao" then
+    elseif choice == "pang_(hedao" then
       room:handleAddLoseSkills(player, "pang_hedao", nil, true, false)
-    elseif choice == "jiejin" then
+    elseif choice == "pang_(jiejin" then
       room:handleAddLoseSkills(player, "pang_jiejin", nil, true, false)
     end
   end,
@@ -56,23 +56,23 @@ diedai:addEffect(fk.Damage, {
       player:broadcastSkillInvoke(diedai.name, 1)
       local choices = {}
     if not player:hasSkill("pang_jiejin") then
-      table.insert(choices, 1, "jiejin")
+      table.insert(choices, 1, "pang_(jiejin")
     end
     if not player:hasSkill("pang_hedao") then
-      table.insert(choices, 1, "hedao")
+      table.insert(choices, 1, "pang_(hedao")
     end
     if not player:hasSkill("pang_zhisu") then
-      table.insert(choices, 1, "zhisu")
+      table.insert(choices, 1, "pang_(zhisu")
     end
     local choice = room:askToChoice(player, {
       choices = choices,
       skill_name = diedai.name,
     })
-    if choice == "zhisu" then
+    if choice == "pang_(zhisu" then
       room:handleAddLoseSkills(player, "pang_zhisu", nil, true, false)
-    elseif choice == "hedao" then
+    elseif choice == "pang_(hedao" then
       room:handleAddLoseSkills(player, "pang_hedao", nil, true, false)
-    elseif choice == "jiejin" then
+    elseif choice == "pang_(jiejin" then
       room:handleAddLoseSkills(player, "pang_jiejin", nil, true, false)
     end
     end
@@ -127,9 +127,9 @@ Fk:loadTranslationTable {["pang_diedai"] = "迭代",
 [":pang_diedai"] = "使命技，你的普通【杀】均视为雷【杀】；游戏开始时，或场上所有角色每受到共计5点雷电伤害后，你获得“质速”、“荷导”和“阶进”中的一个技能。<br>\
   　成功：你因此获得三个技能后，你获得“升华”。<br>\
   　失败：你受到共计5点伤害后，你减1点体力上限。",
-["zhisu"] = "获得“质速”（每回合首次使用基本牌额外结算一次）",
-["hedao"] = "获得“荷导”（每回合首次使用非基本牌时摸两张牌）",
-["jiejin"] = "获得“阶进”（有角色死亡时对任意角色使用雷【杀】）",
+["pang_(zhisu"] = "获得“质速”（每回合首次使用基本牌额外结算一次）",
+["pang_(hedao"] = "获得“荷导”（每回合首次使用非基本牌时摸两张牌）",
+["pang_(jiejin"] = "获得“阶进”（有角色死亡时对任意角色使用雷【杀】）",
 ["@dianchi"] = "电能",
 ["@diedai_xiu"] = "朽",
 
