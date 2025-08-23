@@ -61,7 +61,7 @@ rende:addEffect("active", {
         local card = Fk:cloneCard(use.card.name)
         card.skillName = rende.name
         room:useCard{
-          from = player,
+          from = tos[1],
           tos = use.tos,
           card = card,
         }
