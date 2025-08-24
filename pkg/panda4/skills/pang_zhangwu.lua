@@ -5,10 +5,11 @@ local zhangwu = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_zhangwu"] = "章武",
-  [":pang_zhangwu"] = "主公技，当汉势力或蜀势力角色使用【杀】造成伤害后，你可以令受到伤害的角色选择一项：弃置一张手牌；令你摸一张牌。",
+  [":pang_zhangwu"] = "主公技，当汉势力或蜀势力角色使用【杀】造成伤害后，其可以令受到伤害的角色选择一项：弃置一张手牌；令你摸一张牌。",
   ["liubei_draw1"] = "令刘备摸一张牌",
   ["discard_hand1"] = "弃置一张手牌",
   ["#zhangwu_discard"] = "章武：你需要弃置一张手牌",
+  ["#zhangwu-invoke"] = "章武：你可以令受到伤害的角色选择弃牌或令%src摸牌",
 
   ["$pang_zhangwu1"] = "匡扶汉室，岂能无诸将之助！",
   ["$pang_zhangwu2"] = "大汉将士，何人敢战！",
@@ -19,6 +20,12 @@ zhangwu:addEffect(fk.Damage,{
     can_trigger = function (self, event, target, player, data)
               return player:hasSkill(zhangwu.name) and data.card and data.card.trueName == "slash" and (data.extra_data or {}).zhangwuCheck
     end,
+    on_cost = function(self, event, target, player, data)
+    return player.room:askToSkillInvoke(target, {
+      skill_name = zhangwu.name,
+      prompt = "#zhangwu-invoke:"..player.id,
+    })
+  end,
     on_use = function (self, event, target, player, data)
         local room = player.room
         local to = data.to
