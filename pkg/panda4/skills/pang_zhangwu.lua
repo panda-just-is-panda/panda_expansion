@@ -54,7 +54,7 @@ zhangwu:addEffect(fk.Damage,{
 
 zhangwu:addEffect(fk.BeforeHpChanged, {
   can_refresh = function(self, event, target, player, data)
-    if data.damageEvent and (data.damageEvent.from.kingdom == "shu" or data.damageEvent.from.kingdom == "han") then
+    if data.damageEvent and data.damageEvent.from and (data.damageEvent.from.kingdom == "shu" or data.damageEvent.from.kingdom == "han") then
       return true
     end
   end,
