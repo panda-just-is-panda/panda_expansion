@@ -109,4 +109,17 @@ Fk:loadTranslationTable{
 
 }
 
+local dengzhi = General:new(extension, "sheng_dengzhi", "shu", 3, 3, General.Male)
+dengzhi:addSkill("sheng_shuaiyan")
+dengzhi:addSkill("sheng_jimeng")
+Fk:loadTranslationTable{
+["sheng_dengzhi"] = "邓芝",
+["#sheng_dengzhi"] = "坚贞简亮",
+["designer:sheng_dengzhi"] = "新自由圣安",
+["cv:sheng_dengzhi"] = "官方",
+["illustrator:sheng_dengzhi"] = "monkey",
+
+}
+dengzhi.hidden = true
+
 return extension
