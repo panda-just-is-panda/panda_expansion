@@ -120,6 +120,5 @@ Fk:loadTranslationTable{
 ["illustrator:sheng_dengzhi"] = "monkey",
 
 }
-dengzhi.hidden = true
 
 return extension
