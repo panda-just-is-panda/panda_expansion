@@ -44,7 +44,7 @@ shuaiyan:addEffect(fk.EventPhaseStart, {
             if pindian.results[to].winner == player then
                 player:drawCards(2, shuaiyan.name)
                 local choices2 = {"jimeng_invoke", "Cancel"}
-                local choice2 = room:askToChoice(to, {
+                local choice2 = room:askToChoice(player, {
                 choices = choices2,
                 skill_name = shuaiyan.name,
                 })
@@ -76,7 +76,7 @@ shuaiyan:addEffect(fk.EventPhaseStart, {
                 end
             end
             local choices1 = {"shuaiyan_invoke", "Cancel"}
-            local choice1 = room:askToChoice(to, {
+            local choice1 = room:askToChoice(player, {
                 choices = choices1,
                 skill_name = shuaiyan.name,
                 })

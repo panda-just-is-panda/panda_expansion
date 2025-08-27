@@ -5,6 +5,7 @@ Fk:loadTranslationTable{
     ["#shuaiyan-choose"] = "率言：你可以和一名其他角色拼点",
   ["shuaiyan_invoke"] = "你可以受到火焰伤害并再次对其“率言”",
   ["jimeng_invoke"] = "你可以对其发动“急盟”",
+  ["shuaiyan_start"] = "你可以对其发动“率言”",
 
 }
 
@@ -26,7 +27,7 @@ jimeng:addEffect(fk.EventPhaseStart, {
             min_num = 1,
             max_num = 1,
             targets = targets,
-            skill_name = shuaiyan.name,
+            skill_name = jimeng.name,
             prompt = "#shuaiyan-choose",
             cancelable = true,
         })
@@ -46,19 +47,19 @@ jimeng:addEffect(fk.EventPhaseStart, {
                 skill_name = jimeng.name,
                 })
             if choice3 == "Cancel" then
-                local choices1 = {"shuaiyan_invoke", "Cancel"}
-                local choice1 = room:askToChoice(to, {
+                local choices1 = {"shuaiyan_start", "Cancel"}
+                local choice1 = room:askToChoice(player, {
                     choices = choices1,
                     skill_name = jimeng.name,
                     })
-                if choice1 == "shuaiyan_invoke" then
+                if choice1 == "shuaiyan_start" then
                     while true do
                         local pindian = player:pindian({to}, jimeng.name)
                         if player.dead then return end
                         if pindian.results[to].winner == player then
                             player:drawCards(2, jimeng.name)
                             local choices2 = {"jimeng_invoke", "Cancel"}
-                            local choice2 = room:askToChoice(to, {
+                            local choice2 = room:askToChoice(player, {
                             choices = choices2,
                             skill_name = jimeng.name,
                             })
@@ -90,7 +91,7 @@ jimeng:addEffect(fk.EventPhaseStart, {
                             end
                         end
                         local choices1 = {"shuaiyan_invoke", "Cancel"}
-                        local choice1 = room:askToChoice(to, {
+                        local choice1 = room:askToChoice(player, {
                             choices = choices1,
                             skill_name = jimeng.name,
                         })
