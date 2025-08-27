@@ -72,26 +72,36 @@ shuaiyan:addEffect(fk.EventPhaseStart, {
                         skillName = shuaiyan.name
                         })
                         break
+                    else
+                        local choices4 = {"shuaiyan_start", "Cancel"}
+                        local choice4 = room:askToChoice(player, {
+                        choices = choices4,
+                        skill_name = shuaiyan.name,
+                        })
+                        if choice4 == "Cancel" then
+                            break
+                        end
                     end
                 end
-            end
-            local choices1 = {"shuaiyan_invoke", "Cancel"}
-            local choice1 = room:askToChoice(player, {
-                choices = choices1,
-                skill_name = shuaiyan.name,
-                })
-            if choice1 == "Cancel" then
-                break
             else
-                room:damage{
-                    from = player,
-                    to = player,
-                    damage = 1,
-                    damageType = fk.FireDamage,
-                    skillName = shuaiyan.name,
-                }
+                local choices1 = {"shuaiyan_invoke", "Cancel"}
+                local choice1 = room:askToChoice(player, {
+                    choices = choices1,
+                    skill_name = shuaiyan.name,
+                    })
+                if choice1 == "Cancel" then
+                    break
+                else
+                    room:damage{
+                        from = player,
+                        to = player,
+                        damage = 1,
+                        damageType = fk.FireDamage,
+                        skillName = shuaiyan.name,
+                    }
+                end
             end
-            if player.dead or player:isKongcheng() then
+            if player.dead or player:isKongcheng() or to:isKongcheng() then
                 break
             end
         end
