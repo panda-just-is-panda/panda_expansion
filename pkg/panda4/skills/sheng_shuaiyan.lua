@@ -39,6 +39,9 @@ shuaiyan:addEffect(fk.EventPhaseStart, {
         local room = player.room
         local to = event:getCostData(self).tos[1]
         while true do
+            if player.dead or player:isKongcheng() or to:isKongcheng() then
+                break
+            end
             local pindian = player:pindian({to}, shuaiyan.name)
             if player.dead then return end
             if pindian.results[to].winner == player then

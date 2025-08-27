@@ -22,7 +22,7 @@ jimeng:addEffect(fk.EventPhaseStart, {
     on_cost = function(self, event, target, player, data)
         local room = player.room
         local targets = table.filter(room:getOtherPlayers(player, false), function(p)
-            return not p:isKongcheng()
+            return not p.dead
         end)
         local to = room:askToChoosePlayers(player, {
             min_num = 1,
@@ -55,6 +55,9 @@ jimeng:addEffect(fk.EventPhaseStart, {
                     })
                 if choice1 == "shuaiyan_start" then
                     while true do
+                        if player.dead or player:isKongcheng() or to:isKongcheng() then
+                            break
+                        end
                         local pindian = player:pindian({to}, jimeng.name)
                         if player.dead then return end
                         if pindian.results[to].winner == player then
