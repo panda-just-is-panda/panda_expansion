@@ -17,7 +17,7 @@ chezheng:addEffect(fk.DamageCaused, {
     mute = true,
   anim_type = "negative",
   can_trigger = function(self, event, target, player, data)
-    local num
+    local num = 0
     local highestplayer
     for hc, p in ipairs(player.room.alive_players) do
         hc = p:getHandcardNum()
