@@ -4,8 +4,8 @@ local chezheng = fk.CreateSkill {
 }
 
 Fk:loadTranslationTable{
-  ["chezheng"] = "掣政",
-  [":chezheng"] = "当你造成或受到伤害时，手牌数为全场唯一最大的角色可以交给你一张牌并防止此伤害。",
+  ["pang_chezheng"] = "掣政",
+  [":pang_chezheng"] = "当你造成或受到伤害时，手牌数为全场唯一最大的角色可以交给你一张牌并防止此伤害。",
 
   ["#chezheng-throw"] = "掣政：你可以交给%src一张牌并防止此伤害。",
 
