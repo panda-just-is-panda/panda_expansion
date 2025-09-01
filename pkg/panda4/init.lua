@@ -61,6 +61,21 @@ Fk:loadTranslationTable{
 ["~pang__liubei"] = "汉室之兴，皆仰望丞相了……",
 }
 
+local sunliang = General:new(extension, "pang__sunliang", "wu", 3, 3, General.Male)
+sunliang:addSkill("pang_kuizhu")
+sunliang:addSkill("pang_chezheng")
+sunliang:addSkill("pang_lijun")
+Fk:loadTranslationTable{
+["pang__sunliang"] = "孙亮",
+["#pang__sunliang"] = "胖江枯木",
+["designer:pang__sunliang"] = "胖即是胖",
+["cv:pang__sunliang"] = "官方",
+["illustrator:pang__sunliang"] = "官方",
+
+["~pang__liubei"] = "汉室之兴，皆仰望丞相了……",
+}
+sunliang.hidden = true
+
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{
