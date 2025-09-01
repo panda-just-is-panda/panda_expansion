@@ -27,7 +27,7 @@ chezheng:addEffect(fk.DamageCaused, {
         end
       end
     return target == player and player:hasSkill(chezheng.name) and highestplayer ~= player and table.every(player.room.alive_players, function(p)
-        return highestplayer:getHandcardNum() > p:getHandcardNum()
+        return highestplayer == p or highestplayer:getHandcardNum() > p:getHandcardNum()
       end)
   end,
   on_cost = function (self, event, target, player, data)

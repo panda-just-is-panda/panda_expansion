@@ -4,7 +4,7 @@ local kuizhu = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_kuizhu"] = "溃诛",
-  [":pang_kuizhu"] = "结束阶段，你可以弃置至多X名其他角色各一张牌，或对一名体力值为X的其他角色造成1点伤害（X为你此回合失去的牌数）。",
+  [":pang_kuizhu"] = "结束阶段，你可以弃置至多X名角色各一张牌，或对一名体力值为X的角色造成1点伤害（X为你此回合失去的牌数）。",
 
   ["#kuizhu-invoke"] = "溃诛：你可以选择一项",
   ["kuizhu_choice1"] = "弃置至多%arg名角色各一张牌",
