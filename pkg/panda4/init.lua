@@ -72,7 +72,7 @@ Fk:loadTranslationTable{
 ["cv:pang__sunliang"] = "官方",
 ["illustrator:pang__sunliang"] = "官方",
 
-["~pang__liubei"] = "今日欲诛逆臣而不得，方知机事不密则害成......",
+["~pang_sunliang"] = "今日欲诛逆臣而不得，方知机事不密则害成......",
 }
 
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
