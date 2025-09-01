@@ -33,7 +33,7 @@ chezheng:addEffect(fk.DamageCaused, {
   on_cost = function (self, event, target, player, data)
         local room = player.room
         local highestplayer
-        local num
+        local num = 0
     for hc, p in ipairs(player.room.alive_players) do
         hc = p:getHandcardNum()
         if hc > num then
@@ -81,7 +81,7 @@ chezheng:addEffect(fk.DamageInflicted, {
   on_cost = function (self, event, target, player, data)
         local room = player.room
         local highestplayer
-        local num
+        local num = 0
     for hc, p in ipairs(player.room.alive_players) do
         hc = p:getHandcardNum()
         if hc > num then
