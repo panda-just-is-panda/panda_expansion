@@ -72,9 +72,8 @@ Fk:loadTranslationTable{
 ["cv:pang__sunliang"] = "官方",
 ["illustrator:pang__sunliang"] = "官方",
 
-["~pang__liubei"] = "汉室之兴，皆仰望丞相了……",
+["~pang__liubei"] = "今日欲诛逆臣而不得，方知机事不密则害成......",
 }
-sunliang.hidden = true
 
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
