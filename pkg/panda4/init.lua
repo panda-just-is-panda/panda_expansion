@@ -75,6 +75,20 @@ Fk:loadTranslationTable{
 ["~pang_sunliang"] = "今日欲诛逆臣而不得，方知机事不密则害成......",
 }
 
+local liuyan = General:new(extension, "pang__liuyan", "qun", 3, 3, General.Male)
+liuyan:addSkill("pang_limu")
+liuyan:addSkill("pang_tushe")
+liuyan:addSkill("pang_tongjue")
+Fk:loadTranslationTable{
+["pang__liuyan"] = "刘焉",
+["#pang__liuyan"] = "裂土之胖",
+["designer:pang__liuyan"] = "胖即是胖",
+["cv:pang__liuyan"] = "官方",
+["illustrator:pang__liuyan"] = "官方",
+
+["~pang_liuyan"] = "季玉，望你能守好这益州疆土……",
+}
+
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{
