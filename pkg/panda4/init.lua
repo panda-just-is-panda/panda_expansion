@@ -88,7 +88,7 @@ Fk:loadTranslationTable{
 
 ["~pang__liuyan"] = "季玉，望你能守好这益州疆土……",
 }
-
+liuyan.hidden = true
 
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
