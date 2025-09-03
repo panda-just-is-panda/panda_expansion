@@ -20,7 +20,7 @@ limu:addEffect(fk.RoundEnd, {
     local room = player.room
     local cards = {}
     for _, id in ipairs(room.discard_pile) do
-        if Fk:getCardById(id).color == "red" then
+        if Fk:getCardById(id).color == Card.red then
             table.insert(cards, id)
         end
     end
