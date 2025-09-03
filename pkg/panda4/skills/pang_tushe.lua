@@ -23,6 +23,7 @@ tushe:addEffect(fk.EventPhaseStart, {
     return target == player and player:hasSkill(tushe.name) and (player.phase == Player.Draw or player:getMark("@@tushe") > 0) and not data.phase_end
   end,
   on_cost = function(self, event, target, player, data)
+    player.room:setPlayerMark(player, "@@tushe", 0)
     if player.room:askToSkillInvoke(player, {
         skill_name = tushe.name,
         prompt = "#tushe-ask",
@@ -34,7 +35,6 @@ tushe:addEffect(fk.EventPhaseStart, {
     data.phase_end = true
     local room = player.room
     local get_cards2 = true
-    room:setPlayerMark(player, "@@tushe", 0)
     local cids = room:getNCards(5)
     room:turnOverCardsFromDrawPile(player, cids, tushe.name)
     room:delay(200)
