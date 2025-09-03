@@ -34,6 +34,7 @@ tushe:addEffect(fk.EventPhaseStart, {
     data.phase_end = true
     local room = player.room
     local get_cards2 = true
+    room:setPlayerMark(player, "@@tushe", 0)
     local cids = room:getNCards(5)
     room:turnOverCardsFromDrawPile(player, cids, tushe.name)
     room:delay(200)
@@ -51,7 +52,7 @@ tushe:addEffect(fk.EventPhaseStart, {
             get_cards2 = false
         end
     end
-    room:obtainCard(player, cards2, true, fk.ReasonJustMove, player)
+    room:obtainCard(player, cards, true, fk.ReasonJustMove, player)
     if get_cards2 == true then
       room:addPlayerMark(player, "@@tushe")
     end
