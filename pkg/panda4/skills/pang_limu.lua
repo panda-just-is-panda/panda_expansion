@@ -27,6 +27,7 @@ limu:addEffect(fk.RoundEnd, {
     if #cards > 0 then
       room:moveCardTo(cards, Card.Void, nil, fk.ReasonJustMove, limu.name, nil, true, player)
     end
+    room:shuffleDrawPile()
     player:gainAnExtraTurn(true, limu.name)
   end,
 })
