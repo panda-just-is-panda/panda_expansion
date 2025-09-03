@@ -14,7 +14,7 @@ Fk:loadTranslationTable{
 limu:addEffect(fk.RoundEnd, {
   anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(limu.name) and player:usedSkillTimes(limu.name, Player.HistoryGame) == 0
+    return player:hasSkill(limu.name) and player:usedSkillTimes(limu.name, Player.HistoryGame) == 0
     end,
   on_use = function(self, event, target, player, data)
     local room = player.room

@@ -35,6 +35,7 @@ tushe:addEffect(fk.EventPhaseStart, {
     local get_cards2 = true
     local cids = room:getNCards(5)
     room:turnOverCardsFromDrawPile(player, cids, tushe.name)
+    room:delay(200)
     local cards = table.filter(cids, function(id)
         local card = Fk:getCardById(id)
         return card.type == Card.TypeBasic

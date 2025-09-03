@@ -86,7 +86,7 @@ Fk:loadTranslationTable{
 ["cv:pang__liuyan"] = "官方",
 ["illustrator:pang__liuyan"] = "官方",
 
-["~pang_liuyan"] = "季玉，望你能守好这益州疆土……",
+["~pang__liuyan"] = "季玉，望你能守好这益州疆土……",
 }
 liuyan.hidden = true
 
