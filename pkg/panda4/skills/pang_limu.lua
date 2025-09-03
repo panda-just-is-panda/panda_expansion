@@ -20,14 +20,14 @@ limu:addEffect(fk.RoundEnd, {
     local room = player.room
     local cards = {}
     for _, id in ipairs(room.discard_pile) do
-        if Fk:getCardById(id).color == Card.red then
+        if Fk:getCardById(id).color == Card.Red then
             table.insert(cards, id)
         end
     end
     if #cards > 0 then
       room:moveCardTo(cards, Card.Void, nil, fk.ReasonJustMove, limu.name, nil, true, player)
-      player:gainAnExtraTurn(true, limu.name)
     end
+    player:gainAnExtraTurn(true, limu.name)
     room:shuffleDrawPile()
   end,
 })
