@@ -4,11 +4,11 @@ local tushe = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_tushe"] = "图射",
-  [":pang_tushe"] = "摸牌阶段，你可以放弃摸牌，然后你亮出牌堆顶的五张牌并获得其中的基本牌；若其中没有【闪】，你可改为获得其中的非基本牌。",
+  [":pang_tushe"] = "你可以跳过摸牌阶段或出牌阶段，然后你亮出牌堆顶的五张牌并获得其中的非基本牌；若其中有【闪】，你改为获得其中的基本牌。",
 
   ["get_cards"] = "获得其中的基本牌",
   ["get_cards2"] = "获得其中的非基本牌",
-  ["#tushe-ask"] = "图射：你可以放弃摸牌并亮出牌堆顶的五张牌",
+  ["#tushe-ask"] = "图射：你可以跳过此阶段并亮出牌堆顶的五张牌",
 
   ["$pang_tushe1"] = "据险以图进，备策而施为！",
   ["$pang_tushe2"] = "夫战者，可时以奇险之策而图常谋！",
@@ -19,7 +19,7 @@ Fk:loadTranslationTable{
 tushe:addEffect(fk.EventPhaseStart, {
   anim_type = "drawcard",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(tushe.name) and player.phase == Player.Draw and not data.phase_end
+    return target == player and player:hasSkill(tushe.name) and (player.phase == Player.Draw or player.phase == Player.Play) and not data.phase_end
   end,
   on_cost = function(self, event, target, player, data)
     if player.room:askToSkillInvoke(player, {
@@ -50,15 +50,7 @@ tushe:addEffect(fk.EventPhaseStart, {
             get_cards2 = false
         end
     end
-    local choices = {"get_cards"}
     if get_cards2 == true then
-        table.insert(choices, 2, "get_cards2")
-    end
-    local choice = room:askToChoice(player, {
-        choices = choices,
-        skill_name = tushe.name,
-    })
-    if choice == "get_cards2" then
         room:obtainCard(player, cards2, true, fk.ReasonJustMove, player)
     else
         room:obtainCard(player, cards, true, fk.ReasonJustMove, player)
