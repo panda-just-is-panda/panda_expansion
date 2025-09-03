@@ -11,7 +11,7 @@ Fk:loadTranslationTable{
 tongjue:addEffect("distance", {
   correct_func = function(self, from, to)
     local X = 0
-    for _, p in ipairs(room.alive_players) do
+    for _, p in ipairs(Fk:currentRoom().alive_players) do
       if p.kingdom == "qun" then
         X = X + 1
       end
