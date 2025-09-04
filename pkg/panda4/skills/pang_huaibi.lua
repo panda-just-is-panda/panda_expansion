@@ -5,7 +5,7 @@ local huaibi = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_huaibi"] = "怀璧",
-  [":pang_huaibi"] = "主公技，锁定技，游戏开始时，你获得1点护甲；有护甲的群势力角色受到伤害时，伤害来源获得1点护甲。",
+  [":pang_huaibi"] = "主公技，锁定技，游戏开始时，你获得2点护甲；有护甲的群势力角色受到伤害时，伤害来源获得1点护甲。",
 
   ["$pang_huaibi1"] = "哎！匹夫无罪，怀璧其罪啊。",
   ["$pang_huaibi2"] = "粮草尽皆在此，宗兄可自取之。",
@@ -19,7 +19,7 @@ huaibi:addEffect(fk.GameStart, {
   on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    room:changeShield(player, 1, {cancelable = false})
+    room:changeShield(player, 2, {cancelable = false})
   end,
 })
 
