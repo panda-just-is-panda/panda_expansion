@@ -100,7 +100,7 @@ Fk:loadTranslationTable{
 ["cv:pang__liuzhang"] = "官方",
 ["illustrator:pang__liuzhang"] = "官方",
 
-["~pang__liuyan"] = "引狼入室，噬脐莫及啊！",
+["~pang__liuzhang"] = "引狼入室，噬脐莫及啊！",
 }
 
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)

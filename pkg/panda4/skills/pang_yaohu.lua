@@ -10,6 +10,7 @@ Fk:loadTranslationTable{
 
   ["#yaohu-choose"] = "邀虎：你可以令一名角色交给你一张牌或使用一张【杀】",
   ["#yaohu_choose"] = "邀虎：你需使用一张【杀】（无距离限制），否则交给%src一张牌",
+  ["#yaohu_give"] = "邀虎：你需交给%src一张牌",
 
   ["$pang_yaohu1"] = "益州疲敝，还望贤兄相助。",
   ["$pang_yaohu2"] = "内讨米贼，外拒强曹，璋无宗兄万万不可啊。",
@@ -50,15 +51,16 @@ yaohu:addEffect(fk.CardUseFinished, {
         prompt = "#yaohu_choose:"..player.id,
         extra_data = {
         bypass_times = true,
+        bypass_distances = true,
         }
     })
     if use then
       use.extraUse = true
       room:useCard(use)
     else
-        local card = room:askToDiscard(to, {
+        local card = room:askToCards(to, {
           skill_name = yaohu.name,
-          prompt = "#yaohu_give",
+          prompt = "#yaohu_give:"..player.id,
           cancelable = false,
           min_num = 1,
           max_num = 1,
@@ -69,11 +71,6 @@ yaohu:addEffect(fk.CardUseFinished, {
   end,
 })
 
-yaohu:addEffect("targetmod", {
-  bypass_distances = function (self, player, skill, card)
-    return player:hasSkill(yaohu.name) and card and  table.contains(card.skillNames, yaohu.name)
-  end
-})
 
 
 
