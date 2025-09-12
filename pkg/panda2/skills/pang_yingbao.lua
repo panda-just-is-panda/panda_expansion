@@ -39,14 +39,14 @@ yingbao:addEffect("filter", {
       table.contains(player:getCardIds("h"), to_select.id)
   end,
   view_as = function(self, player, to_select)
-    local card = Fk:cloneCard("slash", Card.suit, to_select.number)
-    card.skillName = yingbao.name
-    return card
+    local card1 = Fk:cloneCard("slash", to_select.suit, to_select.number)
+    card1.skillName = yingbao.name
+    return card1
   end,
 })
 yingbao:addEffect("targetmod", {
   bypass_times =  function(self, player, skill, card, to)
-    return player:hasSkill(yingbao.name) and card and card.trueName == "slash" and card.skillName == yingbao.name
+    return card and player:hasSkill(yingbao.name) and card.trueName == "slash" and card.skillName == yingbao.name
   end,
 })
 
