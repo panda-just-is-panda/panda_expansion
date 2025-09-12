@@ -11,7 +11,7 @@ anim_type = "switch",
   end,
   on_use = function(self, event, target, player, data)
     if data.phase == Player.Judge then
-        data.skipped = true
+        data.phase_end = true
     end
     local room = player.room
     local random = math.random(1, 10)
