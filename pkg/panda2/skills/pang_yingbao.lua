@@ -5,7 +5,7 @@ local yingbao = fk.CreateSkill{
 
 Fk:loadTranslationTable{
   ["pang_yingbao"] = "蝇暴",
-  [":pang_yingbao"] = "锁定技，你造成的伤害+1；你的【桃】视为无次数限制的【杀】。",
+  [":pang_yingbao"] = "锁定技，你造成的伤害+1；你的【桃】和【酒】均视为【杀】。",
 
   ["$pang_yingbao1"] = "激昂的小曲～",
 }
@@ -35,7 +35,7 @@ yingbao:addEffect(fk.DamageCaused, {anim_type = "offensive",
 
 yingbao:addEffect("filter", {
   card_filter = function(self, to_select, player)
-    return player:hasSkill(yingbao.name) and to_select.trueName == "peach" and
+    return player:hasSkill(yingbao.name) and (to_select.trueName == "peach" or to_select.trueName == "analeptic") and
       table.contains(player:getCardIds("h"), to_select.id)
   end,
   view_as = function(self, player, to_select)
@@ -44,10 +44,6 @@ yingbao:addEffect("filter", {
     return card1
   end,
 })
-yingbao:addEffect("targetmod", {
-  bypass_times =  function(self, player, skill, card, to)
-    return card and player:hasSkill(yingbao.name) and card.trueName == "slash" and card.skillName == yingbao.name
-  end,
-})
+
 
 return yingbao
