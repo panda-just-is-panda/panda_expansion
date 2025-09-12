@@ -7,27 +7,22 @@ Fk:loadTranslationTable{
   ["pang_yingbao"] = "蝇暴",
   [":pang_yingbao"] = "锁定技，你造成的伤害+1；你的【桃】视为无次数限制的【杀】。",
 
-  ["$pang_yingbao1"] = "",
-  ["$pang_yingbao2"] = "",
+  ["$pang_yingbao1"] = "激昂的小曲～",
 }
 
-local jiaozi_spec = { ---@type TrigSkelSpec<fun(self: TriggerSkill, event: DamageEvent, target: ServerPlayer, player: ServerPlayer, data: DamageData):any>
-  anim_type = "offensive",
+yingbao:addEffect(fk.GameStart, {
+    mute = true,
   can_trigger = function(self, event, target, player, data)
-    if target == player and player:hasSkill(jiaozi.name) and
-      table.every(player.room:getOtherPlayers(player, false), function(p)
-        return player:getHandcardNum() > p:getHandcardNum()
-      end) then
-      event:setCostData(self, { tos = { data.to }, anim_type = (event == fk.DamageInflicted and "negative") })
-      return true
-    end
+    return player:hasSkill(yingbao.name)
   end,
+  on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
-    data:changeDamage(1)
+    player:broadcastSkillInvoke(yingbao.name, 1)
   end,
-}
+})
 
 yingbao:addEffect(fk.DamageCaused, {anim_type = "offensive",
+    mute = true,
   can_trigger = function(self, event, target, player, data)
     if target == player and player:hasSkill(yingbao.name) then
       event:setCostData(self, { tos = { data.to }})
