@@ -64,13 +64,13 @@ Fk:loadTranslationTable{
 local beastfly = General:new(extension, "pang__savage_beastfly", "qun", 6)
 beastfly:addSkill("pang_cannu")
 beastfly:addSkill("pang_yingbao")
-beastfly.endnote = "吓哭了，残暴兽蝇大人。"
+beastfly.endnote = "吓哭了，残暴兽蝇大人"
 Fk:loadTranslationTable{
 ["pang__savage_beastfly"] = "残暴的兽蝇",
 ["#pang__savage_beastfly"] = "丝之歌啊能不能放过我这一次",
 ["designer:pang__savage_beastfly"] = "胖即是胖",
-["cv:pang__savage_beastfly"] = "空洞骑士：丝之歌",
-["illustrator:pang__savage_beastfly"] = "空洞骑士：丝之歌",
+["cv:pang__savage_beastfly"] = "丝之歌",
+["illustrator:pang__savage_beastfly"] = "丝之歌",
 
 ["~pang__savage_beastfly"] = "",
 }
