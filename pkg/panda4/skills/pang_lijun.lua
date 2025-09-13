@@ -1,6 +1,6 @@
 local lijun = fk.CreateSkill({
   name = "pang_lijun",
-  tags = {Skill.lord},
+  tags = {Skill.Lord},
 })
 
 lijun:addEffect(fk.EventPhaseStart, { --
