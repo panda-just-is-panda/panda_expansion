@@ -4,7 +4,7 @@ local cannu = fk.CreateSkill {
 }
 
 cannu:addEffect(fk.EventPhaseStart, {
-anim_type = "switch",
+mute = true,
   can_trigger = function(self, event, target, player, data)
     local x = math.random(0, 2)
     return target == player and player:hasSkill(cannu.name) and (player.phase == Player.Start or player.phase == Player.Judge and x == 2)

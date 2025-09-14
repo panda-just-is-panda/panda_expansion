@@ -34,6 +34,7 @@ yingbao:addEffect(fk.DamageCaused, {anim_type = "offensive",
   end,})
 
 yingbao:addEffect("filter", {
+  mute = true,
   card_filter = function(self, to_select, player)
     return player:hasSkill(yingbao.name) and (to_select.trueName == "peach" or to_select.trueName == "analeptic") and
       table.contains(player:getCardIds("h"), to_select.id)
