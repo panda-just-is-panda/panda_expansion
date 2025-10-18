@@ -75,6 +75,42 @@ Fk:loadTranslationTable{
 ["~pang__savage_beastfly"] = "",
 }
 
+local groal_the_great = General:new(extension, "pang__groal_the_great", "wu", 4)
+groal_the_great:addSkill("pang_feiwupang")
+Fk:loadTranslationTable{
+["pang__groal_the_great"] = "伟大的格洛",
+["#pang__groal_the_great"] = "丝之歌啊能不能放过我这一次",
+["designer:pang__groal_the_great"] = "胖即是胖",
+["cv:pang__groal_the_great"] = "丝之歌",
+["illustrator:pang__groal_the_great"] = "丝之歌",
+
+}
+groal_the_great.hidden = true
+
+local grand_mother_silk = General:new(extension, "pang__grand_mother_silk", "qun", 3, General.Female)
+grand_mother_silk:addSkill("pang_feiwupang")
+Fk:loadTranslationTable{
+["pang__grand_mother_silk"] = "丝母",
+["#pang__grand_mother_silk"] = "丝之歌翻译来点作用啊",
+["designer:pang__grand_mother_silk"] = "胖即是胖",
+["cv:pang__grand_mother_silk"] = "丝之歌",
+["illustrator:pang__grand_mother_silk"] = "丝之歌",
+
+}
+grand_mother_silk.hidden = true
+
+local last_judge = General:new(extension, "pang__last_judge", "qun", 4, General.Female)
+last_judge:addSkill("pang_feiwupang")
+Fk:loadTranslationTable{
+["pang__last_judge"] = "末代裁决者",
+["#pang__last_judge"] = "翻译水平和失败冠军坐一桌",
+["designer:pang__last_judge"] = "胖即是胖",
+["cv:pang__last_judge"] = "丝之歌",
+["illustrator:pang__last_judge"] = "丝之歌",
+
+}
+last_judge.hidden = true
+
 
 local meilanni = General:new(extension, "pang__meilanni", "shu", 4, 4, General.Female)
 meilanni:addSkill("pang_qiaoshou")
