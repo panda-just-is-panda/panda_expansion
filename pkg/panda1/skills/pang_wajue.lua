@@ -1,6 +1,6 @@
 local wajue = fk.CreateSkill({
-  name = "pang_wajue", ---技能内部名称，要求唯一性
-  tags = {Skill.Compulsory}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
+  name = "pang_wajue", 
+  tags = {Skill.Compulsory}, 
 })
 
 wajue:addEffect(fk.EventPhaseEnd, {
@@ -61,4 +61,4 @@ Fk:loadTranslationTable {["pang_wajue"] = "挖掘",
 ["$pang_wajue1"] = "挖矿声",
 ["$pang_wajue2"] = "挖方块声",
 }
-return wajue  --不要忘记返回做好的技能对象哦
+return wajue
