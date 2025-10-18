@@ -79,7 +79,7 @@ local groal_the_great = General:new(extension, "pang__groal_the_great", "wu", 4,
 groal_the_great:addSkill("pang_feiwupang")
 Fk:loadTranslationTable{
 ["pang__groal_the_great"] = "伟大的格洛",
-["#pang__groal_the_great"] = "丝之歌啊能不能放过我这一次",
+["#pang__groal_the_great"] = "三百六十五里路啊",
 ["designer:pang__groal_the_great"] = "胖即是胖",
 ["cv:pang__groal_the_great"] = "丝之歌",
 ["illustrator:pang__groal_the_great"] = "丝之歌",
