@@ -31,7 +31,7 @@ flq:addEffect("invalidity", {
   end
 })
 
-flq:addEffect(fk.Cardusing, {
+flq:addEffect(fk.CardUsing, {
   anim_type = "negative",
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(flq.name) and
