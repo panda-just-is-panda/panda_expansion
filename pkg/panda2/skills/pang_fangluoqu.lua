@@ -6,6 +6,7 @@ local flq = fk.CreateSkill {
 Fk:loadTranslationTable{
   ["pang_fangluoqu"] = "纺络曲",
   [":pang_fangluoqu"] = "主公技，觉醒技，准备阶段，若所有忠臣和内奸均已死亡，“茧结缚”失效直到你于一回合内使用两张牌名相同的牌。",
+  ["$pang_fangluoqu1"] = "Grand Mother Silk",
 }
 
 flq:addEffect(fk.EventPhaseStart, {
@@ -33,14 +34,14 @@ flq:addEffect("invalidity", {
 
 flq:addEffect(fk.CardUsing, {
   anim_type = "negative",
-  can_trigger = function(self, event, target, player, data)
+  can_refresh = function(self, event, target, player, data)
     return target == player and player:hasSkill(flq.name) and data.from == player and
       #player.room.logic:getEventsOfScope(GameEvent.UseCard, 2, function(e)
         local use = e.data
         return use.card.trueName == data.card.trueName and use.from == player
       end, Player.HistoryTurn) > 1
   end,
-  on_use = function(self, event, target, player, data)
+  on_refresh = function(self, event, target, player, data)
     player.room:setPlayerMark(player, "flq_awake", 0)
   end,
 })
