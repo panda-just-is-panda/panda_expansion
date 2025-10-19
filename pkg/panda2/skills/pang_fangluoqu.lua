@@ -34,10 +34,10 @@ flq:addEffect("invalidity", {
 flq:addEffect(fk.CardUsing, {
   anim_type = "negative",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(flq.name) and
+    return target == player and player:hasSkill(flq.name) and data.from == player and
       #player.room.logic:getEventsOfScope(GameEvent.UseCard, 2, function(e)
         local use = e.data
-        return use.card.trueName == data.card.trueName and table.contains(use.from, player)
+        return use.card.trueName == data.card.trueName and use.from == player
       end, Player.HistoryTurn) > 1
   end,
   on_use = function(self, event, target, player, data)
