@@ -7,7 +7,8 @@ Fk:loadTranslationTable{
   ["pang_siweijiang"] = "丝为缰",
   [":pang_siweijiang"] = "当点数为4的牌进入弃牌堆时，你获得之；每回合开始时，你可以将一张点数为4的牌置于牌堆顶；当其他角色使用点数为4的牌时，你可以获得其两张牌。",
   ["#swj"] = "丝为缰：你可以将一张点数为4的牌置于牌堆顶",
-  ["#swj_tou"] = "丝为缰：你可以获得%src两张牌"
+  ["#swj_2"] = "丝为缰：将一张点数为4的牌置于牌堆顶",
+  ["#swj_tou"] = "丝为缰：你可以获得%src两张牌",
 }
 
 swj:addEffect(fk.AfterCardsMove, {
@@ -34,6 +35,7 @@ swj:addEffect(fk.AfterCardsMove, {
       end
     end
   end,
+  on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
     local room = player.room
     local ids = table.simpleClone(event:getCostData(self).cards)
@@ -43,6 +45,7 @@ swj:addEffect(fk.AfterCardsMove, {
 
 swj:addEffect(fk.TurnStart, {
   anim_type = "control",
+  prompt = "#swj",
   can_trigger = function(self, event, target, player, data)
     local card = table.filter(player:getCardIds("he"), function(id)
         local card_pick = Fk:getCardById(id)
@@ -69,7 +72,7 @@ swj:addEffect(fk.TurnStart, {
       include_equip = true,
       pattern = ".|4",
       skill_name = swj.name,
-      prompt = "#swj",
+      prompt = "#swj_2",
       cancelable = false,
     })
         if #to_select > 0 then
@@ -92,7 +95,7 @@ swj:addEffect(fk.CardUsing, {
     return target ~= player and not target:isNude() and player:hasSkill(swj.name) and data.card.number == 4
   end,
   on_cost = function(self, event, target, player, data)
-    return player.room:askToSkillInvoke(target, {
+    return player.room:askToSkillInvoke(player, {
       skill_name = swj.name,
       prompt = "#swj_tou:"..target.id,
     })

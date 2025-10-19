@@ -27,7 +27,7 @@ flq:addEffect(fk.EventPhaseStart, {
 flq:addEffect("invalidity", {
   invalidity_func = function(self, from, skill)
     return
-      from:getMark("flq_awake") > 0 and skill:isPlayerSkill(from, flq.name, true)
+      from:getMark("flq_awake") > 0 and skill:isPlayerSkill(from, true) and skill.name == "pang_jianjiefu"
   end
 })
 
