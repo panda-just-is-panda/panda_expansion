@@ -10,7 +10,7 @@ Fk:loadTranslationTable{
 
 flq:addEffect(fk.EventPhaseStart, {
   can_trigger = function(self, event, target, player, data)
-    local melody = table.filter(room:getOtherPlayers(player, false), function (p)
+    local melody = table.filter(player.room:getOtherPlayers(player, false), function (p)
       return p.role ~= "rebel"
     end)
     return target == player and player:hasSkill(flq.name) and
