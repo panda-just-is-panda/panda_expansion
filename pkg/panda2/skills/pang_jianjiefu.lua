@@ -66,3 +66,5 @@ jjf:addEffect(fk.CardUseFinished, {
         EnterHidden(player)
     end,
 })
+
+return jjf
