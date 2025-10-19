@@ -89,6 +89,9 @@ groal_the_great.hidden = true
 
 local grand_mother_silk = General:new(extension, "pang__grand_mother_silk", "qun", 3, 3, General.Female)
 grand_mother_silk:addSkill("pang_feiwupang")
+grand_mother_silk:addSkill("pang_siweijiang")
+grand_mother_silk:addSkill("pang_jianjiefu")
+grand_mother_silk:addSkill("pang_fangluoqu")
 Fk:loadTranslationTable{
 ["pang__grand_mother_silk"] = "丝母",
 ["#pang__grand_mother_silk"] = "丝之歌翻译来点作用啊",
