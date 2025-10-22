@@ -87,7 +87,7 @@ Fk:loadTranslationTable{
 }
 groal_the_great.hidden = true
 
-local grand_mother_silk = General:new(extension, "pang__grand_mother_silk", "qun", 3, 3, General.Female)
+local grand_mother_silk = General:new(extension, "pang__grand_mother_silk", "god", 3, 3, General.Female)
 grand_mother_silk:addSkill("pang_siweijiang")
 grand_mother_silk:addSkill("pang_jianjiefu")
 grand_mother_silk:addSkill("pang_fangluoqu")
@@ -103,7 +103,7 @@ Fk:loadTranslationTable{
 local last_judge = General:new(extension, "pang__last_judge", "qun", 4, 4, General.Female)
 last_judge:addSkill("pang_feiwupang")
 Fk:loadTranslationTable{
-["pang__last_judge"] = "末代裁决者",
+["pang__last_judge"] = "最终裁决者",
 ["#pang__last_judge"] = "翻译水平和失败冠军坐一桌",
 ["designer:pang__last_judge"] = "胖即是胖",
 ["cv:pang__last_judge"] = "丝之歌",
