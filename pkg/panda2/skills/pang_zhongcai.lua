@@ -9,7 +9,8 @@ Fk:loadTranslationTable {
 
   ["@@pang_zhongcai"] = "忠裁",
 
-  ["$pang_zhongcai1"] = "塞～来～瑞～亚～"
+  ["$pang_zhongcai1"] = "塞～来～瑞～亚～",
+  ["$pang_zhongcai2"] = "压迫感的小曲～"
 
 }
 
