@@ -53,7 +53,7 @@ zhongjue:addEffect(fk.AfterCardsMove, {
       for _, move in ipairs(data) do
         if move.from == player then
             for _, info in ipairs(move.moveInfo) do
-              if Fk:getCardById(info.cardId).trueName == "slash" then
+              if Fk:getCardById(info.cardId).trueName == "slash" and info.cardId:getMark("@@pang_zhongcai") > 0 then
                 test = 1
               end
             end
