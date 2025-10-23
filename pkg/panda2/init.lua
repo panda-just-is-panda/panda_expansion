@@ -102,6 +102,8 @@ Fk:loadTranslationTable{
 
 local last_judge = General:new(extension, "pang__last_judge", "qun", 4, 4, General.Female)
 last_judge:addSkill("pang_feiwupang")
+last_judge:addSkill("pang_zhongcai")
+last_judge:addSkill("pang_zhongjue")
 Fk:loadTranslationTable{
 ["pang__last_judge"] = "最终裁决者",
 ["#pang__last_judge"] = "翻译水平和失败冠军坐一桌",
