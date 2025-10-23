@@ -5,7 +5,7 @@ local quyuan = fk.CreateSkill{
 
 Fk:loadTranslationTable{
   ["pang_quyuan"] = "蛆渊",
-  [":pang_quyuan"] = "隐匿技，当你登场时，你可以令一名角色除非展示一张【闪】，否则获得“蛆渊”；当你成为【桃】的目标时，取消之，然后你失去此技能。",
+  [":pang_quyuan"] = "隐匿技，当你登场时，你可以令一名角色除非展示一张【闪】，否则获得“蛆渊”；当你成为【桃】的目标时，你取消之并失去此技能。",
 
   ["#quyuan-invoke"] = "蛆渊：你可以令一名角色除非展示一张【闪】，否则获得“蛆渊”",
   ["#quyuan-choose"] = "蛆渊：选择一名角色",
