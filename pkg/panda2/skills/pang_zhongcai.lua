@@ -25,7 +25,7 @@ zhongcai:addEffect(fk.GameStart, {
     if #cards > 0 then
       local id = cards[1]
       room:setPlayerMark(player, "zhongcai_slash", id)
-      room:setCardMark(Fk:getCardById(id), "@@pang_zhongcai-inhand", 1)
+      room:setCardMark(Fk:getCardById(id), "@@pang_zhongcai", 1)
       local card = Fk:getCardById(id)
       room:moveCardTo(card, Card.PlayerHand, player, fk.ReasonPrey, zhongcai.name,nil, true, player)
     end
@@ -50,7 +50,7 @@ zhongcai:addEffect(fk.TurnEnd, {
 zhongcai:addEffect("filter", {
   card_filter = function(self, to_select, player)
     return player:hasSkill(zhongcai.name) and to_select.trueName == "slash" and
-      to_select:getMark("@@pang_zhongcai-inhand") == 0
+      to_select:getMark("@@pang_zhongcai") == 0
   end,
   view_as = function(self, player, to_select)
     local card = Fk:cloneCard("iron_chain", to_select.suit, to_select.number)
