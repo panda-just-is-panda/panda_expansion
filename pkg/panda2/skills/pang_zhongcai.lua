@@ -1,12 +1,13 @@
 local zhongcai = fk.CreateSkill {
   name = "pang_zhongcai",
+  tags = { Skill.Compulsory },
 }
 
 Fk:loadTranslationTable {
   ["pang_zhongcai"] = "忠裁",
   [":pang_zhongcai"] = "锁定技，游戏开始时，你获得一张【杀】；每回合结束时，你获得此【杀】；你除此【杀】之外的【杀】视为【铁索连环】。",
 
-  ["@@pang_zhongcai-inhand"] = "忠裁",
+  ["@@pang_zhongcai"] = "忠裁",
 
 }
 

@@ -5,15 +5,15 @@ local zhongjue = fk.CreateSkill {
 
 Fk:loadTranslationTable {
   ["pang_zhongjue"] = "终决",
-  [":pang_zhongjue"] = "你失去过【杀】的阶段结束时或当你死亡时，你可以视为使用一张无距离限制的火【杀】。",
+  [":pang_zhongjue"] = "你失去过【杀】的阶段结束时或你即将死亡时，你可以视为使用一张无距离限制的火【杀】。",
   ["#zhongjue_choose"] = "终决：视为对一名角色使用一张火【杀】",
   ["#zhongjue-invoke"] = "终决：你可以视为对一名角色使用一张火【杀】",
   ["@@zhongjue"] = "终决-已失去【杀】",
 }
 
-zhongjue:addEffect(fk.Death, {
+zhongjue:addEffect(fk.AskForPeachesDone, {
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(zhongjue.name, false, true)
+    return data.who == player and player:hasSkill("yy__pilang") and player.hp <= 0
   end,
   on_cost = function(self, event, target, player, data)
     if player.room:askToSkillInvoke(player, {
@@ -73,7 +73,7 @@ zhongjue:addEffect(fk.AfterCardsMove, {
 
 zhongjue:addEffect(fk.EventPhaseEnd, {
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(zhongjue.name, false, true) and
+    return player:hasSkill(zhongjue.name, false, true) and
     player:getMark("zhongjue-phase") > 0
   end,
   on_cost = function(self, event, target, player, data)
