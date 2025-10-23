@@ -14,6 +14,7 @@ Fk:loadTranslationTable {
 }
 
 zhongcai:addEffect(fk.GameStart, {
+  mute = true,
   anim_type = "drawcard",
   can_trigger = function (self, event, target, player, data)
     return player:hasSkill(zhongcai.name)
@@ -22,6 +23,7 @@ zhongcai:addEffect(fk.GameStart, {
     return true
   end,
   on_use = function (self, event, target, player, data)
+    player:broadcastSkillInvoke(zhongcai.name, 1)
     local room = player.room
     local cards = room:getCardsFromPileByRule("slash", 1)
     if #cards > 0 then
@@ -45,6 +47,7 @@ zhongcai:addEffect(fk.TurnEnd, {
     on_use = function(self, event, target, player, data)
         local room = player.room
         local id = player:getMark("zhongcai_slash")
+        player:broadcastSkillInvoke(zhongcai.name, 2)
         room:moveCardTo(id, Card.PlayerHand, player, fk.ReasonPrey, zhongcai.name,nil, true, player)
     end,
 })
