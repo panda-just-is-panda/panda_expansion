@@ -101,7 +101,6 @@ Fk:loadTranslationTable{
 }
 
 local last_judge = General:new(extension, "pang__last_judge", "qun", 4, 4, General.Female)
-last_judge:addSkill("pang_feiwupang")
 last_judge:addSkill("pang_zhongcai")
 last_judge:addSkill("pang_zhongjue")
 Fk:loadTranslationTable{
@@ -112,7 +111,6 @@ Fk:loadTranslationTable{
 ["illustrator:pang__last_judge"] = "丝之歌",
 
 }
-last_judge.hidden = true
 
 
 local meilanni = General:new(extension, "pang__meilanni", "shu", 4, 4, General.Female)
