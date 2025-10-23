@@ -13,7 +13,7 @@ Fk:loadTranslationTable {
 
 zhongjue:addEffect(fk.AskForPeachesDone, {
   can_trigger = function(self, event, target, player, data)
-    return data.who == player and player:hasSkill("yy__pilang") and player.hp <= 0
+    return data.who == player and player:hasSkill("pang_zhongjue") and player.hp <= 0
   end,
   on_cost = function(self, event, target, player, data)
     if player.room:askToSkillInvoke(player, {
