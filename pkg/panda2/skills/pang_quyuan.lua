@@ -59,6 +59,7 @@ quyuan:addEffect(U.GeneralAppeared, {
         local card_test = Fk:getCardById(card[1]).trueName
         if card_test == "jink" then
             decision = 1
+            target:showCards(card)
         end
     end
     if decision == 0 and not target:hasSkill("pang_quyuan") then

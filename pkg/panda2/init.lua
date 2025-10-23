@@ -76,7 +76,6 @@ Fk:loadTranslationTable{
 }
 
 local groal_the_great = General:new(extension, "pang__groal_the_great", "wu", 4, 4)
-groal_the_great:addSkill("pang_feiwupang")
 groal_the_great:addSkill("pang_quyuan")
 groal_the_great:addSkill("pang_weiye")
 Fk:loadTranslationTable{
@@ -87,7 +86,6 @@ Fk:loadTranslationTable{
 ["illustrator:pang__groal_the_great"] = "丝之歌",
 
 }
-groal_the_great.hidden = true
 
 local grand_mother_silk = General:new(extension, "pang__grand_mother_silk", "god", 3, 3, General.Female)
 grand_mother_silk:addSkill("pang_siweijiang")
