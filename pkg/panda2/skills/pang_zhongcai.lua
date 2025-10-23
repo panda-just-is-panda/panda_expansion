@@ -48,6 +48,7 @@ zhongcai:addEffect(fk.TurnEnd, {
 })
 
 zhongcai:addEffect("filter", {
+  mute = true,
   card_filter = function(self, to_select, player)
     return player:hasSkill(zhongcai.name) and to_select.trueName == "slash" and
       to_select:getMark("@@pang_zhongcai") == 0
