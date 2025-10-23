@@ -9,6 +9,8 @@ Fk:loadTranslationTable {
 
   ["@@pang_zhongcai"] = "忠裁",
 
+  ["$pang_zhongcai1"] = "塞～来～瑞～亚～"
+
 }
 
 zhongcai:addEffect(fk.GameStart, {
