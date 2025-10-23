@@ -77,6 +77,8 @@ Fk:loadTranslationTable{
 
 local groal_the_great = General:new(extension, "pang__groal_the_great", "wu", 4, 4)
 groal_the_great:addSkill("pang_feiwupang")
+groal_the_great:addSkill("pang_quyuan")
+groal_the_great:addSkill("pang_weiye")
 Fk:loadTranslationTable{
 ["pang__groal_the_great"] = "伟大的格洛",
 ["#pang__groal_the_great"] = "三百六十五里路啊",
