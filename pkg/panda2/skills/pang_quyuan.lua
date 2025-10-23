@@ -76,7 +76,7 @@ quyuan:addEffect(fk.TargetConfirming, {
   on_refresh = function(self, event, target, player, data)
     local room = player.room
     data:cancelTarget(player)
-    room:handleAddLoseSkills(player, "pang_quyuan", nil, true, false)
+    room:handleAddLoseSkills(player, "-pang_quyuan", nil, true, false)
   end
 })
 
