@@ -73,11 +73,11 @@ zhongjue:addEffect(fk.AfterCardsMove, {
 
 zhongjue:addEffect(fk.EventPhaseEnd, {
   can_trigger = function(self, event, target, player, data)
+    player.room:setPlayerMark(player, "@@zhongjue", 0)
     return player:hasSkill(zhongjue.name, false, true) and
     player:getMark("zhongjue-phase") > 0 and player:isWounded()
   end,
   on_cost = function(self, event, target, player, data)
-    player.room:setPlayerMark(player, "@@zhongjue", 0)
     if player.room:askToSkillInvoke(player, {
       skill_name = zhongjue.name,
       prompt = "#zhongjue-invoke",
