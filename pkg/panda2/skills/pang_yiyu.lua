@@ -4,9 +4,9 @@ local yiyu = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_yiyu"] = "溢欲",
-  [":pang_yiyu"] = "一名角色的摸牌阶段，你可以令其多摸四张牌；若如此做，本回合的弃牌阶段结束时，你获得此阶段弃置的所有牌，然后你依次将其中一张牌作为【乐不思蜀】、【兵粮寸断】置入其判定区内。",
+  [":pang_yiyu"] = "一名角色的摸牌阶段，你可以令其多摸三张牌；若如此做，本回合的弃牌阶段结束时，你获得此阶段弃置的所有牌，然后你依次将其中一张牌作为【乐不思蜀】、【兵粮寸断】置入其判定区内。",
 
-  ["#yiyu-invoke"] = "溢欲：你可以令%dest多摸四张牌",
+  ["#yiyu-invoke"] = "溢欲：你可以令%dest多摸三张牌",
   ["#yiyu-negative1"] = "溢欲：将一张牌作为乐不思蜀置入%dest判定区内",
   ["#yiyu-negative2"] = "溢欲：将一张牌作为兵粮寸断置入%dest判定区内",
   ["@@yiyu-inhand-phase"] = "溢欲",
@@ -31,7 +31,7 @@ yiyu:addEffect(fk.DrawNCards, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     room:addPlayerMark(target, "pang_yiyu-turn", 1)
-    data.n = data.n + 4
+    data.n = data.n + 3
   end,
 })
 
