@@ -23,7 +23,7 @@ yiyu:addEffect(fk.DrawNCards, {
   on_cost = function(self, event, target, player, data)
     if player.room:askToSkillInvoke(player, {
       skill_name = yiyu.name,
-      prompt = "#yiyu-invoke" .. target.id,
+      prompt = "#yiyu-invoke::" .. target.id,
     }) then
     return true
     end
@@ -67,24 +67,13 @@ yiyu:addEffect(fk.EventPhaseEnd, {
     local room = player.room
     local to = room.current
     local guzheng_all = event:getCostData(self).extra_data[1]
-    local moveInfos = {}
-    guzheng_all = table.reverse(guzheng_all)
-    table.insert(guzheng_all, {
-        ids = guzheng_all,
-        to = player,
-        toArea = Card.PlayerHand,
-        moveReason = fk.ReasonPrey,
-        proposer = player,
-        skillName = yiyu.name,
-    })
-    room:moveCards(table.unpack(moveInfos))
+    room:moveCardTo(guzheng_all, Card.PlayerHand, player, fk.ReasonJustMove, yiyu.name, nil, true, player, "@@yiyu-inhand-phase")
     local ids = {}
     for _, id in ipairs(player:getCardIds("h")) do
       if Fk:getCardById(id):getMark("@@yiyu-inhand-phase") > 0 then
         table.insert(ids, id)
       end
     end
-
     if #guzheng_all > 0 then
         if not to:hasDelayedTrick("indulgence") and not table.contains(to.sealedSlots, to.JudgeSlot) then
             local to_select = room:askToCards(player, {
