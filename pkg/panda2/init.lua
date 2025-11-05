@@ -221,6 +221,16 @@ Fk:loadTranslationTable{
 ["illustrator:pang__guirenzhengxie"] = "东方",
 }
 
+local yishenjiemei = General:new(extension, "pang__yishenjiemei", "qun", 4, 4, General.Female)
+yishenjiemei:addSkill("pang_yiyu")
+Fk:loadTranslationTable{
+["pang__yishenjiemei"] = "依神姐妹",
+["#pang__yishenjiemei"] = "最凶最恶的双子",
+["designer:pang__yishenjiemei"] = "胖即是胖",
+["cv:pang__yishenjiemei"] = "官方",
+["illustrator:pang__yishenjiemei"] = "东方",
+}
+
 local dasitin = General:new(extension, "ying_dasitin", "shu", 4, 4, General.Male)
 dasitin:addSkill("ying_jingzhezhi")
 dasitin:addSkill("ying_guyusheng")
