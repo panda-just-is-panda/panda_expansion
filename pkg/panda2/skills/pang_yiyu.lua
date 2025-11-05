@@ -4,7 +4,7 @@ local yiyu = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["pang_yiyu"] = "溢欲",
-  [":pang_yiyu"] = "一名角色的摸牌阶段，你可以令其多摸三张牌；若如此做，本回合的弃牌阶段结束时，你获得此阶段弃置的所有牌，然后你依次将其中一张牌作为【乐不思蜀】、【兵粮寸断】置入其判定区内。",
+  [":pang_yiyu"] = "其他角色的摸牌阶段，你可以令其多摸三张牌；若如此做，本回合的弃牌阶段结束时，你获得此阶段弃置的所有牌，然后你依次将其中一张牌作为【乐不思蜀】、【兵粮寸断】置入其判定区内。",
 
   ["#yiyu-invoke"] = "溢欲：你可以令%dest多摸三张牌",
   ["#yiyu-negative1"] = "溢欲：将一张牌作为乐不思蜀置入%dest判定区内",
@@ -18,7 +18,7 @@ Fk:loadTranslationTable{
 yiyu:addEffect(fk.DrawNCards, {
   anim_type = "control",
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(yiyu.name)
+    return player:hasSkill(yiyu.name) and target ~= player
   end,
   on_cost = function(self, event, target, player, data)
     if player.room:askToSkillInvoke(player, {
