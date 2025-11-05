@@ -115,7 +115,7 @@ yiyu:addEffect(fk.EventPhaseEnd, {
             from = player,
             to = to,
             toArea = Player.Judge,
-            ids = {to_select2},
+            ids = {to_select2[1]},
             moveReason = fk.ReasonJustMove,
             skillName = yiyu.name,
             virtualEquip = card2,
