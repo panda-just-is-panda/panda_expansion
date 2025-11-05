@@ -23,7 +23,7 @@ yiyu:addEffect(fk.DrawNCards, {
   on_cost = function(self, event, target, player, data)
     if player.room:askToSkillInvoke(player, {
       skill_name = yiyu.name,
-      prompt = "#yiyu-invoke",
+      prompt = "#yiyu-invoke" .. target.id,
     }) then
     return true
     end
