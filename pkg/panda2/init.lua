@@ -228,7 +228,7 @@ Fk:loadTranslationTable{
 ["#pang__yishenjiemei"] = "最凶最恶的双子",
 ["designer:pang__yishenjiemei"] = "胖即是胖",
 ["cv:pang__yishenjiemei"] = "官方",
-["illustrator:pang__yishenjiemei"] = "东方",
+["illustrator:pang__yishenjiemei"] = "rabittofaa",
 }
 
 local dasitin = General:new(extension, "ying_dasitin", "shu", 4, 4, General.Male)
