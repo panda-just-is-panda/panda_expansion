@@ -58,6 +58,8 @@ zhange:addEffect(fk.CardUseFinished, {
     if target == player and player:hasSkill(zhange.name, true) and
       data.card.color ~= Card.NoColor then
         if data.card.color == Card.Red and player:getMark("@@zhange_red_used-turn") == 0 or data.card.color == Card.Black and player:getMark("@@zhange_black_used-turn") == 0 then
+            player:chat(
+          "成功？")
             return true
         else
             player:chat(

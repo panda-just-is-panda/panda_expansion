@@ -41,7 +41,7 @@ rongwu:addEffect("viewas", {
   view_as = function(self, player, cards)
     if #cards ~= 2 then return end
     local c = Fk:cloneCard("duel")
-    c:addSubcard(cards)
+    c:addSubcards(cards)
     c.skillName = rongwu.name
     return c
   end,
