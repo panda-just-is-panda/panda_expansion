@@ -40,6 +40,10 @@ rongwu:addEffect("viewas", {
             table.insert(ids, id)
         end
     end
+    if #ids == 0 then
+        player:chat(
+          "table错误！")
+    end
     return #selected < 2 and table.contains(ids, to_select)
   end,
   view_as = function(self, player, cards)

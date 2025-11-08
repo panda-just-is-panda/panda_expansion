@@ -60,9 +60,13 @@ zhange:addEffect(fk.CardUseFinished, {
         if data.card.color == "Card.red" and player:getMark("@@zhange_red_used-turn") == 0 or data.card.color == "Card.black" and player:getMark("@@zhange_black_used-turn") == 0 then
             return true
         else
+            player:chat(
+          "标记错误1！")
             return false
         end
     else
+        player:chat(
+          "标记错误2！")
         return false
     end
   end,
