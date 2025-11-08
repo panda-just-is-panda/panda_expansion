@@ -45,6 +45,12 @@ zhange:addEffect(fk.CardUseFinished, {
             cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|equip", 1)
         elseif color == Card.Red and type == Card.TypeEquip then
             cards = player.room:getCardsFromPileByRule(".|.|spade,club|.|.|equip", 1)
+        elseif color ~= Card.Red and color ~= Card.Black and type == Card.TypeEquip then
+            cards = player.room:getCardsFromPileByRule(".|.|.|.|.|equip", 1)
+        elseif color ~= Card.Red and color ~= Card.Black and type == Card.TypeTrick then
+            cards = player.room:getCardsFromPileByRule(".|.|.|.|.|trick", 1)
+        elseif color ~= Card.Red and color ~= Card.Black and type == Card.TypeBasic then
+            cards = player.room:getCardsFromPileByRule(".|.|.|.|.|basic", 1)
         end
         if #cards > 0 then
             room:obtainCard(player, cards, false, fk.ReasonJustMove, player, zhange.name)
@@ -61,8 +67,7 @@ zhange:addEffect(fk.CardUseFinished, {
 
 zhange:addEffect(fk.CardUseFinished, {
   can_refresh = function(self, event, target, player, data)
-    if target == player and player:hasSkill(zhange.name, true) and
-      data.card.color ~= Card.NoColor then
+    if target == player and player:hasSkill(zhange.name, true) then
         if data.card.type == Card.TypeTrick and player:getMark("@@zhange_trick_used-turn") == 0 or
         data.card.type == Card.TypeEquip and player:getMark("@@zhange_equip_used-turn") == 0
         or data.card.type == Card.TypeBasic and player:getMark("@@zhange_basic_used-turn") == 0 then
