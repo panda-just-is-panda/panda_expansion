@@ -63,9 +63,9 @@ zhange:addEffect(fk.CardUseFinished, {
   can_refresh = function(self, event, target, player, data)
     if target == player and player:hasSkill(zhange.name, true) and
       data.card.color ~= Card.NoColor then
-        if type == Card.TypeTrick and player:getMark("@@zhange_trick_used-turn") == 0 or
-        type == Card.TypeEquip and player:getMark("@@zhange_equip_used-turn") == 0
-        or type == Card.TypeBasic and player:getMark("@@zhange_basic_used-turn") == 0 then
+        if data.card.type == Card.TypeTrick and player:getMark("@@zhange_trick_used-turn") == 0 or
+        data.card.type == Card.TypeEquip and player:getMark("@@zhange_equip_used-turn") == 0
+        or data.card.type == Card.TypeBasic and player:getMark("@@zhange_basic_used-turn") == 0 then
             return true
         else
             return false
