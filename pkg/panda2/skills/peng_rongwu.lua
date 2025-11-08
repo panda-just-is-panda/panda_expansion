@@ -33,14 +33,10 @@ rongwu:addEffect("viewas", {
   pattern = "duel",
   prompt = "#shuangxiong",
   handly_pile = true,
-  filter_pattern = function (self, player, to_select, selected)
-    local ids = {}
-    for _, id in ipairs(player:getCardIds("h")) do
-        if Fk:getCardById(id):getMark("@@rongwu-inhand-turn") > 0 then
-            table.insert(ids, id)
-        end
-    end
-    return #selected < 2 and table.contains(ids, to_select)
+  card_filter = function(self, player, to_select, selected)
+    if #selected > 1 then return end
+    local card = Fk:getCardById(to_select)
+    return card:getMark("@@rongwu-inhand-turn") > 0
   end,
   view_as = function(self, player, cards)
     if #cards ~= 2 then return end
