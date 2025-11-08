@@ -60,6 +60,8 @@ zhange:addEffect(fk.CardUseFinished, {
         if data.card.color == Card.Red and player:getMark("@@zhange_red_used-turn") == 0 or data.card.color == Card.Black and player:getMark("@@zhange_black_used-turn") == 0 then
             return true
         else
+            player:chat(
+          "sb技能")
             return false
         end
     else
