@@ -34,7 +34,13 @@ rongwu:addEffect("viewas", {
   prompt = "#shuangxiong",
   handly_pile = true,
   filter_pattern = function (self, player, to_select, selected)
-    return #selected < 2 and Fk:getCardById(to_select):getMark("@@rongwu-inhand-turn") > 0
+    local ids = {}
+    for _, id in ipairs(player:getCardIds("h")) do
+        if Fk:getCardById(id):getMark("@@rongwu-inhand-turn") > 0 then
+            table.insert(ids, id)
+        end
+    end
+    return #selected < 2 and table.contains(ids, to_select)
   end,
   view_as = function(self, player, cards)
     if #cards ~= 2 then return end
