@@ -55,8 +55,9 @@ rongwu:addEffect("viewas", {
     if not response then return true end
   end,
   after_use = function(self, player, use)
-    player.room:setPlayerMark(player, "@@zhange_red_used-turn", 0)
-    player.room:setPlayerMark(player, "@@zhange_black_used-turn", 0)
+    player.room:setPlayerMark(player, "@@zhange_trick_used-turn", 0)
+    player.room:setPlayerMark(player, "@@zhange_basic_used-turn", 0)
+    player.room:setPlayerMark(player, "@@zhange_equip_used-turn", 0)
   end,
 })
 
