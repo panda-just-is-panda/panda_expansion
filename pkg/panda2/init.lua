@@ -244,7 +244,7 @@ Fk:loadTranslationTable{
 ["~ying_dasitin"] = "你们快逃，我还能阻挡他们一会儿……",
 }
 
-local karmelita = General:new(extension, "peng_karmelita", "shu", 4, 4)
+local karmelita = General:new(extension, "peng_karmelita", "shu", 4, 4, General.Female)
 karmelita:addSkill("peng_zhange")
 karmelita:addSkill("peng_rongwu")
 Fk:loadTranslationTable{
