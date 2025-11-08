@@ -6,7 +6,7 @@ Fk:loadTranslationTable{
   ["peng_rongwu"] = "戎舞",
   [":peng_rongwu"] = "你可以将两张于本回合内获得的牌当【決斗】使用，然后重置 “绽歌”。",
 
-  ["@@rongwu-turn"] = "戎舞",
+  ["@@rongwu-inhand-turn"] = "戎舞",
   ["#shuangxiong"] = "戎舞：你可以将两张于本回合获得的牌当【決斗】使用",
 }
 
@@ -20,7 +20,7 @@ rongwu:addEffect(fk.AfterCardsMove, {
       if move.to == player and move.toArea == Player.Hand then
         for _, info in ipairs(move.moveInfo) do
           if table.contains(player:getCardIds("h"), info.cardId) then
-            room:setCardMark(Fk:getCardById(info.cardId), "@@rongwu-turn", 1)
+            room:setCardMark(Fk:getCardById(info.cardId), "@@rongwu-inhand-turn", 1)
           end
         end
       end
@@ -34,7 +34,7 @@ rongwu:addEffect("viewas", {
   prompt = "#shuangxiong",
   handly_pile = true,
   filter_pattern = function (self, player, to_select, selected)
-    return #selected < 2 and Fk:getCardById(to_select):getMark("@@rongwu-turn") > 0
+    return #selected < 2 and Fk:getCardById(to_select):getMark("@@rongwu-inhand-turn") > 0
   end,
   view_as = function(self, player, cards)
     if #cards ~= 2 then return end
