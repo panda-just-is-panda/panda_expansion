@@ -244,15 +244,15 @@ Fk:loadTranslationTable{
 ["~ying_dasitin"] = "你们快逃，我还能阻挡他们一会儿……",
 }
 
-local karmelita = General:new(extension, "pang__karmelita", "shu", 4, 4)
+local karmelita = General:new(extension, "peng__karmelita", "shu", 4, 4)
 karmelita:addSkill("peng_zhange")
 karmelita:addSkill("peng_rongwu")
 Fk:loadTranslationTable{
-["pang__karmelita"] = "卡梅丽塔",
-["#pang__karmelita"] = "斯卡尔歌后",
-["designer:pang__karmelita"] = "嘭",
-["cv:pang__karmelita"] = "丝之歌",
-["illustrator:pang__karmelita"] = "丝之歌",
+["peng__karmelita"] = "卡梅丽塔",
+["#peng__karmelita"] = "斯卡尔歌后",
+["designer:peng__karmelita"] = "嘭",
+["cv:peng__karmelita"] = "丝之歌",
+["illustrator:peng__karmelita"] = "丝之歌",
 
 }
 

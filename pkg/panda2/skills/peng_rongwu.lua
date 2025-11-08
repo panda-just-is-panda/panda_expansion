@@ -33,7 +33,7 @@ rongwu:addEffect("viewas", {
   pattern = "duel",
   prompt = "#shuangxiong",
   handly_pile = true,
-  filter_pattern = function (self, player, card_name, selected)
+  filter_pattern = function (self, player, to_select, selected)
     return #selected < 2 and to_select:getMark("@@rongwu-turn") > 0
   end,
   view_as = function(self, player, cards)
