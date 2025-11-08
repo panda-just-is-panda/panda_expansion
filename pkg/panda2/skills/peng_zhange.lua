@@ -7,8 +7,9 @@ Fk:loadTranslationTable{
   ["peng_zhange"] = "绽歌",
   [":peng_zhange"] = "每回合各限一次，你使用一张牌后，可以摸一张与之颜色不同的同类别牌。",
   ["#zhange_invoke"] = "绽歌：你可以摸一张颜色不同但类型和此牌相同的牌",
-  ["@@zhange_red_used-turn"] = "红色 已摸",
-  ["@@zhange_black_used-turn"] = "黑色 已摸",
+  ["@@zhange_trick_used-turn"] = "锦囊 已摸",
+  ["@@zhange_basic_used-turn"] = "基本 已摸",
+  ["@@zhange_equip_used-turn"] = "装备 已摸",
 
   ["$peng_zhange1"] = "优雅的歌声～",
   ["$peng_zhange2"] = "绽放的歌声～"
@@ -48,10 +49,12 @@ zhange:addEffect(fk.CardUseFinished, {
         if #cards > 0 then
             room:obtainCard(player, cards, false, fk.ReasonJustMove, player, zhange.name)
         end
-        if color == Card.Red then
-            room:addPlayerMark(player, "@@zhange_red_used-turn", 1)
+        if type == Card.TypeTrick then
+            room:addPlayerMark(player, "@@zhange_trick_used-turn", 1)
+        elseif type == Card.TypeBasic then
+            room:addPlayerMark(player, "@@zhange_basic_used-turn", 1)
         else
-            room:addPlayerMark(player, "@@zhange_black_used-turn", 1)
+            room:addPlayerMark(player, "@@zhange_equip_used-turn", 1)
         end
     end,
 })
@@ -60,7 +63,9 @@ zhange:addEffect(fk.CardUseFinished, {
   can_refresh = function(self, event, target, player, data)
     if target == player and player:hasSkill(zhange.name, true) and
       data.card.color ~= Card.NoColor then
-        if data.card.color == Card.Red and player:getMark("@@zhange_red_used-turn") == 0 or data.card.color == Card.Black and player:getMark("@@zhange_black_used-turn") == 0 then
+        if type == Card.TypeTrick and player:getMark("@@zhange_trick_used-turn") == 0 or
+        type == Card.TypeEquip and player:getMark("@@zhange_equip_used-turn") == 0
+        or type == Card.TypeBasic and player:getMark("@@zhange_basic_used-turn") == 0 then
             return true
         else
             return false
