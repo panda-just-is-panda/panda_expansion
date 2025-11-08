@@ -8,6 +8,9 @@ Fk:loadTranslationTable{
 
   ["@@rongwu-inhand-turn"] = "戎舞",
   ["#shuangxiong"] = "戎舞：你可以将两张于本回合获得的牌当【決斗】使用",
+
+    ["$peng_rongwu1"] = "昂扬的歌声～",
+  ["$peng_rongwu2"] = "激昂的歌声～"
 }
 
 rongwu:addEffect(fk.AfterCardsMove, {

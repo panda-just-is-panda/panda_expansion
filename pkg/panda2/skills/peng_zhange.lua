@@ -9,6 +9,9 @@ Fk:loadTranslationTable{
   ["#zhange_invoke"] = "绽歌：你可以摸一张颜色不同但类型和此牌相同的牌",
   ["@@zhange_red_used-turn"] = "红色 已摸",
   ["@@zhange_black_used-turn"] = "黑色 已摸",
+
+  ["$peng_zhange1"] = "优雅的歌声～",
+  ["$peng_zhange2"] = "绽放的歌声～"
 }
 
 zhange:addEffect(fk.CardUseFinished, {
