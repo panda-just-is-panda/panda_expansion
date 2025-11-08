@@ -72,7 +72,7 @@ zhange:addEffect(fk.CardUseFinished, {
   end,
   on_refresh = function(self, event, target, player, data)
       data.extra_data = data.extra_data or {}
-      data.extra_data.can_fenyin = true
+      data.extra_data.can_zhange = true
   end,
 })
 
