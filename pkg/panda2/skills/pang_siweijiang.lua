@@ -30,9 +30,15 @@ swj:addEffect(fk.AfterCardsMove, {
       end)
       ids = player.room.logic:moveCardsHoldingAreaCheck(ids)
       if #ids > 0 then
-        event:setCostData(self, {cards = ids})
-        return true
+        if player:hasSkill("pang_jianjiefu") then
+          event:setCostData(self, {cards = ids})
+          return true
+        else
+          player:chat(
+          "你已触发邪恶胖的邪恶陷阱，此技能回收牌的效果不会在你没有“茧结缚”的时候被发动！{emoji56}{emoji56}{emoji56}")
+        end
       end
+      
     end
   end,
   on_cost = Util.TrueFunc,
