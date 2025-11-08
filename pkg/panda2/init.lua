@@ -255,7 +255,7 @@ Fk:loadTranslationTable{
 ["illustrator:peng_karmelita"] = "丝之歌",
 
 }
-karmelita.hidden = true
+
 
 
 return extension

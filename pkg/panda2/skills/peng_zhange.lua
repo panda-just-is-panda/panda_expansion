@@ -29,23 +29,23 @@ zhange:addEffect(fk.CardUseFinished, {
         local color = data.card.color
         local type = data.card.type
         local cards = {}
-        if color == Card.Red and type == Card.TypeTrick then
+        if color == Card.Black and type == Card.TypeTrick then
             cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|trick", 1)
-        elseif color == Card.Black and type == Card.TypeTrick then
+        elseif color == Card.Red and type == Card.TypeTrick then
             cards = player.room:getCardsFromPileByRule(".|.|spade,club|.|.|trick", 1)
-        elseif color == Card.Red and type == Card.TypeBasic then
-            cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|basic", 1)
         elseif color == Card.Black and type == Card.TypeBasic then
+            cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|basic", 1)
+        elseif color == Card.Red and type == Card.TypeBasic then
             cards = player.room:getCardsFromPileByRule(".|.|spade,club|.|.|basic", 1)
-        elseif color == Card.Red and type == Card.TypeEquip then
-            cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|equip", 1)
         elseif color == Card.Black and type == Card.TypeEquip then
+            cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|equip", 1)
+        elseif color == Card.Red and type == Card.TypeEquip then
             cards = player.room:getCardsFromPileByRule(".|.|spade,club|.|.|equip", 1)
         end
         if #cards > 0 then
             room:obtainCard(player, cards, false, fk.ReasonJustMove, player, zhange.name)
         end
-        if color == Card.red then
+        if color == Card.Red then
             room:addPlayerMark(player, "@@zhange_red_used-turn", 1)
         else
             room:addPlayerMark(player, "@@zhange_black_used-turn", 1)
@@ -58,12 +58,8 @@ zhange:addEffect(fk.CardUseFinished, {
     if target == player and player:hasSkill(zhange.name, true) and
       data.card.color ~= Card.NoColor then
         if data.card.color == Card.Red and player:getMark("@@zhange_red_used-turn") == 0 or data.card.color == Card.Black and player:getMark("@@zhange_black_used-turn") == 0 then
-            player:chat(
-          "成功？")
             return true
         else
-            player:chat(
-          "sb技能")
             return false
         end
     else
