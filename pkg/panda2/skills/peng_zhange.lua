@@ -29,17 +29,17 @@ zhange:addEffect(fk.CardUseFinished, {
         local color = data.card.color
         local type = data.card.type
         local cards = {}
-        if color == Card.red and type == Card.TypeTrick then
+        if color == Card.Red and type == Card.TypeTrick then
             cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|trick", 1)
-        elseif color == Card.black and type == Card.TypeTrick then
+        elseif color == Card.Black and type == Card.TypeTrick then
             cards = player.room:getCardsFromPileByRule(".|.|spade,club|.|.|trick", 1)
-        elseif color == Card.red and type == Card.TypeBasic then
+        elseif color == Card.Red and type == Card.TypeBasic then
             cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|basic", 1)
-        elseif color == Card.black and type == Card.TypeBasic then
+        elseif color == Card.Black and type == Card.TypeBasic then
             cards = player.room:getCardsFromPileByRule(".|.|spade,club|.|.|basic", 1)
-        elseif color == Card.red and type == Card.TypeEquip then
+        elseif color == Card.Red and type == Card.TypeEquip then
             cards = player.room:getCardsFromPileByRule(".|.|heart,diamond|.|.|equip", 1)
-        elseif color == Card.black and type == Card.TypeEquip then
+        elseif color == Card.Black and type == Card.TypeEquip then
             cards = player.room:getCardsFromPileByRule(".|.|spade,club|.|.|equip", 1)
         end
         if #cards > 0 then
@@ -57,11 +57,9 @@ zhange:addEffect(fk.CardUseFinished, {
   can_refresh = function(self, event, target, player, data)
     if target == player and player:hasSkill(zhange.name, true) and
       data.card.color ~= Card.NoColor then
-        if data.card.color == Card.red and player:getMark("@@zhange_red_used-turn") == 0 or data.card.color == Card.black and player:getMark("@@zhange_black_used-turn") == 0 then
+        if data.card.color == Card.Red and player:getMark("@@zhange_red_used-turn") == 0 or data.card.color == Card.Black and player:getMark("@@zhange_black_used-turn") == 0 then
             return true
         else
-            player:chat(
-          "标记错误1！")
             return false
         end
     else
