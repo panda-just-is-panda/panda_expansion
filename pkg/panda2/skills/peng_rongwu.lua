@@ -34,7 +34,7 @@ rongwu:addEffect("viewas", {
   prompt = "#shuangxiong",
   handly_pile = true,
   filter_pattern = function (self, player, to_select, selected)
-    return #selected < 2 and to_select:getMark("@@rongwu-turn") > 0
+    return #selected < 2 and Fk:getCardById(to_select):getMark("@@rongwu-turn") > 0
   end,
   view_as = function(self, player, cards)
     if #cards ~= 2 then return end
