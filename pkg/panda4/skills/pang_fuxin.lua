@@ -25,7 +25,7 @@ fuxin:addEffect("viewas", {
   card_filter = Util.FalseFunc,
   before_use = function(self, player)
     player.room:askToYiji(player, {
-      cards = player:getCardIds("he"), targets = room:getOtherPlayers(player, false), skill_name = fuxin.name,
+      cards = player:getCardIds("he"), targets = player.room:getOtherPlayers(player, false), skill_name = fuxin.name,
       min_num = 1, max_num = 1, prompt = "#fuxin-give", cancelable = false,
     })
   end,
