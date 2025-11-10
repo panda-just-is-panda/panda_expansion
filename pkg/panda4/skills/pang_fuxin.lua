@@ -34,7 +34,7 @@ fuxin:addEffect("viewas", {
       prompt = "#fuxin-give",
       skill_name = fuxin.name,
       cancelable = false})
-      room:obtainCard(to, card, false, fk.ReasonGive)
+      room:obtainCard(to, card, false, fk.ReasonGive, player, fuxin.name)
   end,
   view_as = function(self, player)
     local c = Fk:cloneCard("jink")
