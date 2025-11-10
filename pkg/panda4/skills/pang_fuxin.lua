@@ -42,16 +42,16 @@ fuxin:addEffect("viewas", {
     return c
   end,
   enabled_at_play = function (self, player)
-    return player:getSwitchSkillState(fuxin.name, true) == fk.SwitchYang and not not player:isNude()
+    return player:getSwitchSkillState(fuxin.name, true) ~= fk.SwitchYang and not player:isNude()
     end,
   enabled_at_response = function (self, player, response)
-    return player:getSwitchSkillState(fuxin.name, true) == fk.SwitchYang and not not player:isNude()
+    return player:getSwitchSkillState(fuxin.name, true) ~= fk.SwitchYang and not player:isNude()
   end,
 })
 
 fuxin:addEffect(fk.AfterCardsMove, {
   can_trigger = function(self, event, target, player, data)
-    if not player:hasSkill(fuxin.name, true) or player:getSwitchSkillState(fuxin.name, true) == fk.SwitchYang then return false end
+    if not player:hasSkill(fuxin.name, true) or player:getSwitchSkillState(fuxin.name, true) ~= fk.SwitchYang then return false end
     local room = player.room
     for _, move in ipairs(data) do
       if move.to == player and move.toArea == Player.Hand then
