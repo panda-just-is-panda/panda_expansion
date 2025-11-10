@@ -24,17 +24,10 @@ fuxin:addEffect("viewas", {
   pattern = "jink",
   card_filter = Util.FalseFunc,
   before_use = function(self, player)
-    local room = player.room
-    local to, card = room:askToChooseCardsAndPlayers(player, {
-      targets = room:getOtherPlayers(player, false),
-      min_num = 1,
-      max_num = 1,
-      max_card_num = 1,
-      min_card_num = 1,
-      prompt = "#fuxin-give",
-      skill_name = fuxin.name,
-      cancelable = false})
-       room:moveCardTo(card, Player.Hand, to, fk.ReasonGive, fuxin.name, nil, false, player)
+    player.room:askToYiji(player, {
+      cards = player:getCardIds("he"), targets = room:getOtherPlayers(player, false), skill_name = fuxin.name,
+      min_num = 1, max_num = 1, prompt = "#fuxin-give", cancelable = false,
+    })
   end,
   view_as = function(self, player)
     local c = Fk:cloneCard("jink")
