@@ -7,7 +7,8 @@ Fk:loadTranslationTable {["ying_danding"] = "胆定",
 [":ying_danding"] = "出牌阶段开始时，你可以令你本回合对一名其他角色使用的牌无次数限制且不可响应，然后其可以观看你的手牌并重铸其中两张。",
 ["#danding-choose"] = "胆定：你可以令你本回合对一名其他角色使用的牌无次数限制且不可响应",
 ["#danding-view"] = "胆定：重铸其中两张牌",
-["#danding-invoke2"] = "胆定：你可以观看%dest的手牌并重铸其中两张"
+["#danding-invoke2"] = "胆定：你可以观看%dest的手牌并重铸其中两张",
+["@@been_danding-turn"] = "被胆定",
 
 }
 
@@ -35,7 +36,7 @@ danding:addEffect(fk.EventPhaseStart, { --
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = event:getCostData(self).to[1]
-    room:addPlayerMark(to, "been_danding-turn", 1)
+    room:addPlayerMark(to, "@@been_danding-turn", 1)
      if player.room:askToSkillInvoke(to, {
       skill_name = danding.name,
       prompt = "#danding-invoke2::"..player.id,
@@ -56,14 +57,14 @@ danding:addEffect(fk.EventPhaseStart, { --
 
 danding:addEffect("targetmod", {
     bypass_times = function(self, player, skill, scope, card, to)
-    return card and to and to:getMark("been_danding-turn") > 0
+    return card and to and to:getMark("@@been_danding-turn") > 0
   end,
 })
 
 danding:addEffect(fk.TargetSpecified, {
   anim_type = "offensive",
   can_refresh = function(self, event, target, player, data)
-    return target == player and data.to:getMark("been_danding-turn") > 0
+    return target == player and data.to:getMark("@@been_danding-turn") > 0
   end,
   on_refresh = function(self, event, target, player, data)
     data.disresponsive = true
