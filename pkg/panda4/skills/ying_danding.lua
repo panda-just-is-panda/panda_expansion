@@ -44,11 +44,10 @@ danding:addEffect(fk.EventPhaseStart, { --
         table.insert(card_data, { "$Hand", player:getCardIds("h") })
         local cards = room:askToChooseCards(to, {
             target = player,
+            min = 2,
+            max = 2,
             flag = { card_data = card_data },
-            skill_name = danding.name,
-            prompt = "#danding-view",
-            min_num = 2,
-            max_num = 2,
+          skill_name = danding.name,
         })
         room:recastCard(cards, player, danding.name)
     end
