@@ -33,6 +33,18 @@ Fk:loadTranslationTable{
 ["~pang__moskvin"] = "Yes sir. But one day, I will be giving orders.",
 }
 
+local rokossovsky = General:new(extension, "pang__rokossovsky", "shu", 4)
+rokossovsky:addSkill("pang_feiwupang")
+Fk:loadTranslationTable{
+["pang__rokossovsky"] = "罗科索夫斯基",
+["#pang__rokossovsky"] = "戏台老将军",
+["designer:pang__rokossovsky"] = "胖即是胖",
+["cv:pang__rokossovsky"] = "世界征服者4",
+["illustrator:pang__rokossovsky"] = "世界征服者4",
+
+}
+rokossovsky.hidden = true
+
 local artanis = General:new(extension, "pang__artanis", "wei", 4)
 artanis:addSkill("pang_jijiebudui")
 artanis:addSkill("pang_zhandourongyao")

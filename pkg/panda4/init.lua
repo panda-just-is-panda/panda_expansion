@@ -174,4 +174,16 @@ Fk:loadTranslationTable{
 
 }
 
+local zhuran = General:new(extension, "ying_zhuran", "wu", 4, 4, General.Male)
+zhuran:addSkill("sheng_shuaiyan")
+zhuran:addSkill("sheng_jimeng")
+Fk:loadTranslationTable{
+["ying_zhuran"] = "朱然",
+["#ying_zhuran"] = "不动之督",
+["designer:ying_zhuran"] = "英历",
+["cv:ying_zhuran"] = "官方",
+["illustrator:ying_zhuran"] = "Ccat",
+
+}
+
 return extension
