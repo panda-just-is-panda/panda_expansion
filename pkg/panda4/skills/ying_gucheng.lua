@@ -26,7 +26,7 @@ gucheng:addEffect(fk.CardUseFinished, {
   on_cost = function (self, event, target, player, data)
     if player.room:askToSkillInvoke(player, {
       skill_name = gucheng.name,
-      prompt = "#gucheng-invoke2",
+      prompt = "#gucheng-invoke1",
     }) then
       return true
     end

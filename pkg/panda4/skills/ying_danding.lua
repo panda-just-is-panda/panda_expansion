@@ -36,13 +36,14 @@ danding:addEffect(fk.EventPhaseStart, { --
     local room = player.room
     local to = event:getCostData(self).to[1]
     room:addPlayerMark(to, "been_danding-turn", 1)
-    if player.room:askToSkillInvoke(player, {
+    if player.room:askToSkillInvoke(to, {
       skill_name = danding.name,
       prompt = "#danding-invoke2::"..player.id,
     }) then
         local card = player:getCardIds("h")
         local cards = room:askToChooseCards(to, {
-            cards = card,
+            target = player,
+            flag = "he",
             skill_name = danding.name,
             prompt = "#danding-view",
             min_num = 2,
