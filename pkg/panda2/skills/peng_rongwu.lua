@@ -4,7 +4,7 @@ local rongwu = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["peng_rongwu"] = "戎舞",
-  [":peng_rongwu"] = "你可以将两张于本回合内获得的牌当【決斗】使用，然后重置 “绽歌”。",
+  [":peng_rongwu"] = "每回合先一次，你可以将两张于本回合内获得的牌当【決斗】使用，然后重置 “绽歌”。",
 
   ["@@rongwu-inhand-turn"] = "戎舞",
   ["#shuangxiong"] = "戎舞：你可以将两张于本回合获得的牌当【決斗】使用",
@@ -49,10 +49,10 @@ rongwu:addEffect("viewas", {
     return c
   end,
   enabled_at_play = function(self, player)
-    return true
+    return player:usedSkillTimes(rongwu.name, Player.HistoryTurn) == 0
   end,
   enabled_at_response = function(self, player, response)
-    if not response then return true end
+    return player:usedSkillTimes(rongwu.name, Player.HistoryTurn) == 0 and not response
   end,
   after_use = function(self, player, use)
     player.room:setPlayerMark(player, "@@zhange_trick_used-turn", 0)
