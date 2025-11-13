@@ -4,7 +4,7 @@ local rongwu = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["peng_rongwu"] = "戎舞",
-  [":peng_rongwu"] = "每回合先一次，你可以将两张于本回合内获得的牌当【決斗】使用，然后重置 “绽歌”。",
+  [":peng_rongwu"] = "每回合限一次，你可以将两张于本回合内获得的牌当【決斗】使用，然后重置 “绽歌”。",
 
   ["@@rongwu-inhand-turn"] = "戎舞",
   ["#shuangxiong"] = "戎舞：你可以将两张于本回合获得的牌当【決斗】使用",
