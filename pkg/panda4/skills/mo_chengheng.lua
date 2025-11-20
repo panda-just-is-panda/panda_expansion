@@ -11,7 +11,8 @@ zhiheng:addEffect('active', {
   target_num = 1,
   card_filter = Util.FalseFunc,
   target_filter = function(self, player, to_select, selected, selected_cards)
-    return #selected == 0 and to_select:getHandcardNum() ~= player:getMark("@mo_chengheng")
+    return #selected == 0 and to_select:getHandcardNum() ~= player:getMark("@mo_chengheng") 
+    and (to_select:getHandcardNum() == player:getHandcardNum() or to_select.hp == player.hp)
   end,
   on_use = function(self, room, effect)
     local player = effect.from
