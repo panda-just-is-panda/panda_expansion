@@ -34,6 +34,18 @@ pingshi:addEffect(fk.TurnStart, {
         })
       room:addPlayerMark(player, "@mo_chengheng_qi", 1)
     end
+    if player:getMark("@mo_chengheng_mo") == player:getMark("@mo_chengheng_qi") then
+      local choices = {"x+1", "x-1"}
+      local choice = room:askToChoice(player, {
+      choices = choices,
+      skill_name = "mo_chengheng",
+      })
+      if choice == "x+1" then
+        room:addPlayerMark(player, "@mo_chengheng", 1)
+      else
+        room:removePlayerMark(player, "@mo_chengheng", 1)
+      end
+    end
   end,
 })
 
