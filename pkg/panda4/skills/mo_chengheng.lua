@@ -1,6 +1,7 @@
 local zhiheng = fk.CreateSkill{
-  name = "hs__zhiheng",
+  name = "mo_chengheng",
 }
+
 zhiheng:addEffect('active', {
   anim_type = "drawcard",
   can_use = function(self, player)
