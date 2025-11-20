@@ -31,7 +31,7 @@ zhiheng:addEffect('active', {
       room:addPlayerMark(player, "@mo_chengheng_qi", 1)
     end
     if player:getMark("@mo_chengheng_mo") == player:getMark("@mo_chengheng_qi") then
-      player:setSkillUseHistory(zhiheng.name, 0, Player.HistoryGame)
+      player:setSkillUseHistory(zhiheng.name, 0, Player.HistoryPhase)
       local choices = {"x+1", "x-1"}
       local choice = room:askToChoice(player, {
       choices = choices,
