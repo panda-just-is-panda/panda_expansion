@@ -46,14 +46,11 @@ zhiheng:addEffect('active', {
   end
 })
 
-zhiheng:addEffect(fk.GameStart, {
-  can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(zhiheng.name)
-  end,
-  on_use = function(self, event, target, player, data)
-    player.room:addPlayerMark(player, "@mo_chengheng", 3)
-  end,
-})
+zhiheng:addAcquireEffect(function (self, player)
+  local room = player.room
+  room:setPlayerMark(player, "@mo_chengheng", 3)
+end)
+
 
 Fk:loadTranslationTable{
   ["mo_chengheng"] = "秤衡",
