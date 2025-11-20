@@ -175,4 +175,16 @@ Fk:loadTranslationTable{
 
 }
 
+local sunquan = General:new(extension, "mo_sunquan", "wu", 4, 4, General.Male)
+sunquan:addSkill("mo_chengheng")
+sunquan:addSkill("mo_pingshi")
+Fk:loadTranslationTable{
+["mo_sunquan"] = "孙权",
+["#mo_sunquan"] = "东吴大帝",
+["designer:mo_sunquan"] = "墨客",
+["cv:mo_sunquan"] = "官方",
+["illustrator:mo_sunquan"] = "官方",
+
+}
+
 return extension
