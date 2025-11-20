@@ -12,7 +12,7 @@ Fk:loadTranslationTable{
 pingshi:addEffect(fk.TurnStart, {
   anim_type = "control",
   can_trigger = function(self, event, target, player, data)
-    if player.room.current.kingdom == "wu" and player.room.current.hp ~= player:getMark("@mo_chengheng") then
+    if player:hasSkill(pingshi.name) and player.room.current.kingdom == "wu" and player.room.current.hp ~= player:getMark("@mo_chengheng") then
         return true
     end
   end,
