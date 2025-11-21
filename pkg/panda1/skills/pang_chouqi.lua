@@ -41,18 +41,13 @@ chouqi:addEffect(fk.Damaged, {
     else
         room:setPlayerMark(player, "@@pang_chouqi", 1)
         room:setPlayerMark(to, "@@pang_beichouqi", 1)
+        room:invalidateSkill(player, chouqi.name)
     end
     room:sortByAction(to)
     room:useVirtualCard("slash", nil, player, to, chouqi.name, true)
   end,
 })
 
-chouqi:addEffect("invalidity", {
-  invalidity_func = function(self, from, skill)
-    return
-      from:getMark("@@pang_chouqi") > 0 and skill:isPlayerSkill(from, true) and skill.name == "pang_chouqi"
-  end
-})
 
 chouqi:addEffect(fk.Damage, {
     is_delay_effect = true,
@@ -64,6 +59,7 @@ chouqi:addEffect(fk.Damage, {
     local to = data.to
     room:setPlayerMark(player, "@@pang_chouqi", 0)
     room:setPlayerMark(to, "@@pang_beichouqi", 0)
+    room:validateSkill(player, chouqi.name)
   end,
 })
 
