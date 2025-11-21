@@ -7,10 +7,11 @@ Fk:loadTranslationTable {
   ["pang_chouqi"] = "仇起",
   [":pang_chouqi"] = "当一名角色受到除你以外的角色造成的伤害后，你可以选择一项，然后视为对伤害来源使用一张【杀】：此技能失效直到你对伤害来源造成伤害；失去1点体力。",
 
-  ["losehp"] = "失去1点体力",
+  ["pang_losehp"] = "失去1点体力",
   ["#chouqi-invoke"] = "你可以选择一项负面，然后视为对%src使用一张【杀】",
   ["limit_skill"] = "此技能失效直到你对%src造成伤害",
-  ["@@pang_chouqi"] = "仇起：%src",
+  ["@@pang_chouqi"] = "仇起失效",
+  ["@@pang_beichouqi"] = "仇起目标",
 }
 
 chouqi:addEffect(fk.Damaged, {
@@ -30,7 +31,7 @@ chouqi:addEffect(fk.Damaged, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = data.from
-    local choices = {"losehp", "limit_skill:"..to.id}
+    local choices = {"pang_losehp", "limit_skill:"..to.id}
     local choice = room:askToChoice(player, {
       choices = choices,
       skill_name = chouqi.name,
@@ -38,8 +39,8 @@ chouqi:addEffect(fk.Damaged, {
     if choice == "losehp" then
         room:loseHp(player, 1, chouqi.name)
     else
-        room:setPlayerMark(player, "@@pang_chouqi:"..to.id, 1)
-        room:setPlayerMark(player, "pang_beichouqi", 1)
+        room:setPlayerMark(player, "@@pang_chouqi", 1)
+        room:setPlayerMark(player, "@@pang_beichouqi", 1)
     end
     room:sortByAction(to)
     room:useVirtualCard("slash", nil, player, to, chouqi.name, true)
@@ -61,13 +62,13 @@ chouqi:addEffect(fk.Damage, {
     local room = player.room
     local to = data.to
     room:setPlayerMark(player, "@@pang_chouqi", 0)
-    room:setPlayerMark(to, "pang_beichouqi", 0)
+    room:setPlayerMark(to, "@@pang_beichouqi", 0)
   end,
 })
 
 chouqi:addEffect(fk.BeforeHpChanged, {
   can_refresh = function(self, event, target, player, data)
-    if data.damageEvent and player == data.damageEvent.from and data.damageEvent.to:getMark("pang_beichouqi") > 0 then
+    if data.damageEvent and player == data.damageEvent.from and data.damageEvent.to:getMark("@@pang_beichouqi") > 0 then
       return true
     end
   end,

@@ -55,7 +55,7 @@ end)
 
 Fk:loadTranslationTable{
   ["mo_chengheng"] = "秤衡",
-  [":mo_chengheng"] = "出牌阶段限两次，你可以令一名与你体力或手牌数相同的角色，手牌向X调整1（×为3）。然后若因此弃置与摸牌数相同，则此技能视为未发动过并令X±1。",
+  [":mo_chengheng"] = "出牌阶段限两次，你可以令一名与你体力或手牌数相同的角色的手牌向X调整1（X为3），然后若因此弃置与摸牌次数相同，则此技能视为未发动过并令X±１。",
   ["@mo_chengheng"] = "秤衡",
   ["@mo_chengheng_mo"] = "秤衡 摸",
   ["@mo_chengheng_qi"] = "秤衡 弃",
