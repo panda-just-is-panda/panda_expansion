@@ -40,7 +40,7 @@ chouqi:addEffect(fk.Damaged, {
         room:loseHp(player, 1, chouqi.name)
     else
         room:setPlayerMark(player, "@@pang_chouqi", 1)
-        room:setPlayerMark(player, "@@pang_beichouqi", 1)
+        room:setPlayerMark(to, "@@pang_beichouqi", 1)
     end
     room:sortByAction(to)
     room:useVirtualCard("slash", nil, player, to, chouqi.name, true)
