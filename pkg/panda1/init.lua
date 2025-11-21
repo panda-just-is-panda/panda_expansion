@@ -33,7 +33,7 @@ Fk:loadTranslationTable{
 
 ["~pang__zombified_piglin"] = "僵尸猪灵阵亡",
 }
-zombified_piglin.hidden = true
+
 
 local drowned = General:new(extension, "pang__drowned", "wu", 4, 4, General.Male)
 drowned:addSkill("pang_chaoyong")
