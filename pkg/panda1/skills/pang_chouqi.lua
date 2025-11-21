@@ -55,6 +55,7 @@ chouqi:addEffect("invalidity", {
 })
 
 chouqi:addEffect(fk.Damage, {
+    is_delay_effect = true,
   can_refresh = function(self, event, target, player, data)
     return target == player and player:hasSkill(chouqi.name) and (data.extra_data or {}).kuangguCheck
   end,
@@ -67,6 +68,7 @@ chouqi:addEffect(fk.Damage, {
 })
 
 chouqi:addEffect(fk.BeforeHpChanged, {
+    is_delay_effect = true,
   can_refresh = function(self, event, target, player, data)
     if data.damageEvent and player == data.damageEvent.from and data.damageEvent.to:getMark("@@pang_beichouqi") > 0 then
       return true
