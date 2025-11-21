@@ -12,6 +12,9 @@ Fk:loadTranslationTable {
   ["limit_skill"] = "此技能失效直到你对%src造成伤害",
   ["@@pang_chouqi"] = "仇起失效",
   ["@@pang_beichouqi"] = "仇起目标",
+
+  ["$pang_chouqi1"] = "僵尸猪灵嘶吼",
+["$pang_chouqi2"] = "僵尸猪灵太怒",
 }
 
 chouqi:addEffect(fk.Damaged, {
@@ -68,9 +71,9 @@ chouqi:addEffect(fk.Death, {
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
-    local to = data.to
+    local to = target
     room:setPlayerMark(player, "@@pang_chouqi", 0)
-    room:setPlayerMark(to, "@@pang_beichouqi", 0)
+    room:setPlayerMark(target, "@@pang_beichouqi", 0)
     room:validateSkill(player, chouqi.name)
   end,
 })

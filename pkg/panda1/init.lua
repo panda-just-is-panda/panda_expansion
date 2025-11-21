@@ -31,7 +31,7 @@ Fk:loadTranslationTable{
 ["cv:pang__zombified_piglin"] = "我的世界",
 ["illustrator:pang__zombified_piglin"] = "我的世界",
 
-["~pang__zzombified_piglin"] = "僵尸猪灵阵亡",
+["~pang__zombified_piglin"] = "僵尸猪灵阵亡",
 }
 zombified_piglin.hidden = true
 

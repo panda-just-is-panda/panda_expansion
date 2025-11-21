@@ -20,6 +20,8 @@ pangnu:addEffect(fk.RoundEnd, {
         room:useVirtualCard("fire_attack", nil, player, targets, pangnu.name, true)
       end
     if player:getMark("pangnu_firedealt-round") == 0 then
+        player:chat(
+          "唉，废物胖")
         room:handleAddLoseSkills(player, "-pang_pangnu", nil, false, true)
     end
   end,
