@@ -36,7 +36,7 @@ chouqi:addEffect(fk.Damaged, {
       choices = choices,
       skill_name = chouqi.name,
     })
-    if choice == "losehp" then
+    if choice == "pang_losehp" then
         room:loseHp(player, 1, chouqi.name)
     else
         room:setPlayerMark(player, "@@pang_chouqi", 1)
@@ -52,6 +52,19 @@ chouqi:addEffect(fk.Damaged, {
 chouqi:addEffect(fk.Damage, {
   can_refresh = function(self, event, target, player, data)
     return target == player and player:getMark("@@pang_chouqi") > 0 and data.to:getMark("@@pang_beichouqi") > 0
+  end,
+  on_refresh = function(self, event, target, player, data)
+    local room = player.room
+    local to = data.to
+    room:setPlayerMark(player, "@@pang_chouqi", 0)
+    room:setPlayerMark(to, "@@pang_beichouqi", 0)
+    room:validateSkill(player, chouqi.name)
+  end,
+})
+
+chouqi:addEffect(fk.Death, {
+  can_refresh = function(self, event, target, player, data)
+    return player:getMark("@@pang_chouqi") > 0 and target:getMark("@@pang_beichouqi") > 0
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
