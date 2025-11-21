@@ -21,6 +21,20 @@ Fk:loadTranslationTable{
 ["~pang__zoglin"] = "僵尸疣猪兽阵亡",
 }
 
+local zombified_piglin = General:new(extension, "pang__zombified_piglin", "shu", 4, 4, General.Male)
+zombified_piglin:addSkill("pang_chouqi")
+zombified_piglin:addSkill("pang_wangling")
+Fk:loadTranslationTable{
+["pang__zombified_piglin"] = "僵尸猪灵",
+["#pang__zombified_piglin"] = "猪志成城",
+["designer:pang__zombified_piglin"] = "胖即是胖",
+["cv:pang__zombified_piglin"] = "我的世界",
+["illustrator:pang__zombified_piglin"] = "我的世界",
+
+["~pang__zzombified_piglin"] = "僵尸猪灵阵亡",
+}
+zombified_piglin.hidden = true
+
 local drowned = General:new(extension, "pang__drowned", "wu", 4, 4, General.Male)
 drowned:addSkill("pang_chaoyong")
 drowned:addSkill("pang_wangling")
