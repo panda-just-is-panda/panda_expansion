@@ -51,7 +51,7 @@ chouqi:addEffect(fk.Damaged, {
 
 chouqi:addEffect(fk.Damage, {
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(chouqi.name) and data.to:getMark("@@pang_beichouqi") > 0
+    return target == player and player:getMark("@@pang_chouqi") > 0 and data.to:getMark("@@pang_beichouqi") > 0
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
