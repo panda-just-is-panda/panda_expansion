@@ -50,9 +50,8 @@ chouqi:addEffect(fk.Damaged, {
 
 
 chouqi:addEffect(fk.Damage, {
-    is_delay_effect = true,
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(chouqi.name) and (data.extra_data or {}).chouqiCheck
+    return target == player and player:hasSkill(chouqi.name) and data.to:getMark("@@pang_beichouqi") > 0
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
@@ -63,18 +62,7 @@ chouqi:addEffect(fk.Damage, {
   end,
 })
 
-chouqi:addEffect(fk.BeforeHpChanged, {
-    is_delay_effect = true,
-  can_refresh = function(self, event, target, player, data)
-    if data.damageEvent and player == data.damageEvent.from and target:getMark("@@pang_beichouqi") > 0 then
-      return true
-    end
-  end,
-  on_refresh = function(self, event, target, player, data)
-    data.damageEvent.extra_data = data.damageEvent.extra_data or {}
-    data.damageEvent.extra_data.chouqiCheck = true
-  end,
-})
+
 
 
 return chouqi
