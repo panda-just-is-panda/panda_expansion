@@ -3,7 +3,7 @@ local wajue = fk.CreateSkill({
   tags = {Skill.Compulsory}, 
 })
 
-wajue:addEffect(fk.EventPhaseEnd, {
+wajue:addEffect(fk.EventPhaseStart, {
   anim_type = "drawcard",
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(wajue.name) and player.phase == Player.Finish 
