@@ -24,7 +24,7 @@ jimi:addEffect(fk.CardUseFinished, {
     local to = table.find(room:getAlivePlayers(), function (p)
       ---@diagnostic disable-next-line: return-type-mismatch
         return table.find(p:getCardIds("e"), function (id)
-          if Fk:getCardById(id) == Fk:getCardById(data.card) then
+          if Fk:getCardById(id) == data.card then
             cid = id
             return true
           end
