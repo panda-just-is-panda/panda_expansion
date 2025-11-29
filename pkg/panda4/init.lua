@@ -104,8 +104,8 @@ Fk:loadTranslationTable{
 }
 
 local sunziliufang = General:new(extension, "pang__sunziliufang", "wei", 3, 3, General.Male)
-sunziliufang:addSkill("pang_jutu")
-sunziliufang:addSkill("pang_yaohu")
+sunziliufang:addSkill("pang_zhangshe")
+sunziliufang:addSkill("pang_jimi")
 Fk:loadTranslationTable{
 ["pang__sunziliufang"] = "孙资刘放",
 ["#pang__sunziliufang"] = "服谗搜慝",
