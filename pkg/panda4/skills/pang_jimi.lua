@@ -42,13 +42,13 @@ jimi:addEffect(fk.CardUseFinished, {
       cancelable = true,
     })
     if #to > 0 then
-        event:setCostData(self, {tos = to})
+        event:setCostData(self, {card = cid, tos = to})
         return true
     end
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
-    local to_move = data.card
+    local to_move = event:getCostData(self).card
     local to = event:getCostData(self).tos[1]
     room:moveCardIntoEquip(to, to_move, jimi.name, false, player)
     room:handleAddLoseSkills(player, "cunmu")
