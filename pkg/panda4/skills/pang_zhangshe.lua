@@ -16,7 +16,7 @@ Fk:loadTranslationTable{
 zhangshe:addEffect(fk.EventPhaseStart, {
   anim_type = "control",
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(zhangshe.name) and player.phase == Player.Draw and target.hp <= player.hp
+    return player:hasSkill(zhangshe.name) and target.phase == Player.Draw and target.hp <= player.hp
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
