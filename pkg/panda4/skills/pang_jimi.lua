@@ -20,9 +20,18 @@ jimi:addEffect(fk.CardUseFinished, {
   end,
   on_cost = function (self, event, target, player, data)
     local room = player.room
-    local to_move = data.card
+    local cid
+    local to = table.find(room:getAlivePlayers(), function (p)
+      ---@diagnostic disable-next-line: return-type-mismatch
+        return table.find(p:getCardIds("e"), function (id)
+          if Fk:getCardById(id) == Fk:getCardById(data.card) then
+            cid = id
+            return true
+          end
+        end)
+    end)
     local targets = table.filter(room.alive_players, function(p)
-        return target:canMoveCardInBoardTo(p, to_move)
+        return target:canMoveCardInBoardTo(p, cid)
       end)
     local to = room:askToChoosePlayers(player, {
       min_num = 1,
