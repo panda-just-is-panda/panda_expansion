@@ -21,7 +21,7 @@ jimi:addEffect(fk.CardUseFinished, {
   on_cost = function (self, event, target, player, data)
     local room = player.room
     local to_move = data.card
-    local targets = table.filter(room.alive_players, function (p)
+    local targets = table.filter(room.alive_players, function(p)
         return target:canMoveCardInBoardTo(p, to_move)
       end)
     local to = room:askToChoosePlayers(player, {
@@ -42,6 +42,7 @@ jimi:addEffect(fk.CardUseFinished, {
     local to_move = data.card
     local to = event:getCostData(self).tos[1]
     room:moveCardIntoEquip(to, to_move, jimi.name, false, player)
+    room:handleAddLoseSkills(player, "cunmu")
   end,
 })
 
