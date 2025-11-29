@@ -103,6 +103,19 @@ Fk:loadTranslationTable{
 ["~pang__liuzhang"] = "引狼入室，噬脐莫及啊！",
 }
 
+local sunziliufang = General:new(extension, "pang__sunziliufang", "wei", 3, 3, General.Male)
+sunziliufang:addSkill("pang_jutu")
+sunziliufang:addSkill("pang_yaohu")
+Fk:loadTranslationTable{
+["pang__sunziliufang"] = "孙资刘放",
+["#pang__sunziliufang"] = "服谗搜慝",
+["designer:pang__sunziliufang"] = "胖即是胖",
+["cv:pang__sunziliufang"] = "官方",
+["illustrator:pang__sunziliufang"] = "官方",
+
+["~pang__sunziliufang"] = "引狼入室，噬脐莫及啊！",
+}
+
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{
