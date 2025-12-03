@@ -3,130 +3,97 @@ local jigao = fk.CreateSkill({
   tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 
-jigao:addEffect(fk.Damage, {
-  prompt = "#pang_jigao1",
+jigao:addEffect(fk.EventPhaseStart, { --
+  anim_type = "offensive", 
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(jigao.name) and target == player and not data.to.dead
-    and player:usedSkillTimes(jigao.name, Player.HistoryTurn) == 0
+    return target == player and player:hasSkill(self) and
+      player.phase == Player.Play
   end,
   on_cost = function(self, event, target, player, data)
-    local room = player.room
-    local to = data.to
-    if room:askToSkillInvoke(player, {
+    if player.room:askToSkillInvoke(player, {
       skill_name = jigao.name,
       prompt = "#pang_jigao1",
     }) then
-      event:setCostData(self, {tos = {data.to}})
-      to:drawCards(1)
-      return true
+        return true
     end
-    end,
-    on_use = function(self, event, target, player, data)
+  end,
+  on_use = function(self, event, target, player, data)
+    local room = player.room
+    room:addPlayerMark(player, "pang_jigao-turn", 1)
+    player:drawCards(2, jigao.name)
+  end
+})
+
+jigao:addEffect(fk.Damage, {
+  prompt = "#pang_jigao1",
+  can_refresh = function(self, event, target, player, data)
+    return player:hasSkill(jigao.name) and target == player and not data.to.dead
+    and player:getMark("pang_jigao-turn") > 0
+  end,
+  on_refresh = function(self, event, target, player, data)
     local room = player.room
     local to = data.to
-    local card = table.filter(to:getCardIds("he"), function(id)
-    local card_pick = Fk:getCardById(id)
-        return card_pick and card_pick.color == card_pick.Black and not to:prohibitDiscard(id)
-        end)
-    local choices = {"losehp"}
-    if not to:hasDelayedTrick("supply_shortage") 
-    and not table.contains(to.sealedSlots, to.JudgeSlot)
-    and #card > 0
-    then
-      table.insert(choices, 2, "shortage")
-    end
-    local choice = room:askToChoice(to, {
-      choices = choices,
-      skill_name = jigao.name,
-    })
-        if choice == "shortage" then
-            local to_select = room:askToCards(to, {
-      min_num = 1,
-      max_num = 1,
-      include_equip = true,
-      skill_name = jigao.name,
-      pattern = ".|.|spade,club",
-      prompt = "use_shortage",
-      cancelable = false,
-    })
-        if #to_select > 0 then
-            local card2 = Fk:cloneCard("supply_shortage")
-      card2:addSubcards(to_select)
-      if not player:prohibitUse(card2) and not player:isProhibited(player, card2) then
-    room:useVirtualCard("supply_shortage", card2, to, to, jigao.name)
+    local card
+    local card2 = Fk:cloneCard("supply_shortage")
+    if player:hasDelayedTrick("supply_shortage") or table.contains(player.sealedSlots, player.JudgeSlot)
+    or player:prohibitUse(card2) or player:isProhibited(player, card2) or player:isKongcheng() then
+      room:loseHp(player, 1, jigao.name)
+      if not to:hasDelayedTrick("supply_shortage") and not table.contains(to.sealedSlots, to.JudgeSlot)
+    and not to:prohibitUse(card2) and not to:isProhibited(to, card2) and not to:isKongcheng() then
+        card = room:askToCards(to, {
+        min_num = 1,
+        max_num = 1,
+        include_equip = false,
+        skill_name = jigao.name,
+        prompt = "use_shortage",
+        cancelable = false,
+        })
+        if #card > 0 then
+          card2:addSubcards(card)
+          room:useVirtualCard("supply_shortage", card2, to, to, jigao.name)
+        end
       end
-    end
-        else
-            room:loseHp(to, 1, jigao.name)
-            room:recover({who = player, num = 1, recoverBy = player, skillName = jigao.name})
-    end
-     end
-})
-
-jigao:addEffect(fk.Damaged, {
-  prompt = "#pang_jigao1",
-  can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(jigao.name) and target == player and not player.dead
-  end,
-  on_cost = function(self, event, target, player, data)
-    local room = player.room
-    if room:askToSkillInvoke(player, {
-      skill_name = jigao.name,
-      prompt = "#pang_jigao2",
-    }) then
-      event:setCostData(self, {tos = {player}})
-      player:drawCards(1)
-      return true
+    else
+      card = room:askToCards(player, {
+        min_num = 1,
+        max_num = 1,
+        include_equip = false,
+        skill_name = jigao.name,
+        prompt = "jigao_asking",
+        cancelable = true,
+        })
+      if #card > 0 then
+        card2:addSubcards(card)
+        room:useVirtualCard("supply_shortage", card2, player, player, jigao.name)
+        room:loseHp(to, 1, jigao.name)
+      else
+        room:loseHp(player, 1, jigao.name)
+        if not to:hasDelayedTrick("supply_shortage") and not table.contains(to.sealedSlots, to.JudgeSlot)
+        and not to:prohibitUse(card2) and not to:isProhibited(to, card2) and not to:isKongcheng() then
+          card = room:askToCards(to, {
+          min_num = 1,
+          max_num = 1,
+          include_equip = false,
+          skill_name = jigao.name,
+          prompt = "use_shortage",
+          cancelable = false,
+          })
+          if #card > 0 then
+            card2:addSubcards(card)
+            room:useVirtualCard("supply_shortage", card2, to, to, jigao.name)
+          end
+        end
+      end
     end
     end,
-    on_use = function(self, event, target, player, data)
-    local room = player.room
-    local card = table.filter(player:getCardIds("he"), function(id)
-    local card_pick = Fk:getCardById(id)
-        return card_pick and card_pick.color == card_pick.Black and not player:prohibitDiscard(id)
-        end)
-    local choices = {"losehp"}
-    if not data.to:hasDelayedTrick("supply_shortage") 
-        and not table.contains(data.to.sealedSlots, data.to.JudgeSlot)
-        and #card > 0
-    then
-      table.insert(choices, 2, "shortage")
-    end
-    local choice = room:askToChoice(player, {
-      choices = choices,
-      skill_name = jigao.name,
-    })
-    if choice == "shortage" then
-            local to_select = room:askToCards(player, {
-      min_num = 1,
-      max_num = 1,
-      include_equip = true,
-      skill_name = jigao.name,
-      pattern = ".|.|spade,club",
-      prompt = "use_shortage",
-      cancelable = false,
-    })
-        if #to_select > 0 then
-            local card2 = Fk:cloneCard("supply_shortage")
-      card2:addSubcards(to_select)
-      if not player:prohibitUse(card2) and not player:isProhibited(player, card2) then
-    room:useVirtualCard("supply_shortage", card2, player, player, jigao.name)
-      end
-    end
-    else
-        room:loseHp(player, 1, jigao.name)
-        room:recover({who = player, num = 1, recoverBy = player, skillName = jigao.name})
-    end
-    end
 })
 
+
 Fk:loadTranslationTable{["pang_jigao"] = "饥槁",
-  [":pang_jigao"] = "每回合限一次，当你造成或受到伤害后，你可以令受到伤害的角色摸一张牌并选择一项：失去1点体力，你回复1点体力；将一张黑色牌作为【兵粮寸断】对自己使用。",
-  ["#pang_jigao1"] = "你可以令其摸一张牌并选择失去体力或对自己用【兵粮寸断】",
-  ["losehp"] = "失去体力",
-  ["shortage"] = "获得饥饿",
-  ["use_shortage"] = "将一张黑色牌作为兵粮寸断使用",
-  ["#pang_jigao2"] = "你可以摸一张牌并选择失去体力或对自己用【兵粮寸断】",
+  [":pang_jigao"] = "出牌阶段开始时，你可以摸两张牌；若如此做，当你于此回合内对其他角色造成伤害后，你需选择一项：将一张手牌作为【兵粮寸断】对自己使用；失去1点体力。然后其执行另一项。",
+  ["#pang_jigao1"] = "饥槁：你可以摸两张牌",
+  ["jigao_asking"] = "饥槁：将一张手牌作为【兵粮寸断】对自己使用，或点取消失去1点体力",
+  ["use_shortage"] = "饥槁：将一张手牌作为【兵粮寸断】对自己使用",
 
   ["$pang_jigao1"] = "尸壳嘶吼",
   ["$pang_jigao2"] = "尸壳嘶吼",
