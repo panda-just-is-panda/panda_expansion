@@ -38,6 +38,7 @@ jigao:addEffect(fk.Damage, {
     if player:hasDelayedTrick("supply_shortage") or table.contains(player.sealedSlots, player.JudgeSlot)
     or player:prohibitUse(card2) or player:isProhibited(player, card2) or player:isKongcheng() then
       room:loseHp(player, 1, jigao.name)
+      player:broadcastSkillInvoke(jigao.name, 1)
       if not to:hasDelayedTrick("supply_shortage") and not table.contains(to.sealedSlots, to.JudgeSlot)
     and not to:prohibitUse(card2) and not to:isProhibited(to, card2) and not to:isKongcheng() then
         card = room:askToCards(to, {
@@ -54,6 +55,7 @@ jigao:addEffect(fk.Damage, {
         end
       end
     else
+      player:broadcastSkillInvoke(jigao.name, 2)
       card = room:askToCards(player, {
         min_num = 1,
         max_num = 1,
