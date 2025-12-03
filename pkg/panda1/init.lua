@@ -35,7 +35,7 @@ Fk:loadTranslationTable{
 }
 
 
-local drowned = General:new(extension, "pang__drowned", "wu", 4, 4, General.Male)
+local drowned = General:new(extension, "pang__drowned", "wei", 4, 4, General.Male)
 drowned:addSkill("pang_chaoyong")
 drowned:addSkill("pang_wangling")
 Fk:loadTranslationTable{
@@ -48,17 +48,17 @@ Fk:loadTranslationTable{
 ["~pang__drowned"] = "溺尸阵亡",
 }
 
-local re_husk = General:new(extension, "pang__husk", "wu", 4, 4, General.Male)
+local re_husk = General:new(extension, "pang__re_husk", "wu", 4, 4, General.Male)
 re_husk:addSkill("pang_jigao")
 re_husk:addSkill("pang_wangling")
 Fk:loadTranslationTable{
-["pang__husk"] = "尸壳",
-["#pang__husk"] = "餧饿干躯",
-["designer:pang__husk"] = "胖即是胖",
-["cv:pang__husk"] = "我的世界",
-["illustrator:pang__husk"] = "我的世界",
+["pang__re_husk"] = "尸壳",
+["#pang__re_husk"] = "餧饿干躯",
+["designer:pang__re_husk"] = "胖即是胖",
+["cv:pang__re_husk"] = "我的世界",
+["illustrator:pang__re_husk"] = "我的世界",
 
-["~pang__husk"] = "尸壳阵亡",
+["~pang__re_husk"] = "尸壳阵亡",
 }
 
 local zombie = General:new(extension, "pang__zombie", "wu", 3, 3, General.Male)
