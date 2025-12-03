@@ -48,9 +48,9 @@ Fk:loadTranslationTable{
 ["~pang__drowned"] = "溺尸阵亡",
 }
 
-local husk = General:new(extension, "pang__husk", "wu", 4, 4, General.Male)
-husk:addSkill("pang_jigao")
-husk:addSkill("pang_wangling")
+local re_husk = General:new(extension, "pang__husk", "wu", 4, 4, General.Male)
+re_husk:addSkill("pang_jigao")
+re_husk:addSkill("pang_wangling")
 Fk:loadTranslationTable{
 ["pang__husk"] = "尸壳",
 ["#pang__husk"] = "餧饿干躯",
