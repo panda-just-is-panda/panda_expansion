@@ -27,16 +27,6 @@ anim_type = "switch",
   end,
 })
 
-gangli:addEffect(fk.PreCardUse, {
-  can_refresh = function (self, event, target, player, data)
-    return target == player and data.card.trueName == "slash" 
-    and player:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
-  end,
-  on_refresh = function (self, event, target, player, data)
-    data.extraUse = true
-  end,
-})
-
 gangli:addEffect("targetmod", {
   bypass_times = function(self, player, skill, scope, card, to)
     return card and to and to:hasSkill(gangli.name) and to:getSwitchSkillState(gangli.name) ~= fk.SwitchYang
