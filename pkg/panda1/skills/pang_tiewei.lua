@@ -36,15 +36,16 @@ tiewei:addEffect(fk.CardUseFinished, {
 })
 
 tiewei:addEffect("filter", {
-  card_filter = function(self, to_select, player)
-    return player:hasSkill(tiewei.name) and player:getMark("@@tiewei-turn") > 0 and
-      table.contains(player:getCardIds("h"), to_select.id)
-  end,
-  view_as = function(self, player, to_select)
-    local card = Fk:cloneCard("slash", to_select.suit, to_select.number)
-    card.skillName = tiewei.name
-    return card
-  end,
+    mute = true,
+    card_filter = function(self, to_select, player)
+        return player:hasSkill(tiewei.name) and player:getMark("@@tiewei-turn") > 0 and
+        table.contains(player:getCardIds("h"), to_select.id)
+    end,
+    view_as = function(self, player, to_select)
+        local card = Fk:cloneCard("slash", to_select.suit, to_select.number)
+        card.skillName = tiewei.name
+        return card
+    end,
 })
 
 

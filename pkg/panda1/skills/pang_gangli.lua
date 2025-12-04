@@ -4,10 +4,10 @@ local gangli = fk.CreateSkill {
 }
 
 Fk:loadTranslationTable {["pang_gangli"] = "钢力",
-[":pang_gangli"] = "转换技，当你使用【杀】造成伤害时，你可以令此伤害+1；其他角色对你使用【杀】①不计入次数②不能被响应。",
+[":pang_gangli"] = "转换技，当你使用【杀】造成伤害时，你可以令此伤害+1；其他角色对你使用【杀】①无次数限制②不能被响应。",
 
-[":pang_gangli_yang"] = "转换技，当你使用【杀】造成伤害时，你可以令此伤害+1；其他角色对你使用【杀】<font color=\"#E0DB2F\">①不计入次数</font>②不能被响应。",
-[":pang_gangli_yin"] = "转换技，当你使用【杀】造成伤害时，你可以令此伤害+1；其他角色对你使用【杀】①不计入次数<font color=\"#E0DB2F\">②不能被响应</font>。",
+[":pang_gangli_yang"] = "转换技，当你使用【杀】造成伤害时，你可以令此伤害+1；其他角色对你使用【杀】<font color=\"#E0DB2F\">①无次数限制</font>②不能被响应。",
+[":pang_gangli_yin"] = "转换技，当你使用【杀】造成伤害时，你可以令此伤害+1；其他角色对你使用【杀】①无次数限制<font color=\"#E0DB2F\">②不能被响应</font>。",
 
 ["#gangli"] = "你可以令此伤害+1",
 
@@ -27,22 +27,29 @@ anim_type = "switch",
   end,
 })
 
-gangli:addEffect(fk.TargetConfirmed, {
+gangli:addEffect(fk.PreCardUse, {
   can_refresh = function (self, event, target, player, data)
-    return target == player and player:hasSkill(gangli.name) and data.from ~= player 
-    and not data.use.extraUse and data.card.trueName == "slash" 
-    and player:getSwitchSkillState(gangli.name, true) == fk.SwitchYang
+    return target == player and data.card.trueName == "slash" 
+    and player:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
   end,
   on_refresh = function (self, event, target, player, data)
-    data.use.extraUse = true
-    data.from:addCardUseHistory(data.card.trueName, -1)
+    data.extraUse = true
   end,
 })
+
+gangli:addEffect("targetmod", {
+  bypass_times = function(self, player, skill, scope, card, to)
+    return card and to:hasSkill(gangli.name)
+    and card.trueName == "slash" 
+    and to:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
+  end,
+})
+
 
 gangli:addEffect(fk.TargetConfirmed, {
   can_refresh = function (self, event, target, player, data)
     return target == player and player:hasSkill(gangli.name) and data.from ~= player 
-    and  data.card.trueName == "slash" and player:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
+    and  data.card.trueName == "slash" and player:getSwitchSkillState(gangli.name, true) == fk.SwitchYang
   end,
   on_refresh = function (self, event, target, player, data)
     data.disresponsive = true
