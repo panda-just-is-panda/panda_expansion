@@ -36,12 +36,12 @@ genmao:addEffect(fk.EventPhaseEnd, { --
   end,
 })
 
-genmao:addEffect(fk.TargetConfirming, {
-  can_trigger = function(self, event, target, player, data)
+genmao:addEffect(fk.AfterCardTargetDeclared, {
+  can_refresh = function(self, event, target, player, data)
     return player:hasSkill(genmao.name) and data.card and table.contains(data.card.skillNames, genmao.name)
     and not data.cancelled
   end,
-  on_use = function(self, event, target, player, data)
+  on_refresh = function(self, event, target, player, data)
     local room = player.room
     local targets = table.filter(room:getOtherPlayers(player, false), function (p)
       return not table.contains(data.use.tos, p) and
