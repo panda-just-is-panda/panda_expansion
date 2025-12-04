@@ -5,7 +5,7 @@ local chouqi = fk.CreateSkill{
 
 Fk:loadTranslationTable {
   ["pang_chouqi"] = "仇起",
-  [":pang_chouqi"] = "当一名角色受到除你以外的角色造成的伤害后，你可以选择一项，然后视为对伤害来源使用一张【杀】：此技能失效直到伤害来源死亡或你对伤害来源造成伤害；失去1点体力。",
+  [":pang_chouqi"] = "当一名角色受到除你以外的角色造成的伤害后，你可以选择一项，然后视为对伤害来源使用一张【杀】：此技能失效直到伤害来源死亡或受到伤害；失去1点体力。",
 
   ["pang_losehp"] = "失去1点体力",
   ["#chouqi-invoke"] = "你可以选择一项负面，然后视为对%src使用一张【杀】",
@@ -52,9 +52,9 @@ chouqi:addEffect(fk.Damaged, {
 })
 
 
-chouqi:addEffect(fk.Damage, {
+chouqi:addEffect(fk.Damaged, {
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:getMark("@@pang_chouqi") > 0 and data.to:getMark("@@pang_beichouqi") > 0
+    return player:getMark("@@pang_chouqi") > 0 and data.to:getMark("@@pang_beichouqi") > 0
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
