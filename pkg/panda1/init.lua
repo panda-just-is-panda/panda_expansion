@@ -183,6 +183,8 @@ Fk:loadTranslationTable{
 local villager = General:new(extension, "pang__villager", "wu", 3, 3, General.Male)
 villager:addSkill("pang_linlian")
 villager:addSkill("pang_genmao")
+villager.endnote = "烧条这一块<br>\
+烦人这一块"
 Fk:loadTranslationTable{
 ["pang__villager"] = "村民",
 ["#pang__villager"] = "哼哼不休",
@@ -193,7 +195,7 @@ Fk:loadTranslationTable{
 ["~pang__iron_golem"] = "村民阵亡",
 }
 
-villager.hidden = true
+
 
 
 local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)

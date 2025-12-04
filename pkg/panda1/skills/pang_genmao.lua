@@ -36,9 +36,9 @@ genmao:addEffect(fk.EventPhaseEnd, { --
   end,
 })
 
-genmao:addEffect(fk.AfterCardTargetDeclared, {
+genmao:addEffect(fk.TargetConfirming, {
   can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(genmao.name) and data.card and table.contains(data.card.skillNames, genmao.name)
+    return target == player and player:hasSkill(genmao.name) and data.card and table.contains(data.card.skillNames, genmao.name)
     and not data.cancelled
   end,
   on_refresh = function(self, event, target, player, data)
