@@ -180,6 +180,21 @@ Fk:loadTranslationTable{
 ["~pang__iron_golem"] = "铁傀儡阵亡",
 }
 
+local villager = General:new(extension, "pang__villager", "wu", 3, 3, General.Male)
+villager:addSkill("pang_linlian")
+villager:addSkill("pang_genmao")
+Fk:loadTranslationTable{
+["pang__villager"] = "村民",
+["#pang__villager"] = "哼哼不休",
+["designer:pang__villager"] = "胖即是胖",
+["cv:pang__villager"] = "我的世界",
+["illustrator:pang__villager"] = "我的世界",
+
+["~pang__iron_golem"] = "村民阵亡",
+}
+
+villager.hidden = true
+
 
 local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)
 archillager.subkingdom = "jin"
