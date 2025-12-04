@@ -28,7 +28,7 @@ jigao:addEffect(fk.Damage, {
   prompt = "#pang_jigao1",
   can_refresh = function(self, event, target, player, data)
     return player:hasSkill(jigao.name) and target == player and not data.to.dead
-    and player:getMark("pang_jigao-turn") > 0
+    and player:getMark("pang_jigao-turn") > 0 and data.to ~= player
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
