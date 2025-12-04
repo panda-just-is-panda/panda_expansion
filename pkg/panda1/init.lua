@@ -167,6 +167,17 @@ Fk:loadTranslationTable{
 ["illustrator:pang__witch"] = "我的世界",
 }
 
+local iron_golem = General:new(extension, "pang__iron_golem", "wu", 8, 8, General.Male)
+iron_golem:addSkill("pang_tiewei")
+iron_golem:addSkill("pang_gangli")
+Fk:loadTranslationTable{
+["pang__iron_golem"] = "铁傀儡",
+["#pang__iron_golem"] = "钢墙铁壁",
+["designer:pang__iron_golem"] = "胖即是胖",
+["cv:pang__iron_golem"] = "我的世界",
+["illustrator:pang__iron_golem"] = "我的世界",
+}
+
 local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)
 archillager.subkingdom = "jin"
 archillager.shield = 2
