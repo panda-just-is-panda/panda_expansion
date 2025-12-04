@@ -5,11 +5,11 @@ local chouqi = fk.CreateSkill{
 
 Fk:loadTranslationTable {
   ["pang_chouqi"] = "仇起",
-  [":pang_chouqi"] = "当一名角色受到除你以外的角色造成的伤害后，你可以选择一项，然后视为对伤害来源使用一张【杀】：此技能失效直到伤害来源死亡或受到伤害；失去1点体力。",
+  [":pang_chouqi"] = "当一名角色受到除你以外的角色造成的伤害后，你可以选择一项，然后视为对伤害来源使用一张【杀】：此技能失效直到伤害来源受到伤害或死亡；失去1点体力。",
 
   ["pang_losehp"] = "失去1点体力",
   ["#chouqi-invoke"] = "你可以选择一项负面，然后视为对%src使用一张【杀】",
-  ["limit_skill"] = "此技能失效直到你对%src造成伤害",
+  ["limit_skill"] = "此技能失效直到%src受到伤害",
   ["@@pang_chouqi"] = "仇起失效",
   ["@@pang_beichouqi"] = "仇起目标",
 
