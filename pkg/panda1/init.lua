@@ -176,6 +176,8 @@ Fk:loadTranslationTable{
 ["designer:pang__iron_golem"] = "胖即是胖",
 ["cv:pang__iron_golem"] = "我的世界",
 ["illustrator:pang__iron_golem"] = "我的世界",
+
+["~pang__iron_golem"] = "铁傀儡阵亡",
 }
 
 local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)

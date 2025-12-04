@@ -1,5 +1,5 @@
 local tiewei = fk.CreateSkill {
-  name = "peng_tiewei",
+  name = "pang_tiewei",
   tags = {  },
 }
 
@@ -49,13 +49,13 @@ tiewei:addEffect("filter", {
 
 
 Fk:loadTranslationTable{
-  ["peng_tiewei"] = "铁卫",
-  [":peng_tiewei"] = "当其他角色使用【杀】或【决斗】结算结束后，你可以对其使用一张【杀】，然后本回合你的所有手牌均视为【杀】。",
+  ["pang_tiewei"] = "铁卫",
+  [":pang_tiewei"] = "当其他角色使用【杀】或【决斗】结算结束后，你可以对其使用一张【杀】，然后本回合你的所有手牌均视为【杀】。",
   ["@@tiewei-turn"] = "铁卫",
   ["#tiewei-invoke"] = "铁卫：你可以对%dest使用一张【杀】",
 
-  ["$peng_tiewei1"] = "",
-  ["$peng_tiewei2"] = ""
+  ["$pang_tiewei1"] = "钢铁噪音",
+  ["$pang_tiewei2"] = "钢铁轰鸣声"
 }
 
 return tiewei

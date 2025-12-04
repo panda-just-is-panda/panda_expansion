@@ -11,8 +11,8 @@ Fk:loadTranslationTable {["pang_gangli"] = "钢力",
 
 ["#gangli"] = "你可以令此伤害+1",
 
-["$pang_gangli1"] = "哈～",
-["$pang_gangli2"] = "哈——",
+["$pang_gangli1"] = "钢铁噪音",
+["$pang_gangli2"] = "duang——！",
 }
 
 gangli:addEffect(fk.DamageCaused, {
@@ -30,11 +30,11 @@ anim_type = "switch",
 gangli:addEffect("targetmod", {
   bypass_times = function(self, player, skill, scope, card, to)
     return card and to and to == player and card.trueName == "slash" 
-    and player:getSwitchSkillState(gangli.name, true) == fk.SwitchYang
+    and player:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
   end,
   bypass_distances = function(self, player, skill, card)
     return card and to and to == player and card.trueName == "slash" 
-    and player:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
+    and player:getSwitchSkillState(gangli.name, true) == fk.SwitchYang
   end,
 })
 
