@@ -27,21 +27,10 @@ anim_type = "switch",
   end,
 })
 
-gangli:addEffect("targetmod", {
-  bypass_times = function(self, player, skill, scope, card, to)
-    return card and to and to == player and card.trueName == "slash" 
-    and player:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
-  end,
-  bypass_distances = function(self, player, skill, card)
-    return card and to and to == player and card.trueName == "slash" 
-    and player:getSwitchSkillState(gangli.name, true) == fk.SwitchYang
-  end,
-})
-
 gangli:addEffect(fk.TargetConfirmed, {
   can_refresh = function (self, event, target, player, data)
     return target == player and player:hasSkill(gangli.name) and data.from ~= player 
-    and not data.use.extraUse and card.trueName == "slash" 
+    and not data.use.extraUse and data.card.trueName == "slash" 
     and player:getSwitchSkillState(gangli.name, true) == fk.SwitchYang
   end,
   on_refresh = function (self, event, target, player, data)
@@ -53,7 +42,7 @@ gangli:addEffect(fk.TargetConfirmed, {
 gangli:addEffect(fk.TargetConfirmed, {
   can_refresh = function (self, event, target, player, data)
     return target == player and player:hasSkill(gangli.name) and data.from ~= player 
-    and  card.trueName == "slash" and player:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
+    and  data.card.trueName == "slash" and player:getSwitchSkillState(gangli.name, true) ~= fk.SwitchYang
   end,
   on_refresh = function (self, event, target, player, data)
     data.disresponsive = true
