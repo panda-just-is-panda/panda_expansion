@@ -9,7 +9,7 @@ Fk:loadTranslationTable{
   ["#genmao-give"] = "耕贸：你可以交给%src一张方块牌并成为此【五谷丰登】的额外目标",
 
   ["$pang_genmao1"] = "哼啊～",
-  ["$pang_genmao2"] = "哼啊——",
+  ["$pang_genmao2"] = "哼哼～",
 }
 
 genmao:addEffect(fk.EventPhaseStart, { --

@@ -192,7 +192,7 @@ Fk:loadTranslationTable{
 ["cv:pang__villager"] = "我的世界",
 ["illustrator:pang__villager"] = "我的世界",
 
-["~pang__iron_golem"] = "村民阵亡",
+["~pang__villager"] = "村民阵亡",
 }
 
 
