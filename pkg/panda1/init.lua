@@ -179,7 +179,7 @@ Fk:loadTranslationTable{
 
 ["~pang__iron_golem"] = "铁傀儡阵亡",
 }
-iron_golem.hidden = true
+
 
 local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)
 archillager.subkingdom = "jin"
