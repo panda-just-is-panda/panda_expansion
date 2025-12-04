@@ -53,7 +53,7 @@ genmao:addEffect(fk.TargetConfirming, {
         min_num = 1,
         max_num = 1,
         include_equip = true,
-        pattern = ".|.|diamond|hand",
+        pattern = ".|.|diamond",
         prompt = "#genmao-give:" .. player.id,
       })
       if #card > 0 then
