@@ -29,7 +29,7 @@ anim_type = "switch",
 
 gangli:addEffect("targetmod", {
   bypass_times = function(self, player, skill, scope, card, to)
-    return card and to and to:hasSkill(gangli.name) and to:getSwitchSkillState(gangli.name) ~= fk.SwitchYang
+    return card and to and to:hasSkill(gangli.name) and to:getSwitchSkillState(gangli.name) == fk.SwitchYang
     and card.trueName == "slash" and to ~= player
   end,
 })
