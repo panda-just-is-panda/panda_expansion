@@ -53,7 +53,7 @@ ciyong:addEffect("viewas", {
                 available = available + 1
             end
         end
-        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1 < available then
+        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) < available then
             return true
         end
     end,
@@ -65,7 +65,7 @@ ciyong:addEffect("viewas", {
                 available = available + 1
             end
         end
-        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1 < available then
+        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) < available then
             return true
         end
     end,
@@ -86,7 +86,7 @@ ciyong:addEffect(fk.BeforeChainStateChange, {
     if choice == "draw2" then
         player:drawCards(2, ciyong.name)
     else
-        room:setPlayerMark(player, "@pang_ciyong", 0)
+        room:setPlayerMark(player, "@pang_ciyong", 1)
         player:setSkillUseHistory("pang_ciyong", 0, Player.HistoryGame)
     end
   end,
