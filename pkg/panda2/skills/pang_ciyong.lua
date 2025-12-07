@@ -20,11 +20,11 @@ ciyong:addEffect("viewas", {
     end,
     before_use = function (self, player, use)
         local room = player.room
-        local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame)
+        local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1
         local not_chained = {}
         for _, p in ipairs(Fk:currentRoom().alive_players) do
             if not p.chained then
-            table.insert(not_chained, p.id)
+                table.insert(not_chained, p)  -- 插入玩家对象，而不是p.id
             end
         end
         local to_chain = room:askToChoosePlayers(player, {
@@ -35,12 +35,9 @@ ciyong:addEffect("viewas", {
             prompt = "#ciyong_chain",
             cancelable = false,
         })
-        for _, pid in ipairs(to_chain) do
-            local target_player = room:getPlayerById(pid)  -- 先获取玩家对象
-            if target_player then
-                target_player:setChainState(true)
-            end
-    end
+        for _, p in ipairs(to_chain) do
+            p:setChainState(true)  -- to_chain现在应该是玩家对象列表
+        end
     end,
     after_use = function(self, player, use)
         local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1
@@ -54,7 +51,7 @@ ciyong:addEffect("viewas", {
                 available = available + 1
             end
         end
-        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) < available then
+        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1 < available then
             return true
         end
     end,
@@ -66,7 +63,7 @@ ciyong:addEffect("viewas", {
                 available = available + 1
             end
         end
-        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) < available then
+        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1 < available then
             return true
         end
     end,
