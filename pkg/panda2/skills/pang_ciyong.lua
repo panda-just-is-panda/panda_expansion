@@ -46,7 +46,7 @@ ciyong:addEffect("viewas", {
     enabled_at_play = function(self, player)
         local available = 0
         local room = player.room
-        for _, p in ipairs(room.alive_players) do
+        for _, p in ipairs(Fk:currentRoom().alive_players) do
             if not p.chained then
                 available = available + 1
             end
@@ -58,7 +58,7 @@ ciyong:addEffect("viewas", {
     enabled_at_response = function(self, player, response)
         local available = 0
         local room = player.room
-        for _, p in ipairs(room.alive_players) do
+        for _, p in ipairs(Fk:currentRoom().alive_players) do
             if not p.chained then
                 available = available + 1
             end
