@@ -6,7 +6,9 @@ local ciyong = fk.CreateSkill({
 ciyong:addEffect("viewas", {
     mute_card = false,
     pattern = "slash,jink",
-    prompt = "#ciyong",
+    prompt = function(self, player)
+        return "#ciyong:::"..player:usedSkillTimes(ciyong.name, Player.HistoryTurn) + 1
+    end,
     interaction = function(self, player)
         local names = player:getViewAsCardNames(ciyong.name, {"thunder__slash", "jink"})
         return UI.CardNameBox {choices = names, all_choices = {"thunder__slash", "jink"}}
@@ -32,7 +34,7 @@ ciyong:addEffect("viewas", {
             max_num = x,
             targets = not_chained,
             skill_name = ciyong.name,
-            prompt = "#ciyong_chain",
+            prompt = "#ciyong_chain:::"..player:usedSkillTimes(ciyong.name, Player.HistoryTurn),
             cancelable = false,
         })
         for _, p in ipairs(to_chain) do
@@ -94,8 +96,8 @@ ciyong:addEffect(fk.BeforeChainStateChange, {
 
 Fk:loadTranslationTable {["pang_ciyong"] = "磁涌",
 [":pang_ciyong"] = "你可以横置X名角色并视为使用或打出一张雷【杀】或【闪】（X为此技能发动次数）；当你重置时，你摸两张牌或令此技能视为未发动过。",
-["#ciyong"] = "磁涌：你可以横置X名角色，视为使用或打出雷【杀】或【闪】",
-["#ciyong_chain"] = "磁涌：选择X名角色横置", 
+["#ciyong"] = "磁涌：你可以横置%arg名角色，视为使用或打出雷【杀】或【闪】",
+["#ciyong_chain"] = "磁涌：选择%arg名角色横置", 
 ["#ciyong_choose"] = "磁涌：你可以摸两张牌或令“磁涌”视为未发动过",
 ["@pang_ciyong"] = "磁涌",
 ["draw2"] = "摸两张牌",
