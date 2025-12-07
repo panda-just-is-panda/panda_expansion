@@ -7,7 +7,7 @@ ciyong:addEffect("viewas", {
     mute_card = false,
     pattern = "slash,jink",
     prompt = function(self, player)
-        return "#ciyong:::"..player:usedSkillTimes(ciyong.name, Player.HistoryTurn) + 1
+        return "#ciyong:::"..player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1
     end,
     interaction = function(self, player)
         local names = player:getViewAsCardNames(ciyong.name, {"thunder__slash", "jink"})
