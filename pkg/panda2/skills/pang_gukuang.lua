@@ -7,7 +7,7 @@ Fk:loadTranslationTable {
   ["pang_gukuang"] = "骨狂",
   [":pang_gukuang"] = "锁定技，每回合限一次，当你受到1点伤害后，你需弃置一张牌或失去1点体力。",
 
-  ["losehp"] = "失去1点体力",
+  ["pang_losehp"] = "失去1点体力",
   ["discard1"] = "弃置一张牌",
   ["#gukuang_discard"] = "骨狂：你需弃置一张牌",
 }
@@ -19,7 +19,7 @@ gukuang:addEffect(fk.Damaged, {
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
-    local choices = {"losehp"}
+    local choices = {"pang_losehp"}
     if not player:isNude() then
         table.insert(choices, 2, "discard1")
     end

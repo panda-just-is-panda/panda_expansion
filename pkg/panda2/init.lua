@@ -32,6 +32,7 @@ Fk:loadTranslationTable{
 
 ["~pang__moskvin"] = "Yes sir. But one day, I will be giving orders.",
 }
+moskvin.hidden = true
 
 
 local artanis = General:new(extension, "pang__artanis", "wei", 4)

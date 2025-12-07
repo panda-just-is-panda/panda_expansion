@@ -1,6 +1,6 @@
 local ciyong = fk.CreateSkill({
-  name = "pang_ciyong", ---技能内部名称，要求唯一性
-  tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
+  name = "pang_ciyong", 
+  tags = {}, 
 })
 
 ciyong:addEffect("viewas", {
@@ -19,40 +19,87 @@ ciyong:addEffect("viewas", {
         return card
     end,
     before_use = function (self, player, use)
-        player.room.current:setChainState(true)
-    end,
-    after_use = function(self, player, use)
-        if not player.chained then
-            player:drawCards(1, ciyong.name)
-        elseif player.chained and #player:getCardIds("he") > 1 then
-            local discards = player.room:askToDiscard(player, {
-                min_num = 2,
-                max_num = 2,
-                include_equip = true,
-                skill_name = ciyong.name,
-                prompt = "#ciyong_discard",
-                cancelable = true,
-            })
-            if #discards > 0 then
-                player:setChainState(false)
+        local room = player.room
+        local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame)
+        local not_chained = {}
+        for _, p in ipairs(Fk:currentRoom().alive_players) do
+            if not p.chained then
+            table.insert(not_chained, p.id)
             end
         end
+        local to_chain = room:askToChoosePlayers(player, {
+            min_num = x,
+            max_num = x,
+            targets = not_chained,
+            skill_name = ciyong.name,
+            prompt = "#ciyong_chain",
+            cancelable = false,
+        })
+        for _, p in ipairs(to_chain) do
+            p:setChainState(true)
+        end
+    end,
+    after_use = function(self, player, use)
+        local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1
+        player.room:setPlayerMark(player, "@pang_ciyong", x)
     end,
     enabled_at_play = function(self, player)
-        return not Fk:currentRoom().current.chained
+        local available = 0
+        local room = player.room
+        for _, p in ipairs(room.alive_players) do
+            if not p.chained then
+                available = available + 1
+            end
+        end
+        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) < available then
+            return true
+        end
     end,
     enabled_at_response = function(self, player, response)
-        return not Fk:currentRoom().current.chained
+        local available = 0
+        local room = player.room
+        for _, p in ipairs(room.alive_players) do
+            if not p.chained then
+                available = available + 1
+            end
+        end
+        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) < available then
+            return true
+        end
     end,
+})
+
+ciyong:addEffect(fk.BeforeChainStateChange, {
+  anim_type = "negative",
+  can_refresh = function(self, event, target, player, data)
+    return target == player and player:hasSkill(ciyong.name) and player.chained
+  end,
+  on_refresh = function (self, event, target, player, data)
+    local room = player.room
+    local choices = {"draw2", "reset_ciyong"}
+    local choice = room:askToChoice(player, {
+      choices = choices,
+      skill_name = ciyong.name,
+    })
+    if choice == "draw2" then
+        player:drawCards(2, ciyong.name)
+    else
+        room:setPlayerMark(player, "@pang_ciyong", 0)
+        player:setSkillUseHistory("pang_ciyong", 0, Player.HistoryGame)
+    end
+  end,
 })
 
 
 
-
 Fk:loadTranslationTable {["pang_ciyong"] = "磁涌",
-[":pang_ciyong"] = "你可以横置当前回合角色并视为使用或打出一张雷【杀】或【闪】，然后若你：未横置，你摸一张牌；已横置，你可以弃置两张牌并重置。",
-["#ciyong"] = "磁涌：你可以视为使用或打出雷【杀】或【闪】",
-["#ciyong_discard"] = "你可以弃置两张牌并重置",
+[":pang_ciyong"] = "你可以横置X名角色并视为使用或打出一张雷【杀】或【闪】（X为此技能发动次数）；当你重置时，你摸两张牌或令此技能视为未发动过。",
+["#ciyong"] = "磁涌：你可以横置X名角色，视为使用或打出雷【杀】或【闪】",
+["#ciyong_chain"] = "磁涌：选择X名角色横置", 
+["#ciyong_choose"] = "磁涌：你可以摸两张牌或令“磁涌”视为未发动过",
+["@pang_ciyong"] = "磁涌",
+["draw2"] = "摸两张牌",
+["reset_ciyong"] = "重置“磁涌”",
 
 ["$pang_ciyong1"] = "Extermination commencing.",
 ["$pang_ciyong2"] = "I will take great pleasure in seeing them in pieces.",
