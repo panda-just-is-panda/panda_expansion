@@ -116,17 +116,17 @@ Fk:loadTranslationTable{
 ["~pang__evoker"] = "唤魔者阵亡",
 }
 
-local pillager = General:new(extension, "pang__pillager", "wu", 3, 3, General.Male)
-pillager:addSkill("pang_beilve")
-pillager:addSkill("pang_chuijiao")
+local re_pillager = General:new(extension, "pang__re_pillager", "wu", 3, 3, General.Male)
+re_pillager:addSkill("pang_zhulve")
+re_pillager:addSkill("pang_haoqin")
 Fk:loadTranslationTable{
-["pang__pillager"] = "掠夺者",
-["#pang__pillager"] = "号鸣角震",
-["designer:pang__pillager"] = "胖即是胖",
-["cv:pang__pillager"] = "我的世界",
-["illustrator:pang__pillager"] = "我的世界",
+["pang__re_pillager"] = "掠夺者",
+["#pang__re_pillager"] = "号鸣角震",
+["designer:pang__re_pillager"] = "胖即是胖",
+["cv:pang__re_pillager"] = "我的世界",
+["illustrator:pang__re_pillager"] = "我的世界",
 
-["~pang__pillager"] = "掠夺者阵亡",
+["~pang__re_pillager"] = "掠夺者阵亡",
 }
 
 local vindicator = General:new(extension, "pang__vindicator", "wu", 3, 3, General.Male)
