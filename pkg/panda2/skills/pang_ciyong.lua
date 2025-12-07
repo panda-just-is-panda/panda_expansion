@@ -35,9 +35,12 @@ ciyong:addEffect("viewas", {
             prompt = "#ciyong_chain",
             cancelable = false,
         })
-        for _, p in ipairs(to_chain) do
-            p:setChainState(true)
-        end
+        for _, pid in ipairs(to_chain) do
+            local target_player = room:getPlayerById(pid)  -- 先获取玩家对象
+            if target_player then
+                target_player:setChainState(true)
+            end
+    end
     end,
     after_use = function(self, player, use)
         local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1
