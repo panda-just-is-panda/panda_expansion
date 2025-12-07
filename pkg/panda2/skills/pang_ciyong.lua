@@ -20,7 +20,7 @@ ciyong:addEffect("viewas", {
     end,
     before_use = function (self, player, use)
         local room = player.room
-        local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1
+        local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame)
         local not_chained = {}
         for _, p in ipairs(Fk:currentRoom().alive_players) do
             if not p.chained then
