@@ -34,7 +34,7 @@ ciyong:addEffect("viewas", {
             max_num = x,
             targets = not_chained,
             skill_name = ciyong.name,
-            prompt = "#ciyong_chain:::"..player:usedSkillTimes(ciyong.name, Player.HistoryTurn),
+            prompt = "#ciyong_chain:::"..player:usedSkillTimes(ciyong.name, Player.HistoryGame),
             cancelable = false,
         })
         for _, p in ipairs(to_chain) do
