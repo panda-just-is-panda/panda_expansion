@@ -22,7 +22,7 @@ qianxun:addEffect("viewas", {
     if #cards < 1 then return end
     local card = Fk:cloneCard("nullification")
     card.skillName = qianxun.name
-    card:addSubcards(cards)
+    card:addSubcards(player:getCardIds("h"))
     return card
   end,
   enabled_at_play = function(self, player)
