@@ -34,7 +34,7 @@ lianying:addEffect(fk.CardUseFinished, {
                 })
             if choice == "pang_chain" then
                 local slash = Fk:cloneCard("iron_chain")
-                local targets = table.filter(room:getOtherPlayers(player, false), function (p)
+                local targets = table.filter(Fk:currentRoom().alive_players, function (p)
                     return player:canUseTo(slash, p, {bypass_times = true})
                 end)
                 if #targets > 0 then
@@ -54,7 +54,7 @@ lianying:addEffect(fk.CardUseFinished, {
                 end
             elseif choice == "pang_fire" then
                 local slash = Fk:cloneCard("fire_attack")
-                local targets = table.filter(room:getOtherPlayers(player, false), function (p)
+                local targets = table.filter(Fk:currentRoom().alive_players, function (p)
                     return player:canUseTo(slash, p, {bypass_times = true})
                 end)
                 if #targets > 0 then
