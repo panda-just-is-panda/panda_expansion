@@ -85,7 +85,7 @@ Fk:loadTranslationTable {["ye_lianying"] = "连营",
 ["#chain_choose"] = "连营：视为使用一张【铁锁连环】",
 ["cancel_choose"] = "取消",
 
-["$ye_lianying1"] = "",
-["$ye_lianying2"] = "",
+["$ye_lianying1"] = "今提墨笔绘乾坤，湖海添色山永春。",
+["$ye_lianying2"] = "手提玉剑斥千军，昔日锦鲤化金龙。",
 }
 return lianying

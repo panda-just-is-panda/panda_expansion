@@ -39,7 +39,7 @@ Fk:loadTranslationTable {["ye_qianxun"] = "谦逊",
 ["#pang_qianxun"] = "谦逊：每轮限一次，若你手牌中包含【无懈可击】或装备牌，你可将所有手牌当【无懈可击】使用。",
 
 
-["$ye_qianxun1"] = "",
-["$ye_qianxun2"] = "",
+["$ye_qianxun1"] = "步步为营者，定无后顾之虞。",
+["$ye_qianxun2"] = "明公彀中藏龙卧虎，放之海内皆可称贤。",
 }
 return qianxun

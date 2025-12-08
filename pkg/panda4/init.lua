@@ -210,6 +210,7 @@ Fk:loadTranslationTable{
 ["cv:ye_luxun"] = "官方",
 ["illustrator:ye_luxun"] = "官方",
 
+["~ye_luxun"] = "此生清白，不为浊泥所染。",
 }
 luxun.hidden = true
 
