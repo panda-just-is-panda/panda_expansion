@@ -31,6 +31,13 @@ qianxun:addEffect("viewas", {
     end)
     return player:usedSkillTimes(qianxun.name, Player.HistoryRound) == 0 and not player:isKongcheng() and #judge > 0
   end,
+  enabled_at_response = function(self, player)
+    local judge = table.filter(player:getCardIds("he"), function(id)
+        local card = Fk:getCardById(id)
+        return card and (card.type == Card.TypeBasic or card.trueName == "slash")
+    end)
+    return player:usedSkillTimes(qianxun.name, Player.HistoryRound) == 0 and not player:isKongcheng() and #judge > 0
+  end,
 })
 
 

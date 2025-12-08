@@ -12,7 +12,14 @@ lianying:addEffect(fk.CardUseFinished, {
         for _, p in ipairs(data.tos) do
             if player:getSwitchSkillState(lianying.name, true) == fk.SwitchYang then
                 x_current = x_current + 1
-            elseif data.damageDealt and player:getSwitchSkillState(lianying.name, true) ~= fk.SwitchYang and data.damageDealt[p] and data.damageDealt[p] > 0 then
+            end
+        end
+        if x_current == X then 
+            return true 
+        end
+        x_current = 0
+        for _, p in ipairs(Fk:currentRoom().alive_players) do
+            if data.damageDealt and player:getSwitchSkillState(lianying.name, true) ~= fk.SwitchYang and data.damageDealt[p] and data.damageDealt[p] > 0 then
                 x_current = x_current + 1
             end
         end
