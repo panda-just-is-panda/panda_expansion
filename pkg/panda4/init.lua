@@ -212,6 +212,6 @@ Fk:loadTranslationTable{
 
 ["~ye_luxun"] = "此生清白，不为浊泥所染。",
 }
-luxun.hidden = true
+
 
 return extension

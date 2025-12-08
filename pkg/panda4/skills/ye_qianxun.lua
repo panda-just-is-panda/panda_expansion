@@ -6,8 +6,9 @@ local qianxun = fk.CreateSkill {
 qianxun:addEffect("viewas", {
   anim_type = "control",
   pattern = "nullification",
+  mute_card = false,
   prompt = "#pang_qianxun",
-  handly_pile = true,
+  card_filter = Util.FalseFunc,
   filter_pattern = function (self, player, card_name)
     local cards = player:getCardIds("h")
     return {
@@ -27,14 +28,14 @@ qianxun:addEffect("viewas", {
   enabled_at_play = function(self, player)
     local judge = table.filter(player:getCardIds("he"), function(id)
         local card = Fk:getCardById(id)
-        return card and (card.type == Card.TypeBasic or card.trueName == "slash")
+        return card and (card.type == Card.TypeEquip or card.trueName == "nullification")
     end)
     return player:usedSkillTimes(qianxun.name, Player.HistoryRound) == 0 and not player:isKongcheng() and #judge > 0
   end,
   enabled_at_response = function(self, player)
     local judge = table.filter(player:getCardIds("he"), function(id)
         local card = Fk:getCardById(id)
-        return card and (card.type == Card.TypeBasic or card.trueName == "slash")
+        return card and (card.type == Card.TypeEquip or card.trueName == "nullification")
     end)
     return player:usedSkillTimes(qianxun.name, Player.HistoryRound) == 0 and not player:isKongcheng() and #judge > 0
   end,
