@@ -8,7 +8,7 @@ qianxun:addEffect("viewas", {
   pattern = "nullification",
   mute_card = false,
   prompt = "#pang_qianxun",
-  card_filter = Util.FalseFunc,
+    card_filter = Util.FalseFunc,
   filter_pattern = function (self, player, card_name)
     local cards = player:getCardIds("h")
     return {
@@ -19,7 +19,6 @@ qianxun:addEffect("viewas", {
     }
   end,
   view_as = function(self, player, cards)
-    if #cards < 1 then return end
     local card = Fk:cloneCard("nullification")
     card.skillName = qianxun.name
     card:addSubcards(player:getCardIds("h"))
