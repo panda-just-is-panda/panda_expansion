@@ -26,7 +26,7 @@ zhulve:addEffect(fk.CardUsing, {
     local room = player.room
     local to = target
     to:drawCards(1, zhulve.name)
-    if player:getMark("pang_zhulve_used") < 1 then
+    if player:getMark("pang_zhulve_used") < 1 and to ~= player then
       room:setPlayerMark(to, "@@pang_zhulve", 1)
       room:setPlayerMark(player, "pang_zhulve_used", 1)
     end
