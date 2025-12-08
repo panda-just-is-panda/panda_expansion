@@ -40,8 +40,9 @@ zhulve:addEffect(fk.CardUsing, {
 Fk:loadTranslationTable {["pang_zhulve"] = "助掠",
 [":pang_zhulve"] = "一名角色使用【杀】时，你可以弃置一张牌，令其摸一张牌；若其为第一个因此获得牌的其他角色，你摸一张牌。",
 ["#zhulve_discard"] = "你可以弃置一张牌，令%src摸一张牌",
-["#zhulve2"] = "准备完成，开始劫掠！",
 ["@@pang_zhulve"] = "助掠",
 
+["$pang_zhulve1"] = "嗷～吼吼～",
+["$pang_zhulve2"] = "吼吼～",
 }
 return zhulve  --不要忘记返回做好的技能对象哦

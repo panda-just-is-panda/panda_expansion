@@ -76,7 +76,7 @@ Fk:loadTranslationTable {["pang_haoqin"] = "浩侵",
 ["#haoqin_choose"] = "浩侵：视为使用一张【杀】",
 ["#haoqin_strikeback"] = "浩侵：你可以使用一张【杀】",
 
-["$pang_haoqin1"] = "号角声——",
+["$pang_haoqin1"] = "嘟嘟～嘟～嘟——嘟——",
 ["$pang_haoqin2"] = "嘟嘟～嘟嘟——嘟——",
 }
 return haoqin
