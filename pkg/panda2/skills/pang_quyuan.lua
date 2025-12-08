@@ -8,7 +8,7 @@ Fk:loadTranslationTable{
   [":pang_quyuan"] = "隐匿技，当你登场时，你可以令一名角色弃置一张牌，然后若此牌不为【闪】，其获得“蛆渊”；当你成为【桃】的目标时，你取消之并失去此技能。",
 
   ["#quyuan-choose"] = "蛆渊：你可以令一名角色弃置一张牌，若不为【闪】则其获得“蛆渊”",
-  ["#quyuan_show?"] = "蛆渊：你需一张牌，若不为【闪】，你获得蛆渊",
+  ["#quyuan_show?"] = "蛆渊：你需弃置一张牌，若不为【闪】，你获得蛆渊",
 
   ["$pang_quyuan1"] = "车轮战的小曲～",
   ["$pang_quyuan2"] = "出场的小曲～",
@@ -55,13 +55,12 @@ quyuan:addEffect(U.GeneralAppeared, {
       include_equip = true,
       skill_name = quyuan.name,
       prompt = "#quyuan_show?",
-      cancelable = true,
+      cancelable = false,
     })
     if #card > 0 then
         local card_test = Fk:getCardById(card[1]).trueName
         if card_test == "jink" then
             decision = 1
-            target:showCards(card)
         end
     end
     room:throwCard(card, quyuan.name, target, target)
