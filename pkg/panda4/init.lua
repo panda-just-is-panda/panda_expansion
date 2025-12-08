@@ -200,4 +200,17 @@ Fk:loadTranslationTable{
 
 }
 
+local luxun = General:new(extension, "ye_luxun", "wu", 3, 3, General.Male)
+luxun:addSkill("ye_lianying")
+luxun:addSkill("ye_qianxun")
+Fk:loadTranslationTable{
+["ye_luxun"] = "陆逊",
+["#ye_luxun"] = "释武怀儒",
+["designer:ye_luxun"] = "夜已央",
+["cv:ye_luxun"] = "官方",
+["illustrator:ye_luxun"] = "官方",
+
+}
+luxun.hidden = true
+
 return extension
