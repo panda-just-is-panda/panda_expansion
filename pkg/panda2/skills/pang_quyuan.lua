@@ -5,11 +5,10 @@ local quyuan = fk.CreateSkill{
 
 Fk:loadTranslationTable{
   ["pang_quyuan"] = "蛆渊",
-  [":pang_quyuan"] = "隐匿技，当你登场时，你可以令一名角色除非展示一张【闪】，否则获得“蛆渊”；当你成为【桃】的目标时，你取消之并失去此技能。",
+  [":pang_quyuan"] = "隐匿技，当你登场时，你可以令一名角色弃置一张牌，然后若此牌不为【闪】，其获得“蛆渊”；当你成为【桃】的目标时，你取消之并失去此技能。",
 
-  ["#quyuan-invoke"] = "蛆渊：你可以令一名角色除非展示一张【闪】，否则获得“蛆渊”",
-  ["#quyuan-choose"] = "蛆渊：选择一名角色",
-  ["#quyuan_show?"] = "蛆渊：你可以展示一张手牌，若你不展示或展示的牌不为【闪】，你获得蛆渊",
+  ["#quyuan-choose"] = "蛆渊：你可以令一名角色弃置一张牌，若不为【闪】则其获得“蛆渊”",
+  ["#quyuan_show?"] = "蛆渊：你需一张牌，若不为【闪】，你获得蛆渊",
 
   ["$pang_quyuan1"] = "车轮战的小曲～",
   ["$pang_quyuan2"] = "出场的小曲～",
@@ -27,18 +26,21 @@ quyuan:addEffect(U.GeneralAppeared, {
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
-    if room:askToSkillInvoke(player, {
+    local targets = {}
+    for _, p in ipairs(Fk:currentRoom().alive_players) do
+      if not p:isNude() then
+        table.insert(targets, p)
+      end
+    end
+    local tos = room:askToChoosePlayers(player, {
+      min_num = 1,
+      max_num = 1,
+      targets = targets,
       skill_name = quyuan.name,
-      prompt = "#quyuan-invoke",
-    }) then
-        local tos = room:askToChoosePlayers(player, {
-        min_num = 1,
-        max_num = 1,
-        targets = room.alive_players,
-        skill_name = quyuan.name,
-        prompt = "#quyuan-choose",
-        cancelable = false,
-        })
+      prompt = "#quyuan-choose",
+      cancelable = true,
+    })
+    if #tos > 0 then
       event:setCostData(self, {tos = {tos[1]}})
       return true
     end
@@ -50,7 +52,7 @@ quyuan:addEffect(U.GeneralAppeared, {
     local card = room:askToCards(target, {
       min_num = 1,
       max_num = 1,
-      include_equip = false,
+      include_equip = true,
       skill_name = quyuan.name,
       prompt = "#quyuan_show?",
       cancelable = true,
@@ -62,6 +64,7 @@ quyuan:addEffect(U.GeneralAppeared, {
             target:showCards(card)
         end
     end
+    room:throwCard(card, quyuan.name, target, target)
     if decision == 0 and not target:hasSkill("pang_quyuan") then
         room:handleAddLoseSkills(target, "pang_quyuan", nil, true, false)
     end
