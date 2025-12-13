@@ -42,8 +42,6 @@ ciyong:addEffect("viewas", {
         end
     end,
     after_use = function(self, player, use)
-        local x = player:usedSkillTimes(ciyong.name, Player.HistoryRound) + 1
-        player.room:setPlayerMark(player, "@pang_ciyong", x)
     end,
     enabled_at_play = function(self, player)
         local available = 0
