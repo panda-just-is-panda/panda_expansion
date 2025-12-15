@@ -101,7 +101,15 @@ jili:addEffect(fk.AfterCardsMove, {
     end
   end,
   on_refresh = function(self, event, target, player, data)
-    player.room:setPlayerMark(move.to, "@yu_jili", 0)
+    for _, move in ipairs(data) do
+        if move.to and move.to:getMark("@yu_jili") > 0 and (move.toArea == Card.PlayerEquip) then
+            for _, info in ipairs(move.moveInfo) do
+                if Fk:getCardById(info.cardId).sub_type == Card.SubtypeWeapon then
+                    player.room:setPlayerMark(move.to, "@yu_jili", 0)
+                end
+            end
+        end
+    end
   end,
 })
 
