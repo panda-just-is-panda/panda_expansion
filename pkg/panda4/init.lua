@@ -213,5 +213,18 @@ Fk:loadTranslationTable{
 ["~ye_luxun"] = "此生清白，不为浊泥所染。",
 }
 
+local shamoke = General:new(extension, "yu_shamoke", "shu", 4, 4, General.Male)
+shamoke:addSkill("yu_jili")
+Fk:loadTranslationTable{
+["yu_shamoke"] = "沙摩柯",
+["#yu_shamoke"] = "五溪蛮夷",
+["designer:yu_shamoke"] = "雨幕江南",
+["cv:yu_shamoke"] = "官方",
+["illustrator:yu_shamoke"] = "官方",
+
+["~yu_shamoke"] = "五溪蛮夷，不可能输！",
+}
+
+
 
 return extension
