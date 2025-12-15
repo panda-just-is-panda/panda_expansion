@@ -7,7 +7,7 @@ ciyong:addEffect("viewas", {
     mute_card = false,
     pattern = "slash,jink",
     prompt = function(self, player)
-        return "#ciyong:::"..player:usedSkillTimes(ciyong.name, Player.HistoryRound) + 1
+        return "#ciyong:::"..player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1
     end,
     interaction = function(self, player)
         local names = player:getViewAsCardNames(ciyong.name, {"thunder__slash", "jink"})
@@ -22,7 +22,7 @@ ciyong:addEffect("viewas", {
     end,
     before_use = function (self, player, use)
         local room = player.room
-        local x = player:usedSkillTimes(ciyong.name, Player.HistoryRound)
+        local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame)
         local not_chained = {}
         for _, p in ipairs(Fk:currentRoom().alive_players) do
             if not p.chained then
@@ -34,7 +34,7 @@ ciyong:addEffect("viewas", {
             max_num = x,
             targets = not_chained,
             skill_name = ciyong.name,
-            prompt = "#ciyong_chain:::"..player:usedSkillTimes(ciyong.name, Player.HistoryRound),
+            prompt = "#ciyong_chain:::"..player:usedSkillTimes(ciyong.name, Player.HistoryGame),
             cancelable = false,
         })
         for _, p in ipairs(to_chain) do
@@ -42,6 +42,8 @@ ciyong:addEffect("viewas", {
         end
     end,
     after_use = function(self, player, use)
+        local x = player:usedSkillTimes(ciyong.name, Player.HistoryGame) + 1
+        player.room:setPlayerMark(player, "@pang_ciyong", x)
     end,
     enabled_at_play = function(self, player)
         local available = 0
@@ -51,7 +53,7 @@ ciyong:addEffect("viewas", {
                 available = available + 1
             end
         end
-        if player:usedSkillTimes(ciyong.name, Player.HistoryRound) < available then
+        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) < available then
             return true
         end
     end,
@@ -63,7 +65,7 @@ ciyong:addEffect("viewas", {
                 available = available + 1
             end
         end
-        if player:usedSkillTimes(ciyong.name, Player.HistoryRound) < available then
+        if player:usedSkillTimes(ciyong.name, Player.HistoryGame) < available then
             return true
         end
     end,
@@ -72,23 +74,31 @@ ciyong:addEffect("viewas", {
 ciyong:addEffect(fk.BeforeChainStateChange, {
   anim_type = "negative",
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(ciyong.name) and player.chained
+    return player:hasSkill(ciyong.name)
   end,
   on_refresh = function (self, event, target, player, data)
-        player:drawCards(1, ciyong.name)
+    local room = player.room
+    if player:usedSkillTimes(ciyong.name, Player.HistoryGame) > 0 and room:askToSkillInvoke(player, {
+      skill_name = ciyong.name,
+      prompt = "reset_ciyong",
+    }) then
+        room:setPlayerMark(player, "@pang_ciyong", 1)
+        player:setSkillUseHistory("pang_ciyong", 0, Player.HistoryGame)
+    end
+    room:invalidateSkill(player, ciyong.name, "-turn")
   end,
 })
 
 
 
 Fk:loadTranslationTable {["pang_ciyong"] = "磁涌",
-[":pang_ciyong"] = "你可以横置X名角色并视为使用或打出一张雷【杀】或【闪】（X为此技能本轮发动次数）；当你重置时，你摸一张牌。",
+[":pang_ciyong"] = "你可以横置X名角色并视为使用或打出一张雷【杀】或【闪】（X为此技能发动次数）；当一名角色重置时，此技能本回合失效，然后你可以令此技能视为未发动过。",
 ["#ciyong"] = "磁涌：你可以横置%arg名角色，视为使用或打出雷【杀】或【闪】",
 ["#ciyong_chain"] = "磁涌：选择%arg名角色横置", 
 ["#ciyong_choose"] = "磁涌：你可以摸两张牌或令“磁涌”视为未发动过",
 ["@pang_ciyong"] = "磁涌",
 ["draw2"] = "摸两张牌",
-["reset_ciyong"] = "重置“磁涌”",
+["reset_ciyong"] = "磁涌：你可以令“磁涌”视为未发动过",
 
 ["$pang_ciyong1"] = "Extermination commencing.",
 ["$pang_ciyong2"] = "I will take great pleasure in seeing them in pieces.",
