@@ -74,7 +74,7 @@ ciyong:addEffect("viewas", {
 ciyong:addEffect(fk.BeforeChainStateChange, {
   anim_type = "negative",
   can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(ciyong.name)
+    return target.chained and player:hasSkill(ciyong.name)
   end,
   on_refresh = function (self, event, target, player, data)
     local room = player.room
