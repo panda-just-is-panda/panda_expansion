@@ -6,7 +6,7 @@ local lianying = fk.CreateSkill {
 lianying:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_trigger = function(self, event, target, player, data)
-        if not player:hasSkill(lianying.name) then return false end
+        if not target == player or player:hasSkill(lianying.name) then return false end
         local X = player:getHandcardNum()
         local x_current = 0
         for _, p in ipairs(data.tos) do
