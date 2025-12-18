@@ -11,8 +11,8 @@ Fk:loadTranslationTable{
   ["#fire_choose2"] = "焚舞：视为使用一张【火攻】（第二张）",
   ["#fire_choose3"] = "焚舞：视为使用一张【火攻】（第三张）",
 
-  ["$pang_fenwu1"] = "！",
-  ["$pang_fenwu2"] = "！",
+  ["$pang_fenwu1"] = "嗡——隆——",
+  ["$pang_fenwu2"] = "嗡隆——",
 }
 
 fenwu:addEffect("active", {
