@@ -34,6 +34,19 @@ Fk:loadTranslationTable{
 ["~pang__zombified_piglin"] = "僵尸猪灵阵亡",
 }
 
+local blaze = General:new(extension, "pang__blaze", "shu", 3, 3, General.Male)
+blaze:addSkill("pang_fenwu")
+blaze:addSkill("pang_ranyan")
+Fk:loadTranslationTable{
+["pang__blaze"] = "烈焰人",
+["#pang__blaze"] = "与火共舞",
+["designer:pang__blaze"] = "胖即是胖",
+["cv:pang__blaze"] = "我的世界",
+["illustrator:pang__blaze"] = "我的世界",
+
+["~pang__blaze"] = "烈焰人阵亡",
+}
+
 
 local drowned = General:new(extension, "pang__drowned", "wei", 4, 4, General.Male)
 drowned:addSkill("pang_chaoyong")
