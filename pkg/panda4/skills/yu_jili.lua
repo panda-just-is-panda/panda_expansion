@@ -67,11 +67,11 @@ jili:addEffect("active", {
                     max_num = difference,
                     include_equip = false,
                 })
-                room:setPlayerMark(to, "@yu_jili", hand_num)
+                room:setPlayerMark(to, "@yu_jili", to_hand_num)
             end
             if to_hand_num < to_atk_range then
                 difference = to_atk_range - to_hand_num
-                room:setPlayerMark(to, "@yu_jili", hand_num)
+                room:setPlayerMark(to, "@yu_jili", to_hand_num)
                 to:drawCards(difference, jili.name)
             end
         end
