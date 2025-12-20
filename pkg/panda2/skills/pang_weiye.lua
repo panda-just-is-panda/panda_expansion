@@ -48,7 +48,7 @@ local weiye = fk.CreateSkill{
 
 Fk:loadTranslationTable{
   ["pang_weiye"] = "伟液",
-  [":pang_weiye"] = "出牌阶段，你可以选择一项：获得一名角色一张牌，然后其弃置你两张牌；交给一名角色一张牌，然后你弃置其两张牌。当你每回合非首次发动此技能时，你隐匿。",
+  [":pang_weiye"] = "出牌阶段，你可以选择一项：获得一名角色一张牌，然后你弃置两张牌；交给一名角色一张牌，然后你弃置其两张牌。当你每回合非首次发动此技能时，你隐匿。",
 
   ["#weiye1"] = "获得一名角色一张牌，然后弃置两张牌",
   ["#weiye2"] = "交给一名角色一张牌，然后你弃置其两张牌",
@@ -96,13 +96,13 @@ weiye:addEffect("active", {
           flag = "he",
         })
         room:obtainCard(player, card, false, fk.ReasonPrey)
-        local cards = room:askToChooseCards(target, {
+        local cards = room:askToChooseCards(player, {
             target = player,
             min = 2,
             max = 2,
             flag = "he",
             skill_name = weiye.name,
-            prompt = "#weiye_discard2:"..player.id,
+            prompt = "#weiye_discard",
         })
         room:throwCard(cards, weiye.name, player, target)
         room:addPlayerMark(player, "weiye-turn", 1)

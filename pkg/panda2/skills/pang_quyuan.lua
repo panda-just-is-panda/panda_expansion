@@ -75,7 +75,7 @@ quyuan:addEffect(U.GeneralAppeared, {
     if decision == 0 and not target:hasSkill("pang_quyuan") then
         room:handleAddLoseSkills(target, "pang_quyuan", nil, true, false)
     end
-    local qu_number
+    local qu_number = 0
     for _, p in ipairs(Fk:currentRoom().alive_players) do
       if p:hasSkill("pang_quyuan") then
         qu_number = qu_number + 1
