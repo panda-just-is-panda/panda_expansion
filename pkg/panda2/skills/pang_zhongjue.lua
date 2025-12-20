@@ -2,6 +2,14 @@ local zhongjue = fk.CreateSkill {
   name = "pang_zhongjue",
   tags = {  },
 }
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","最终审判","这玩意怎么还有亡语","于即将死亡时发动“终诀”并杀死角色","general:pang__last_judge",true,nil,true)
+    end
+end
 
 Fk:loadTranslationTable {
   ["pang_zhongjue"] = "终决",
@@ -41,6 +49,12 @@ zhongjue:addEffect(fk.AskForPeachesDone, {
             local targets = tos
             room:sortByAction(targets)
             room:useVirtualCard("fire__slash", nil, player, targets, zhongjue.name, true)
+          if targets[1].dead then
+            if Fk.skills["glory_days__show"] and gdU and player:getMark(zhongjue.name.."_achive")==0 then
+              room:setPlayerMark(player,zhongjue.name.."_achive",1)
+              gdU.addAchievement(room,"steam",250,nil,"最终审判","这玩意怎么还有亡语","general:pang__last_judge", {player})
+            end
+    end
         end
     end
   end,

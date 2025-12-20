@@ -2,6 +2,14 @@ local diedai = fk.CreateSkill {
   name = "pang_diedaier",
   tags = {Skill.Quest},
 }
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","阶梯尽头","牢露，你崛起罢","“迭代”使命成功","general:pang__laoluxi",true,nil,true)
+    end
+end
 
 diedai:addEffect(fk.GameStart, {
   mute = true,
@@ -83,6 +91,10 @@ diedai:addEffect(fk.Damage, {
       room:setPlayerMark(player, "@diedai_xiu", 0)
       room:updateQuestSkillState(player, diedai.name)
       room:invalidateSkill(player, diedai.name)
+      if Fk.skills["glory_days__show"] and gdU and player:getMark(diedai.name.."_achive")==0 then
+        room:setPlayerMark(player,diedai.name.."_achive",1)
+        gdU.addAchievement(room,"steam",250,nil,"阶梯尽头","牢露，你崛起罢","general:pang__laoluxi", {player})
+      end
     end
   end
 })

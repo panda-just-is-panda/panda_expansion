@@ -1,6 +1,14 @@
 local fangquan = fk.CreateSkill {
   name = "pang_fangquan",
 }
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","战斗胖","蜀中无大将，刘禅自己上","于发动了“放权”的回合内杀死角色","general:pang__liushan",true,nil,true)
+    end
+end
 
 Fk:loadTranslationTable{
   ["pang_fangquan"] = "放权",
@@ -76,6 +84,20 @@ fangquan:addEffect(fk.TurnEnd, {
     local to = event:getCostData(self).tos[1]
     if not to.dead then
       to:gainAnExtraTurn(true, fangquan.name)
+    end
+  end,
+})
+
+fangquan:addEffect(fk.Deathed, {
+  anim_type = "drawcard",
+  can_refresh = function(self, event, target, player, data)
+    return player:usedSkillTimes(fangquan.name, Player.HistoryTurn) > 0 and data.killer == player
+  end,
+  on_refresh = function(self, event, target, player, data)
+    local room = player.room
+    if Fk.skills["glory_days__show"] and gdU and player:getMark(fangquan.name.."_achive")==0 then
+        room:setPlayerMark(player,fangquan.name.."_achive",1)
+        gdU.addAchievement(room,"steam",250,nil,"战斗胖","蜀中无大将，刘禅自己上","general:pang__liushan", {player})
     end
   end,
 })
