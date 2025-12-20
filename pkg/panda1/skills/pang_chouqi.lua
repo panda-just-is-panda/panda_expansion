@@ -2,6 +2,14 @@ local chouqi = fk.CreateSkill{
   name = "pang_chouqi",
   tags = {  },
 }
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","猪的力量","猪猪，怒了！","通过发动“仇起”杀死一名角色","general:pang__zombified_piglin",true,nil,true)
+    end
+end
 
 Fk:loadTranslationTable {
   ["pang_chouqi"] = "仇起",
@@ -48,6 +56,12 @@ chouqi:addEffect(fk.Damaged, {
     end
     room:sortByAction(to)
     room:useVirtualCard("slash", nil, player, to, chouqi.name, true)
+    if to.dead then
+      if Fk.skills["glory_days__show"] and gdU and player:getMark(chouqi.name.."_achive")==0 then
+        room:setPlayerMark(player,chouqi.name.."_achive",1)
+        gdU.addAchievement(room,"steam",250,nil,"猪的力量","猪猪，怒了！","general:pang__zombified_piglin", {player})
+      end
+    end
   end,
 })
 

@@ -2,6 +2,14 @@ local kuangluan = fk.CreateSkill({
   name = "pang_kuangluan", ---技能内部名称，要求唯一性
   tags = {Skill.Compulsory}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","马神之力","我怎么还在断杀","发动“狂乱”失去3点体力","general:pang__zoglin",true,nil,true)
+    end
+end
 
 kuangluan:addEffect(fk.EventPhaseStart, { --
   anim_type = "drawcard", 
@@ -25,6 +33,13 @@ kuangluan:addEffect(fk.EventPhaseStart, { --
       room:useCard(use)
     else
         room:loseHp(player, 1, kuangluan.name)
+        room:addPlayerMark(player,"kuangluan_counter",1)
+    end
+    if player:getMark("kuangluan_counter") == 3 then
+      if Fk.skills["glory_days__show"] and gdU and player:getMark(kuangluan.name.."_achive")==0 then
+        room:setPlayerMark(player,kuangluan.name.."_achive",1)
+        gdU.addAchievement(room,"steam",250,nil,"马神之力","我怎么还在断杀","general:pang__zoglin", {player})
+      end
     end
   end,
 })
@@ -52,6 +67,13 @@ kuangluan:addEffect(fk.Damaged, {
       room:useCard(use)
     else
         room:loseHp(player, 1, kuangluan.name)
+        room:addPlayerMark(player,"kuangluan_counter",1)
+    end
+    if player:getMark("kuangluan_counter") == 3 then
+      if Fk.skills["glory_days__show"] and gdU and player:getMark(kuangluan.name.."_achive")==0 then
+        room:setPlayerMark(player,kuangluan.name.."_achive",1)
+        gdU.addAchievement(room,"steam",250,nil,"马神之力","我怎么还在断杀","general:pang__zoglin", {player})
+      end
     end
   end,
 })
