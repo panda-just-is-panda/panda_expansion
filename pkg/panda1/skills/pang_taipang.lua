@@ -2,6 +2,13 @@ local taipang = fk.CreateSkill {
   name = "pang_taipang",
   tags = {},
 }
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","太胖太胖","胖胖太胖太胖","手牌上限增加到10及以上","general:pang__panda",true,nil,true)
+    end
+end
 
 taipang:addEffect(fk.TargetSpecifying, {
   anim_type = "offensive",
@@ -32,6 +39,12 @@ taipang:addEffect(fk.TargetSpecifying, {
     else
         room:addPlayerMark(target, "taipang2-turn", 1)
         room:addPlayerMark(player, MarkEnum.AddMaxCards, 1)
+    end
+    if player:getMaxCards() > 9 then
+      if Fk.skills["glory_days__show"] and gdU and player:getMark(taipang.name.."_achive")==0 then
+        room:setPlayerMark(player,taipang.name.."_achive",1)
+        gdU.addAchievement(room,"steam",250,nil,"太胖太胖","胖胖太胖太胖","general:pang__panda", {player})
+      end
     end
   end,
 })
