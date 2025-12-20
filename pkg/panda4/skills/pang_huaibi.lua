@@ -37,7 +37,7 @@ huaibi:addEffect(fk.GameStart, {
     if X > 4 then
       if Fk.skills["glory_days__show"] and gdU and player:getMark(huaibi.name.."_achive")==0 then
         room:setPlayerMark(player,huaibi.name.."_achive",1)
-        gdU.addAchievement(room,"steam",250,nil,"怀璧其罪","谁家董卓？","游戏开始时因“怀璧”获得5点护甲","general:pang__liuzhang", {player})
+        gdU.addAchievement(room,"steam",250,nil,"怀璧其罪","谁家董卓？","general:pang__liuzhang", {player})
       end
     end
   end,
