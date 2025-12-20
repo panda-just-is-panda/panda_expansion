@@ -14,7 +14,7 @@ end
 huifu:addEffect(fk.TurnEnd, { --
   anim_type = "offensive", 
   can_trigger = function(self, event, target, player, data)
-    if #player.room.logic:getActualDamageEvents(1, function(e) return e.data.from == player and e.data.to == player end, Player.HistoryTurn) == 0 then
+    if #player.room.logic:getActualDamageEvents(1, function(e) return e.data.to == player end, Player.HistoryTurn) == 0 and #player.room.logic:getActualDamageEvents(1, function(e) return e.data.from == player end, Player.HistoryTurn) == 0 then
       player.room:setPlayerMark(player,"huifu_counter",0)
     end
     return player:hasSkill(huifu.name)
@@ -34,7 +34,9 @@ huifu:addEffect(fk.TurnEnd, { --
       skill_name = huifu.name,
       prompt = the_prompt,
     }) then
-    return true
+      return true
+    else
+      player.room:setPlayerMark(player,"huifu_counter",0)
     end
   end,
   on_use = function(self, event, target, player, data)
