@@ -15,7 +15,7 @@ huifu:addEffect(fk.TurnEnd, { --
   anim_type = "offensive", 
   can_trigger = function(self, event, target, player, data)
     if #player.room.logic:getActualDamageEvents(1, function(e) return e.data.to == player end, Player.HistoryTurn) == 0 and #player.room.logic:getActualDamageEvents(1, function(e) return e.data.from == player end, Player.HistoryTurn) == 0 then
-      player.room:setPlayerMark(player,"@huifu_counter",0)
+      player.room:setPlayerMark(player,"huifu_counter",0)
     end
     return player:hasSkill(huifu.name)
     and #player.room.logic:getActualDamageEvents(1, function(e) return e.data.from == player or e.data.to == player end, Player.HistoryTurn) > 0
@@ -36,7 +36,7 @@ huifu:addEffect(fk.TurnEnd, { --
     }) then
       return true
     else
-      player.room:setPlayerMark(player,"@huifu_counter",0)
+      player.room:setPlayerMark(player,"huifu_counter",0)
     end
   end,
   on_use = function(self, event, target, player, data)
@@ -70,8 +70,8 @@ huifu:addEffect(fk.TurnEnd, { --
         end
       end
     end
-    room:addPlayerMark(player,"@huifu_counter",1)
-    if player:getMark("@huifu_counter") == 3 then
+    room:addPlayerMark(player,"huifu_counter",1)
+    if player:getMark("huifu_counter") == 3 then
       if Fk.skills["glory_days__show"] and gdU and player:getMark(huifu.name.."_achive")==0 then
         room:setPlayerMark(player,huifu.name.."_achive",1)
         gdU.addAchievement(room,"steam",250,nil,"癫狂屠戮","我杀，我杀，我再杀","general:pang__vindicator", {player})
