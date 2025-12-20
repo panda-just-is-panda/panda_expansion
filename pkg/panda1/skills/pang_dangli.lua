@@ -7,7 +7,7 @@ local gdU
 if Fk.skills["glory_days__show"] then
     gdU = require "packages/glory_days/utility"
     if type(gdU.RegisterAchievement) == "function" then
-      gdU.RegisterAchievement("胖胖胖胖","方头耄耋","劫掠兽哈气了","于一个回合内发动三次“荡力”","general:pang__ravager",true,nil,true)
+      gdU.RegisterAchievement("胖胖胖胖","方头耄耋","劫掠兽哈气了","你因造成伤害发动“荡力”时，受伤角色为你上次发动“荡力”时的伤害来源","general:pang__ravager",true,nil,true)
     end
 end
 
@@ -19,17 +19,17 @@ anim_type = "switch",
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
+    for _, p in ipairs(player.room.alive_players) do
+      player.room:setPlayerMark(p, "dangli_achievement", 0)
+    end
     data:changeDamage(1)
     local cards = player.room:getCardsFromPileByRule("slash", 1, "discardPile")
     if #cards > 0 then
       player.room:obtainCard(player, cards[1], true, fk.ReasonJustMove, player, dangli.name)
       if player.dead then return false end
     end
-    if player:usedSkillTimes(dangli.name, Player.HistoryTurn) > 1 then
-      if Fk.skills["glory_days__show"] and gdU and player:getMark(dangli.name.."_achive")==0 then
-        room:setPlayerMark(player,dangli.name.."_achive",1)
-        gdU.addAchievement(room,"steam",250,nil,"方头耄耋","劫掠兽哈气了","general:pang__ravager", {player})
-      end
+    if data.from then 
+      room:addPlayerMark(data.from,"dangli_achievement",1)
     end
   end,
 })
@@ -48,7 +48,7 @@ anim_type = "switch",
       player.room:obtainCard(player, cards[1], true, fk.ReasonJustMove, player, dangli.name)
       if player.dead then return false end
     end
-    if player:usedSkillTimes(dangli.name, Player.HistoryTurn) > 2 then
+    if data.to and data.to:getMark("dangli_achievement") > 0 then
       if Fk.skills["glory_days__show"] and gdU and player:getMark(dangli.name.."_achive")==0 then
         room:setPlayerMark(player,dangli.name.."_achive",1)
         gdU.addAchievement(room,"steam",250,nil,"方头耄耋","劫掠兽哈气了","general:pang__ravager", {player})
