@@ -96,15 +96,14 @@ weiye:addEffect("active", {
           flag = "he",
         })
         room:obtainCard(player, card, false, fk.ReasonPrey)
-        local cards = room:askToChooseCards(player, {
-            target = player,
-            min = 2,
-            max = 2,
-            flag = "he",
-            skill_name = weiye.name,
-            prompt = "#weiye_discard",
+        local cards = room:askToDiscard(player, {
+          skill_name = weiye.name,
+          prompt = "#weiye_discard",
+          cancelable = false,
+          min_num = 2,
+          max_num = 2,
+          include_equip = true,
         })
-        room:throwCard(cards, weiye.name, player, target)
         room:addPlayerMark(player, "weiye-turn", 1)
     end
     if player:getMark("weiye-turn") > 1 then
