@@ -3,6 +3,15 @@ local tiewan = fk.CreateSkill({
   tags = {}, -- 技能标签，Skill.Compulsory代表锁定技，支持存放多个标签
 })
 
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","星际枭雄","你的台词怎么这么多","于本局内听到过“铁腕统治”的全部语音","general:pang__mengsk",true,nil,true)
+    end
+end
+
 tiewan:addEffect(fk.Damage, {
   mute = true,
   can_trigger = function(self, event, target, player, data)
@@ -49,17 +58,33 @@ tiewan:addEffect(fk.Damage, {
         local target = data.to
         if choice == "wuzhongshengyou" then
           player:broadcastSkillInvoke(tiewan.name, 3)
+          room:addPlayerMark(player,"mengsk_voiceline3",1)
+          if player:getMark("mengsk_voiceline3") == 1 then
+            room:addPlayerMark(player,"mengsk_total",1)
+          end
           room:useVirtualCard("ex_nihilo", nil, player, target, tiewan.name, true)
         elseif choice == "guohechaiqiao" then
           player:broadcastSkillInvoke(tiewan.name, 4)
+          room:addPlayerMark(player,"mengsk_voiceline4",1)
+          if player:getMark("mengsk_voiceline4") == 1 then
+            room:addPlayerMark(player,"mengsk_total",1)
+          end
           room:useVirtualCard("dismantlement", nil, player, target, tiewan.name, true)
         end
       else
         if choice == "wuzhongshengyou" then
           player:broadcastSkillInvoke(tiewan.name, 1)
+          room:addPlayerMark(player,"mengsk_voiceline1",1)
+          if player:getMark("mengsk_voiceline1") == 1 then
+            room:addPlayerMark(player,"mengsk_total",1)
+          end
           room:useVirtualCard("ex_nihilo", nil, player, player, tiewan.name, true)
         elseif choice == "guohechaiqiao" then
           player:broadcastSkillInvoke(tiewan.name, 2)
+          room:addPlayerMark(player,"mengsk_voiceline2",1)
+          if player:getMark("mengsk_voiceline2") == 1 then
+            room:addPlayerMark(player,"mengsk_total",1)
+          end
           local targets = table.filter(room:getOtherPlayers(player, false), function (p)
           return player:canUseTo(Fk:cloneCard("dismantlement"), p)
           end)
@@ -80,7 +105,13 @@ tiewan:addEffect(fk.Damage, {
           end
         end
       end
-     end
+      if player:getMark("mengsk_total") == 10 then
+        if Fk.skills["glory_days__show"] and gdU and player:getMark(tiewan.name.."_achive")==0 then
+          room:setPlayerMark(player,tiewan.name.."_achive",1)
+          gdU.addAchievement(room,"steam",250,nil,"星际枭雄","你的台词怎么这么多","general:pang__mengsk", {player})
+        end
+      end
+     end,
 })
 
 tiewan:addEffect(fk.Damaged, {
@@ -129,18 +160,34 @@ tiewan:addEffect(fk.Damaged, {
         local target = player
         if choice == "wuzhongshengyou" then
           player:broadcastSkillInvoke(tiewan.name, 7)
+          room:addPlayerMark(player,"mengsk_voiceline7",1)
+          if player:getMark("mengsk_voiceline7") == 1 then
+            room:addPlayerMark(player,"mengsk_total",1)
+          end
           room:useVirtualCard("ex_nihilo", nil, player, target, tiewan.name, true)
         elseif choice == "guohechaiqiao" then
           player:broadcastSkillInvoke(tiewan.name, 8)
+          room:addPlayerMark(player,"mengsk_voiceline8",1)
+          if player:getMark("mengsk_voiceline8") == 1 then
+            room:addPlayerMark(player,"mengsk_total",1)
+          end
           room:useVirtualCard("dismantlement", nil, player, target, tiewan.name, true)
 
         end
       else
         if choice == "wuzhongshengyou" then
           player:broadcastSkillInvoke(tiewan.name, 5)
+          room:addPlayerMark(player,"mengsk_voiceline5",1)
+          if player:getMark("mengsk_voiceline5") == 1 then
+            room:addPlayerMark(player,"mengsk_total",1)
+          end
           room:useVirtualCard("ex_nihilo", nil, player, player, tiewan.name, true)
         elseif choice == "guohechaiqiao" then
           player:broadcastSkillInvoke(tiewan.name, 6)
+            room:addPlayerMark(player,"mengsk_voiceline6",1)
+            if player:getMark("mengsk_voiceline6") == 1 then
+              room:addPlayerMark(player,"mengsk_total",1)
+            end
           local targets = table.filter(room:getOtherPlayers(player, false), function (p)
           return player:canUseTo(Fk:cloneCard("dismantlement"), p)
           end)
@@ -161,7 +208,13 @@ tiewan:addEffect(fk.Damaged, {
           end
         end
       end
-     end
+      if player:getMark("mengsk_total") == 10 then
+        if Fk.skills["glory_days__show"] and gdU and player:getMark(tiewan.name.."_achive")==0 then
+          room:setPlayerMark(player,tiewan.name.."_achive",1)
+          gdU.addAchievement(room,"steam",250,nil,"星际枭雄","你的台词怎么这么多","general:pang__mengsk", {player})
+        end
+      end
+     end,
 })
 
 tiewan:addEffect(fk.CardUsing, {
@@ -170,7 +223,18 @@ can_refresh = function(self, event, target, player, data)
   return target == player and player:hasSkill(tiewan.name) and data.card.trueName == "archery_attack"
 end,
 on_refresh = function(self, event, target, player, data)
+  local room = player.room
   player:broadcastSkillInvoke(tiewan.name, 9)
+  room:addPlayerMark(player,"mengsk_voiceline9",1)
+  if player:getMark("mengsk_voiceline9") == 1 then
+    room:addPlayerMark(player,"mengsk_total",1)
+  end
+  if player:getMark("mengsk_total") == 10 then
+        if Fk.skills["glory_days__show"] and gdU and player:getMark(tiewan.name.."_achive")==0 then
+          room:setPlayerMark(player,tiewan.name.."_achive",1)
+          gdU.addAchievement(room,"steam",250,nil,"星际枭雄","你的台词怎么这么多","general:pang__mengsk", {player})
+        end
+  end
 end,
 })
 
@@ -180,7 +244,18 @@ can_refresh = function(self, event, target, player, data)
   return target == player and player:hasSkill(tiewan.name) and data.card.trueName == "savage_assault"
 end,
 on_refresh = function(self, event, target, player, data)
+  local room = player.room
   player:broadcastSkillInvoke(tiewan.name, 10)
+  room:addPlayerMark(player,"mengsk_voiceline10",1)
+  if player:getMark("mengsk_voiceline10") == 1 then
+    room:addPlayerMark(player,"mengsk_total",1)
+  end
+  if player:getMark("mengsk_total") == 10 then
+        if Fk.skills["glory_days__show"] and gdU and player:getMark(tiewan.name.."_achive")==0 then
+          room:setPlayerMark(player,tiewan.name.."_achive",1)
+          gdU.addAchievement(room,"steam",250,nil,"星际枭雄","你的台词怎么这么多","general:pang__mengsk", {player})
+        end
+  end
 end,
 })
 
