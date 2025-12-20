@@ -2,6 +2,14 @@ local quyuan = fk.CreateSkill{
   name = "pang_quyuan",
   tags = { Skill.Hidden },
 }
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","同归于蛆","伟大，无须多言","场上所有角色均获得“蛆渊”","general:pang__groal_the_great",true,nil,true)
+    end
+end
 
 Fk:loadTranslationTable{
   ["pang_quyuan"] = "蛆渊",
@@ -66,6 +74,18 @@ quyuan:addEffect(U.GeneralAppeared, {
     room:throwCard(card, quyuan.name, target, target)
     if decision == 0 and not target:hasSkill("pang_quyuan") then
         room:handleAddLoseSkills(target, "pang_quyuan", nil, true, false)
+    end
+    local qu_number
+    for _, p in ipairs(Fk:currentRoom().alive_players) do
+      if p:hasSkill("pang_quyuan") then
+        qu_number = qu_number + 1
+      end
+    end
+    if player:hasSkill("pang_weiye") and qu_number == #Fk:currentRoom().alive_players then
+      if Fk.skills["glory_days__show"] and gdU and player:getMark(quyuan.name.."_achive")==0 then
+        room:setPlayerMark(player,quyuan.name.."_achive",1)
+        gdU.addAchievement(room,"steam",250,nil,"同归于蛆","伟大，无须多言","general:pang__groal_the_great", {player})
+      end
     end
   end,
 })
