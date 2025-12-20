@@ -7,7 +7,7 @@ local gdU
 if Fk.skills["glory_days__show"] then
     gdU = require "packages/glory_days/utility"
     if type(gdU.RegisterAchievement) == "function" then
-      gdU.RegisterAchievement("胖胖胖胖","点子扎手","致敬贾诩了属于是","你于“浩侵”结算期间死亡","general:pang__re_pillager",true,nil,true)
+      gdU.RegisterAchievement("胖胖胖胖","点子扎手","致敬贾大爷乱武完杀自己","你于“浩侵”结算期间死亡","general:pang__re_pillager",true,nil,true)
     end
 end
 
@@ -78,7 +78,7 @@ haoqin:addEffect("active", {
     if player.dead then
       if Fk.skills["glory_days__show"] and gdU and player:getMark(haoqin.name.."_achive")==0 then
         room:setPlayerMark(player,haoqin.name.."_achive",1)
-        gdU.addAchievement(room,"steam",250,nil,"点子扎手","致敬贾诩了属于是","general:pang__re_pillager", {player})
+        gdU.addAchievement(room,"steam",250,nil,"点子扎手","致敬贾大爷乱武完杀自己","general:pang__re_pillager", {player})
       end
     end
   end,
