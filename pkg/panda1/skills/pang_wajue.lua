@@ -2,6 +2,14 @@ local wajue = fk.CreateSkill({
   name = "pang_wajue", 
   tags = {Skill.Compulsory}, 
 })
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","铠甲勇士","1, 2, 3 4 5 GO!","于一回合内使用五张装备牌","general:pang__steve",true,nil,true)
+    end
+end
 
 wajue:addEffect(fk.EventPhaseStart, {
   anim_type = "drawcard",
@@ -51,6 +59,12 @@ wajue:addEffect(fk.CardUseFinished, {
     })[2]
     room:moveCardTo(get, Player.Hand, player, fk.ReasonJustMove, wajue.name, nil, true, player)
     room:cleanProcessingArea(cards)
+    if player:usedSkillTimes(wajue.name, Player.HistoryTurn) > 4 then
+      if Fk.skills["glory_days__show"] and gdU and player:getMark(wajue.name.."_achive")==0 then
+        room:setPlayerMark(player,wajue.name.."_achive",1)
+        gdU.addAchievement(room,"steam",250,nil,"铠甲勇士","1, 2, 3 4 5 GO!","general:pang__steve", {player})
+      end
+    end
   end,
 })
 
