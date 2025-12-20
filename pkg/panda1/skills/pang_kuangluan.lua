@@ -7,7 +7,7 @@ local gdU
 if Fk.skills["glory_days__show"] then
     gdU = require "packages/glory_days/utility"
     if type(gdU.RegisterAchievement) == "function" then
-      gdU.RegisterAchievement("胖胖胖胖","马神之力","我怎么还在断杀","发动“狂乱”失去3点体力","general:pang__zoglin",true,nil,true)
+      gdU.RegisterAchievement("胖胖胖胖","马神之力","我怎么还在断杀","发动“狂乱”失去4点体力","general:pang__zoglin",true,nil,true)
     end
 end
 
@@ -35,7 +35,7 @@ kuangluan:addEffect(fk.EventPhaseStart, { --
         room:loseHp(player, 1, kuangluan.name)
         room:addPlayerMark(player,"kuangluan_counter",1)
     end
-    if player:getMark("kuangluan_counter") == 3 then
+    if player:getMark("kuangluan_counter") > 3 then
       if Fk.skills["glory_days__show"] and gdU and player:getMark(kuangluan.name.."_achive")==0 then
         room:setPlayerMark(player,kuangluan.name.."_achive",1)
         gdU.addAchievement(room,"steam",250,nil,"马神之力","我怎么还在断杀","general:pang__zoglin", {player})

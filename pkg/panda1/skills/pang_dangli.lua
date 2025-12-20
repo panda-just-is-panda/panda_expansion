@@ -7,7 +7,7 @@ local gdU
 if Fk.skills["glory_days__show"] then
     gdU = require "packages/glory_days/utility"
     if type(gdU.RegisterAchievement) == "function" then
-      gdU.RegisterAchievement("胖胖胖胖","方头耄耋","劫掠兽哈气了","于一个回合内发动两次“荡力”","general:pang__ravager",true,nil,true)
+      gdU.RegisterAchievement("胖胖胖胖","方头耄耋","劫掠兽哈气了","于一个回合内发动三次“荡力”","general:pang__ravager",true,nil,true)
     end
 end
 
@@ -48,7 +48,7 @@ anim_type = "switch",
       player.room:obtainCard(player, cards[1], true, fk.ReasonJustMove, player, dangli.name)
       if player.dead then return false end
     end
-    if player:usedSkillTimes(dangli.name, Player.HistoryTurn) > 1 then
+    if player:usedSkillTimes(dangli.name, Player.HistoryTurn) > 2 then
       if Fk.skills["glory_days__show"] and gdU and player:getMark(dangli.name.."_achive")==0 then
         room:setPlayerMark(player,dangli.name.."_achive",1)
         gdU.addAchievement(room,"steam",250,nil,"方头耄耋","劫掠兽哈气了","general:pang__ravager", {player})
