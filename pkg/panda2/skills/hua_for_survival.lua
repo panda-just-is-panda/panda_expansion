@@ -17,8 +17,7 @@ survival:addEffect("viewas", {
     local skills = player:getSkillNameList()
     local choices = {}
     skills = table.filter(skills, function(skill) 
-        return Fk.skills["hua_gun_bullet"] and Fk.skills["hua_gun_bullet"]:isPlayerSkill(player)
-        and Fk.skills["hua_sinner_bullet"] and Fk.skills["hua_sinner_bullet"]:isPlayerSkill(player)
+        return skill == "hua_gun_bullet" or skill == "hua_sinner_bullet"
          end)
     if #skills > 0 then
       table.insertTable(choices, skills)
