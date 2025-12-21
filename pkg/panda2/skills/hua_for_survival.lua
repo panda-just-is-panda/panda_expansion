@@ -36,6 +36,12 @@ survival:addEffect("viewas", {
       card.skillName = survival.name
       return card
     end,
+    enabled_at_play = function(self, player)
+        return player:hasSkill("hua_gun_bullet") or player:hasSkill("hua_sinner_bullet")
+    end,
+    enabled_at_response = function(self, player, response)
+        return not response and (player:hasSkill("hua_gun_bullet") or player:hasSkill("hua_sinner_bullet"))
+    end,
 })
 
 survival:addEffect(fk.Damage, {

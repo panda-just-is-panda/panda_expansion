@@ -273,7 +273,7 @@ Fk:loadTranslationTable{
 ["illustrator:hua_shinaide"] = "ZZZZZM酱肘子",
 
 }
-shinaide.hidden = true
+
 
 
 
