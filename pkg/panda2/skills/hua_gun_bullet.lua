@@ -3,7 +3,7 @@ local bullet = fk.CreateSkill({
   tags = {}, 
 })
 
-Fk:loadTranslationTable {["hua_gun_bullet"] = "持枪之人的子弹",
+Fk:loadTranslationTable {["hua_gun_bullet"] = "执枪之弹",
 [":hua_gun_bullet"] = "这是一枚子弹。",
 }
 
