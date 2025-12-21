@@ -6,8 +6,6 @@ local survival = fk.CreateSkill({
 Fk:loadTranslationTable {["hua_for_survival"] = "以生存之名",
 [":hua_for_survival"] = "你可以失去“有罪之人的子弹”或“持枪之人的子弹”，视为使用一张无距离限制的【杀】，当因此造成伤害后，摸三张牌。结束阶段，若你没有“有罪之人的子弹”，你失去1点体力，获得之。",
 ["#for_survival"] = "你可以失去一个“子弹”，视为使用一张无距离限制的【杀】",
-["hua_gun_bullet"] = "持枪之人的子弹",
-["hua_sinner_bullet"] = "有罪之人的子弹",
 }
 
 survival:addEffect("viewas", {
@@ -16,16 +14,16 @@ survival:addEffect("viewas", {
     pattern = "slash",
     prompt = "#for_survival",
     interaction = function(self, player)
+    local skills = player:getSkillNameList()
     local choices = {}
-    if player:hasSkill("hua_gun_bullet") then
-        table.insertTable(choices, "hua_gun_bullet")
+    skills = table.filter(skills, function(skill) 
+        return Fk.skills["hua_gun_bullet"] and Fk.skills["hua_gun_bullet"]:isPlayerSkill(player)
+        and Fk.skills["hua_sinner_bullet"] and Fk.skills["hua_sinner_bullet"]:isPlayerSkill(player)
+         end)
+    if #skills > 0 then
+      table.insertTable(choices, skills)
     end
-    if player:hasSkill("hua_sinner_bullet") then
-        table.insertTable(choices, "hua_sinner_bullet")
-    end
-    if #choices > 0 then
-        return UI.ComboBox { choices = choices }
-    end
+    return UI.ComboBox { choices = choices }
   end,
     card_filter = function ()
       return false
