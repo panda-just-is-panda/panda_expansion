@@ -65,6 +65,7 @@ survival:addEffect(fk.EventPhaseStart, { --
     return target == player and player:hasSkill(survival.name) and
       player.phase == Player.Finish and not player:hasSkill("hua_sinner_bullet")
   end,
+  on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
     local room = player.room
     room:loseHp(player, 1, survival.name)

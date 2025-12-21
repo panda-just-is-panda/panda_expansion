@@ -100,7 +100,7 @@ gentle:addEffect(fk.BuryVictim, {
   anim_type = "offensive",
   can_refresh = function(self, event, target, player, data)
     if player:hasSkill(gentle.name) then
-      return data.damage and data.damage.from == player 
+      return data.damage and data.damage.from
       and data.card and table.contains(data.card.skillNames, gentle.name)
       and target == player and target.rest == 0 
       and not (data.extra_data and data.extra_data.skip_reward_punish)
