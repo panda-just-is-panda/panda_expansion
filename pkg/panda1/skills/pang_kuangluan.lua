@@ -7,7 +7,7 @@ local gdU
 if Fk.skills["glory_days__show"] then
     gdU = require "packages/glory_days/utility"
     if type(gdU.RegisterAchievement) == "function" then
-      gdU.RegisterAchievement("胖胖胖胖","马神之力","我怎么还在断杀","发动“狂乱”失去4点体力","general:pang__zoglin",true,nil,true)
+      gdU.RegisterAchievement("胖胖胖胖","马神之力","我怎么还在断杀","因“狂乱”失去体力死亡，且本局从未因“狂乱”使用【杀】","general:pang__zoglin",true,nil,true)
     end
 end
 
@@ -31,14 +31,14 @@ kuangluan:addEffect(fk.EventPhaseStart, { --
     if use then
       use.extraUse = true
       room:useCard(use)
+      room:addPlayerMark(player,"kuangluan_counter",1)
     else
         room:loseHp(player, 1, kuangluan.name)
-        room:addPlayerMark(player,"kuangluan_counter",1)
-    end
-    if player:getMark("kuangluan_counter") > 3 then
-      if Fk.skills["glory_days__show"] and gdU and player:getMark(kuangluan.name.."_achive")==0 then
-        room:setPlayerMark(player,kuangluan.name.."_achive",1)
-        gdU.addAchievement(room,"steam",250,nil,"马神之力","我怎么还在断杀","general:pang__zoglin", {player})
+      if player.dead and player:getMark("kuangluan_counter") == 0 then
+        if Fk.skills["glory_days__show"] and gdU and player:getMark(kuangluan.name.."_achive")==0 then
+          room:setPlayerMark(player,kuangluan.name.."_achive",1)
+          gdU.addAchievement(room,"steam",250,nil,"马神之力","我怎么还在断杀","general:pang__zoglin", {player})
+        end
       end
     end
   end,
@@ -65,18 +65,19 @@ kuangluan:addEffect(fk.Damaged, {
     if use then
       use.extraUse = true
       room:useCard(use)
+      room:addPlayerMark(player,"kuangluan_counter",1)
     else
-        room:loseHp(player, 1, kuangluan.name)
-        room:addPlayerMark(player,"kuangluan_counter",1)
-    end
-    if player:getMark("kuangluan_counter") == 3 then
-      if Fk.skills["glory_days__show"] and gdU and player:getMark(kuangluan.name.."_achive")==0 then
-        room:setPlayerMark(player,kuangluan.name.."_achive",1)
-        gdU.addAchievement(room,"steam",250,nil,"马神之力","我怎么还在断杀","general:pang__zoglin", {player})
+      room:loseHp(player, 1, kuangluan.name)
+      if player.dead and player:getMark("kuangluan_counter") == 0 then
+        if Fk.skills["glory_days__show"] and gdU and player:getMark(kuangluan.name.."_achive")==0 then
+          room:setPlayerMark(player,kuangluan.name.."_achive",1)
+          gdU.addAchievement(room,"steam",250,nil,"马神之力","我怎么还在断杀","general:pang__zoglin", {player})
+        end
       end
     end
   end,
 })
+
 
 Fk:loadTranslationTable {["pang_kuangluan"] = "狂乱",
 [":pang_kuangluan"] = "锁定技，结束阶段或当你受到伤害后，你摸一张牌并选择一项：使用一张【杀】；失去1点体力。",
