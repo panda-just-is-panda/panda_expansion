@@ -47,6 +47,14 @@ local gentle = fk.CreateSkill({
   name = "hua_gentle_night", 
   tags = {Skill.Limited}, 
 })
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages/glory_days/utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","右侧的心跳","当我乘着那片羽毛，风将我送往何方，我就去往何方。","游戏结束时自己仍存活，且已经发动了“夜色温柔”。","general:hua_shinaide",true,nil,true)
+    end
+end
 
 Fk:loadTranslationTable {["hua_gentle_night"] = "夜色温柔",
 [":hua_gentle_night"] = "限定技，当你进入濒死状态时，你可以令一名其他角色获得“怀橘”与1枚“橘”，然后其视为对你使用一张【杀】。若你因此被其杀死，则其执行的奖惩为反贼奖惩；若你未死亡，你回复所有体力，然后隐匿。",
@@ -118,6 +126,18 @@ gentle:addEffect(fk.BuryVictim, {
     data.extra_data.skip_reward_punish = true
     data.damage.from:drawCards(3, gentle.name)
   end
+})
+
+gentle:addEffect(fk.GameFinished, {
+  can_refresh = function (self, event, target, player, data)
+    return not player.dead and player:usedSkillTimes(gentle.name, Player.HistoryGame) > 0
+  end,
+  on_refresh = function (self, event, target, player, data)
+      if Fk.skills["glory_days__show"] and gdU and player:getMark(gentle.name.."_achive")==0 then
+        player.room:setPlayerMark(player,gentle.name.."_achive",1)
+        gdU.addAchievement(player.room,"steam",250,nil,"右侧的心跳","当我乘着那片羽毛，风将我送往何方，我就去往何方。","general:hua_shinaide", {player})
+      end
+  end,
 })
 
 return gentle
