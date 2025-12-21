@@ -97,12 +97,12 @@ gentle:addEffect(fk.EnterDying, {
   end,
 })
 
-gentle:addEffect(fk.Damage, {
+gentle:addEffect(fk.DamageCaused, {
   can_refresh = function(self, event, target, player, data)
     return data.card and table.contains(data.card.skillNames, gentle.name)
   end,
   on_refresh = function(self, event, target, player, data)
-    player.room:addPlayerMark(data.from, "orange_holding", 1)
+    player.room:addPlayerMark(target, "orange_holding", 1)
   end,
 })
 
