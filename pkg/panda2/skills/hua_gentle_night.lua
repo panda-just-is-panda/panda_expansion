@@ -80,7 +80,6 @@ gentle:addEffect(fk.EnterDying, {
     if not to.dead then
         room:handleAddLoseSkills(to, "hua_huaiju", nil, true, false)
         if not player.dead then
-            room:addPlayerMark(to, "orange_holding", 1)
             room:useVirtualCard("slash", nil, to, player, gentle.name, true)
         end
     end
@@ -95,6 +94,15 @@ gentle:addEffect(fk.EnterDying, {
         EnterHidden(player)
     end
 
+  end,
+})
+
+gentle:addEffect(fk.Damage, {
+  can_refresh = function(self, event, target, player, data)
+    return target == player and data.card and table.contains(data.card.skillNames, gentle.name)
+  end,
+  on_refresh = function(self, event, target, player, data)
+    player.room:addPlayerMark(data.from, "orange_holding", 1)
   end,
 })
 
