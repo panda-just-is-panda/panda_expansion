@@ -6,6 +6,9 @@ local survival = fk.CreateSkill({
 Fk:loadTranslationTable {["hua_for_survival"] = "以生存之名",
 [":hua_for_survival"] = "你可以失去“有罪之人的子弹”或“持枪之人的子弹”，视为使用一张无距离限制的【杀】，当因此造成伤害后，摸三张牌。结束阶段，若你没有“有罪之人的子弹”，你失去1点体力，获得之。",
 ["#for_survival"] = "你可以失去一个“子弹”，视为使用一张无距离限制的【杀】",
+
+  ["$hua_for_survival1"] = "随你喜欢好啦，亲爱的。",
+  ["$hua_for_survival2"] = "伦敦塔会倒下来。",
 }
 
 survival:addEffect("viewas", {

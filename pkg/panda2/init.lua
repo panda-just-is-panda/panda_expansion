@@ -272,6 +272,7 @@ Fk:loadTranslationTable{
 ["cv:hua_shinaide"] = "深蓝",
 ["illustrator:hua_shinaide"] = "ZZZZZM酱肘子",
 
+["~hua_shinaide"] = "呵呵……是时候了，老爷……请记得我，记得我右侧的心跳声。",
 }
 
 
