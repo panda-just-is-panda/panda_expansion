@@ -258,6 +258,23 @@ Fk:loadTranslationTable{
 
 }
 
+local shinaide = General:new(extension, "hua_shinaide", "shu", 4, 4, General.Female)
+shinaide:addSkill("hua_for_survival")
+shinaide:addSkill("hua_gentle_night")
+shinaide:addSkill("hua_gun_bullet")
+shinaide:addSkill("hua_sinner_bullet")
+shinaide:addRelatedSkill("hua_huaiju")
+shinaide.endnote = "或许一切本不至于此。或许你还有机会带她回到那座橘子园。"
+Fk:loadTranslationTable{
+["hua_shinaide"] = "斯奈德",
+["#hua_shinaide"] = "青柑橘",
+["designer:hua_shinaide"] = "花绘雨",
+["cv:hua_shinaide"] = "深蓝",
+["illustrator:hua_shinaide"] = "ZZZZZM酱肘子",
+
+}
+shinaide.hidden = true
+
 
 
 return extension
