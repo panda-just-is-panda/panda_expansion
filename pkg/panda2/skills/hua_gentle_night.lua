@@ -53,10 +53,10 @@ Fk:loadTranslationTable {["hua_gentle_night"] = "夜色温柔",
 ["#gentle-orange"] = "夜色温柔：你可以令一名其他角色获得“怀橘”与1枚“橘”，然后其视为对你使用【杀】",
 }
 
-gentle:addEffect(fk.AskForPeaches, {
+gentle:addEffect(fk.EnterDying, {
   anim_type = "defensive",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(gentle.name) and player.dying and
+    return target == player and player:hasSkill(gentle.name) and
       player:usedSkillTimes(gentle.name, Player.HistoryGame) == 0
   end,
   on_cost = function(self, event, target, player, data)
@@ -80,10 +80,12 @@ gentle:addEffect(fk.AskForPeaches, {
     if not to.dead then
         room:handleAddLoseSkills(to, "hua_huaiju", nil, true, false)
         if not player.dead then
+            room:addPlayerMark(to, "orange_holding", 1)
             room:useVirtualCard("slash", nil, to, player, gentle.name, true)
         end
     end
     if not player.dead then
+        room:setPlayerMark(to, "orange_holding", 0)
         room:recover{
             who = player,
             num = player.maxHp,
@@ -97,14 +99,11 @@ gentle:addEffect(fk.AskForPeaches, {
 })
 
 gentle:addEffect(fk.BuryVictim, {
-  anim_type = "offensive",
+  anim_type = "drawcard",
   can_refresh = function(self, event, target, player, data)
-    if player:hasSkill(gentle.name) then
-      return data.damage and data.damage.from
-      and data.card and table.contains(data.card.skillNames, gentle.name)
-      and target == player and target.rest == 0 
+      return data.damage and data.damage.from and data.damage.from:getMark("orange_holding") > 0
+      and target == player and player:hasSkill(gentle.name, false, true)
       and not (data.extra_data and data.extra_data.skip_reward_punish)
-    end
   end,
   on_refresh = function(self, event, target, player, data)
     data.extra_data = data.extra_data or {}
