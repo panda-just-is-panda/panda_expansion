@@ -68,3 +68,5 @@ survival:addEffect(fk.EventPhaseStart, { --
     room:handleAddLoseSkills(player,"hua_sinner_bullet",nil, true, false)
   end,
 })
+
+return survival

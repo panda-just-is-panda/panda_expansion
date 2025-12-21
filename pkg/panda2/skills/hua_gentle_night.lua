@@ -112,3 +112,5 @@ gentle:addEffect(fk.BuryVictim, {
     data.damage.from:drawCards(3, gentle.name)
   end
 })
+
+return gentle
