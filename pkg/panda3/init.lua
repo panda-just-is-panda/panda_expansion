@@ -38,22 +38,6 @@ Fk:loadTranslationTable{
 ["~pang__wild_dog"] = "虓虎失落尽，日暮无归途。"
 }
 
-local wither = General:new(extension, "pang__wither", "god", 4, 4, General.Male)
-wither:addSkill("pang_qingshen")
-wither:addRelatedSkill("fushi")
-wither:addRelatedSkill("guan_lieqiong")
-wither:addRelatedSkill("mobile__hanzhan")
-wither.endnote = "我东道呢？我战烈和振锋呢？我斩决呢？<br>\
-这些技能都给你不如直接判你赢得了。"
-Fk:loadTranslationTable{
-["pang__wither"] = "凋灵",
-["#pang__wither"] = "三仙合体",
-["designer:pang__wither"] = "胖即是胖",
-["cv:pang__wither"] = "官方",
-["illustrator:pang__wither"] = "我的世界&官方",
-
-["~pang__wither"] = "隐藏语音",
-}
 
 local luxi = General:new(extension, "pang__laoluxi", "god", 4, 4, General.Female)
 luxi:addSkill("pang_diedaier")
