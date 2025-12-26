@@ -85,7 +85,7 @@ lianying:addEffect(fk.CardUseFinished, {
 })
 
 Fk:loadTranslationTable {["ye_lianying"] = "连营",
-[":ye_lianying"] = "转换技，你使用牌结算后，若此牌①造成了X点伤害②指定了X名目标（X为你的手牌数），你摸一张牌，然后若没有角色处于濒死状态，你可以视为使用①【铁索连环】②【火攻】。",
+[":ye_lianying"] = "转换技，你使用牌结算后，若此牌①造成了X点伤害②指定了X名目标（X为你的手牌数），你摸一张牌，然后若没有角色处于濒死状态，你可以视为使用【铁索连环】或【火攻】。",
 ["pang_chain"] = "视为使用【铁锁连环】",
 ["pang_fire"] = "视为使用【火攻】",
 ["#fire_choose"] = "连营：视为使用一张【火攻】",

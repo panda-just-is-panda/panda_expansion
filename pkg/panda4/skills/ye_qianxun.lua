@@ -5,7 +5,7 @@ local qianxun = fk.CreateSkill {
 
 qianxun:addEffect("viewas", {
   anim_type = "control",
-  pattern = "nullification",
+  pattern = "nullification,ex_nihilo",
   mute_card = false,
   prompt = "#pang_qianxun",
   card_filter = Util.FalseFunc,
@@ -34,12 +34,14 @@ qianxun:addEffect("viewas", {
     local card = Fk:cloneCard(self.interaction.data)
     card.skillName = qianxun.name
     card:addSubcards(player:getCardIds("h"))
+    return card
+  end,
+  before_use = function(self, player, use)
     if self.interaction.data == "nullification" then
       player.room:addPlayerMark(player, "@@wuxie-round")
     else
        player.room:addPlayerMark(player, "@@wuzhong-round")
     end
-    return card
   end,
   enabled_at_play = function(self, player)
     return (player:getMark("@@wuxie-round") == 0 or player:getMark("@@wuzhong-round") == 0) and not player:isKongcheng()
