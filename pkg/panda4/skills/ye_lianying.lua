@@ -34,7 +34,12 @@ lianying:addEffect(fk.CardUseFinished, {
         if table.every(Fk:currentRoom().alive_players, function(p)
             return not p.dying
         end) then
-            if player:getSwitchSkillState(lianying.name, true) == fk.SwitchYang then
+            local choices = {"pang_chain", "pang_fire", "cancel_choose"}
+                local choice = room:askToChoice(player, {
+                    choices = choices,
+                    skill_name = lianying.name,
+                })
+            if choice == "pang_chain" then
                 local slash = Fk:cloneCard("iron_chain")
                 local targets = table.filter(Fk:currentRoom().alive_players, function (p)
                     return player:canUseTo(slash, p, {bypass_times = true})
@@ -54,7 +59,7 @@ lianying:addEffect(fk.CardUseFinished, {
                         room:useVirtualCard("iron_chain", nil, player, targets, lianying.name, true)
                     end
                 end
-            elseif player:getSwitchSkillState(lianying.name, true) ~= fk.SwitchYang then
+            elseif choice == "pang_fire" then
                 local slash = Fk:cloneCard("fire_attack")
                 local targets = table.filter(Fk:currentRoom().alive_players, function (p)
                     return player:canUseTo(slash, p, {bypass_times = true})

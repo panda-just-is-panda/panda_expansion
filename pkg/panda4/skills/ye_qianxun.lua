@@ -8,7 +8,18 @@ qianxun:addEffect("viewas", {
   pattern = "nullification",
   mute_card = false,
   prompt = "#pang_qianxun",
-    card_filter = Util.FalseFunc,
+  card_filter = Util.FalseFunc,
+  interaction = function(self, player)
+    local names
+    if player:getMark("@@wuxie-round") == 0 and player:getMark("@@wuzhong-round") == 0 then
+      names = player:getViewAsCardNames(qianxun.name, {"nullification", "ex_nihilo"})
+    elseif player:getMark("@@wuxie-round") > 0 and player:getMark("@@wuzhong-round") == 0 then
+      names = player:getViewAsCardNames(qianxun.name, {"ex_nihilo"})
+    elseif player:getMark("@@wuxie-round") == 0 and player:getMark("@@wuzhong-round") > 0 then
+      names = player:getViewAsCardNames(qianxun.name, {"nullification"})
+    end
+    return UI.CardNameBox {choices = names, all_choices = {"nullification", "ex_nihilo"}}
+  end,
   filter_pattern = function (self, player, card_name)
     local cards = player:getCardIds("h")
     return {
@@ -19,31 +30,31 @@ qianxun:addEffect("viewas", {
     }
   end,
   view_as = function(self, player, cards)
-    local card = Fk:cloneCard("nullification")
+    if not self.interaction.data then return end
+    local card = Fk:cloneCard(self.interaction.data)
     card.skillName = qianxun.name
     card:addSubcards(player:getCardIds("h"))
+    if self.interaction.data == "nullification" then
+      player.room:addPlayerMark(player, "@@wuxie-round")
+    else
+       player.room:addPlayerMark(player, "@@wuzhong-round")
+    end
     return card
   end,
   enabled_at_play = function(self, player)
-    local judge = table.filter(player:getCardIds("he"), function(id)
-        local card = Fk:getCardById(id)
-        return card and (card.type == Card.TypeEquip or card.trueName == "nullification")
-    end)
-    return player:usedSkillTimes(qianxun.name, Player.HistoryRound) == 0 and not player:isKongcheng() and #judge > 0
+    return (player:getMark("@@wuxie-round") == 0 or player:getMark("@@wuzhong-round") == 0) and not player:isKongcheng()
   end,
   enabled_at_response = function(self, player)
-    local judge = table.filter(player:getCardIds("he"), function(id)
-        local card = Fk:getCardById(id)
-        return card and (card.type == Card.TypeEquip or card.trueName == "nullification")
-    end)
-    return player:usedSkillTimes(qianxun.name, Player.HistoryRound) == 0 and not player:isKongcheng() and #judge > 0
+    return (player:getMark("@@wuxie-round") == 0 or player:getMark("@@wuzhong-round") == 0) and not player:isKongcheng()
   end,
 })
 
 
 Fk:loadTranslationTable {["ye_qianxun"] = "谦逊",
-[":ye_qianxun"] = "每轮限一次，若你手牌中包含【无懈可击】或装备牌，你可将所有手牌当【无懈可击】使用。",
-["#pang_qianxun"] = "谦逊：每轮限一次，若你手牌中包含【无懈可击】或装备牌，你可将所有手牌当【无懈可击】使用。",
+[":ye_qianxun"] = "每轮各限一次，你可将所有手牌当【无懈可击】或【无中生有】使用。",
+["#pang_qianxun"] = "谦逊：每轮各限一次，你可将所有手牌当【无懈可击】或【无中生有】使用。",
+["@@wuxie-round"] = "无懈 已使用",
+["@@wuzhong-round"] = "无中 已使用",
 
 
 ["$ye_qianxun1"] = "步步为营者，定无后顾之虞。",
