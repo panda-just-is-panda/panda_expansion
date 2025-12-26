@@ -5,7 +5,7 @@ local quyuan = fk.CreateSkill{
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","同归于蛆","伟大，无须多言","场上所有角色均获得“蛆渊”","general:pang__groal_the_great",true,nil,true)
     end

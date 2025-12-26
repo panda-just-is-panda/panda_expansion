@@ -13,7 +13,7 @@ Fk:loadTranslationTable{
 }
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","怀璧其罪","谁家董卓？","游戏开始时因“怀璧”获得5点护甲","general:pang__liuzhang",true,nil,true)
     end

@@ -6,7 +6,7 @@ local tiewan = fk.CreateSkill({
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","星际枭雄","你的台词怎么这么多","于一局游戏内听到过“铁腕统治”的全部语音","general:pang__mengsk",true,nil,true)
     end

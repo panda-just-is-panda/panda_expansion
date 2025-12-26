@@ -5,7 +5,7 @@ local zhongjue = fk.CreateSkill {
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","最终审判","这玩意怎么还有亡语","于即将死亡时发动“终诀”并杀死角色","general:pang__last_judge",true,nil,true)
     end

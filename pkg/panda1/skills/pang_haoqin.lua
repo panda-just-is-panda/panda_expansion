@@ -5,7 +5,7 @@ local haoqin = fk.CreateSkill({
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","点子扎手","致敬贾大爷乱武完杀自己","你于“浩侵”结算期间死亡","general:pang__re_pillager",true,nil,true)
     end

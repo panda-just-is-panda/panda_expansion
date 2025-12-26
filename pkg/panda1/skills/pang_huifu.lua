@@ -5,7 +5,7 @@ local huifu = fk.CreateSkill({
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","癫狂屠戮","我杀，我杀，我再杀","连续三个回合发动“挥斧”","general:pang__vindicator",true,nil,true)
     end

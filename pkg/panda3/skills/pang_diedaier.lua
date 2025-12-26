@@ -5,7 +5,7 @@ local diedai = fk.CreateSkill {
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","阶梯尽头","牢露，你崛起罢","“迭代”使命成功","general:pang__laoluxi",true,nil,true)
     end

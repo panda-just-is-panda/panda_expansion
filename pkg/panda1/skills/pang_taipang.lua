@@ -4,7 +4,7 @@ local taipang = fk.CreateSkill {
 }
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","太胖太胖","胖胖太胖太胖","手牌上限增加到10及以上","general:pang__panda",true,nil,true)
     end

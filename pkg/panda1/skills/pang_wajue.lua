@@ -5,7 +5,7 @@ local wajue = fk.CreateSkill({
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","铠甲勇士","1, 2, 3 4 5 GO!","于一回合内使用五张装备牌","general:pang__steve",true,nil,true)
     end

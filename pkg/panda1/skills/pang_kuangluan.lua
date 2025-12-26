@@ -5,7 +5,7 @@ local kuangluan = fk.CreateSkill({
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","马神之力","我怎么还在断杀","因“狂乱”失去体力死亡，且本局从未因“狂乱”使用【杀】","general:pang__zoglin",true,nil,true)
     end

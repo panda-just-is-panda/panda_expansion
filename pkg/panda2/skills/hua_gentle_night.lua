@@ -50,7 +50,7 @@ local gentle = fk.CreateSkill({
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","右侧的心跳","当我乘着那片羽毛，风将我送往何方，我就去往何方。","游戏结束时自己仍存活，且已经发动了“夜色温柔”。","general:hua_shinaide",true,nil,true)
     end

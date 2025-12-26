@@ -5,7 +5,7 @@ local dangli = fk.CreateSkill {
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","方头耄耋","劫掠兽哈气了","你因造成伤害发动“荡力”时，受伤角色为你上次发动“荡力”时的伤害来源","general:pang__ravager",true,nil,true)
     end

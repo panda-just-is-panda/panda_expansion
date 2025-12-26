@@ -5,7 +5,7 @@ local biyi = fk.CreateSkill {
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","笔锋族兔","吓哭了，虚构集大人","发动一次“笔意”杀死至少两名角色","general:pang__xugouji",true,nil,true)
     end

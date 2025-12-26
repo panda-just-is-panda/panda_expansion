@@ -5,7 +5,7 @@ local chouqi = fk.CreateSkill{
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","猪的力量","猪猪，怒了！","通过发动“仇起”杀死一名角色","general:pang__zombified_piglin",true,nil,true)
     end

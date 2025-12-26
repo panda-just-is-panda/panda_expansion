@@ -4,7 +4,7 @@ local fangquan = fk.CreateSkill {
 local U = require "packages.utility.utility"
 local gdU
 if Fk.skills["glory_days__show"] then
-    gdU = require "packages/glory_days/utility"
+    gdU = require "packages.glory_days.utility"
     if type(gdU.RegisterAchievement) == "function" then
       gdU.RegisterAchievement("胖胖胖胖","战斗胖","蜀中无大将，刘禅自己上","于发动了“放权”的回合内杀死角色","general:pang__liushan",true,nil,true)
     end
