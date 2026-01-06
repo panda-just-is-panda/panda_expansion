@@ -150,7 +150,6 @@ Fk:loadTranslationTable{
 ["illustrator:mo_caocao"] = "官方",
 
 }
-caocao.hidden = true
 
 local gaoyang = General:new(extension, "bai_gaoyang", "qun", 4, 4, General.Male)
 gaoyang:addSkill("bai_zhanma")

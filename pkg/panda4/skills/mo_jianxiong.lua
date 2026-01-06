@@ -17,7 +17,7 @@ skel:addEffect(fk.TargetSpecified, {
   anim_type = "masochism",
   can_trigger = function (self, event, target, player, data)
     if target == player and player:hasSkill(skel.name) then
-      return data.from and data.card.is_damage_card
+      return data.firstTarget and data.from and data.card.is_damage_card
     end
   end,
   on_cost = function (self, event, target, player, data)
