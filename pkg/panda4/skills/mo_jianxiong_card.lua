@@ -1,5 +1,5 @@
 local skel = fk.CreateSkill {
-  name = "efengqi__jianxiong_card_skill",
+  name = "mo_jianxiong_card_skill",
 }
 
 skel:addEffect("cardskill", {
@@ -25,7 +25,7 @@ skel:addEffect("cardskill", {
       if not to.dead then
         local choices = { "draw_one" }
         if not table.contains(to:getTableMark("mojianxiong-round"), effect.card.trueName) then
-            table.insert(choices, 2, "#mo_jianxiong-get")
+            table.insert(choices, 2, "#mo_jianxiong-na")
         end
         local choice = room:askToChoice(to, {
             choices = choices,
@@ -48,7 +48,7 @@ skel:addEffect("cardskill", {
 Fk:loadTranslationTable{
   ["mo_jianxiong_card_skill"] = "奸雄",
   ["draw_one"] = "摸一张牌",
-  ["#mo_jianxiong-get"] = "获得造成伤害的牌"
+  ["#mo_jianxiong-na"] = "获得造成伤害的牌"
 
 }
 
