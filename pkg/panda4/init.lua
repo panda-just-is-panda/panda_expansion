@@ -139,6 +139,19 @@ Fk:loadTranslationTable{
 ["~mo_jiangwei"] = "姜维姜维，又将何为？",
 }
 
+local caocao = General:new(extension, "mo_caocao", "wei", 4, 4, General.Male)
+caocao:addSkill("mo_jianxiong")
+caocao:addSkill("mo_hujia")
+Fk:loadTranslationTable{
+["mo_caocao"] = "曹操",
+["#mo_caocao"] = "魏武帝",
+["designer:mo_caocao"] = "墨客",
+["cv:mo_caocao"] = "官方",
+["illustrator:mo_caocao"] = "官方",
+
+}
+caocao.hidden = true
+
 local gaoyang = General:new(extension, "bai_gaoyang", "qun", 4, 4, General.Male)
 gaoyang:addSkill("bai_zhanma")
 gaoyang:addSkill("bai_nihun")
