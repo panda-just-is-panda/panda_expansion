@@ -40,8 +40,9 @@ skel:addEffect(fk.TargetSpecified, {
     data.extra_data = data.extra_data or {}
     data.extra_data.efengqi__jianxiongTos = data.extra_data.efengqi__jianxiongTos or {}
     table.insertIfNeed(data.extra_data.efengqi__jianxiongTos, event:getCostData(self).tos[1])
-    data.disresponsiveList = data.disresponsiveList or {}
-    table.insertIfNeed(data.disresponsiveList, event:getCostData(self).tos[1])
+    if data.card.trueName == "slash" then
+      data.disresponsive = true
+    end
   end,
 })
 
@@ -72,8 +73,9 @@ skel:addEffect(fk.TargetConfirmed, {
     data.extra_data = data.extra_data or {}
     data.extra_data.efengqi__jianxiongTos = data.extra_data.efengqi__jianxiongTos or {}
     table.insertIfNeed(data.extra_data.efengqi__jianxiongTos, event:getCostData(self).tos[1])
-    data.disresponsiveList = data.disresponsiveList or {}
-    table.insertIfNeed(data.disresponsiveList, event:getCostData(self).tos[1])
+    if data.card.trueName == "slash" then
+      data.disresponsive = true
+    end
   end,
 })
 
