@@ -24,7 +24,7 @@ skel:addEffect(fk.AfterCardTargetDeclared, {
     local to = room:askToChoosePlayers(player, {
           min_num = 1,
           max_num = 1,
-          targets = data.use.tos,
+          targets = data.tos,
           skill_name = skel.name,
           prompt = "#mo_jianxiong-get:::"..data.card:toLogString(),
           cancelable = true,
