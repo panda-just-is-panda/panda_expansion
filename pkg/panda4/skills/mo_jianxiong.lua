@@ -73,7 +73,7 @@ skel:addEffect(fk.TargetConfirming, {
     data.extra_data.efengqi__jianxiongTos = data.extra_data.efengqi__jianxiongTos or {}
     table.insertIfNeed(data.extra_data.efengqi__jianxiongTos, event:getCostData(self).tos[1])
     if data.card.trueName == "slash" then
-      data.unoffsetableList = {event:getCostData(self).tos[1]}
+      data.disresponsive = true
     end
   end,
 })
