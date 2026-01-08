@@ -118,6 +118,7 @@ Fk:loadTranslationTable{
 
 local ganning = General:new(extension, "pang__ganning", "wu", 4, 4, General.Male)
 ganning:addSkill("pang_poxi")
+ganning:addSkill("pang_fenwei")
 Fk:loadTranslationTable{
 ["pang__ganning"] = "甘宁",
 ["#pang__ganning"] = "胖帆游侠",
