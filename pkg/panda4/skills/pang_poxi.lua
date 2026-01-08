@@ -26,6 +26,7 @@ poxi:addEffect("active", {
     room:throwCard(effect.cards, poxi.name, player, player)
     local discarding = room:askToChooseCard(player, {
         min_num = 1,
+        max_num = 999,
         target = to,
         flag = "he",
         prompt = "#poxi_discard:"..to.id,
