@@ -12,7 +12,7 @@ Fk:loadTranslationTable{
   ["$pang_bianshen"] = "太胖太胖",
 }
 
-bianshen:addEffect(fk.Death, {
+bianshen:addEffect(fk.GameStart, {
   anim_type = "support",
   prompt = "#panda_bianshen",
   can_trigger = function(self, event, target, player, data)
