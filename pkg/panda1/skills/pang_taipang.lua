@@ -49,10 +49,39 @@ taipang:addEffect(fk.TargetSpecifying, {
   end,
 })
 
+taipang:addEffect(fk.GameStart, {
+  anim_type = "support",
+  prompt = "#panda_bianshen",
+  can_trigger = function(self, event, target, player, data)
+    return target == player and player:hasSkill(taipang.name, true, true)
+  end,
+  on_cost = function(self, event, target, player, data)
+    if player.room:askToSkillInvoke(player, {
+        skill_name = taipang.name,
+        prompt = "#taipang_bianshen",
+      }) then
+        return true
+    end
+  end,
+  on_use = function(self, event, target, player, data)
+    local room = player.room
+    player:chat("呵呵，胖将变身")
+    room:animDelay(3)
+    local general_1 = "pang__pangpanda"
+    room:findGeneral(general_1)
+    room:changeHero(player, general_1, false, false, true, true)
+    room:handleAddLoseSkills(player, "pang_taipang", nil, false, true)
+    room:handleAddLoseSkills(player, "pang_pangnu", nil, false, true)
+    player:chat("太胖")
+  end
+})
+
 Fk:loadTranslationTable {["pang_taipang"] = "太胖",
 [":pang_taipang"] = "每回合各限一次，当你使用牌指定自己为目标时，你可以取消之并选择一项：将手牌摸至手牌上限；令你的手牌上限+1。",
 ["#pang_taipang1"] = "将手牌摸至手牌上限",
 ["#pang_taipang2"] = "令你的手牌上限+1",
+
+["#taipang_bianshen"] = "胖胖：你可以变成胖胖！",
 
 ["$pang_taipang1"] = "何故胖",
 ["$pang_taipang2"] = "唉太胖",

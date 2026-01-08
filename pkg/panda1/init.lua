@@ -243,7 +243,6 @@ Fk:loadTranslationTable{
 local panda = General:new(extension, "pang__panda", "god", 4, 4, General.Male)
 panda:addSkill("pang_taipang")
 panda:addSkill("pang_pangnu")
-panda:addSkill("#pang_bianshen")
 Fk:loadTranslationTable{
 ["pang__panda"] = "熊猫胖",
 ["#pang__panda"] = "太胖太胖",
