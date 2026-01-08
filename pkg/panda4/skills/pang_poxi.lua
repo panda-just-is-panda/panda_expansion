@@ -24,9 +24,9 @@ poxi:addEffect("active", {
       number_player = number_player + Fk:getCardById(id).number
     end
     room:throwCard(effect.cards, poxi.name, player, player)
-    local discarding = room:askToChooseCard(player, {
+    local discarding = room:askToChooseCards(player, {
         min_num = 1,
-        max_num = 999,
+        max_num = 4,
         target = to,
         flag = "he",
         prompt = "#poxi_discard:"..to.id,
@@ -52,7 +52,7 @@ end
 
 
 Fk:loadTranslationTable {["pang_poxi"] = "魄袭",
-[":pang_poxi"] = "出牌阶段限一次，你可以弃置任意张牌，然后弃置一名其他角色任意张牌；若你弃置的牌点数之和小于其，其对你造成2点伤害。",
+[":pang_poxi"] = "出牌阶段限一次，你可以弃置任意张牌，然后弃置一名其他角色至多四张牌；若你弃置的牌点数之和小于其，其对你造成2点伤害。",
 ["#pang_poxi"] = "你可以弃置任意张牌，然后弃置一名其他角色任意张牌；若你弃置的牌点数之和小于其，其对你造成2点伤害",
 ["#poxi_discard"] = "魄袭：弃置 %src 任意张牌",
 
