@@ -116,6 +116,18 @@ Fk:loadTranslationTable{
 ["~pang__sunziliufang"] = "唉，树倒猢狲散，鼓破众人捶呀。",
 }
 
+local ganning = General:new(extension, "pang__ganning", "wu", 4, 4, General.Male)
+ganning:addSkill("pang_poxi")
+Fk:loadTranslationTable{
+["pang__ganning"] = "甘宁",
+["#pang__ganning"] = "胖帆游侠",
+["designer:pang__ganning"] = "胖即是胖",
+["cv:pang__ganning"] = "官方",
+["illustrator:pang__ganning"] = "官方",
+
+["~mou__ganning"] = "蛮将休得猖狂！呃啊！",
+}
+
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
 lejiu:addSkill("hua_cuijin")
 Fk:loadTranslationTable{
