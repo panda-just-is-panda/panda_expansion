@@ -24,20 +24,21 @@ poxi:addEffect("active", {
       number_player = number_player + Fk:getCardById(id).number
     end
     room:throwCard(effect.cards, poxi.name, player, player)
-    local discarding = room:askToChooseCards(player, {
-        min_num = 1,
-        max_num = 4,
-        target = to,
-        flag = "he",
-        prompt = "#poxi_discard:"..to.id,
-        skill_name = poxi.name,
-    })
+    local discarding 
+    discarding = room:askToChooseCards(player, {
+          target = to,
+          min = 1,
+          max = 4,
+          flag = "he",
+          skill_name = poxi.name,
+          prompt = "#poxi_discard:"..to.id,
+        })
     if #discarding > 0 then
         local cards = discarding
+        room:throwCard(cards, poxi.name, to, player) 
         for _, id in ipairs(cards) do
             number_to = number_to + Fk:getCardById(id).number
         end
-        room:throwCard(cards, poxi.name, to, player) 
     end
     if number_player < number_to and not player.dead then
         room:damage{

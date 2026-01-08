@@ -125,7 +125,7 @@ Fk:loadTranslationTable{
 ["cv:pang__ganning"] = "官方",
 ["illustrator:pang__ganning"] = "官方",
 
-["~mou__ganning"] = "蛮将休得猖狂！呃啊！",
+["~pang__ganning"] = "蛮将休得猖狂！呃啊！",
 }
 
 local lejiu = General:new(extension, "hua_lejiu", "qun", 4, 4, General.Male)
