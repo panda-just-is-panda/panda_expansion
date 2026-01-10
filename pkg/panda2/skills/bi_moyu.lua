@@ -12,7 +12,7 @@ moyu:addEffect(fk.CardUseFinished, {
 anim_type = "switch",
     can_trigger = function(self, event, target, player, data)
         if not player:hasSkill(moyu.name) then return false end
-        if player:getSwitchSkillState(moyu.name, true) == fk.SwitchYang then
+        if player:getSwitchSkillState(moyu.name, true) ~= fk.SwitchYang then
             return data.tos and #data.tos == 1 and data.tos[1] == player
         else
             return target == player
