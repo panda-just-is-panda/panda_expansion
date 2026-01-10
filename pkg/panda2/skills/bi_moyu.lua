@@ -5,7 +5,7 @@ local moyu = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["bi_moyu"] = "摸鱼",
-  [":bi_moyu"] = "转换技，锁定技，以你为①唯一目标②使用者的牌结算后，使用者和唯一的目标角色依次弃置所有手牌（无牌则不弃）并摸X张牌（X为各自弃牌中缺失花色数+1）。",
+  [":bi_moyu"] = "转换技，锁定技，以你为①唯一目标②使用者的牌结算后，使用者和唯一的目标角色弃置所有手牌（无牌则不弃）并摸X张牌（X为各自弃牌中缺失花色数+1）。",
 }
 
 moyu:addEffect(fk.CardUseFinished, {
@@ -36,7 +36,7 @@ anim_type = "switch",
             room:throwCard(cards, moyu.name, from, from)
         end
         from:drawCards(X, moyu.name)
-        if data.tos and #data.tos == 1 then
+        if data.tos and #data.tos == 1 and not from == player then
             local to = data.tos[1]
             local cards = table.filter(to:getCardIds("h"), function(id)
                 return not to:prohibitDiscard(id)
