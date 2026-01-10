@@ -275,6 +275,18 @@ Fk:loadTranslationTable{
 ["~hua_shinaide"] = "呵呵……是时候了，老爷……请记得我，记得我右侧的心跳声。",
 }
 
+local qingque = General:new(extension, "bi_qingque", "qun", 3, 3, General.Female)
+qingque:addSkill("bi_moyu")
+qingque:addSkill("bi_chengyu")
+Fk:loadTranslationTable{
+["bi_qingque"] = "青雀",
+["#bi_qingque"] = "四幺暗刻",
+["designer:bi_qingque"] = "碧叶夜烨芒",
+["cv:bi_qingque"] = "无",
+["illustrator:bi_qingque"] = "佚名",
+
+}
+
 
 
 
