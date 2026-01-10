@@ -50,8 +50,8 @@ chengyu:addEffect("targetmod", {
 })
 
 
-Fk:loadTranslationTable {["pang_chengyu"] = "成玉",
-[":pang_chengyu"] = "出牌阶段限两次，你可以重铸所有手牌，若其中包含三种类别或四种花色，本阶段你使用下一张牌无次数限制且不可响应。",
+Fk:loadTranslationTable {["bi_chengyu"] = "成玉",
+[":bi_chengyu"] = "出牌阶段限两次，你可以重铸所有手牌，若其中包含三种类别或四种花色，本阶段你使用下一张牌无次数限制且不可响应。",
 ["#chengyu-active"] = "成玉：你可以重铸所有手牌，若包含三种类别或四种花色则本阶段你使用下一张牌无次数限制且不可响应",
 ["@@chengyu"] = "成玉",
 
