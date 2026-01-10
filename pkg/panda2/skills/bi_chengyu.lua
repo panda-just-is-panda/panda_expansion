@@ -6,6 +6,7 @@ local chengyu = fk.CreateSkill({
 chengyu:addEffect("active", {
   anim_type = "drawcard",
   prompt = "#chengyu-active",
+  max_phase_use_time = 2,
   can_use = function(self, player)
     return player:usedSkillTimes(chengyu.name, Player.HistoryPhase) < 2 and not player:isKongcheng()
   end,
@@ -31,10 +32,10 @@ end,
 
 chengyu:addEffect(fk.CardUsing, {
   anim_type = "offensive",
-  can_trigger = function(self, event, target, player, data)
+  can_refresh = function(self, event, target, player, data)
     return target == player and player:getMark("@@chengyu") > 0 
   end,
-  on_use = function(self, event, target, player, data)
+  on_refresh = function(self, event, target, player, data)
     if not data.extraUse then
       data.extraUse = true
       player:addCardUseHistory(data.card.trueName, -1)
