@@ -41,6 +41,7 @@ chengyu:addEffect(fk.CardUsing, {
       player:addCardUseHistory(data.card.trueName, -1)
     end
     data.disresponsiveList = table.simpleClone(player.room.players)
+    player.room:setPlayerMark(player, "@@chengyu", 0)
   end,
 })
 
