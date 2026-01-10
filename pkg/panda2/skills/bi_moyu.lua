@@ -36,7 +36,7 @@ anim_type = "switch",
             room:throwCard(cards, moyu.name, from, from)
         end
         from:drawCards(X, moyu.name)
-        if data.tos and #data.tos == 1 and not from == data.tos[1] then
+        if data.tos and #data.tos == 1 and not data.tos[1] == player then
             local to = data.tos[1]
             local cards = table.filter(to:getCardIds("h"), function(id)
                 return not to:prohibitDiscard(id)
