@@ -26,8 +26,8 @@ anim_type = "drawcard",
     room:addPlayerMark(to, "@@cane_gain")
     for _, q in ipairs(room:getAlivePlayers()) do
         if q:getMark("@@cane_lost") > 0 and q:getMark("@@cane_gain") > 0 then
-            for _, p in ipairs(room:getAlivePlayers()) do
-                if not p.dead and (p.general == "yu_xurong" or p.deputyGeneral == "yu_xurong") then
+            for _, p in ipairs(room.players) do
+                if p.general == "yu_xurong" or p.deputyGeneral == "yu_xurong" then
                     room:damage{
                         from = p,
                         to = q,
@@ -62,8 +62,8 @@ anim_type = "drawcard",
     room:addPlayerMark(to, "@@cane_gain")
     for _, q in ipairs(room:getAlivePlayers()) do
         if q:getMark("@@cane_lost") > 0 and q:getMark("@@cane_gain") > 0 then
-            for _, p in ipairs(room:getAlivePlayers()) do
-                if not p.dead and (p.general == "yu_xurong" or p.deputyGeneral == "yu_xurong") then
+            for _, p in ipairs(room.players) do
+                if p.general == "yu_xurong" or p.deputyGeneral == "yu_xurong" then
                     room:damage{
                         from = p,
                         to = q,

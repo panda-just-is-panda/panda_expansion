@@ -9,7 +9,7 @@ Fk:loadTranslationTable{
   ["#juansha_invoke"] = "卷沙：你可以跳过出牌阶段，重铸任意张黑色牌，然后使用至多等量张红色牌",
   ["#juansha_use"] = "卷沙：使用红色牌（至多%arg张）",
   ["#juansha_chongzhu"] = "卷沙：重铸任意张黑色牌",
-  ["@@juansha"] = "伤害增加",
+  ["@juansha"] = "伤害增加",
 
 
 }
@@ -72,7 +72,7 @@ juansha:addEffect(fk.EventPhaseChanging, {
             end
         end
         if X > 0 then
-            room:addPlayerMark(player, "@@juansha", X)
+            room:addPlayerMark(player, "@juansha", X)
         end
     end
   end,
@@ -81,12 +81,12 @@ juansha:addEffect(fk.EventPhaseChanging, {
 juansha:addEffect(fk.DamageInflicted, {
 anim_type = "negative",
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:getMark("@@juansha") > 0
+    return target == player and player:getMark("@juansha") > 0
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
-    data:changeDamage(player:getMark("@@juansha"))
-    room:setPlayerMark(player, "@@juansha", 0)
+    data:changeDamage(player:getMark("@juansha"))
+    room:setPlayerMark(player, "@juansha", 0)
   end,
 })
 
