@@ -52,6 +52,10 @@ juansha:addEffect(fk.EventPhaseChanging, {
                 return c and c.color == c.Red
             end)
             while true do
+                cards2 = table.filter(player:getCardIds("h"), function(id)
+                  local c = Fk:getCardById(id)
+                  return c and c.color == c.Red
+                end)
                 local use = room:askToUseRealCard(player, {
                     pattern = tostring(Exppattern{ id = cards2 }),
                     skill_name = juansha.name,
