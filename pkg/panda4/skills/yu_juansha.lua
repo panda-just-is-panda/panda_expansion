@@ -8,6 +8,7 @@ Fk:loadTranslationTable{
 
   ["#juansha_invoke"] = "卷沙：你可以跳过出牌阶段，重铸任意张黑色牌，然后使用至多等量张红色牌",
   ["#juansha_use:::"] = "卷沙：使用红色牌（至多%arg张）",
+  ["#juansha_chongzhu"] = "卷沙：重铸任意张黑色牌",
   ["@@juansha"] = "伤害增加",
 
 
@@ -39,6 +40,7 @@ juansha:addEffect(fk.EventPhaseChanging, {
             min_num = 0,
             max_num = 999,
             include_equip = true,
+            prompt = "#juansha_chongzhu",
             pattern = tostring(Exppattern{ id = cards }),
             skill_name = juansha.name,
         })
@@ -47,7 +49,7 @@ juansha:addEffect(fk.EventPhaseChanging, {
             X = #chongzhu
             local cards2 = table.filter(player:getCardIds("h"), function(id)
                 local c = Fk:getCardById(id)
-                return c and c.color == card.Red
+                return c and c.color == c.Red
             end)
             while true do
                 local use = room:askToUseRealCard(player, {
