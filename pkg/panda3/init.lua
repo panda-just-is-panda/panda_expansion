@@ -65,6 +65,7 @@ Fk:loadTranslationTable{
 ["cv:pang__pangpanda"] = "和花",
 ["illustrator:pang__pangpanda"] = "和花",
 
+["~pang__pangpanda"] = "胖悲",
 }
 pang.hidden = true
 
