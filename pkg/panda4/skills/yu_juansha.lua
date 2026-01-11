@@ -30,7 +30,7 @@ juansha:addEffect(fk.EventPhaseChanging, {
     if player.dead then return end
     local cards = table.filter(player:getCardIds("he"), function(id)
         local c = Fk:getCardById(id)
-        return c and c.color == card.Black
+        return c and c.color == c.Black
     end)
     local X = 0
     if #cards > 0 then
