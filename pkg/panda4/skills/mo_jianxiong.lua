@@ -4,7 +4,7 @@ local skel = fk.CreateSkill {
 
 Fk:loadTranslationTable{
   ["mo_jianxiong"] = "奸雄",
-  [":mo_jianxiong"] = "每回合限两次，当你指定或成为伤害牌目标时，可以摸一张牌并令此牌对一名目标角色的结算改为：对其造成1点伤害，然后其获得此牌（每轮每种牌名限一次）或摸一张牌。",
+  [":mo_jianxiong"] = "当你指定或成为伤害牌目标时，可以摸一张牌并令此牌对一名目标角色的结算改为：对其造成1点伤害，然后其获得此牌（每轮每种牌名限一次）或摸一张牌。",
 
   ["#"] = "奸雄：你可以获得对你造成伤害的牌",
   ["#mo_jianxiong-get"] = "奸雄：你可以将%arg对一名目标角色的效果改为造成1点伤害并令其选择获得此牌或摸一张牌",
@@ -15,7 +15,7 @@ Fk:loadTranslationTable{
 skel:addEffect(fk.AfterCardTargetDeclared, {
   anim_type = "masochism",
   can_trigger = function (self, event, target, player, data)
-    if target == player and player:hasSkill(skel.name) and player:usedSkillTimes(skel.name, Player.HistoryTurn) < 2 then
+    if target == player and player:hasSkill(skel.name) then
       return data.from and data.card.is_damage_card
     end
   end,
@@ -48,7 +48,7 @@ skel:addEffect(fk.AfterCardTargetDeclared, {
 skel:addEffect(fk.TargetConfirming, {
   anim_type = "masochism",
   can_trigger = function (self, event, target, player, data)
-    if target == player and player:hasSkill(skel.name) and player:usedSkillTimes(skel.name, Player.HistoryTurn) < 2 then
+    if target == player and player:hasSkill(skel.name) then
       return data.from and data.card.is_damage_card
     end
   end,
