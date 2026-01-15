@@ -20,6 +20,9 @@ luoyi:addEffect("active", {
     if #cards > 0 then
         room:recastCard(cards, player, luoyi.name)
     end
+    room:askToUseVirtualCard(player, {
+            name = "duel", skill_name = luoyi.name, cancelable = false, skip = false,
+    })
 end,
 })
 
