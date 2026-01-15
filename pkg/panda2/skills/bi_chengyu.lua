@@ -12,7 +12,7 @@ chengyu:addEffect("active", {
   end,
   target_num = 0,
   min_card_num = 2,
-  card_filter = function(self, player, to_select)
+  card_filter = function(self, player, to_select, selected)
     if #selected < 2 then return false end
     return table.contains(player:getCardIds("h"), to_select)
   end,
