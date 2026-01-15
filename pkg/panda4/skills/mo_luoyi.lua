@@ -13,12 +13,16 @@ luoyi:addEffect("active", {
   target_filter = Util.FalseFunc,
   on_use = function(self, room, effect)
     local player = effect.from
-    local cards = table.filter(player:getCardIds("h"), function(id)
-        local card = Fk:getCardById(id)
-        return card and card.type == Card.TypeBasic
-    end)
-    if #cards > 0 then
-        room:recastCard(cards, player, luoyi.name)
+    if #player:getCardIds("h") > 0 then
+        player:showCards(player:getCardIds("h"))
+        room:delay(200)
+        local cards = table.filter(player:getCardIds("h"), function(id)
+            local card = Fk:getCardById(id)
+            return card and card.type == Card.TypeBasic
+        end)
+        if #cards > 0 then
+            room:recastCard(cards, player, luoyi.name)
+        end
     end
     room:askToUseVirtualCard(player, {
             name = "duel", skill_name = luoyi.name, cancelable = false, skip = false,

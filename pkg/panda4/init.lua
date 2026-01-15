@@ -261,7 +261,7 @@ Fk:loadTranslationTable{
 
 ["~mo_xuchu"] = "丞相，末将尽力了…",
 }
-xuchu.hidden = true
+
 
 
 
