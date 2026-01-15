@@ -42,3 +42,5 @@ xiachan:addEffect(fk.DamageCaused, {
     data:changeDamage(1)
   end,
 })
+
+return xiachan
