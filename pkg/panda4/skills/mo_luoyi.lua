@@ -5,7 +5,7 @@ local luoyi = fk.CreateSkill({
 
 luoyi:addEffect("active", {
   anim_type = "drawcard",
-  prompt = "#chengyu-active",
+  prompt = "#mo_luoyi",
   max_phase_use_time = 1,
   target_num = 0,
   card_num = 0,

@@ -16,8 +16,8 @@ Fk:loadTranslationTable{
 local spec = {
   anim_type = "offensive",
   can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(xiachan.name) and target == player and
-      data.responseToEvent and data.responseToEvent.from ~= player and
+    return player:hasSkill(xiachan.name) and target ~= player and
+      data.responseToEvent and data.responseToEvent.from == player and
       data.responseToEvent.card
   end,
   on_refresh = function(self, event, target, player, data)
