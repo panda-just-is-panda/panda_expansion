@@ -13,6 +13,7 @@ chengyu:addEffect("active", {
   target_num = 0,
   min_card_num = 2,
   card_filter = function(self, player, to_select)
+    if #selected < 2 then return false end
     return table.contains(player:getCardIds("h"), to_select)
   end,
   target_filter = Util.FalseFunc,

@@ -1,5 +1,5 @@
 local chengyu = fk.CreateSkill({
-  name = "bi_chengyu", 
+  name = "mo_luoyi", 
   tags = {}, 
 })
 
@@ -66,10 +66,9 @@ chengyu:addEffect("targetmod", {
 })
 
 
-Fk:loadTranslationTable {["bi_chengyu"] = "成玉",
-[":bi_chengyu"] = "出牌阶段限一次，你可以重铸至少两张手牌，若本回合有三种类别或四种花色的牌进入弃牌堆，本阶段你使用下一张牌无次数限制且不可响应。",
-["#chengyu-active"] = "成玉：你可以重铸至少两张手牌，若包含三种类别或四种花色则本阶段你使用下一张牌无次数限制且不可响应",
-["@@chengyu"] = "成玉",
+Fk:loadTranslationTable {["mo_luoyi"] = "裸衣",
+[":mo_luoyi"] = "出牌阶段限一次，你可以展示所有手牌，重铸其中所有的基本牌，然后视为使用【决斗】。",
+["#mo_luoyi"] = "成玉：你可以重铸至少两张手牌，若包含三种类别或四种花色则本阶段你使用下一张牌无次数限制且不可响应",
 
 }
 return chengyu

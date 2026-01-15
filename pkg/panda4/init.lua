@@ -250,8 +250,8 @@ Fk:loadTranslationTable{
 }
 
 local xuchu = General:new(extension, "mo_xuchu", "wei", 4, 4, General.Male)
-xuchu:addSkill("yu_cane")
-xuchu:addSkill("yu_juansha")
+xuchu:addSkill("mo_luoyi")
+xuchu:addSkill("mo_chandou")
 Fk:loadTranslationTable{
 ["mo_xuchu"] = "许褚",
 ["#mo_xuchu"] = "力擒双虎",
