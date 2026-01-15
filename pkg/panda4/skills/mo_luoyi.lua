@@ -11,7 +11,7 @@ chengyu:addEffect("active", {
     return player:usedSkillTimes(chengyu.name, Player.HistoryPhase) < 1 and not player:isKongcheng()
   end,
   target_num = 0,
-  min_card_num = 2,
+  min_card_num = 1,
   card_filter = function(self, player, to_select)
     return table.contains(player:getCardIds("h"), to_select)
   end,
