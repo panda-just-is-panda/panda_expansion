@@ -9,8 +9,8 @@ Fk:loadTranslationTable{
   ["@@mo_xiachan-turn"] = "挟缠",
 
 
-  ["$mo_xiachan1"] = "。",
-  ["$mo_xiachan2"] = "。",
+  ["$mo_xiachan1"] = "脱！",
+  ["$mo_xiachan2"] = "谁来与我大战三百回合？",
 }
 
 local spec = {

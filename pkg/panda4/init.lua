@@ -259,6 +259,7 @@ Fk:loadTranslationTable{
 ["cv:mo_xuchu"] = "官方",
 ["illustrator:mo_xuchu"] = "官方",
 
+["~mo_xuchu"] = "丞相，末将尽力了…",
 }
 xuchu.hidden = true
 
