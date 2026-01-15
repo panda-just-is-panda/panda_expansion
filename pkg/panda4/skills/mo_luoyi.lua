@@ -15,7 +15,7 @@ luoyi:addEffect("active", {
     local player = effect.from
     if #player:getCardIds("h") > 0 then
         player:showCards(player:getCardIds("h"))
-        room:delay(200)
+        room:delay(100)
         local cards = table.filter(player:getCardIds("h"), function(id)
             local card = Fk:getCardById(id)
             return card and card.type == Card.TypeBasic
