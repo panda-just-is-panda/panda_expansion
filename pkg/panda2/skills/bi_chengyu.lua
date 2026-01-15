@@ -6,24 +6,38 @@ local chengyu = fk.CreateSkill({
 chengyu:addEffect("active", {
   anim_type = "drawcard",
   prompt = "#chengyu-active",
-  max_phase_use_time = 2,
+  max_phase_use_time = 1,
   can_use = function(self, player)
-    return player:usedSkillTimes(chengyu.name, Player.HistoryPhase) < 2 and not player:isKongcheng()
+    return player:usedSkillTimes(chengyu.name, Player.HistoryPhase) < 1 and not player:isKongcheng()
   end,
   target_num = 0,
-  card_num = 0,
-  card_filter = Util.FalseFunc,
+  min_card_num = 1,
+  card_filter = function(self, player, to_select)
+    return table.contains(player:getCardIds("h"), to_select)
+  end,
   target_filter = Util.FalseFunc,
   on_use = function(self, room, effect)
     local player = effect.from
-    local cards = table.simpleClone(player:getCardIds("h"))
+    local cards = effect.cards
+    room:recastCard(cards, player, chengyu.name)
     local suits, types = {}, {}
-    for _, id in ipairs(cards) do
+    local cards2 = {}
+    room.logic:getEventsOfScope(GameEvent.MoveCards, 1, function(e)
+      for _, move in ipairs(e.data) do
+        if move.toArea == Card.DiscardPile then
+          for _, info in ipairs(move.moveInfo) do
+            if table.contains(room.discard_pile, info.cardId) then
+              table.insertIfNeed(cards2, info.cardId)
+            end
+          end
+        end
+      end
+    end, Player.HistoryTurn)
+    for _, id in ipairs(cards2) do
         table.insertIfNeed(suits, Fk:getCardById(id).suit)
         table.insertIfNeed(types, Fk:getCardById(id).type)
     end
     table.removeOne(suits, Card.NoSuit)
-    room:recastCard(cards, player, chengyu.name)
     if #suits == 4 or #types == 3 then
         room:addPlayerMark(player, "@@chengyu")
     end
@@ -53,8 +67,8 @@ chengyu:addEffect("targetmod", {
 
 
 Fk:loadTranslationTable {["bi_chengyu"] = "成玉",
-[":bi_chengyu"] = "出牌阶段限两次，你可以重铸所有手牌，若其中包含三种类别或四种花色，本阶段你使用下一张牌无次数限制且不可响应。",
-["#chengyu-active"] = "成玉：你可以重铸所有手牌，若包含三种类别或四种花色则本阶段你使用下一张牌无次数限制且不可响应",
+[":bi_chengyu"] = "出牌阶段限一次，你可以重铸至少两张手牌，若本回合有三种类别或四种花色的牌进入弃牌堆，本阶段你使用下一张牌无次数限制且不可响应。",
+["#chengyu-active"] = "成玉：你可以重铸至少两张手牌，若包含三种类别或四种花色则本阶段你使用下一张牌无次数限制且不可响应",
 ["@@chengyu"] = "成玉",
 
 }
