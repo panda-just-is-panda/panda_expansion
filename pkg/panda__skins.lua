@@ -3,7 +3,7 @@ extension.extensionName = "panda__skins"
 
 local content1 = {
   {
-  skins={"pang__classicpanda"}, 
+  skins={"pang__classicpanda.jpg"}, 
   enabled_generals = {"pang__panda"},
   }
 }
