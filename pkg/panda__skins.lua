@@ -4,7 +4,10 @@ extension.extensionName = "panda__skins"
 extension:addSkinPackage {
   path = "packages/panda/image/generals",
   content = {
-  {skins={"pang__pangpanda.jpg"}, enable_generals = {"pang__panda"},}
+  {
+  skins={"pang__pangpanda.jpg"}, 
+  enable_generals = {"pang__panda"},
+  }
 }
 }
 
