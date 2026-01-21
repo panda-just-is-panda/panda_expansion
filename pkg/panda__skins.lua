@@ -22,17 +22,37 @@ local content1 = {
   skins={"pang__moviepanda.jpg"}, 
   enabled_generals = {"pang__panda"},
   },
+  {
+  skins={"pang__confusedpanda.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
+  {
+  skins={"pang__darknesspanda.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
+  {
+  skins={"pang__sadpang.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
+  {
+  skins={"pang__missonepanda.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
 }
 extension:addSkinPackage {
   path = "/image/skins",
   content = content1
 }
 Fk:loadTranslationTable{
-  ["pang__classicpanda"] = "经典胖胖",
-  ["pang__speechlesspanda"] = "无语胖胖",
-  ["pang__flowerpanda"] = "送花胖胖",
+  ["pang__classicpanda"] = "胖胖",
+  ["pang__speechlesspanda"] = "胖无语",
+  ["pang__flowerpanda"] = "胖送花",
   ["pang__tangpanda"] = "唐胖",
-  ["pang__moviepanda"] = "大电影胖胖",
+  ["pang__confusedpanda"] = "胖受震撼",
+  ["pang__darknesspanda"] = "胖将黑化",
+  ["pang__sadpang"] = "胖悲",
+  ["pang__missonepanda"] = "缺一！！！",
+  ["pang__moviepanda"] = "大电影",
 }
 
 return extension
