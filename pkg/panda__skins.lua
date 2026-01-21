@@ -1,11 +1,11 @@
 local extension = Package:new("panda__skins", Package.SkinPack)
-extension.extensionName = "panda__skins"
+extension.extensionName = "panda"
 
 local content1 = {
   {
   skins={"pang__classicpanda.jpg"}, 
   enabled_generals = {"pang__panda"},
-  }
+  },
 }
 extension:addSkinPackage {
   path = "/image/skins",
