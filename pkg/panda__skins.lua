@@ -3,11 +3,10 @@ extension.extensionName = "panda__skins"
 
 local content1 = {
   {
-  skins={"pang__classicpanda.jpg"}, 
+  skins={"pang__classicpanda"}, 
   enabled_generals = {"pang__panda"},
   }
 }
-
 extension:addSkinPackage {
   path = ".image.skins",
   content = content1
