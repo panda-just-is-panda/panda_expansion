@@ -8,7 +8,7 @@ local content1 = {
   }
 }
 extension:addSkinPackage {
-  path = ".image.skins",
+  path = "/image/skins",
   content = content1
 }
 Fk:loadTranslationTable{
