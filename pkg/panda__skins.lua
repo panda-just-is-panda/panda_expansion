@@ -7,6 +7,7 @@ local content1 = {
   enabled_generals = {"pang__panda"},
   }
 }
+
 extension:addSkinPackage {
   path = ".image.skins",
   content = content1
