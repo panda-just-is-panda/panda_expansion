@@ -1,5 +1,5 @@
 local extension = Package:new("panda__skins", Package.SkinPack)
-extension.extensionName = "panda__skin1"
+extension.extensionName = "panda__skins"
 
 extension:addSkinPackage {
   path = "packages/panda/image/generals",
