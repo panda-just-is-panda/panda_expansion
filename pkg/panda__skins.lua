@@ -63,7 +63,22 @@ local content1 = {
   skins={"pang__starcraft1_mengsk.jpg"}, 
   enabled_generals = {"pang__mengsk"},
   },
-
+  {
+  skins={"pang__finaljudge.jpg"}, 
+  enabled_generals = {"pang__last_judge"},
+  },
+  {
+  skins={"pang__21+1_meilanni.jpg"}, 
+  enabled_generals = {"pang__meilanni"},
+  },
+  {
+  skins={"pang__groal_the_girl.jpg"}, 
+  enabled_generals = {"pang__groal_the_great"},
+  },
+  {
+  skins={"pang__girl_beastfly.jpg"}, 
+  enabled_generals = {"pang__savage_beastfly"},
+  },
 }
 extension:addSkinPackage {
   path = "/image/skins",
@@ -85,6 +100,10 @@ Fk:loadTranslationTable{
   ["pang__yokapanda"] = "卢弈胖",
   ["pang__dresspanda"] = "女装胖",
   ["pang__starcraft1_mengsk"] = "一代",
+  ["pang__finaljudge"] = "终门审判",
+  ["pang__21+1_meilanni"] = "玫瑰的诡计",
+  ["pang__groal_the_girl"] = "可爱捏",
+  ["pang__girl_beastfly"] = "可爱捏",
 }
 
 return extension
