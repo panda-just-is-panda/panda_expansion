@@ -38,6 +38,32 @@ local content1 = {
   skins={"pang__missonepanda.jpg"}, 
   enabled_generals = {"pang__panda"},
   },
+  {
+  skins={"pang__sadpanda.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
+  {
+  skins={"pang__jilepanda.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
+  {
+  skins={"pang__zayupanda.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
+  {
+  skins={"pang__yokapanda.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
+  {
+  skins={"pang__dresspanda.jpg"}, 
+  enabled_generals = {"pang__panda"},
+  },
+
+  {
+  skins={"pang__starcraft1_mengsk.jpg"}, 
+  enabled_generals = {"pang__mengsk"},
+  },
+
 }
 extension:addSkinPackage {
   path = "/image/skins",
@@ -50,9 +76,15 @@ Fk:loadTranslationTable{
   ["pang__tangpanda"] = "唐胖",
   ["pang__confusedpanda"] = "胖受震撼",
   ["pang__darknesspanda"] = "胖将黑化",
-  ["pang__sadpang"] = "胖悲",
+  ["pang__sadpang"] = "委屈胖",
   ["pang__missonepanda"] = "缺一！！！",
   ["pang__moviepanda"] = "大电影",
+  ["pang__sadpanda"] = "胖悲",
+  ["pang__jilepanda"] = "你已急哭",
+  ["pang__zayupanda"] = "杂鱼捏",
+  ["pang__yokapanda"] = "卢弈胖",
+  ["pang__dresspanda"] = "女装胖",
+  ["pang__starcraft1_mengsk"] = "一代",
 }
 
 return extension
