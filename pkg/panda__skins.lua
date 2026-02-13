@@ -27,10 +27,6 @@ local content1 = {
   enabled_generals = {"pang__re_pillager"},
   },
   {
-  skins={"pang__arrow_pillager.jpg"}, 
-  enabled_generals = {"pang__re_pillager"},
-  },
-  {
   skins={"pang__lovezoglin.jpg"}, 
   enabled_generals = {"pang__zoglin"},
   },
@@ -144,7 +140,6 @@ Fk:loadTranslationTable{
   ["pang__classical_steve"] = "钻石相伴",
   ["pang__ocean_steve"] = "深海探险",
   ["pang__pillager_patrol"] = "灾厄巡逻",
-  ["pang__arrow_pillager"] = "百发零中",
   ["pang__lovezoglin"] = "猪爱猪猪",
 }
 
