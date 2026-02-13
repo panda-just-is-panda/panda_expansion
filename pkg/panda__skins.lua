@@ -3,6 +3,40 @@ extension.extensionName = "panda"
 
 local content1 = {
   {
+  skins={"pang__ocean_steve.jpg"}, 
+  enabled_generals = {"pang__steve"},
+  },
+  {
+  skins={"pang__horse_steve.jpg"}, 
+  enabled_generals = {"pang__steve"},
+  },
+  {
+  skins={"pang__classical_steve.jpg"}, 
+  enabled_generals = {"pang__steve"},
+  },
+  {
+  skins={"pang__zhangxiu_vindicator.jpg"}, 
+  enabled_generals = {"pang__vindicator"},
+  },
+  {
+  skins={"pang__girl_vindicator.jpg"}, 
+  enabled_generals = {"pang__vindicator"},
+  },
+  {
+  skins={"pang__pillager_patrol.jpg"}, 
+  enabled_generals = {"pang__re_pillager"},
+  },
+  {
+  skins={"pang__arrow_pillager.jpg"}, 
+  enabled_generals = {"pang__re_pillager"},
+  },
+  {
+  skins={"pang__lovezoglin.jpg"}, 
+  enabled_generals = {"pang__zoglin"},
+  },
+
+
+  {
   skins={"pang__classicpanda.jpg"}, 
   enabled_generals = {"pang__panda"},
   },
@@ -104,6 +138,14 @@ Fk:loadTranslationTable{
   ["pang__21+1_meilanni"] = "玫瑰的诡计",
   ["pang__groal_the_girl"] = "可爱捏",
   ["pang__girl_beastfly"] = "可爱捏",
+  ["pang__zhangxiu_vindicator"] = "林地斧王",
+  ["pang__girl_vindicator"] = "娘化",
+  ["pang__horse_steve"] = "骑马与砍杀",
+  ["pang__classical_steve"] = "钻石相伴",
+  ["pang__ocean_steve"] = "深海探险",
+  ["pang__pillager_patrol"] = "灾厄巡逻",
+  ["pang__arrow_pillager"] = "百发零中",
+  ["pang__lovezoglin"] = "猪爱猪猪",
 }
 
 return extension
