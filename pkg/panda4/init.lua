@@ -237,17 +237,6 @@ Fk:loadTranslationTable{
 ["~yu_shamoke"] = "五溪蛮夷，不可能输！",
 }
 
-local xurong = General:new(extension, "yu_xurong", "god", 4, 4, General.Male)
-xurong:addSkill("yu_cane")
-xurong:addSkill("yu_juansha")
-Fk:loadTranslationTable{
-["yu_xurong"] = "徐荣",
-["#yu_xurong"] = "霸业的灭炎",
-["designer:yu_xurong"] = "雨幕江南",
-["cv:yu_xurong"] = "官方",
-["illustrator:yu_xurong"] = "官方",
-
-}
 
 local xuchu = General:new(extension, "mo_xuchu", "wei", 4, 4, General.Male)
 xuchu:addSkill("mo_luoyi")
