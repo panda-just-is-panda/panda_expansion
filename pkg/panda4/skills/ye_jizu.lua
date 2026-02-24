@@ -5,18 +5,6 @@ local jizu = fk.CreateSkill {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_trigger = function(self, event, target, player, data)
-        local room = player.room
-        if data.card and target:getMark("@jizu_block-turn") then
-            for _, to in ipairs(room.alive_players) do
-                room:setPlayerMark(to,"@jizu_block-turn", 0)
-            end
-        end
-        if data.card and table.contains(data.card.skillNames, jizu.name) then
-            player:drawCards(5, jizu.name)
-            for _, to in ipairs(room.alive_players) do
-                room:setPlayerMark(to,"@jizu_block-turn", data.card:getColorString())
-            end
-        end
         return player:hasSkill(jizu.name) and (data.extra_data or {}).can_jizu
         and player:usedSkillTimes(jizu.name, Player.HistoryTurn) == 0
         and player:getMark("unique_jizu_block") == 0
@@ -82,12 +70,21 @@ jizu:addEffect(fk.CardUseFinished, {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_refresh = function(self, event, target, player, data)
-        return data.card and target == player.room.current 
-        and player:hasSkill(jizu.name)
+        return data.card and player:hasSkill(jizu.name)
     end,
     on_refresh = function(self, event, target, player, data)
         local room = player.room
-        if player:getMark("jizu_color_record-turn") ~= 0 
+        if data.card and target:getMark("@jizu_block-turn") then
+            for _, to in ipairs(room.alive_players) do
+                room:setPlayerMark(to,"@jizu_block-turn", 0)
+            end
+        end
+        if data.card and table.contains(data.card.skillNames, jizu.name) then
+            for _, to in ipairs(room.alive_players) do
+                room:setPlayerMark(to,"@jizu_block-turn", data.card:getColorString())
+            end
+        end
+        if player:getMark("jizu_color_record-turn") ~= 0  and target == player.room.current 
         and player:getMark("jizu_color_record-turn") == data.card:getColorString() then
             data.extra_data = data.extra_data or {}
             data.extra_data.can_jizu = true
