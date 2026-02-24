@@ -30,6 +30,10 @@ local content1 = {
   skins={"pang__lovezoglin.jpg"}, 
   enabled_generals = {"pang__zoglin"},
   },
+  {
+  skins={"pang__wither_skeleton_thewall.jpg"}, 
+  enabled_generals = {"pang__wither_skeleton"},
+  },
 
 
   {
@@ -141,6 +145,7 @@ Fk:loadTranslationTable{
   ["pang__ocean_steve"] = "深海探险",
   ["pang__pillager_patrol"] = "拟人",
   ["pang__lovezoglin"] = "猪爱猪猪",
+  ["pang__wither_skeleton_thewall"] = "倚墙而息",
 }
 
 return extension
