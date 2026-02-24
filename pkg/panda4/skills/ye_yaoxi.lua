@@ -22,7 +22,7 @@ yaoxi:addEffect(fk.GameStart, {
     on_use = function(self, event, target, player, data)
         local room = player.room
         local to = event:getCostData(self).tos[1]
-        room:handleAddLoseSkills(to, "ye_jizu", nil, false, true)
+        room:handleAddLoseSkills(to, "ye_jizu", nil, true, false)
   end,
 })
 
@@ -54,8 +54,8 @@ yaoxi:addEffect(fk.TurnStart, {
     local room = player.room
     local to_lose = event:getCostData(self).tos[1]
     local to_get = event:getCostData(self).tos[2]
-    room:handleAddLoseSkills(to_lose, "-ye_jizu", nil, false, true)
-    room:handleAddLoseSkills(to_get, "ye_jizu", nil, false, true)
+    room:handleAddLoseSkills(to_lose, "-ye_jizu", nil, true, false)
+    room:handleAddLoseSkills(to_get, "ye_jizu", nil, true, false)
     if #to_lose:getCardIds("hej") > 0 and to_lose ~= player then
         local card = room:askToChooseCard(player, {
             target = to_lose,

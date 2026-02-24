@@ -20,6 +20,7 @@ jizu:addEffect(fk.CardUseFinished, {
             room:setPlayerMark(player,"jizu_color_record-turn", data.card:getColorString())
         end
         return player:hasSkill(jizu.name) and data.card:getColorString() == player:getMark("jizu_color_record-turn")
+        and player:usedSkillTimes(jizu.name, Player.HistoryTurn) == 0
     end,
     on_cost = function(self, event, target, player, data)
         local room = player.room
@@ -53,8 +54,8 @@ jizu:addEffect(fk.CardUseFinished, {
                     cancelable = true,
                 })
                 if #to_move > 0 then
-                    room:handleAddLoseSkills(player, "-ye_jizu", nil, false, true)
-                    room:handleAddLoseSkills(to_move, "ye_jizu", nil, false, true)
+                    room:handleAddLoseSkills(player, "-ye_jizu", nil, true, false)
+                    room:handleAddLoseSkills(to_move, "ye_jizu", nil, true, false)
                     if #player:getCardIds("hej") > 0 and to ~= player then
                         local card = room:askToChooseCard(to, {
                             target = player,
