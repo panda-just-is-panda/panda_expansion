@@ -34,6 +34,26 @@ local content1 = {
   skins={"pang__wither_skeleton_thewall.jpg"}, 
   enabled_generals = {"pang__wither_skeleton"},
   },
+  {
+  skins={"pang__husk_skin.jpg"}, 
+  enabled_generals = {"pang__re_husk"},
+  },
+  {
+  skins={"pang__husk_skin_two.jpg"}, 
+  enabled_generals = {"pang__re_husk"},
+  },
+  {
+  skins={"pang__zombie_skin.jpg"}, 
+  enabled_generals = {"pang__zombie"},
+  },
+  {
+  skins={"pang__drowned_skin.jpg"}, 
+  enabled_generals = {"pang__drowned"},
+  },
+  {
+  skins={"pang__evoker_skin.jpg"}, 
+  enabled_generals = {"pang__evoker"},
+  },
 
 
   {
@@ -171,6 +191,11 @@ Fk:loadTranslationTable{
   ["pang__pillager_patrol"] = "拟人",
   ["pang__lovezoglin"] = "猪爱猪猪",
   ["pang__wither_skeleton_thewall"] = "倚墙而息",
+  ["pang__husk_skin"] = "骄擅横尸",
+  ["pang__husk_skin_two"] = "奇锋厄漠",
+  ["pang__zombie_skin"] = "快马突袭",
+  ["pang__drowned_skin"] = "没水一战",
+  ["pang__evoker_skin"] = "看淡生死",
 }
 
 return extension
