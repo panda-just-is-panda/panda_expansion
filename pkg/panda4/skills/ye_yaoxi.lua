@@ -63,7 +63,7 @@ yaoxi:addEffect(fk.TurnStart, {
             flag = "hej",
             skill_name = "ye_yaoxi",
         })
-        room:obtainCard(to_lose, card, true, fk.ReasonPrey)
+        room:obtainCard(player, card, true, fk.ReasonPrey)
         local to_distribute = room:askToChoosePlayers(player, {
             min_num = 1,
             max_num = 1,
