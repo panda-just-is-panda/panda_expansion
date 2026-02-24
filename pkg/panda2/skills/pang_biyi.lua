@@ -59,7 +59,7 @@ biyi:addEffect(fk.EventPhaseEnd, {
         end
       end
     else
-        room:addPlayerMark(player, "biyu_plus-turn", 1)
+        room:addPlayerMark(player, "biyu_plus-turn", 2)
     end
     if player:getMark("biyi_kill-phase") > 1 then
       if Fk.skills["glory_days__show"] and gdU and player:getMark(biyi.name.."_achive")==0 then
@@ -82,7 +82,7 @@ biyi:addEffect("maxcards", {
 
 
 Fk:loadTranslationTable {["pang_biyi"] = "笔意",
-[":pang_biyi"] = "出牌阶段结束时，若你此阶段使用牌指定过所有其他角色为目标，你可以对至多三名其他角色各造成1点伤害并令本回合你的手牌上限-2，否则本回合你的手牌上限+1。",
+[":pang_biyi"] = "出牌阶段结束时，若你此阶段使用牌指定过所有其他角色为目标，你可以对至多三名其他角色各造成1点伤害并令本回合你的手牌上限-2；否则，本回合你的手牌上限+2。",
 ["#biyi"] = "你可以对至多三名其他角色各造成1点伤害并令手牌上限本回合-2",
 }
 
