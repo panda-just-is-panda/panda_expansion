@@ -3,7 +3,7 @@ local yaoxi = fk.CreateSkill{
   tags = {},
 }
 
-yaoxi:addEffect(fk.TurnStart, {
+yaoxi:addEffect(fk.GameStart, {
     can_trigger = function(self, event, target, player, data)
         return player:hasSkill(yaoxi.name)
     end,

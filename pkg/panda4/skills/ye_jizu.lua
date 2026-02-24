@@ -95,7 +95,6 @@ jizu:addEffect("prohibit",{
 
 Fk:loadTranslationTable {["ye_jizu"] = "急阻",
 [":ye_jizu"] = "每回合限一次，当前回合角色连续使用同色的牌结算后，你可使用一张不同色的牌并摸一张牌，此牌结算后本回合下一张使用的牌须与此牌颜色不同。",
-["pang_chain"] = "视为使用【铁锁连环】",
 ["@jizu_block-turn"] = "急阻",
 ["#jizu_use"] = "急阻：你可以使用一张不同色的牌",
 ["#jizu_move"] = "谣隙：你可移动“急阻”，然后获得并分配 %src 区域内的一张牌",
