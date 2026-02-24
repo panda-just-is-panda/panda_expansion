@@ -24,6 +24,7 @@ jizu:addEffect(fk.CardUseFinished, {
         })
         room:setPlayerMark(player,"@unique_jizu_block",0)
         if use then
+            use.card.skillName = jizu.name
             for _, to in ipairs(room.alive_players) do
                 room:setPlayerMark(to,"@jizu_block-turn", use.card:getColorString())
             end
@@ -73,7 +74,7 @@ jizu:addEffect(fk.CardUseFinished, {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_refresh = function(self, event, target, player, data)
-        if data.card and target:getMark("@jizu_block-turn") and not target:getMark("@unique_jizu_block") then
+        if data.card and target:getMark("@jizu_block-turn") and not table.contains(data.card.skillNames, jizu.name) then
             for _, to in ipairs(player.room.alive_players) do
                 player.room:setPlayerMark(to,"@jizu_block-turn", 0)
             end
@@ -97,7 +98,7 @@ jizu:addEffect("prohibit",{
       return card:getColorString() == player:getMark("@jizu_block-turn")
     end
     if player:getMark("@unique_jizu_block") then
-      return card:getColorString() == player:getMark("unique_jizu_block")
+      return card:getColorString() == player:getMark("@unique_jizu_block")
     end
   end,
 })
