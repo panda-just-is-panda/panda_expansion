@@ -102,8 +102,16 @@ local content1 = {
   enabled_generals = {"pang__last_judge"},
   },
   {
+  skins={"pang__bolinyidong_stockings.jpg"}, 
+  enabled_generals = {"pang__bolinyidong"},
+  },
+  {
   skins={"pang__21+1_meilanni.jpg"}, 
   enabled_generals = {"pang__meilanni"},
+  },
+  {
+  skins={"pang__luxi_queen.jpg"}, 
+  enabled_generals = {"pang__luxi", "pang__laoluxi"},
   },
   {
   skins={"pang__groal_the_girl.jpg"}, 
@@ -136,6 +144,8 @@ Fk:loadTranslationTable{
   ["pang__starcraft1_mengsk"] = "一代",
   ["pang__finaljudge"] = "终门审判",
   ["pang__21+1_meilanni"] = "玫瑰的诡计",
+  ["pang__bolinyidong_stockings"] = "铅红的真相",
+  ["pang__luxi_queen"] = "",
   ["pang__groal_the_girl"] = "可爱捏",
   ["pang__girl_beastfly"] = "可爱捏",
   ["pang__zhangxiu_vindicator"] = "林地斧王",
