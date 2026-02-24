@@ -17,13 +17,12 @@ yaoxi:addEffect(fk.GameStart, {
             prompt = "#yaoxi_select",
             cancelable = false,
         })
-        to_distribute[1]:drawCards(1, yaoxi.name)
         event:setCostData(self, {tos = to_distribute})
+        return true
     end,
     on_use = function(self, event, target, player, data)
         local room = player.room
         local to = event:getCostData(self).tos[1]
-        to:drawCards(1, yaoxi.name)
         room:handleAddLoseSkills(to, "ye_jizu", nil, false, true)
   end,
 })
