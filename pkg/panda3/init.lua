@@ -73,6 +73,7 @@ Fk:loadTranslationTable{
 ["cv:pang__weihuacun"] = "官方",
 ["illustrator:pang__weihuacun"] = "豆包&木美人",
 
+["~pang__weihuacun"] = "早知造化钟难逆，当初该留引路灯...",
 }
 
 local pang = General:new(extension, "pang__pangpanda", "god", 4, 4, General.Female)

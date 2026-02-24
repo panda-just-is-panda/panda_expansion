@@ -8,11 +8,13 @@ Fk:loadTranslationTable{
   ["#pang__lianxiu-invoke"] = "炼修：现在是 %arg ，你重铸任意张手牌并使用其中一张",
   ["#pang__lianxiu-use"] = "炼修：使用一张牌",
   ["#pang__lianxiu-discard"] = "炼修：你须将手牌弃至三张，然后你回复1点体力",
+
+  ["$pang__lianxiu1"] = "三昧真火炼凡胎，七窍玲珑自通明",
+  ["$pang__lianxiu2"] = "百骸经络如江河，六日运转复始归",
 }
 
 ---@type TrigSkelSpec<PhaseFunc>
 local lianxiu = {
-  mute = true,
   can_trigger = function (self, event, target, player, data)
     return player:hasSkill(skel.name) and player == target
   end,
@@ -42,6 +44,7 @@ local lianxiu = {
           room:askToUseRealCard(player, {
             skill_name = skel.name,
             pattern = tostring(Exppattern{ id = cids }),
+            expand_pile = cids,
             prompt = "#pang__lianxiu-use",
             extra_data = {
               bypass_times = true

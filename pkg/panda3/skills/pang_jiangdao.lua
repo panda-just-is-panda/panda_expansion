@@ -9,10 +9,12 @@ Fk:loadTranslationTable{
   ["#pang__jiangdao-discard"] = "讲道：你须将手牌弃至三张",
   ["#pang__jiangdao-recast"] = "讲道：你可以重铸任意张手牌并使用一张因此重铸的牌",
   ["#pang__jiangdao-use"] = "讲道：你可以使用一张牌",
+
+  ["$pang__jiangdao1"] = "灵台蒙尘者，需受天河洗",
+  ["$pang__jiangdao2"] = "掌心三寸乾坤小，丹田方寸天地宽",
 }
 ---@type TrigSkelSpec<TurnFunc>
 local jiangdao = {
-  mute = true,
   can_trigger = function (self, event, target, player, data)
     return player:hasSkill(skel.name) and player == target
   end,
@@ -71,6 +73,7 @@ local jiangdao = {
             room:askToUseRealCard(to, {
               skill_name = skel.name,
               pattern = tostring(Exppattern{ id = cids }),
+              expand_pile = cids,
               prompt = "#pang__jiangdao-use",
             })
           end
