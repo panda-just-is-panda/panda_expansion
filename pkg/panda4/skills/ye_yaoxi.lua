@@ -18,7 +18,7 @@ yaoxi:addEffect(fk.GameStart, {
             cancelable = false,
         })
         to_distribute[1]:drawCards(1, yaoxi.name)
-        event:setCostData(self, {tos = to_distribute[1]})
+        event:setCostData(self, {tos = to_distribute})
     end,
     on_use = function(self, event, target, player, data)
         local room = player.room
