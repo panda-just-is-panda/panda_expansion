@@ -16,11 +16,9 @@ jizu:addEffect(fk.CardUseFinished, {
                 room:setPlayerMark(to,"@jizu_block-turn", data.card:getColorString())
             end
         end
-        if data.card and target == room.current and player:hasSkill(jizu.name) then
-            room:setPlayerMark(player,"jizu_color_record-turn", data.card:getColorString())
-        end
-        return player:hasSkill(jizu.name) and data.card:getColorString() == player:getMark("jizu_color_record-turn")
+        return player:hasSkill(jizu.name) and (data.extra_data or {}).can_jizu
         and player:usedSkillTimes(jizu.name, Player.HistoryTurn) == 0
+        and player:getMark("unique_jizu_block") == 0
     end,
     on_cost = function(self, event, target, player, data)
         local room = player.room
@@ -78,6 +76,22 @@ jizu:addEffect(fk.CardUseFinished, {
                 end
             end
         end
+    end,
+})
+jizu:addEffect(fk.CardUseFinished, {
+    anim_type = "drawcard",
+    can_refresh = function(self, event, target, player, data)
+        return data.card and target == player.room.current 
+        and player:hasSkill(jizu.name)
+    end,
+    on_refresh = function(self, event, target, player, data)
+        local room = player.room
+        if player:getMark("jizu_color_record-turn") ~= 0 
+        and player:getMark("jizu_color_record-turn") ~= data.card:getColorString() then
+            data.extra_data = data.extra_data or {}
+            data.extra_data.can_jizu = true
+        end
+        room:setPlayerMark(player,"jizu_color_record-turn", data.card:getColorString())
     end,
 })
 

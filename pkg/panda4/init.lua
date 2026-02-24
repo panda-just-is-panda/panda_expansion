@@ -262,7 +262,7 @@ Fk:loadTranslationTable{
 ["illustrator:ye_gouan"] = "佚名",
 
 }
-
+gouan.hidden = true
 
 
 

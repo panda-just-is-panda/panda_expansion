@@ -41,7 +41,7 @@ yaoxi:addEffect(fk.TurnStart, {
                 max_num = 1,
                 targets = room:getOtherPlayers(to, false),
                 skill_name = "ye_yaoxi",
-                prompt = "#yaoxi_move:"..to.id,
+                prompt = to == player and "#yaoxi_move2" or "#yaoxi_move:"..to.id,
                 cancelable = true,
             })
             if #to_move > 0 then
@@ -85,6 +85,7 @@ Fk:loadTranslationTable {["ye_yaoxi"] = "谣隙",
 [":ye_yaoxi"] = "游戏开始时，你令一名角色获得“急阻”。你回合开始时或“急阻”发动后，你可移动“急阻”，然后你获得并分配因此失去技能的角色区域内一张牌。",
 ["#yaoxi_select"] = "谣隙：令一名角色获得“急阻",
 ["#yaoxi_move"] = "谣隙：你可移动“急阻”，然后获得并分配 %src 区域内的一张牌",
+["#yaoxi_move2"] = "谣隙：你可移动“急阻”",
 ["#yaoxi_distribute"] = "谣隙：你可以将此牌交给一名其他角色，或点取消保留此牌",
 }
 
