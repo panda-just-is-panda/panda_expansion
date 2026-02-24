@@ -56,6 +56,25 @@ Fk:loadTranslationTable{
 ["~pang__luxi"] = "Shell, damaged.",
 }
 
+local weihuacun = General:new(extension, "pang__weihuacun", "jin", 3, 3, General.Female)
+weihuacun:addSkill("pang__lianxiu")
+weihuacun:addSkill("pang__jiangdao")
+weihuacun.endnote = "“魏华存，你到底干了什么？没有张让赵忠大人，我们如何抗衡萌包？”张修跺脚，瞪着魏华存。" ..
+                    "<br>魏华存淡笑一声：“很简单，我成尊不就是了？”" ..
+                    "<br>说完，她的气息终于不再掩饰，显露出九转修为！" ..
+                    "<br>早岁己知扶摇艰，仍许茶水荡云间。" ..
+                    "<br>一路过牌身如絮，命海沉浮客独行。" ..
+                    "<br>千磨万击心铸铁，殚精竭虑铸阴间。" ..
+                    "<br>今朝剑指疊云处，炼修炼人还炼天!" ..
+Fk:loadTranslationTable{
+["pang__weihuacun"] = "魏华存一号",
+["#pang__weihuacun"] = "紫虚胖胖",
+["designer:pang__weihuacun"] = "胖即是胖",
+["cv:pang__weihuacun"] = "官方",
+["illustrator:pang__weihuacun"] = "豆包&木美人",
+
+}
+
 local pang = General:new(extension, "pang__pangpanda", "god", 4, 4, General.Female)
 pang.endnote = "这是一只胖。"
 Fk:loadTranslationTable{
