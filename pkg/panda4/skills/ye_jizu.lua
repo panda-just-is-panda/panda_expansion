@@ -7,12 +7,12 @@ jizu:addEffect(fk.CardUseFinished, {
     can_trigger = function(self, event, target, player, data)
         return player:hasSkill(jizu.name) and (data.extra_data or {}).can_jizu
         and player:usedSkillTimes(jizu.name, Player.HistoryTurn) == 0
-        and player:getMark("unique_jizu_block") == 0
+        and data.card and not table.contains(data.card.skillNames, jizu.name)
     end,
     on_cost = function(self, event, target, player, data)
         local room = player.room
         local color = data.card:getColorString()
-        room:setPlayerMark(player,"@unique_jizu_block",color)
+        room:setPlayerMark(player,"unique_jizu_block",color)
         local use = room:askToUseRealCard(player, {
             pattern = ".",
             skill_name = jizu.name,
@@ -22,7 +22,7 @@ jizu:addEffect(fk.CardUseFinished, {
                 extraUse = true,
             }
         })
-        room:setPlayerMark(player,"@unique_jizu_block",0)
+        room:setPlayerMark(player,"unique_jizu_block",0)
         if use then
             use.card.skillName = jizu.name
             for _, to in ipairs(room.alive_players) do
@@ -63,7 +63,7 @@ jizu:addEffect(fk.CardUseFinished, {
                             cancelable = true,
                         })
                         if #to_distribute > 0 then
-                            room:obtainCard(to_distribute, card, false, fk.ReasonGive)
+                            room:obtainCard(to_distribute[1], card, false, fk.ReasonGive)
                         end
                     end
                 end
@@ -96,9 +96,8 @@ jizu:addEffect("prohibit",{
   prohibit_use = function (self, player, card)
     if player:getMark("@jizu_block-turn") then
       return card:getColorString() == player:getMark("@jizu_block-turn")
-    end
-    if player:getMark("@unique_jizu_block") then
-      return card:getColorString() == player:getMark("@unique_jizu_block")
+    elseif player:getMark("unique_jizu_block") then
+      return card:getColorString() == player:getMark("unique_jizu_block")
     end
   end,
 })

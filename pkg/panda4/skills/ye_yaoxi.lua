@@ -73,7 +73,7 @@ yaoxi:addEffect(fk.TurnStart, {
             cancelable = true,
         })
         if #to_distribute > 0 then
-            room:obtainCard(to_distribute, card, false, fk.ReasonGive)
+            room:obtainCard(to_distribute[1], card, false, fk.ReasonGive)
         end
     end
   end,
