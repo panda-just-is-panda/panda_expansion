@@ -70,7 +70,7 @@ Fk:loadTranslationTable{
 ["pang__weihuacun"] = "魏华存一号",
 ["#pang__weihuacun"] = "紫虚胖胖",
 ["designer:pang__weihuacun"] = "胖即是胖",
-["cv:pang__weihuacun"] = "官方",
+["cv:pang__weihuacun"] = "茶社",
 ["illustrator:pang__weihuacun"] = "豆包&木美人",
 
 ["~pang__weihuacun"] = "早知造化钟难逆，当初该留引路灯...",
