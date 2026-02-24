@@ -12,6 +12,7 @@ jizu:addEffect(fk.CardUseFinished, {
             end
         end
         if data.card and table.contains(data.card.skillNames, jizu.name) then
+            player:drawCards(5, jizu.name)
             for _, to in ipairs(room.alive_players) do
                 room:setPlayerMark(to,"@jizu_block-turn", data.card:getColorString())
             end
@@ -48,7 +49,7 @@ jizu:addEffect(fk.CardUseFinished, {
                     max_num = 1,
                     targets = room:getOtherPlayers(player, false),
                     skill_name = "ye_yaoxi",
-                    prompt = "#jizu_move:"..player.id,
+                    prompt = to == player and "#yaoxi_move2" or "#jizu_move:"..player.id,
                     cancelable = true,
                 })
                 if #to_move > 0 then
@@ -87,7 +88,7 @@ jizu:addEffect(fk.CardUseFinished, {
     on_refresh = function(self, event, target, player, data)
         local room = player.room
         if player:getMark("jizu_color_record-turn") ~= 0 
-        and player:getMark("jizu_color_record-turn") ~= data.card:getColorString() then
+        and player:getMark("jizu_color_record-turn") == data.card:getColorString() then
             data.extra_data = data.extra_data or {}
             data.extra_data.can_jizu = true
         end
@@ -113,6 +114,7 @@ Fk:loadTranslationTable {["ye_jizu"] = "急阻",
 ["@jizu_block-turn"] = "急阻",
 ["#jizu_use"] = "急阻：你可以使用一张不同色的牌",
 ["#jizu_move"] = "谣隙：你可移动“急阻”，然后获得并分配 %src 区域内的一张牌",
+["#yaoxi_move2"] = "谣隙：你可移动“急阻”",
 ["cancel_choose"] = "取消",
 ["#yaoxi_distribute"] = "谣隙：你可以将此牌交给一名其他角色，或点取消保留此牌",
 
