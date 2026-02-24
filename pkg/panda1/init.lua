@@ -47,6 +47,20 @@ Fk:loadTranslationTable{
 ["~pang__blaze"] = "烈焰人阵亡",
 }
 
+local wither_skeleton = General:new(extension, "pang__wither_skeleton", "shu", 4, 4, General.Male)
+wither_skeleton:addSkill("pang_kuren")
+wither_skeleton:addSkill("pang_wangling")
+wither_skeleton:addRelatedSkill("pang_benghuai")
+Fk:loadTranslationTable{
+["pang__wither_skeleton"] = "凋零骷髅",
+["#pang__wither_skeleton"] = "残崩骸坏",
+["designer:pang__wither_skeleton"] = "胖即是胖",
+["cv:pang__wither_skeleton"] = "我的世界",
+["illustrator:pang__wither_skeleton"] = "我的世界",
+
+["~pang__wither_skeleton"] = "凋零骷髅阵亡",
+}
+
 
 local drowned = General:new(extension, "pang__drowned", "wei", 4, 4, General.Male)
 drowned:addSkill("pang_chaoyong")

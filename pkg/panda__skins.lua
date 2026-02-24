@@ -139,7 +139,7 @@ Fk:loadTranslationTable{
   ["pang__horse_steve"] = "骑马与砍杀",
   ["pang__classical_steve"] = "钻石相伴",
   ["pang__ocean_steve"] = "深海探险",
-  ["pang__pillager_patrol"] = "灾厄巡逻",
+  ["pang__pillager_patrol"] = "拟人",
   ["pang__lovezoglin"] = "猪爱猪猪",
 }
 
