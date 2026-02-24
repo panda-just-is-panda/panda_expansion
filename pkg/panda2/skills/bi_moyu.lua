@@ -6,6 +6,9 @@ local moyu = fk.CreateSkill {
 Fk:loadTranslationTable{
   ["bi_moyu"] = "摸鱼",
   [":bi_moyu"] = "转换技，锁定技，以你为①唯一目标②使用者的牌结算后，使用者和唯一的目标角色弃置所有手牌（无牌则不弃）并摸X张牌（X为各自弃牌中缺失花色数且至少为1）。",
+
+  ["$bi_moyu1"] = "战局如牌局，见机就行事。",
+  ["$bi_moyu2"] = "算了也白算，等等牌就来。",
 }
 
 moyu:addEffect(fk.CardUseFinished, {

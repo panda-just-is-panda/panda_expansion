@@ -282,9 +282,10 @@ Fk:loadTranslationTable{
 ["bi_qingque"] = "青雀",
 ["#bi_qingque"] = "四幺暗刻",
 ["designer:bi_qingque"] = "碧叶夜烨芒",
-["cv:bi_qingque"] = "无",
+["cv:bi_qingque"] = "崩坏：星穹铁道",
 ["illustrator:bi_qingque"] = "佚名",
 
+["~bi_qingque"] = "不想……回去工作",
 }
 
 
