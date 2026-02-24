@@ -96,7 +96,7 @@ jizu:addEffect("prohibit",{
     if player:getMark("@jizu_block-turn") then
       return card:getColorString() == player:getMark("@jizu_block-turn")
     end
-    if player:getMark("unique_jizu_block") then
+    if player:getMark("@unique_jizu_block") then
       return card:getColorString() == player:getMark("unique_jizu_block")
     end
   end,
