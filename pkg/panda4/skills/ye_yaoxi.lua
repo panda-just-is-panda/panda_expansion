@@ -17,6 +17,7 @@ yaoxi:addEffect(fk.GameStart, {
             prompt = "#yaoxi_select",
             cancelable = false,
         })
+        to_distribute[1]:drawCards(1, yaoxi.name)
         event:setCostData(self, {tos = to_distribute[1]})
     end,
     on_use = function(self, event, target, player, data)
