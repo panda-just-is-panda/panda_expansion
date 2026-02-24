@@ -74,7 +74,7 @@ jizu:addEffect(fk.CardUseFinished, {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_refresh = function(self, event, target, player, data)
-        if data.card and target:getMark("@jizu_block-turn") and not table.contains(data.card.skillNames, jizu.name) then
+        if data.card and target:getMark("@jizu_block-turn") and data.card:getColorString() ~= target:getMark("@jizu_block-turn") then
             for _, to in ipairs(player.room.alive_players) do
                 player.room:setPlayerMark(to,"@jizu_block-turn", 0)
             end
@@ -96,12 +96,17 @@ jizu:addEffect("prohibit",{
   prohibit_use = function (self, player, card)
     if player:getMark("@jizu_block-turn") then
       return card:getColorString() == player:getMark("@jizu_block-turn")
-    elseif player:getMark("unique_jizu_block") then
-      return card:getColorString() == player:getMark("unique_jizu_block")
     end
   end,
 })
 
+jizu:addEffect("prohibit",{
+  prohibit_use = function (self, player, card)
+    if player:getMark("unique_jizu_block") then
+      return card:getColorString() == player:getMark("unique_jizu_block")
+    end
+  end,
+})
 
 
 Fk:loadTranslationTable {["ye_jizu"] = "急阻",
