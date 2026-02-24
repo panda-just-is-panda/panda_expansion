@@ -54,8 +54,8 @@ jizu:addEffect(fk.CardUseFinished, {
                     cancelable = true,
                 })
                 if #to_move > 0 then
-                    room:handleAddLoseSkills(player, "-ye_jizu", nil, true, false)
-                    room:handleAddLoseSkills(to_move, "ye_jizu", nil, true, false)
+                    room:handleAddLoseSkills(player, "-ye_jizu", nil, false, true)
+                    room:handleAddLoseSkills(to_move[1], "ye_jizu", nil, false, true)
                     if #player:getCardIds("hej") > 0 and to ~= player then
                         local card = room:askToChooseCard(to, {
                             target = player,
