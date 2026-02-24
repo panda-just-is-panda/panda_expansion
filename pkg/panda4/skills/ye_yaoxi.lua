@@ -22,6 +22,7 @@ yaoxi:addEffect(fk.GameStart, {
     on_use = function(self, event, target, player, data)
         local room = player.room
         local to = event:getCostData(self).tos[1]
+        to:drawCards(1, yaoxi.name)
         room:handleAddLoseSkills(to, "ye_jizu", nil, true, false)
   end,
 })
