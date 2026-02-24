@@ -114,6 +114,18 @@ local content1 = {
   enabled_generals = {"pang__luxi", "pang__laoluxi"},
   },
   {
+  skins={"pang__xugouji_armor.jpg"}, 
+  enabled_generals = {"pang__xugouji"},
+  },
+  {
+  skins={"pang__barcarola_song.jpg"}, 
+  enabled_generals = {"pang__barcarola"},
+  },
+  {
+  skins={"pang__quniang_peach.jpg"}, 
+  enabled_generals = {"pang__quniang"},
+  },
+  {
   skins={"pang__groal_the_girl.jpg"}, 
   enabled_generals = {"pang__groal_the_great"},
   },
@@ -145,7 +157,10 @@ Fk:loadTranslationTable{
   ["pang__finaljudge"] = "终门审判",
   ["pang__21+1_meilanni"] = "玫瑰的诡计",
   ["pang__bolinyidong_stockings"] = "铅红的真相",
-  ["pang__luxi_queen"] = "",
+  ["pang__luxi_queen"] = "生如行棋",
+  ["pang__xugouji_armor"] = "拉曼却幻想",
+  ["pang__barcarola_song"] = "飞越行星带",
+  ["pang__quniang_peach"] = "壁上桃源",
   ["pang__groal_the_girl"] = "可爱捏",
   ["pang__girl_beastfly"] = "可爱捏",
   ["pang__zhangxiu_vindicator"] = "林地斧王",
