@@ -251,6 +251,18 @@ Fk:loadTranslationTable{
 ["~mo_xuchu"] = "丞相，末将尽力了…",
 }
 
+local gouan = General:new(extension, "ye_gouan", "wei", 4, 4, General.Male)
+gouan:addSkill("ye_yaoxi")
+gouan:addRelatedSkill("ye_jizu")
+Fk:loadTranslationTable{
+["ye_gouan"] = "苟安",
+["#ye_gouan"] = "蜮舌覆师",
+["designer:ye_gouan"] = "脒即是胖",
+["cv:ye_gouan"] = "官方",
+["illustrator:ye_gouan"] = "佚名",
+
+}
+
 
 
 
