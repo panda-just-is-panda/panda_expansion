@@ -74,7 +74,7 @@ jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_refresh = function(self, event, target, player, data)
         if data.card and target:getMark("@jizu_block-turn") then
-            for _, to in ipairs(room.alive_players) do
+            for _, to in ipairs(player.room.alive_players) do
                 player.room:setPlayerMark(to,"@jizu_block-turn", 0)
             end
         end
