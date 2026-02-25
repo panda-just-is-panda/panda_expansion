@@ -260,7 +260,7 @@ Fk:loadTranslationTable{
   ["pang__blaze_skin"] = "燃烧魂火",
   ["pang__witch_skin"] = "独涉险境",
   ["pang__vindicator_skin_three"] = "除奸卫道",
-  ["pang__angry_vindicato"] = "战斗形态",
+  ["pang__angry_vindicator"] = "战斗形态",
 }
 
 return extension
