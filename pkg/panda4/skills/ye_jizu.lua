@@ -119,7 +119,7 @@ Fk:loadTranslationTable {["ye_jizu"] = "急阻",
 ["@jizu_block-turn"] = "急阻",
 ["#jizu_use"] = "急阻：你可以使用一张不同色的牌",
 ["#jizu_move"] = "谣隙：你可移动“急阻”，然后获得并分配 %src 区域内的一张牌",
-["#yaoxi_move2"] = "谣隙：你可移动“急阻”",
+["#yaoxi_move2"] = "谣隙：你可移动“急阻”，然后获得并分配自己场上的一张牌",
 ["cancel_choose"] = "取消",
 ["#yaoxi_distribute"] = "谣隙：你可以将此牌交给一名其他角色，或点取消保留此牌",
 
