@@ -252,7 +252,7 @@ Fk:loadTranslationTable{
 }
 
 local gouan = General:new(extension, "ye_gouan", "shu", 4, 4, General.Male)
-archillager.subkingdom = "wei"
+gouan.subkingdom = "wei"
 gouan:addSkill("ye_yaoxi")
 gouan:addRelatedSkill("ye_jizu")
 Fk:loadTranslationTable{
