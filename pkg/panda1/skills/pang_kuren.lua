@@ -69,8 +69,8 @@ kuren:addEffect(fk.CardUseFinished, {
     local n = event:getCostData(self).extra_data
     if n == 0 then
         room:recover({who = player, num = 1, recoverBy = player, skillName = kuren.name})
-        if not data.use.extraUse then
-          data.use.extraUse = true
+        if not data.extraUse then
+          data.extraUse = true
           player:addCardUseHistory(data.card.trueName, -1)
         end
     else

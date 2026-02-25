@@ -8,11 +8,13 @@ jizu:addEffect(fk.CardUseFinished, {
         return player:hasSkill(jizu.name) and (data.extra_data or {}).can_jizu
         and player:usedSkillTimes(jizu.name, Player.HistoryTurn) == 0
         and data.card and not table.contains(data.card.skillNames, jizu.name)
+        and player:getMark("anti_chajie-turn") == 0
     end,
     on_cost = function(self, event, target, player, data)
         local room = player.room
         local color = data.card:getColorString()
         room:setPlayerMark(player,"unique_jizu_block",color)
+        room:setPlayerMark(player,"anti_chajie-turn",1)
         local use = room:askToUseRealCard(player, {
             pattern = ".",
             skill_name = jizu.name,
@@ -29,6 +31,8 @@ jizu:addEffect(fk.CardUseFinished, {
                 room:setPlayerMark(to,"@jizu_block-turn", use.card:getColorString())
             end
             return true
+        else
+            room:setPlayerMark(player,"anti_chajie-turn",0)
         end
     end,
     on_use = function(self, event, target, player, data)
