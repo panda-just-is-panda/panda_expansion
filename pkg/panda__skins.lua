@@ -62,6 +62,14 @@ local content1 = {
   skins={"pang__iron_golem_skin.jpg"}, 
   enabled_generals = {"pang__iron_golem"},
   },
+  {
+  skins={"pang__villager_skin.jpg"}, 
+  enabled_generals = {"pang__villager"},
+  },
+  {
+  skins={"pang__villager_skin_two.jpg"}, 
+  enabled_generals = {"pang__villager"},
+  },
 
 
   {
@@ -206,6 +214,8 @@ Fk:loadTranslationTable{
   ["pang__evoker_skin"] = "看淡生死",
   ["pang__ravager_skin"] = "战争巨兽",
   ["pang__iron_golem_skin"] = "舍身护幼主",
+  ["pang__villager_skin"] = "花海拾遗",
+  ["pang__villager_skin_two"] = "村民新闻",
 }
 
 return extension

@@ -69,6 +69,10 @@ kuren:addEffect(fk.CardUseFinished, {
     local n = event:getCostData(self).extra_data
     if n == 0 then
         room:recover({who = player, num = 1, recoverBy = player, skillName = kuren.name})
+        if not data.use.extraUse then
+          data.use.extraUse = true
+          player:addCardUseHistory(data.card.trueName, -1)
+        end
     else
         for _, to in ipairs(room.alive_players) do
             if to:getMark("pang_kuren_benghuai") > 0 and not to:hasSkill("pang_benghuai") then
@@ -83,10 +87,8 @@ kuren:addEffect(fk.CardUseFinished, {
 })
 
 Fk:loadTranslationTable {["pang_kuren"] = "枯刃",
-[":pang_kuren"] = "当你使用【杀】指定唯一目标后，你可以弃置你或目标角色一张牌，然后若此【杀】：造成伤害，你和目标角色中未因此弃置牌的角色获得“崩坏”；未造成伤害，你回复1点体力。",
+[":pang_kuren"] = "当你使用【杀】指定唯一目标后，你可以弃置你或目标角色一张牌，然后若此【杀】：造成伤害，你和目标角色中未因此弃置牌的角色获得“崩坏”；未造成伤害，此【杀】不计入次数，然后你回复1点体力。",
 ["#pang_kuren-choose"] = "枯刃：你可以选择弃置你或目标角色一张牌",
-["#eying"] = "令至多两名角色获得护甲或用杀",
-["#eying_discard"] = "弃置一张牌",
 
 ["$pang_kuren1"] = "骨骼摩擦声",
 ["$pang_kuren2"] = "凋零骷髅喘息",
