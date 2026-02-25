@@ -251,7 +251,8 @@ Fk:loadTranslationTable{
 ["~mo_xuchu"] = "丞相，末将尽力了…",
 }
 
-local gouan = General:new(extension, "ye_gouan", "wei", 4, 4, General.Male)
+local gouan = General:new(extension, "ye_gouan", "shu", 4, 4, General.Male)
+archillager.subkingdom = "wei"
 gouan:addSkill("ye_yaoxi")
 gouan:addRelatedSkill("ye_jizu")
 Fk:loadTranslationTable{
