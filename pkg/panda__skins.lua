@@ -70,6 +70,26 @@ local content1 = {
   skins={"pang__villager_skin_two.jpg"}, 
   enabled_generals = {"pang__villager"},
   },
+  {
+  skins={"pang__archillager_skin.jpg"}, 
+  enabled_generals = {"pang__archillager"},
+  },
+  {
+  skins={"pang__zombified_piglin_skin.jpg"}, 
+  enabled_generals = {"pang__zombified_piglin"},
+  },
+  {
+  skins={"pang__skeleton_skin.jpg"}, 
+  enabled_generals = {"pang__skeleton"},
+  },
+  {
+  skins={"pang__stray_skin.jpg"}, 
+  enabled_generals = {"pang__stray"},
+  },
+  {
+  skins={"pang__blaze_skin.jpg"}, 
+  enabled_generals = {"pang__blaze"},
+  },
 
 
   {
@@ -216,6 +236,11 @@ Fk:loadTranslationTable{
   ["pang__iron_golem_skin"] = "舍身护幼主",
   ["pang__villager_skin"] = "花海拾遗",
   ["pang__villager_skin_two"] = "村民新闻",
+  ["pang__archillager_skin"] = "溺入末途",
+  ["pang__skeleton_skin"] = "水中避日",
+  ["pang__stray_skin"] = "回眸一瞥",
+  ["pang__zombified_piglin_skin"] = "仇怨游魂",
+  ["pang__blaze_skin"] = "燃烧魂火",
 }
 
 return extension

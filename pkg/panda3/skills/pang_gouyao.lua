@@ -63,7 +63,7 @@ gouyao:addEffect("targetmod", {
 Fk:loadTranslationTable{
   ["pang_gouyao"] = "狗咬",
   [":pang_gouyao"] = "持恒技，锁定技，当你对一名角色造成伤害后，你摸五张牌并弃置X张牌（X为其体力值且至多为2），然后除非其弃置两张基本牌，否则你本回合对其使用牌无次数限制。",
-  ["#gouyao_discard"] = "你被咬住了！弃置一张基本牌脱身或等死！",
+  ["#gouyao_discard"] = "你被咬住了！弃置两张基本牌脱身或等死！",
   ["#gouyao_discard2"] = "弃置%arg张牌",
   ["@@gouyao"] = "被咬住",
   ["$pang_gouyao1"] = "颅献白骨观，血祭黄沙场！",

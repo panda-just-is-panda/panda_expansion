@@ -57,10 +57,10 @@ yaoxi:addEffect(fk.TurnStart, {
     local to_get = event:getCostData(self).tos[2]
     room:handleAddLoseSkills(to_lose, "-ye_jizu", nil, false, true)
     room:handleAddLoseSkills(to_get, "ye_jizu", nil, false, true)
-    if #to_lose:getCardIds("hej") > 0 and to_lose ~= player then
+    if #to_lose:getCardIds("hej") > 0 then
         local card = room:askToChooseCard(player, {
             target = to_lose,
-            flag = "hej",
+            flag = to_lose ~= player and "hej" or "ej",
             skill_name = "ye_yaoxi",
         })
         room:obtainCard(player, card, true, fk.ReasonPrey)

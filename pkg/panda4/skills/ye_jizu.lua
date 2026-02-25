@@ -51,10 +51,10 @@ jizu:addEffect(fk.CardUseFinished, {
                 if #to_move > 0 then
                     room:handleAddLoseSkills(player, "-ye_jizu", nil, false, true)
                     room:handleAddLoseSkills(to_move[1], "ye_jizu", nil, false, true)
-                    if #player:getCardIds("hej") > 0 and to ~= player then
+                    if #player:getCardIds("hej") > 0 then
                         local card = room:askToChooseCard(to, {
                             target = player,
-                            flag = "hej",
+                            flag = player ~= to and "hej" or "ej",
                             skill_name = "ye_yaoxi",
                         })
                         room:obtainCard(to, card, true, fk.ReasonPrey)
