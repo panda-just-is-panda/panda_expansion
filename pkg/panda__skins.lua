@@ -23,6 +23,14 @@ local content1 = {
   enabled_generals = {"pang__vindicator"},
   },
   {
+  skins={"pang__vindicator_skin_three.jpg"}, 
+  enabled_generals = {"pang__vindicator"},
+  },
+  {
+  skins={"pang__angry_vindicator.jpg"}, 
+  enabled_generals = {"pang__vindicator"},
+  },
+  {
   skins={"pang__pillager_patrol.jpg"}, 
   enabled_generals = {"pang__re_pillager"},
   },
@@ -75,6 +83,10 @@ local content1 = {
   enabled_generals = {"pang__archillager"},
   },
   {
+  skins={"pang__archillager_skin_two.jpg"}, 
+  enabled_generals = {"pang__archillager"},
+  },
+  {
   skins={"pang__zombified_piglin_skin.jpg"}, 
   enabled_generals = {"pang__zombified_piglin"},
   },
@@ -89,6 +101,10 @@ local content1 = {
   {
   skins={"pang__blaze_skin.jpg"}, 
   enabled_generals = {"pang__blaze"},
+  },
+  {
+  skins={"pang__witch_skin.jpg"}, 
+  enabled_generals = {"pang__witch"},
   },
 
 
@@ -237,10 +253,14 @@ Fk:loadTranslationTable{
   ["pang__villager_skin"] = "花海拾遗",
   ["pang__villager_skin_two"] = "村民新闻",
   ["pang__archillager_skin"] = "溺入末途",
+  ["pang__archillager_skin_two"] = "绝对支配",
   ["pang__skeleton_skin"] = "水中避日",
   ["pang__stray_skin"] = "回眸一瞥",
   ["pang__zombified_piglin_skin"] = "仇怨游魂",
   ["pang__blaze_skin"] = "燃烧魂火",
+  ["pang__witch_skin"] = "独涉险境",
+  ["pang__vindicator_skin_three"] = "除奸卫道",
+  ["pang__angry_vindicato"] = "战斗形态",
 }
 
 return extension
