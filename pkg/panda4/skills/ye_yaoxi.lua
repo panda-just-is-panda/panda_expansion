@@ -35,7 +35,7 @@ yaoxi:addEffect(fk.TurnStart, {
   on_cost = function(self, event, target, player, data)
     local room = player.room
     for _, to in ipairs(room.alive_players) do
-        if to:hasSkill("ye_jizu") and player:hasSkill(yaoxi.name) and to ~= player then
+        if to:hasSkill("ye_jizu") and player:hasSkill(yaoxi.name) then
             local to_move = room:askToChoosePlayers(player, {
                 min_num = 1,
                 max_num = 1,
