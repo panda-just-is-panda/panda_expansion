@@ -130,6 +130,19 @@ Fk:loadTranslationTable{
 ["~pang__skeleton"] = "骷髅阵亡",
 }
 
+local creeper = General:new(extension, "pang__creeper", "wu", 3, 3, General.Male)
+creeper:addSkill("pang_baopo")
+creeper:addSkill("pang_qianjin")
+Fk:loadTranslationTable{
+["pang__creeper"] = "苦力怕",
+["#pang__creeper"] = "一嘭惊人",
+["designer:pang__creeper"] = "胖即是胖",
+["cv:pang__creeper"] = "我的世界",
+["illustrator:pang__creeper"] = "我的世界",
+
+["~pang__creeper"] = "苦力怕阵亡",
+}
+
 local evoker = General:new(extension, "pang__evoker", "wu", 3, 3, General.Male)
 evoker:addSkill("pang_moya")
 evoker:addSkill("pang_eying")
@@ -221,9 +234,6 @@ Fk:loadTranslationTable{
 
 ["~pang__villager"] = "村民阵亡",
 }
-
-
-
 
 local archillager = General:new(extension, "pang__archillager", "wu", 2, 2, General.Male)
 archillager.subkingdom = "jin"

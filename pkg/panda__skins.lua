@@ -261,6 +261,10 @@ Fk:loadTranslationTable{
   ["pang__witch_skin"] = "独涉险境",
   ["pang__vindicator_skin_three"] = "除奸卫道",
   ["pang__angry_vindicator"] = "战斗形态",
+  ["pang__creeper_skin"] = "绿光爆破",
+  ["pang__creeper_skin_two"] = "苦力怕娘",
+  ["pang__creeper_skin_three"] = "可爱一刻",
+  ["pang__creeper_skin_four"] = "怪物集结",
 }
 
 return extension
