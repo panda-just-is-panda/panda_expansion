@@ -92,7 +92,6 @@ zaita:addEffect(fk.TurnEnd, { --
             prompt = "pang_zaita-invoke2",
         }) then
             room:setPlayerMark(player, "zaita_invoke2", 1)
-            return true
         end
     end
     if player:getMark("zaita_invoke2") > 0 then
