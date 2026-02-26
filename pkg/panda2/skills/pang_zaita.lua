@@ -6,6 +6,7 @@ local zaita = fk.CreateSkill({
 
 zaita:addEffect(fk.TurnEnd, { --
   anim_type = "offensive", 
+  mute = true,
   can_trigger = function(self, event, target, player, data)
     local damage_card = {}
     player.room.logic:getEventsOfScope(GameEvent.MoveCards, 1, function(e)
@@ -55,6 +56,7 @@ zaita:addEffect(fk.TurnEnd, { --
         room:throwCard(player:getCardIds("he"), zaita.name, player, player)
         player:drawCards(4, zaita.name)
         room:setPlayerMark(player, "zaita_datato-round", 1)
+        player:broadcastSkillInvoke(zaita.name, 1)
     end
     if #room.logic:getActualDamageEvents(1, function(e) return e.data.from == player end, Player.HistoryTurn) > 0
     and player:getMark("zaita_invoke2") == 0 and player:getMark("zaita_datato-round") == 0 then
@@ -97,12 +99,12 @@ end,
 })
 
 Fk:loadTranslationTable {["pang_zaita"] = "再踏",
-[":pang_zaita"] = "每轮各限一次，你受到过伤害的回合结束时，你可以弃置所有牌并摸四张牌；你造成过伤害的回合结束时，你可以使用本回合进入弃牌堆的一张伤害牌。",
+[":pang_zaita"] = "每轮各限一次，你受到过伤害的回合结束时，你可以弃置所有牌(无牌则不弃)并摸四张牌；你造成过伤害的回合结束时，你可以使用本回合进入弃牌堆的一张伤害牌。",
 ["pang_zaita-invoke1"] = "再踏：你可以弃置所有牌并摸四张牌",
 ["pang_zaita-invoke2"] = "再踏：你可以使用本回合进入弃牌堆的一张伤害牌",
 ["#pang__zaita_use"] = "再踏：使用一张伤害牌",
 
-["$pang_zaita1"] = "哼哼～",
-["$pang_zaita2"] = "哼哼！",
+["$pang_zaita1"] = "激昂的小曲～",
+["$pang_zaita2"] = "遭遇战的小曲～",
 }
 return zaita

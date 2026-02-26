@@ -47,8 +47,8 @@ Fk:loadTranslationTable {["pang_baonian"] = "暴碾",
 ["#pang_baonian"] = "暴碾：你需弃置一张牌，否则 %src 对你造成1点伤害",
 
 
-["$pang_taipang1"] = "何故胖",
-["$pang_taipang2"] = "唉太胖",
+["$pang_baonian1"] = "焦灼的小曲～",
+["$pang_baonian2"] = "激战的小曲～",
 }
 
 return baonian
