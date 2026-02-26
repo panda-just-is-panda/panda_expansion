@@ -106,6 +106,22 @@ local content1 = {
   skins={"pang__witch_skin.jpg"}, 
   enabled_generals = {"pang__witch"},
   },
+  {
+  skins={"pang__creeper_skin.jpg"}, 
+  enabled_generals = {"pang__creeper"},
+  },
+  {
+  skins={"pang__creeper_skin_two.jpg"}, 
+  enabled_generals = {"pang__creeper"},
+  },
+  {
+  skins={"pang__creeper_skin_three.jpg"}, 
+  enabled_generals = {"pang__creeper"},
+  },
+  {
+  skins={"pang__creeper_skin_four.jpg"}, 
+  enabled_generals = {"pang__creeper"},
+  },
 
 
   {

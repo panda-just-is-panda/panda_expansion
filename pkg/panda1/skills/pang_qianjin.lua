@@ -7,11 +7,9 @@ local qianjin = fk.CreateSkill{
 Fk:loadTranslationTable{
   ["pang_qianjin"] = "潜近",
   [":pang_qianjin"] = "隐匿技，当你登场时，本回合你计算和其他角色的距离-1。",
-  ["@qianjin-turn"] = "潜近",
+  ["@@qianjin-turn"] = "潜近",
 
 
-  ["$pang_qianjin1"] = "车轮战的小曲～",
-  ["$pang_qianjin2"] = "出场的小曲～",
 
 }
 
