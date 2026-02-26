@@ -181,6 +181,7 @@ local content1 = {
   enabled_generals = {"pang__panda"},
   },
 
+
   {
   skins={"pang__starcraft1_mengsk.jpg"}, 
   enabled_generals = {"pang__mengsk"},
@@ -188,6 +189,26 @@ local content1 = {
   {
   skins={"pang__finaljudge.jpg"}, 
   enabled_generals = {"pang__last_judge"},
+  },
+  {
+  skins={"pang__last_judge_skin.jpg"}, 
+  enabled_generals = {"pang__last_judge"},
+  },
+  {
+  skins={"pang__last_judge_skin_two.jpg"}, 
+  enabled_generals = {"pang__last_judge"},
+  },
+  {
+  skins={"pang__last_judge_skin_three.jpg"}, 
+  enabled_generals = {"pang__last_judge"},
+  },
+  {
+  skins={"pang__last_judge_skin_four.jpg"}, 
+  enabled_generals = {"pang__last_judge"},
+  },
+  {
+  skins={"pang__grandmother_silk_skin.jpg"}, 
+  enabled_generals = {"pang__grand_mother_silk"},
   },
   {
   skins={"pang__bolinyidong_stockings.jpg"}, 
@@ -243,6 +264,11 @@ Fk:loadTranslationTable{
   ["pang__dresspanda"] = "女装胖",
   ["pang__starcraft1_mengsk"] = "一代",
   ["pang__finaljudge"] = "终门审判",
+  ["pang__last_judge_skin"] = "终火齐鸣",
+  ["pang__last_judge_skin_two"] = "火力少女王",
+  ["pang__last_judge_skin_three"] = "长阶钟火",
+  ["pang__last_judge_skin_four"] = "忠誓圣堡",
+  ["pang__grandmother_silk_skin"] = "无上丝母",
   ["pang__21+1_meilanni"] = "玫瑰的诡计",
   ["pang__bolinyidong_stockings"] = "铅红的真相",
   ["pang__luxi_queen"] = "生如行棋",
