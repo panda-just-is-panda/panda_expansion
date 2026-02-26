@@ -57,7 +57,7 @@ zaita:addEffect(fk.TurnEnd, { --
         room:setPlayerMark(player, "zaita_datato-round", 1)
     end
     if #room.logic:getActualDamageEvents(1, function(e) return e.data.from == player end, Player.HistoryTurn) > 0
-    and player:getMark("zaita_invoke2") == 0 then
+    and player:getMark("zaita_invoke2") == 0 and player:getMark("zaita_datato-round") == 0 then
         if room:askToSkillInvoke(player, {
             skill_name = zaita.name,
             prompt = "pang_zaita-invoke2",
@@ -79,7 +79,7 @@ zaita:addEffect(fk.TurnEnd, { --
             end
         end
     end, Player.HistoryTurn)
-    if player:getMark("zaita_invoke1") > 0 and #damage_card > 0 then
+    if player:getMark("zaita_invoke2") > 0 and #damage_card > 0 then
         local use = room:askToUseRealCard(player, {
             skill_name = zaita.name,
             pattern = tostring(Exppattern{ id = damage_card }),
