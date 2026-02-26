@@ -52,6 +52,10 @@ Fk:loadTranslationTable{
   ["#baopo_discard"] = "爆迫：你可以弃置两张牌并隐匿，否则 %src 可以弃牌并对其和你各造成3点伤害",
   ["#baopo_discard_player"] = "爆迫：你可以弃置两张和此牌类型不同的牌并对你和 %src 各造成3点伤害，否则你隐匿",
   ["#baopo_choose"] = "爆迫：你可以重铸一张牌并选择一名距离为1的其他角色",
+
+  ["$pang_baopo1"] = "嘶——嘶嘶嘶嘶嘶嘶嘶嘶——",
+  ["$pang_baopo2"] = "嘭！",
+  ["$pang_baopo3"] = "呲嘶——",
 }
 
 baopo:addEffect("active", {
