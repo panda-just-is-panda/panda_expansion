@@ -8,17 +8,18 @@ baonian:addEffect(fk.TargetSpecified, {
   anim_type = "offensive",
   mute = true,
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(baonian.name)
+    return player:hasSkill(baonian.name) and target == player
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
     local cards = room:getNCards(2)
+    local to = data.to
     room:turnOverCardsFromDrawPile(player, cards, baonian.name)
     local search = table.filter(cards, function (id)
         return Fk:getCardById(id).trueName == "slash"
     end)
     if #search > 0 then
-        local discard = room:askToDiscard(target, {
+        local discard = room:askToDiscard(to, {
             skill_name = baonian.name,
             prompt = "#pang_baonian:"..player.id,
             cancelable = true,
@@ -29,7 +30,7 @@ baonian:addEffect(fk.TargetSpecified, {
         if #discard == 0 then
             room:damage{
                 from = player,
-                to = target,
+                to = to,
                 damage = 1,
                 skillName = baonian.name,
             }
