@@ -94,8 +94,8 @@ grand_mother_silk:addSkill("pang_siweijiang")
 grand_mother_silk:addSkill("pang_jianjiefu")
 grand_mother_silk:addSkill("pang_fangluoqu")
 Fk:loadTranslationTable{
-["pang__grand_mother_silk"] = "丝母",
-["#pang__grand_mother_silk"] = "丝之歌翻译来点作用啊",
+["pang__grand_mother_silk"] = "灵丝",
+["#pang__grand_mother_silk"] = "崇高圣母",
 ["designer:pang__grand_mother_silk"] = "胖即是胖",
 ["cv:pang__grand_mother_silk"] = "丝之歌",
 ["illustrator:pang__grand_mother_silk"] = "丝之歌",
@@ -106,11 +106,23 @@ local last_judge = General:new(extension, "pang__last_judge", "qun", 4, 4, Gener
 last_judge:addSkill("pang_zhongcai")
 last_judge:addSkill("pang_zhongjue")
 Fk:loadTranslationTable{
-["pang__last_judge"] = "最终裁决者",
-["#pang__last_judge"] = "翻译水平和失败冠军坐一桌",
+["pang__last_judge"] = "末代裁决者",
+["#pang__last_judge"] = "其实应该翻译成最终裁决者",
 ["designer:pang__last_judge"] = "胖即是胖",
 ["cv:pang__last_judge"] = "丝之歌",
 ["illustrator:pang__last_judge"] = "丝之歌",
+
+}
+
+local skull_tyrant = General:new(extension, "pang__skull_tyrant", "qun", 4, 4, General.Male)
+skull_tyrant:addSkill("pang_baonian")
+skull_tyrant:addSkill("pang_zaita")
+Fk:loadTranslationTable{
+["pang__skull_tyrant"] = "颅骨暴君",
+["#pang__skull_tyrant"] = "横冲直撞",
+["designer:pang__skull_tyrant"] = "胖即是胖",
+["cv:pang__skull_tyrant"] = "丝之歌",
+["illustrator:pang__skull_tyrant"] = "丝之歌",
 
 }
 

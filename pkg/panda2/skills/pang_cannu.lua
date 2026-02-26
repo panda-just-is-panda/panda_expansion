@@ -87,7 +87,5 @@ Fk:loadTranslationTable {["pang_cannu"] = "残怒",
 ["#cannu1"] = "视为使用一张【杀】",
 ["#cannu2"] = "视为使用一张【决斗】",
 
-["$pang_cannu1"] = "哼哼！",
-["$pang_cannu2"] = "哼哼——！",
 }
 return cannu  --不要忘记返回做好的技能对象哦
