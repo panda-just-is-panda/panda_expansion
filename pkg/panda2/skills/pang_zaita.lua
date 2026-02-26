@@ -29,6 +29,19 @@ zaita:addEffect(fk.TurnEnd, { --
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
+    local damage_card = {}
+    player.room.logic:getEventsOfScope(GameEvent.MoveCards, 1, function(e)
+      for _, move in ipairs(e.data) do
+        if move.toArea == Card.DiscardPile then
+          for _, info in ipairs(move.moveInfo) do
+            if table.contains(player.room.discard_pile, info.cardId) and
+              Fk:getCardById(info.cardId).is_damage_card then
+              table.insertIfNeed(damage_card, info.cardId)
+            end
+          end
+        end
+      end
+    end, Player.HistoryTurn)
     if #room.logic:getActualDamageEvents(1, function(e) return e.data.to == player end, Player.HistoryTurn) > 0
     and player:getMark("zaita_datato-round") == 0 then
         if room:askToSkillInvoke(player, {
@@ -40,7 +53,7 @@ zaita:addEffect(fk.TurnEnd, { --
         end
     end
     if #room.logic:getActualDamageEvents(1, function(e) return e.data.from == player end, Player.HistoryTurn) > 0
-    and player:getMark("zaita_datafrom-round") == 0 then
+    and player:getMark("zaita_datafrom-round") == 0 and #damage_card > 0 then
         if room:askToSkillInvoke(player, {
             skill_name = zaita.name,
             prompt = "pang_zaita-invoke2",
@@ -92,7 +105,9 @@ zaita:addEffect(fk.TurnEnd, { --
               bypass_times = true
             }
           })
-        room:setPlayerMark(player, "zaita_datafrom-round", 1)
+        if use then
+            room:setPlayerMark(player, "zaita_datafrom-round", 1)
+        end
     end
     room:setPlayerMark(player, "zaita_invoke1", 0)
     room:setPlayerMark(player, "zaita_invoke2", 0)
