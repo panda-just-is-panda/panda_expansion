@@ -18,6 +18,11 @@ baonian:addEffect(fk.TargetSpecified, {
     local search = table.filter(cards, function (id)
         return Fk:getCardById(id).trueName == "slash"
     end)
+    if player:usedSkillTimes(baonian.name, Player.HistoryTurn) == 1 then
+      player:broadcastSkillInvoke(baonian.name, 1)
+    elseif player:usedSkillTimes(baonian.name, Player.HistoryTurn) == 7 then
+      player:broadcastSkillInvoke(baonian.name, 2)
+    end
     if #search > 0 then
         local discard = room:askToDiscard(to, {
             skill_name = baonian.name,

@@ -106,6 +106,9 @@ zaita:addEffect(fk.TurnEnd, { --
           })
         if use then
             room:setPlayerMark(player, "zaita_datafrom-round", 1)
+            if player:getMark("zaita_invoke1") == 0 then
+              player:broadcastSkillInvoke(zaita.name, 1)
+            end
         end
     end
     room:setPlayerMark(player, "zaita_invoke1", 0)
