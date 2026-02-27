@@ -3,6 +3,17 @@ local zaita = fk.CreateSkill({
   tags = {},
 })
 
+zaita:addEffect(fk.GameStart, {
+  mute = true,
+  can_trigger = function(self, event, target, player, data)
+    return player:hasSkill(zaita.name)
+  end,
+  on_cost = Util.TrueFunc,
+  on_use = function(self, event, target, player, data)
+    player:broadcastSkillInvoke(zaita.name, 1)
+    player:setSkillUseHistory(zaita.name, 0, Player.HistoryGame)
+  end,
+})
 
 zaita:addEffect(fk.TurnEnd, { --
   anim_type = "offensive", 
@@ -65,11 +76,11 @@ zaita:addEffect(fk.TurnEnd, { --
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
+    player:broadcastSkillInvoke(zaita.name, 2)
     if player:getMark("zaita_invoke1") > 0 then
         room:throwCard(player:getCardIds("he"), zaita.name, player, player)
         player:drawCards(4, zaita.name)
         room:setPlayerMark(player, "zaita_datato-round", 1)
-        player:broadcastSkillInvoke(zaita.name, 1)
     end
     local damage_card = {}
     room.logic:getEventsOfScope(GameEvent.MoveCards, 1, function(e)
@@ -106,9 +117,6 @@ zaita:addEffect(fk.TurnEnd, { --
           })
         if use then
             room:setPlayerMark(player, "zaita_datafrom-round", 1)
-            if player:getMark("zaita_invoke1") == 0 then
-              player:broadcastSkillInvoke(zaita.name, 1)
-            end
         end
     end
     room:setPlayerMark(player, "zaita_invoke1", 0)

@@ -18,12 +18,14 @@ baonian:addEffect(fk.TargetSpecified, {
     local search = table.filter(cards, function (id)
         return Fk:getCardById(id).trueName == "slash"
     end)
-    if player:usedSkillTimes(baonian.name, Player.HistoryTurn) == 1 then
-      player:broadcastSkillInvoke(baonian.name, 1)
-    elseif player:usedSkillTimes(baonian.name, Player.HistoryTurn) == 7 then
-      player:broadcastSkillInvoke(baonian.name, 2)
-    end
     if #search > 0 then
+          if player:getMark("baonian_audio-turn") == 0 then
+            room:addPlayerMark(player, "baonian_audio-turn", 1)
+            player:broadcastSkillInvoke(baonian.name, 1)
+          elseif player:getMark("baonian_audio-turn") == 1 then
+            room:addPlayerMark(player, "baonian_audio-turn", 1)
+            player:broadcastSkillInvoke(baonian.name, 2)
+          end
         local discard = room:askToDiscard(to, {
             skill_name = baonian.name,
             prompt = "#pang_baonian:"..player.id,
