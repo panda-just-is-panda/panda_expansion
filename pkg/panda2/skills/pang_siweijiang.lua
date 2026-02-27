@@ -30,7 +30,7 @@ swj:addEffect(fk.AfterCardsMove, {
       end)
       ids = player.room.logic:moveCardsHoldingAreaCheck(ids)
       if #ids > 0 then
-        if player:hasSkill("pang_jianjiefu") then
+        if player:hasSkill("pang_jianjiefu") or player:getMark("flq_awake") > 0 then
           event:setCostData(self, {cards = ids})
           return true
         else
