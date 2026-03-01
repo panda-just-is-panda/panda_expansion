@@ -39,8 +39,8 @@ binshi:addEffect(fk.TargetSpecified, {
         flag = "he",
         skill_name = binshi.name,
       })
-      room:throwCard(cards2, binshi.name, to, player)
-      if not player.dead then
+      if #cards2 > 0 and not player.dead then
+        room:throwCard(cards2, binshi.name, to, player)
         room:loseHp(player, 1, binshi.name)
       end
     end
@@ -49,8 +49,8 @@ binshi:addEffect(fk.TargetSpecified, {
 
 Fk:loadTranslationTable {["pang_binshi"] = "冰蚀",
 [":pang_binshi"] = "当你使用【杀】指定目标后，你可以选择一项：弃置两张牌，然后其失去1点体力；弃置其两张牌，然后你失去1点体力。",
-["#pang_binshi"] = "冰蚀：你可以弃置 %src 两张牌并失去体力或弃置两张牌并令 %src 失去体力",
-["binshi_beng"] = "冰蚀：弃置两张牌，令 %src 失去体力，或点取消弃置 %src 两张牌",
+["#pang_binshi"] = "冰蚀：你可以选择弃置两张牌或弃置 %src 两张牌",
+["binshi_beng"] = "冰蚀：弃置两张牌并令 %src 失去体力，或点取消弃置 %src 两张牌并失去体力",
 ["binshi_chai"] = "冰蚀：弃置 %src 两张牌",
 
 ["$pang_binshi1"] = "流髑杂音",

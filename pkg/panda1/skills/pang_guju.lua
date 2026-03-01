@@ -21,6 +21,7 @@ guju:addEffect(fk.EventPhaseStart, { --
         min_num = 1,
         max_num = 1,
         include_equip = true,
+        prompt = "guju_choose",
       })
       if #card > 0 and not player.dead then
           return true

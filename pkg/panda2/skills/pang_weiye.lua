@@ -104,6 +104,7 @@ weiye:addEffect("active", {
             skill_name = weiye.name,
             prompt = "#weiye_discard2:"..player.id,
         })
+        room:throwCard(cards, weiye.name, player, target)
         room:addPlayerMark(player, "weiye-turn", 1)
     end
     if player:getMark("weiye-turn") > 1 then
