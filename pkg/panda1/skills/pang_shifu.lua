@@ -13,7 +13,7 @@ shifu:addEffect(fk.TargetSpecified, {
     local room = player.room
     if player.room:askToSkillInvoke(player, {
       skill_name = shifu.name,
-      prompt = "#pang_shifu",
+      prompt = "#pang_shifu:"..data.to.id,
     }) then
       room:loseHp(player, 1, shifu.name)
       room:loseHp(data.to, 1, shifu.name)
@@ -25,20 +25,15 @@ shifu:addEffect(fk.TargetSpecified, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = data.to
-    local choices = {"shifu_submit", "Cancel"}
-    local choice = room:askToChoice(to, {
-      choices = choices,
-      skill_name = shifu.name,
-    })
-    if choice ~= "Cancel" then
-        local cards = room:askToCards(to, {
+    local cards = room:askToCards(to, {
         min_num = 1,
         max_num = 1,
         include_equip = true,
         skill_name = shifu.name,
-        prompt = "shifu_asking2",
-        cancelable = false,
-      })
+        prompt = "shifu_asking:"..player.id,
+        cancelable = true,
+    })
+    if #cards > 0 then
       room:obtainCard(player, cards, false, fk.ReasonGive)
       room:recover({who = player, num = 1, recoverBy = player, skillName = shifu.name})
       room:recover({who = to, num = 1, recoverBy = to, skillName = shifu.name})
@@ -48,9 +43,9 @@ shifu:addEffect(fk.TargetSpecified, {
 
 Fk:loadTranslationTable {["pang_shifu"] = "尸腐",
 [":pang_shifu"] = "当你使用【杀】指定其他角色为目标后，你可以和其各失去1点体力，然后其可以交给你一张牌并和你回复1点体力。",
-["#pang_shifu"] = "你可以和其各失去1点体力",
+["#pang_shifu"] = "尸腐：你可以和 %src 各失去1点体力",
 ["shifu_submit"] = "交牌",
-["shifu_asking"] = "你可以交给对方一张牌并和其各回复1点体力",
+["shifu_asking"] = "尸腐：你可以交给 %src 一张牌并和 %src 各回复1点体力",
 ["shifu_asking2"] = "交给对方一张牌",
 
 ["$pang_shifu1"] = "僵尸嚎叫",

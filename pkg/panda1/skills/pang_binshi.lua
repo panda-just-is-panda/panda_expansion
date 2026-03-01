@@ -13,7 +13,7 @@ binshi:addEffect(fk.TargetSpecified, {
     local room = player.room
     if player.room:askToSkillInvoke(player, {
       skill_name = binshi.name,
-      prompt = "#pang_binshi",
+      prompt = "#pang_binshi:"..data.to.id,
     }) then
       return true
     end
@@ -21,52 +21,37 @@ binshi:addEffect(fk.TargetSpecified, {
   on_use = function(self, event, target, player, data)
     local room = player.room
     local to = data.to
-    local choices = {"Cancel"}
-    local cards_player = player:getCardIds("he")
-    local cards_to = to:getCardIds("he")
-    if #cards_to > 1 then
-      table.insert(choices, 1, "binshi_chai")
-    end
-    if #cards_player > 1 then
-      table.insert(choices, 1, "binshi_beng")
-    end
-    local choice = room:askToChoice(player, {
-      choices = choices,
+    local cards = room:askToDiscard(player, {
       skill_name = binshi.name,
+      cancelable = true,
+      min_num = 2,
+      max_num = 2,
+      include_equip = true,
+      prompt = "binshi_beng:"..to.id,
     })
-    if choice == "binshi_chai" then
-        local cards2 = room:askToChooseCards(player, {
-            target = to,
-            min = 1,
-            max = 2,
-            flag = "he",
-          skill_name = binshi.name,
-        })
-        room:throwCard(cards2, binshi.name, to, player)
-        if not player.dead then
-            room:loseHp(player, 1, binshi.name)
+    if #cards > 1 and not to.dead then
+      room:loseHp(to, 1, binshi.name)
+    else
+      local cards2 = room:askToChooseCards(player, {
+        target = to,
+        min = 2,
+        max = 2,
+        flag = "he",
+        skill_name = binshi.name,
+      })
+      room:throwCard(cards2, binshi.name, to, player)
+      if not player.dead then
+        room:loseHp(player, 1, binshi.name)
       end
-    elseif choice == "binshi_beng" then
-        local card = room:askToDiscard(player, {
-          skill_name = binshi.name,
-          cancelable = false,
-          min_num = 2,
-          max_num = 2,
-          include_equip = true,
-        })
-        if not to.dead then
-            room:loseHp(to, 1, binshi.name)
-        end
     end
   end
 })
 
 Fk:loadTranslationTable {["pang_binshi"] = "冰蚀",
 [":pang_binshi"] = "当你使用【杀】指定目标后，你可以选择一项：弃置两张牌，然后其失去1点体力；弃置其两张牌，然后你失去1点体力。",
-["#pang_binshi"] = "你可以发动“冰蚀”",
-["binshi_chai"] = "弃置其牌，你失去体力",
-["binshi_beng"] = "你弃置牌，其失去体力",
-["binshi_chai2"] = "弃置其两张牌",
+["#pang_binshi"] = "冰蚀：你可以弃置 %src 两张牌并失去体力或弃置两张牌并令 %src 失去体力",
+["binshi_beng"] = "冰蚀：弃置两张牌，令 %src 失去体力，或点取消弃置 %src 两张牌",
+["binshi_chai"] = "冰蚀：弃置 %src 两张牌",
 
 ["$pang_binshi1"] = "流髑杂音",
 ["$pang_binshi2"] = "流髑杂音",

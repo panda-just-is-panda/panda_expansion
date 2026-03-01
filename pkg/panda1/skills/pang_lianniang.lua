@@ -4,7 +4,7 @@ local lianniang = fk.CreateSkill({
 })
 
 lianniang:addEffect("active", {
-  anim_type = "offensive",
+  anim_type = "control",
   prompt = "#lianniang",
   max_phase_use_time = 1,
   card_num = 0,

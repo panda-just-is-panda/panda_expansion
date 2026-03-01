@@ -21,8 +21,8 @@ Fk:loadTranslationTable {
   ["@@pang_chouqi"] = "仇起失效",
   ["@@pang_beichouqi"] = "仇起目标",
 
-  ["$pang_chouqi1"] = "僵尸猪灵嘶吼",
-["$pang_chouqi2"] = "僵尸猪灵太怒",
+  ["$pang_chouqi1"] = "哼唧——",
+["$pang_chouqi2"] = "哼唧——！",
 }
 
 chouqi:addEffect(fk.Damaged, {

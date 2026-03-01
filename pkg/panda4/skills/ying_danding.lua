@@ -5,7 +5,7 @@ local danding = fk.CreateSkill({
 
 Fk:loadTranslationTable {["ying_danding"] = "胆定",
 [":ying_danding"] = "出牌阶段开始时，你可以令你本回合对一名其他角色使用的牌无次数限制，然后其可以观看你的手牌并重铸其中两张。",
-["#danding-choose"] = "胆定：你可以令你本回合对一名其他角色使用的牌无次数限制且不可响应",
+["#danding-choose"] = "胆定：你可以令你本回合对一名其他角色使用的牌无次数限制",
 ["#danding-view"] = "胆定：重铸其中两张牌",
 ["#danding-invoke2"] = "胆定：你可以观看%dest的手牌并重铸其中两张",
 ["@@been_danding-turn"] = "被胆定",

@@ -12,8 +12,8 @@ niliu:addEffect(fk.AfterCardsMove, {
         if move.moveReason == fk.ReasonDiscard and move.from then
             for _, info in ipairs(move.moveInfo) do
                 if (info.fromArea == Card.PlayerHand or info.fromArea == Card.PlayerEquip) and
-                move.from:getMark("@@niliu") == 0 then
-                    player.room:addPlayerMark(move.from, "@@niliu")
+                move.from:getMark("@@niliu-turn") == 0 then
+                    player.room:addPlayerMark(move.from, "@@niliu-turn")
                     return true
                 end
             end
@@ -25,23 +25,12 @@ niliu:addEffect(fk.AfterCardsMove, {
   end,
 })
 
-niliu:addEffect(fk.TurnEnd, {
-  anim_type = "special",
-  can_refresh = function(self, event, target, player, data)
-    return player:hasSkill(niliu.name)
-  end,
-  on_refresh = function(self, event, target, player, data)
-    for _, p in ipairs(player.room.alive_players) do
-      player.room:setPlayerMark(p, "@@niliu", 0)
-    end
-  end,
-})
 
 niliu:addEffect(fk.DamageCaused, {
   anim_type = "offensive",
   is_delay_effect = true,
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(niliu.name) and data.to:getMark("@@niliu") > 0
+    return target == player and player:hasSkill(niliu.name) and data.to and data.to:getMark("@@niliu-turn") > 0
   end,
   on_use = function(self, event, target, player, data)
     data:changeDamage(1)
@@ -52,7 +41,7 @@ niliu:addEffect(fk.DamageInflicted, {
   anim_type = "defensive",
   is_delay_effect = true,
   can_trigger = function(self, event, target, player, data)
-    return player == target and player:hasSkill(niliu.name) and data.from:getMark("@@niliu") > 0
+    return player == target and player:hasSkill(niliu.name) and data.from and data.from:getMark("@@niliu-turn") > 0
   end,
   on_use = function(self, event, target, player, data)
     data:changeDamage(-1)
@@ -61,7 +50,7 @@ niliu:addEffect(fk.DamageInflicted, {
 
 Fk:loadTranslationTable {["pang_niliu"] = "逆流",
 [":pang_niliu"] = "锁定技，本回合因弃置失去过牌的角色：对你造成的伤害-1；受到你造成的伤害+1。",
-["@@niliu"] = "逆流",
+["@@niliu-turn"] = "逆流",
 
   ["$pang_niliu1"] = "Agents have guns. It's called common sense.",
   ["$pang_niliu2"] = "Radio waves are everywhere, everywehere.",

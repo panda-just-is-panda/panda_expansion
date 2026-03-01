@@ -15,32 +15,21 @@ guju:addEffect(fk.EventPhaseStart, { --
       skill_name = guju.name,
       prompt = "#pang_guju",
     }) then
-    local choices = {"guju_beng", "Cancel"}
-    local cards_player = player:getCardIds("he")
-    if #cards_player > 1 then
-      table.insert(choices, 1, "guju_qizhi")
-    end
-        local choice = room:askToChoice(player, {
-      choices = choices,
-      skill_name = guju.name,
-    })
-    if choice == "guju_qizhi" then
-        local card = room:askToDiscard(player, {
-          skill_name = guju.name,
-          cancelable = false,
-          min_num = 1,
-          max_num = 1,
-          include_equip = true,
-        })
-        if not player.dead then
-        return true
-        end
-    elseif choice == "guju_beng" then
+      local card = room:askToDiscard(player, {
+        skill_name = guju.name,
+        cancelable = true,
+        min_num = 1,
+        max_num = 1,
+        include_equip = true,
+      })
+      if #card > 0 and not player.dead then
+          return true
+      else
         room:loseHp(player, 1, guju.name)
         if not player.dead then
-        return true
+          return true
         end
-    end
+      end
     end
   end,
   on_use = function(self, event, target, player, data)
@@ -99,7 +88,7 @@ Fk:loadTranslationTable {["pang_guju"] = "骨狙",
 ["guju_juli"] = "使用牌无距离限制",
 ["draw1"] = "摸一张牌",
 
-["$pang_guju1"] = "骷髅杂音",
-["$pang_guju2"] = "骷髅噪音",
+["$pang_guju1"] = "骨骼摩擦声",
+["$pang_guju2"] = "骨骼噪音",
 }
 return guju  --不要忘记返回做好的技能对象哦

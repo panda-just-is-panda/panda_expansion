@@ -32,7 +32,7 @@ Fk:loadTranslationTable {["pang_chaoyong"] = "潮涌",
 ["#pang_chaoyong"] = "根据使用牌的条件摸牌",
 ["@chaoyong-turn"] = "潮涌",
 
-["$pang_chaoyong1"] = "溺尸嘶吼",
+["$pang_chaoyong1"] = "溺尸低吼",
 ["$pang_chaoyong2"] = "溺尸嘶吼",
 }
 return chaoyong  --不要忘记返回做好的技能对象哦
