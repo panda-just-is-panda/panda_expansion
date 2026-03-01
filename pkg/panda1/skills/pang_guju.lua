@@ -43,7 +43,7 @@ guju:addEffect(fk.EventPhaseStart, { --
     })
     table.insert(choices_pick, choice2)
     table.removeOne(choices2, choice2)
-    choice3 = room:askToChoice(player, {
+    local choice3 = room:askToChoice(player, {
       choices = choices2,
       skill_name = guju.name,
     })
@@ -85,6 +85,7 @@ Fk:loadTranslationTable {["pang_guju"] = "骨狙",
 ["#pang_guju"] = "你可以发动“骨狙”",
 ["guju_beng"] = "失去体力",
 ["guju_qizhi"] = "弃牌",
+["guju_choose"] = "骨狙：弃置一张牌，或点取消失去1点体力",
 ["guju_qiangming"] = "使用牌不能被响应",
 ["guju_juli"] = "使用牌无距离限制",
 ["draw1"] = "摸一张牌",
