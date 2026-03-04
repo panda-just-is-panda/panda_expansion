@@ -5,7 +5,7 @@ local jizu = fk.CreateSkill {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_trigger = function(self, event, target, player, data)
-        if data.card and target:getMark("@jizu_block-turn") and data.card:getColorString() ~= target:getMark("@jizu_block-turn") then
+        if data.card and target:getMark("@jizu_block-turn") ~= 0 and data.card:getColorString() ~= target:getMark("@jizu_block-turn") then
             for _, to in ipairs(player.room.alive_players) do
                 player.room:setPlayerMark(to,"@jizu_block-turn", 0)
             end
