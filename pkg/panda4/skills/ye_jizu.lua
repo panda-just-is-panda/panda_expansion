@@ -5,6 +5,11 @@ local jizu = fk.CreateSkill {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_trigger = function(self, event, target, player, data)
+        if data.card and target:getMark("@jizu_block-turn") and data.card:getColorString() ~= target:getMark("@jizu_block-turn") then
+            for _, to in ipairs(player.room.alive_players) do
+                player.room:setPlayerMark(to,"@jizu_block-turn", 0)
+            end
+        end
         return player:hasSkill(jizu.name) and (data.extra_data or {}).can_jizu
         and player:usedSkillTimes(jizu.name, Player.HistoryTurn) == 0
         and data.card and not table.contains(data.card.skillNames, jizu.name)
@@ -79,11 +84,6 @@ jizu:addEffect(fk.CardUseFinished, {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_refresh = function(self, event, target, player, data)
-        if data.card and target:getMark("@jizu_block-turn") and data.card:getColorString() ~= target:getMark("@jizu_block-turn") then
-            for _, to in ipairs(player.room.alive_players) do
-                player.room:setPlayerMark(to,"@jizu_block-turn", 0)
-            end
-        end
         return data.card and target == player.room.current and player:hasSkill(jizu.name)
     end,
     on_refresh = function(self, event, target, player, data)
