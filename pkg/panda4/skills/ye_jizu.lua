@@ -5,11 +5,6 @@ local jizu = fk.CreateSkill {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_trigger = function(self, event, target, player, data)
-        if data.card and target:getMark("@jizu_block-turn") ~= 0 and data.card:getColorString() ~= target:getMark("@jizu_block-turn") then
-            for _, to in ipairs(player.room.alive_players) do
-                player.room:setPlayerMark(to,"@jizu_block-turn", 0)
-            end
-        end
         return player:hasSkill(jizu.name) and (data.extra_data or {}).can_jizu
         and player:usedSkillTimes(jizu.name, Player.HistoryTurn) == 0
         and data.card and not table.contains(data.card.skillNames, jizu.name)
@@ -20,18 +15,32 @@ jizu:addEffect(fk.CardUseFinished, {
         local color = data.card:getColorString()
         room:setPlayerMark(player,"unique_jizu_block",color)
         room:setPlayerMark(player,"anti_chajie-turn",1)
-        local use = room:askToUseRealCard(player, {
-            pattern = ".",
-            skill_name = jizu.name,
-            prompt = "#jizu_use",
-            extra_data = {
-                bypass_times = true,
-                extraUse = true,
-            }
-        })
+        local use
+        if data.card.color == Card.Black then
+            use = room:askToUseRealCard(player, {
+                pattern = ".|.|red",
+                skill_name = jizu.name,
+                prompt = "#jizu_use",
+                extra_data = {
+                    bypass_times = true,
+                    extraUse = true,
+                }
+            })
+        else
+            use = room:askToUseRealCard(player, {
+                pattern = ".|.|black",
+                skill_name = jizu.name,
+                prompt = "#jizu_use",
+                extra_data = {
+                    bypass_times = true,
+                    extraUse = true,
+                }
+            })
+        end
         room:setPlayerMark(player,"unique_jizu_block",0)
         if use then
             use.card.skillName = jizu.name
+            data.card.skillName = jizu.name
             for _, to in ipairs(room.alive_players) do
                 room:setPlayerMark(to,"@jizu_block-turn", use.card:getColorString())
             end
@@ -84,6 +93,12 @@ jizu:addEffect(fk.CardUseFinished, {
 jizu:addEffect(fk.CardUseFinished, {
     anim_type = "drawcard",
     can_refresh = function(self, event, target, player, data)
+        if data.card and target:getMark("@jizu_block-turn") ~= 0 and data.card:getColorString() ~= target:getMark("@jizu_block-turn")
+        and not table.contains(data.card.skillNames, jizu.name) then
+            for _, to in ipairs(player.room.alive_players) do
+                player.room:setPlayerMark(to,"@jizu_block-turn", 0)
+            end
+        end
         return data.card and target == player.room.current and player:hasSkill(jizu.name)
     end,
     on_refresh = function(self, event, target, player, data)
@@ -105,17 +120,11 @@ jizu:addEffect("prohibit",{
   end,
 })
 
-jizu:addEffect("prohibit",{
-  prohibit_use = function (self, player, card)
-    if player:getMark("unique_jizu_block") then
-      return card:getColorString() == player:getMark("unique_jizu_block")
-    end
-  end,
-})
+
 
 
 Fk:loadTranslationTable {["ye_jizu"] = "急阻",
-[":ye_jizu"] = "每回合限一次，当前回合角色连续使用同色的牌结算后，你可使用一张不同色的牌并摸一张牌，此牌结算后本回合下一张使用的牌须与此牌颜色不同。",
+[":ye_jizu"] = "每回合限一次，当前回合角色连续使用同色的牌结算后，你可使用一张不同色的手牌并摸一张牌，此牌结算后本回合下一张使用的牌须与此牌颜色不同。",
 ["@jizu_block-turn"] = "急阻",
 ["#jizu_use"] = "急阻：你可以使用一张不同色的牌",
 ["#jizu_move"] = "谣隙：你可移动“急阻”，然后获得并分配 %src 区域内的一张牌",
