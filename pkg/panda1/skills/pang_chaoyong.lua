@@ -27,9 +27,17 @@ chaoyong:addEffect(fk.CardUsing, {
             table.insert(typesRecorded, "log_" .. data.card:getSuitString())
             room:setPlayerMark(player, "@chaoyong_suit-turn", typesRecorded)
          end
-         if not table.contains(player:getTableMark("@chaoyong_type-turn"), "log_" .. data.card:getTypeString()) then
+         local name
+          if data.card.type == Card.TypeBasic then
+            name = "基"
+          elseif data.card.type == Card.TypeTrick then
+            name = "锦"
+          elseif data.card.type == Card.TypeEquip then
+            name = "装"
+          end
+         if not table.contains(player:getTableMark("@chaoyong_type-turn"), name) then
             local typesRecorded = player:getTableMark("@chaoyong_type-turn")
-            table.insert(typesRecorded, "log_" .. data.card:getTypeString())
+            table.insert(typesRecorded, name)
             room:setPlayerMark(player, "@chaoyong_type-turn", typesRecorded)
          end
     else room:loseHp(player, 1, chaoyong.name)
@@ -40,8 +48,8 @@ end
 Fk:loadTranslationTable {["pang_chaoyong"] = "潮涌",
 [":pang_chaoyong"] = "锁定技，当你使用一张牌后，若你本回合未使用过和此牌类型或花色相同的牌，你摸一张牌，否则你失去1点体力。",
 ["#pang_chaoyong"] = "根据使用牌的条件摸牌",
-["@chaoyong_suit-turn"] = "潮涌花色",
-["@chaoyong_type-turn"] = "潮涌花色",
+["@chaoyong_suit-turn"] = "花色：",
+["@chaoyong_type-turn"] = "类型：",
 
 ["$pang_chaoyong1"] = "溺尸低吼",
 ["$pang_chaoyong2"] = "溺尸嘶吼",
