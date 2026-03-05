@@ -92,7 +92,7 @@ Fk:loadTranslationTable {["pang_biyi"] = "笔意",
 
 
 ["$pang_biyi1"] = "Los enredos de la vida ... (The entanglements of life ...)",
-["$pang_biyi2"] = "El camino a Tlön ... (The road into Tlön ...)",
+["$pang_biyi2"] = "En la acumulación de laberintos, suéltalo todo una vez más. (In the accumulation of labyrinths, let it all go once more.)",
 }
 
 return biyi
