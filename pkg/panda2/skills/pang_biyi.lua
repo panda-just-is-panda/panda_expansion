@@ -25,10 +25,13 @@ biyi:addEffect(fk.TargetSpecified, {
 })
 
 biyi:addEffect(fk.EventPhaseEnd, {
- can_refresh = function(self, event, target, player, data)
+  mute = true,
+  anim_type = "offensive",
+ can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(biyi.name) and player.phase == Player.Play
     end,
-    on_refresh = function(self, event, target, player, data)
+  on_cost = Util.TrueFunc,
+  on_use = function(self, event, target, player, data)
     local room = player.room
     local used_tos = table.filter(room:getOtherPlayers(player, false), function (p)
       return p:getMark("biyi_used-turn") > 0
@@ -43,6 +46,7 @@ biyi:addEffect(fk.EventPhaseEnd, {
         cancelable = true,
       })
       if #tos > 0 then
+        player:broadcastSkillInvoke(biyi.name, 2)
         room:addPlayerMark(player, "biyu_minus-turn", 2)
         for _, p in ipairs(tos) do
           if not p.dead then
@@ -59,6 +63,7 @@ biyi:addEffect(fk.EventPhaseEnd, {
         end
       end
     else
+        player:broadcastSkillInvoke(biyi.name, 1)
         room:addPlayerMark(player, "biyu_plus-turn", 2)
     end
     if player:getMark("biyi_kill-phase") > 1 then
@@ -84,6 +89,10 @@ biyi:addEffect("maxcards", {
 Fk:loadTranslationTable {["pang_biyi"] = "笔意",
 [":pang_biyi"] = "出牌阶段结束时，若你此阶段使用牌指定过所有其他角色为目标，你可以对至多三名其他角色各造成1点伤害并令本回合你的手牌上限-2；否则，本回合你的手牌上限+2。",
 ["#biyi"] = "你可以对至多三名其他角色各造成1点伤害并令手牌上限本回合-2",
+
+
+["$pang_biyi1"] = "Los enredos de la vida ... (The entanglements of life ...)",
+["$pang_biyi2"] = "El camino a Tlön ... (The road into Tlön ...)",
 }
 
 return biyi

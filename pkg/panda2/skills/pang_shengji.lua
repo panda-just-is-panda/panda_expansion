@@ -4,6 +4,7 @@ local shengji = fk.CreateSkill {
 }
 
 shengji:addEffect(fk.EventPhaseStart, {
+  mute = true,
 anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(shengji.name) and target.phase == Player.Finish
@@ -11,6 +12,7 @@ anim_type = "offensive",
   on_use = function(self, event, target, player, data)
     local room = player.room
     local num = 0
+    player:broadcastSkillInvoke(shengji.name, 1)
     for _, p in ipairs(room:getAlivePlayers()) do
         if not p.dead then
           num = num + p:getLostHp()
@@ -51,12 +53,20 @@ shengji:addEffect(fk.Damage, {
         recoverBy = player,
         skillName = shengji.name
       })
+      if player:getMark("shengji_audio-phase") == 0 then
+        player:broadcastSkillInvoke(shengji.name, 2)
+        player.room:setPlayerMark(player, "shengji_audio-phase", 1)
+      end
   end,
 })
 
 Fk:loadTranslationTable {["pang_shengji"] = "生祭",
 [":pang_shengji"] = "结束阶段，你可以将手牌摸至X张（X为所有角色已损失的体力值之和），然后若你的手牌数大于五，你将手牌弃置至五张并视为一张使用【南蛮入侵】；当你因此造成伤害后，你回复1点体力。",
 ["#shengji_discard"] = "将手牌弃置至5张",
+
+
+["$pang_shengji1"] = "Enter the gate and see the light.",
+["$pang_shengji2"] = "Once shattered, now remade.",
 }
 
 return shengji

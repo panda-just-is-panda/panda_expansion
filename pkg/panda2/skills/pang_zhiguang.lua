@@ -4,6 +4,7 @@ local zhiguang = fk.CreateSkill {
 }
 
 zhiguang:addEffect("active", {
+  mute = true,
   anim_type = "support",
   card_num = 0,
   target_num = 0,
@@ -22,6 +23,7 @@ zhiguang:addEffect("active", {
       skill_name = zhiguang.name,
       })
       if choice == "zhiguang_kutong" then
+        from:broadcastSkillInvoke(zhiguang.name, 2)
         for _, p in ipairs(room:getAlivePlayers()) do
         if not p.dead then
           room:loseHp(p, 1, zhiguang.name)
@@ -37,6 +39,7 @@ zhiguang:addEffect("active", {
         cancelable = false,
         })
         if #tos > 0 then
+          from:broadcastSkillInvoke(zhiguang.name, 1)
           for _, p in ipairs(tos) do
         room:changeShield(p, 1, {cancelable = false})
           end
@@ -53,6 +56,9 @@ Fk:loadTranslationTable {["pang_zhiguang"] = "织光",
 ["zhiguang_kutong"] = "令所有角色各失去1点体力",
 ["zhiguang_bihu"] = "令至多两名角色各获得1点护甲",
 ["#zhiguang_hujia"] = "令至多两名角色各获得1点护甲",
+
+["$pang_zhiguang1"] = "Face the truth.",
+["$pang_zhiguang2"] = "Though it may come with pain.",
 }
 
 return zhiguang

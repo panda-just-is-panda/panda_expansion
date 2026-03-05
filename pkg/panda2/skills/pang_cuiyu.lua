@@ -73,6 +73,9 @@ Fk:loadTranslationTable {["pang_cuiyu"] = "萃喻",
 [":pang_cuiyu"] = "摸牌阶段，你可以多摸两张牌；若如此做，当你使用本回合获得的牌时，你本回合不能再使用牌。",
 ["@@cuiyu"] = "萃喻",
 ["@@cuiyu-inhand-turn"] = "萃喻",
+
+["$pang_cuiyu1"] = "Cosmología, filosofía clásica, el fundamento del mundo ... (Cosmology, classical philosophy, the foundation of the world ...)",
+["$pang_cuiyu2"] = "Idealismo, vuelos de fantasía, patrones ocultos ... (Idealism, flights of fancy, hidden patterns ...)",
 }
 
 return cuiyu

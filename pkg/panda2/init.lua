@@ -177,7 +177,7 @@ Fk:loadTranslationTable{
 ["cv:pang__xugouji"] = "深蓝",
 ["illustrator:pang__xugouji"] = "深蓝",
 
-
+["~pang__xugouji"] = "Not a fan of my work, I take it?",
 }
 
 local luxi = General:new(extension, "pang__luxi", "god", 4, 4, General.Female)
@@ -207,6 +207,8 @@ Fk:loadTranslationTable{
 ["designer:pang__nuodika"] = "胖即是胖",
 ["cv:pang__nuodika"] = "深蓝",
 ["illustrator:pang__nuodika"] = "深蓝",
+
+["~pang__nuodika"] = "I won't be fooled ...",
 }
 
 local barcarola = General:new(extension, "pang__barcarola", "wei", 3, 3, General.Female)
