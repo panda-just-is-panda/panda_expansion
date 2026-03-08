@@ -35,6 +35,18 @@ local content1 = {
   enabled_generals = {"pang__re_pillager"},
   },
   {
+  skins={"pang__pillager_skin_two.jpg"}, 
+  enabled_generals = {"pang__re_pillager"},
+  },
+  {
+  skins={"pang__pillager_skin_three.jpg"}, 
+  enabled_generals = {"pang__re_pillager"},
+  },
+  {
+  skins={"pang__pillager_skin_four.jpg"}, 
+  enabled_generals = {"pang__re_pillager"},
+  },
+  {
   skins={"pang__lovezoglin.jpg"}, 
   enabled_generals = {"pang__zoglin"},
   },
@@ -63,6 +75,14 @@ local content1 = {
   enabled_generals = {"pang__evoker"},
   },
   {
+  skins={"pang__evoker_skin_two.jpg"}, 
+  enabled_generals = {"pang__evoker"},
+  },
+  {
+  skins={"pang__evoker_skin_three.jpg"}, 
+  enabled_generals = {"pang__evoker"},
+  },
+  {
   skins={"pang__ravager_skin.jpg"}, 
   enabled_generals = {"pang__ravager"},
   },
@@ -84,6 +104,10 @@ local content1 = {
   },
   {
   skins={"pang__archillager_skin_two.jpg"}, 
+  enabled_generals = {"pang__archillager"},
+  },
+  {
+  skins={"pang__archillager_skin_three.jpg"}, 
   enabled_generals = {"pang__archillager"},
   },
   {
@@ -303,6 +327,12 @@ Fk:loadTranslationTable{
   ["pang__witch_skin"] = "独涉险境",
   ["pang__vindicator_skin_three"] = "除奸卫道",
   ["pang__angry_vindicator"] = "战斗形态",
+  ["pang__pillager_skin_two"] = "定点狙击",
+  ["pang__pillager_skin_three"] = "嚣张跋扈",
+  ["pang__pillager_skin_four"] = "灾厄巡逻",
+  ["pang__evoker_skin_two"] = "恼鬼噩梦",
+  ["pang__evoker_skin_three"] = "施法锁身",
+  ["pang__archillager_skin_three"] = "末影之傀",
   ["pang__creeper_skin"] = "绿光爆破",
   ["pang__creeper_skin_two"] = "苦力怕娘",
   ["pang__creeper_skin_three"] = "可爱一刻",
