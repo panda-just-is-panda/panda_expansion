@@ -75,6 +75,18 @@ Fk:loadTranslationTable{
 ["~pang__drowned"] = "溺尸阵亡",
 }
 
+local enderman = General:new(extension, "pang__enderman", "jin", 4, 4, General.Male)
+enderman:addSkill("pang_yingyi")
+Fk:loadTranslationTable{
+["pang__enderman"] = "末影人",
+["#pang__enderman"] = "终界移影",
+["designer:pang__enderman"] = "胖即是胖",
+["cv:pang__enderman"] = "我的世界",
+["illustrator:pang__enderman"] = "我的世界",
+
+["~pang__enderman"] = "末影人阵亡",
+}
+
 local re_husk = General:new(extension, "pang__re_husk", "wu", 4, 4, General.Male)
 re_husk:addSkill("pang_jigao")
 re_husk:addSkill("pang_wangling")
