@@ -48,6 +48,7 @@ moyi:addEffect(fk.CardUseFinished, {
     local room = player.room
     player:drawCards(1, moyi.name)
     room:setPlayerMark(player, "@moyi_record-round", target)
+    room:setPlayerMark(target, "moyi_target-round", 1)
     room:setPlayerMark(player, "moyi_use-turn", 1)
   end,
 })
@@ -60,7 +61,12 @@ moyi:addEffect(fk.TurnEnd, {
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
-    local to = player:getTableMark("@moyi_record-round")[1]
+    local to
+    for _, p in ipairs(room:getOtherPlayers(player, false)) do
+        if p:getMark("moyi_target-round") == 1 then
+            to = p
+        end
+    end
     local use = room:askToUseCard(player, {
       skill_name = moyi.name,
       prompt = "#pang_moyi:"..to.id,
@@ -91,7 +97,12 @@ moyi:addEffect(fk.RoundEnd, {
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
-    local to = player:getTableMark("@moyi_record-round")[1]
+    local to
+    for _, p in ipairs(room:getOtherPlayers(player, false)) do
+        if p:getMark("moyi_target-round") == 1 then
+            to = p
+        end
+    end
     local use = room:askToUseCard(player, {
       skill_name = moyi.name,
       prompt = "#pang_moyi:"..to.id,
