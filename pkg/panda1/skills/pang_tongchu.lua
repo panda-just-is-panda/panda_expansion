@@ -11,8 +11,8 @@ Fk:loadTranslationTable{
   ["#pang_tongchu_get"] = "铜储：你可以获得一张“货”",
 
 
-  ["$1"] = "金属噪音",
-  ["$2"] = "机关噪音",
+  ["$pang_tongchu1"] = "机关检测声",
+  ["$pang_tongchu2"] = "机械运转声",
 }
 
 tongchu:addAcquireEffect(function (self, player)
@@ -36,13 +36,9 @@ anim_type = "drawcard",
     end,
     on_cost = function(self, event, target, player, data)
       local room = player.room
-      local player_get = room:askToChooseCards(player, {
-        min_num = 1,
-        max_num = 1,
-        min_card_num = 1,
-        max_card_num = 1,
-        pattern = ".|.|.|$copper_golem_huo",
-        expand_pile = player:getPile("$copper_golem_huo"),
+      local player_get = room:askToChooseCard(player, {
+        target = player,
+        flag = { card_data = {{ tongchu.name, "$copper_golem_huo" }} },
         skill_name = tongchu.name,
         prompt = "#pang_tongchu_get",
         cancelable = true,

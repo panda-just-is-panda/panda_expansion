@@ -42,7 +42,9 @@ laoyun:addEffect(fk.AfterCardsMove, {
     on_use = function(self, event, target, player, data)
     local room = player.room
     local to = event:getCostData(self).tos[1]
-    room:viewCards(player, { cards = to:getCardIds("h"), skill_name = laoyun.name, prompt = "$ViewCardsFrom:" .. to.id })
+    if not to:isKongcheng() then
+        room:viewCards(player, { cards = to:getCardIds("h"), skill_name = laoyun.name, prompt = "$ViewCardsFrom:" .. to.id })
+    end
     local cards = room:askToCards(player, {
         min_num = 1,
         max_num = 1,
