@@ -30,10 +30,9 @@ moyi:addEffect(fk.CardUseFinished, {
     local room = player.room
     local use = room:askToUseCard(player, {
       skill_name = moyi.name,
-      pattern = "slash",
-      prompt = "#pang_moyi"..target.id,
+      prompt = "#pang_moyi:"..target.id,
       extra_data = {
-        exclusive_targets = {target},
+        exclusive_targets = {target.id},
         bypass_times = true,
         bypass_distances = true,
       }
@@ -49,7 +48,6 @@ moyi:addEffect(fk.CardUseFinished, {
     local room = player.room
     player:drawCards(1, moyi.name)
     room:setPlayerMark(player, "@moyi_record-round", target.id)
-    room:setPlayerMark(target, "moyi_target-round", 1)
     room:setPlayerMark(player, "moyi_use-turn", 1)
   end,
 })
@@ -62,16 +60,10 @@ moyi:addEffect(fk.TurnEnd, {
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
-    local to
-    for _, p in ipairs(room:getOtherPlayers(player, false)) do
-        if p:getMark("moyi_target-round") == 1 then
-            to = p
-        end
-    end
+    local to = player:getTableMark("@moyi_record-round")[1]
     local use = room:askToUseCard(player, {
       skill_name = moyi.name,
-      pattern = "slash",
-      prompt = "#pang_moyi"..to.id,
+      prompt = "#pang_moyi:"..to,
       extra_data = {
         exclusive_targets = {to},
         bypass_times = true,
@@ -99,16 +91,10 @@ moyi:addEffect(fk.RoundEnd, {
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
-    local to
-    for _, p in ipairs(room:getOtherPlayers(player, false)) do
-        if p:getMark("moyi_target-round") == 1 then
-            to = p
-        end
-    end
+    local to = player:getTableMark("@moyi_record-round")[1]
     local use = room:askToUseCard(player, {
       skill_name = moyi.name,
-      pattern = "slash",
-      prompt = "#pang_moyi"..to.id,
+      prompt = "#pang_moyi:"..to,
       extra_data = {
         exclusive_targets = {to},
         bypass_times = true,

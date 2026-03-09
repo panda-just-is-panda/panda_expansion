@@ -147,7 +147,7 @@ local content1 = {
   enabled_generals = {"pang__creeper"},
   },
   {
-  skins={"pang__ender_skin_three.jpg"}, 
+  skins={"pang__enderman_skin_three.jpg"}, 
   enabled_generals = {"pang__enderman"},
   },
 
