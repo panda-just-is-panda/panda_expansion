@@ -24,7 +24,6 @@ tongchu_active:addEffect("active", {
   card_filter = function(self, player, to_select, selected)
     return #selected == 0
   end,
-  target_filter = Util.TrueFunc,
   on_use = function(self, room, effect)
     local player = effect.from
     local targets = table.filter(room.alive_players, function(p)
