@@ -132,6 +132,7 @@ moyi:addEffect(fk.RoundEnd, {
   anim_type = "offensive", 
   can_trigger = function(self, event, target, player, data)
     return player:hasSkill(moyi.name) and player:usedSkillTimes(moyi.name, Player.HistoryRound) > 0
+    and player:getMark("@moyi_record-round") > 0
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
