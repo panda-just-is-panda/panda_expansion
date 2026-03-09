@@ -36,8 +36,11 @@ anim_type = "drawcard",
     end,
     on_cost = function(self, event, target, player, data)
       local room = player.room
-      local player_get = room:askToChooseCard(player, {
-        target = player,
+      local player_get = room:askToChooseCards(player, {
+        min_num = 1,
+        max_num = 1,
+        min_card_num = 1,
+        max_card_num = 1,
         pattern = ".|.|.|$copper_golem_huo",
         expand_pile = player:getPile("$copper_golem_huo"),
         skill_name = tongchu.name,

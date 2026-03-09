@@ -13,11 +13,17 @@ Fk:loadTranslationTable {["pang_laoyun"] = "劳运",
 ["$pang_laoyun2"] = "机械摩擦声",
 }
 
-local laoyun_spec = {
-anim_type = "support",
-    can_trigger = function(self, event, target, player, data)
-        return target == player and player:hasSkill(laoyun.name) and not player:isNude()
-        and player:usedSkillTimes(laoyun.name, Player.HistoryTurn) == 0
+laoyun:addEffect(fk.AfterCardsMove, {
+  anim_type = "support",
+  can_trigger = function(self, event, target, player, data)
+    if player:hasSkill(laoyun.name) and player:usedSkillTimes(laoyun.name, Player.HistoryTurn) == 0 and
+      not player:isNude() then
+      for _, move in ipairs(data) do
+        if move.to == player and move.toArea == Player.Hand then
+          return #player.room:getOtherPlayers(player, false) > 0
+        end
+      end
+    end
     end,
     on_cost = function(self, event, target, player, data)
         local tos = player.room:askToChoosePlayers(player, {
@@ -50,9 +56,7 @@ anim_type = "support",
         player:drawCards(1, laoyun.name)
     end
   end,
-}
-laoyun:addEffect(fk.CardUseFinished, laoyun_spec)
-laoyun:addEffect(fk.CardRespondFinished, laoyun_spec)
+})
 
 
 
