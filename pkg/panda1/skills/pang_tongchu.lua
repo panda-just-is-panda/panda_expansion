@@ -9,6 +9,7 @@ Fk:loadTranslationTable{
 
   ["$copper_golem_huo"] = "货",
   ["#pang_tongchu_get"] = "铜储：你可以获得一张“货”",
+  ["tongchu_getcard"] = "铜储：你可以获得一张“货”",
 
 
   ["$pang_tongchu1"] = "机关检测声",
@@ -36,16 +37,21 @@ anim_type = "drawcard",
     end,
     on_cost = function(self, event, target, player, data)
       local room = player.room
-      local player_get = room:askToChooseCard(player, {
-        target = player,
-        flag = { card_data = {{ tongchu.name, "$copper_golem_huo" }} },
-        skill_name = tongchu.name,
-        prompt = "#pang_tongchu_get",
-        cancelable = true,
-      })
-      if #player_get > 0 then
-        event:setCostData(self, {cards = {player_get}})
-        return true
+      if room:askToSkillInvoke(player, { skill_name = tongchu.name, prompt = "tongchu_getcard"}) then
+        local cards, choice = room:askToChooseCardsAndChoice(
+          target,
+          {
+            cards = player:getPile("$copper_golem_huo"),
+            choices = { "OK" },
+            skill_name = tongchu.name,
+            prompt = "#pang_tongchu_get",
+            cancel_choices = { "Cancel" }
+          }
+        )
+        if choice == "OK" and #cards > 0 then
+          event:setCostData(self, { cards = cards })
+          return true
+        end
       end
     end,
     on_use = function(self, event, target, player, data)
