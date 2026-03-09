@@ -17,7 +17,7 @@ tongchu_active:addEffect("active", {
     local targetRecorded = player:getTableMark("tongchu_targets-phase")
     return table.find(Fk:currentRoom().alive_players, function(p)
       return p:hasSkill("pang_tongchu", true) and not table.contains(targetRecorded, p.id) 
-      and #p:getPile("copper_golem_huo") < 5
+      and #p:getPile("$copper_golem_huo") < 5
     end)
   end,
   card_filter = function(self, player, to_select, selected)
@@ -31,7 +31,7 @@ tongchu_active:addEffect("active", {
     local player = effect.from
     local target = effect.tos[1]
     room:addTableMarkIfNeed(player, "tongchu_targets-phase", target.id)
-    target:addToPile("copper_golem_huo", effect.cards[1], false, "pang_tongchu")
+    target:addToPile("$copper_golem_huo", effect.cards[1], false, "pang_tongchu")
   end,
 })
 

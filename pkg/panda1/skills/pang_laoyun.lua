@@ -3,20 +3,20 @@ local laoyun = fk.CreateSkill {
 }
 
 Fk:loadTranslationTable {["pang_laoyun"] = "劳运",
-[":pang_laoyun"] = "每回合限一次，当你使用或打出牌后，你可以观看一名其他角色的手牌，然后你交给其一张牌并摸一张牌。",
+[":pang_laoyun"] = "每回合限一次，当你获得牌后，你可以观看一名其他角色的手牌，然后你交给其一张牌并摸一张牌。",
 
 ["#laoyun-choose"] = "劳运：你可以观看一名其他角色的手牌，然后交给其一张牌并摸一张牌",
 ["#laoyun_ask"] = "劳运：交给 %src 一张牌并摸一张牌",
 
 
-["$pang_laoyun1"] = "",
-["$pang_laoyun2"] = "",
+["$pang_laoyun1"] = "机关运转声",
+["$pang_laoyun2"] = "机械摩擦声",
 }
 
 local laoyun_spec = {
 anim_type = "support",
     can_trigger = function(self, event, target, player, data)
-        return target == player and player:hasSkill(laoyun.name) and not not player:isNude()
+        return target == player and player:hasSkill(laoyun.name) and not player:isNude()
         and player:usedSkillTimes(laoyun.name, Player.HistoryTurn) == 0
     end,
     on_cost = function(self, event, target, player, data)
