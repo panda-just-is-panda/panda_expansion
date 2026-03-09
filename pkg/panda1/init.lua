@@ -232,6 +232,19 @@ Fk:loadTranslationTable{
 ["~pang__iron_golem"] = "铁傀儡阵亡",
 }
 
+local copper_golem = General:new(extension, "pang__copper_golem", "wu", 3, 3, General.Male)
+copper_golem:addSkill("pang_tongchu")
+copper_golem:addSkill("pang_laoyun")
+Fk:loadTranslationTable{
+["pang__copper_golem"] = "铜傀儡",
+["#pang__copper_golem"] = "铜枢仆运",
+["designer:pang__copper_golem"] = "胖即是胖",
+["cv:pang__copper_golem"] = "我的世界",
+["illustrator:pang__copper_golem"] = "我的世界",
+
+["~pang__copper_golem"] = "铜傀儡阵亡",
+}
+
 local villager = General:new(extension, "pang__villager", "wu", 3, 3, General.Male)
 villager:addSkill("pang_linlian")
 villager:addSkill("pang_genmao")

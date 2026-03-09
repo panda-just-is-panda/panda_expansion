@@ -150,6 +150,10 @@ local content1 = {
   skins={"pang__enderman_skin_three.jpg"}, 
   enabled_generals = {"pang__enderman"},
   },
+  {
+  skins={"pang__copper_golem_skin.jpg"}, 
+  enabled_generals = {"pang__copper_golem"},
+  },
 
 
   {
@@ -342,6 +346,7 @@ Fk:loadTranslationTable{
   ["pang__creeper_skin_three"] = "可爱一刻",
   ["pang__creeper_skin_four"] = "怪物集结",
   ["pang__enderman_skin_three"] = "仰望天空",
+  ["pang__copper_golem_skin"] = "钻石传运",
 }
 
 return extension
