@@ -24,7 +24,7 @@ moyi:addEffect(fk.CardUseFinished, {
   anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
     return target ~= player and player:hasSkill(moyi.name) and table.contains(data.tos, player)
-    and player:usedSkillTimes(moyi.name, Player.HistoryRound) < 1
+    and player:usedSkillTimes(moyi.name, Player.HistoryRound) < 1 and not target.dead
   end,
   on_cost = function (self, event, target, player, data)
     local room = player.room
@@ -87,7 +87,8 @@ moyi:addEffect(fk.TurnEnd, {
         if p:getMark("moyi_target-round") == 1 then
             to = p
         end
-    end
+    end 
+    if not to then return false end
     local cardNames = {}
     for _, name in ipairs(Fk:getAllCardNames("btd", false, true)) do
         local card = Fk:cloneCard(name)
@@ -144,6 +145,7 @@ moyi:addEffect(fk.RoundEnd, {
             to = p
         end
     end
+    if not to then return false end
     local cardNames = {}
     for _, name in ipairs(Fk:getAllCardNames("btd", false, true)) do
         local card = Fk:cloneCard(name)
