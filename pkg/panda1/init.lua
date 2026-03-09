@@ -76,7 +76,7 @@ Fk:loadTranslationTable{
 }
 
 local enderman = General:new(extension, "pang__enderman", "jin", 4, 4, General.Male)
-enderman:addSkill("pang_yingyi")
+enderman:addSkill("pang_moyi")
 Fk:loadTranslationTable{
 ["pang__enderman"] = "末影人",
 ["#pang__enderman"] = "终界移影",
