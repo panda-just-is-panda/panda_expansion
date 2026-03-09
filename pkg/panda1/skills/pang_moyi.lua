@@ -70,6 +70,7 @@ moyi:addEffect(fk.CardUseFinished, {
     room:setPlayerMark(player, "@moyi_record-round", target)
     room:setPlayerMark(target, "moyi_target-round", 1)
     room:setPlayerMark(player, "moyi_use-turn", 1)
+    room:setPlayerMark(player, "moyi_use-round", 1)
   end,
 })
 
@@ -133,8 +134,7 @@ moyi:addEffect(fk.RoundEnd, {
     mute = true,
   anim_type = "offensive", 
   can_trigger = function(self, event, target, player, data)
-    return player:hasSkill(moyi.name) and player:usedSkillTimes(moyi.name, Player.HistoryRound) > 0
-    and player:getMark("@moyi_record-round") > 0
+    return player:hasSkill(moyi.name) and player:getMark("moyi_use-round") == 1
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
