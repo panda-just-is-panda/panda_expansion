@@ -50,6 +50,7 @@ moyi:addEffect(fk.CardUseFinished, {
         skill_name = moyi.name,
         prompt = "#pang_moyi:"..target.id,
         extra_data = {
+            exclusive_targets = {target.id},
             must_targets = { target.id },
             bypass_times = true,
             bypass_distances = true,
@@ -108,6 +109,7 @@ moyi:addEffect(fk.TurnEnd, {
         skill_name = moyi.name,
         prompt = "#pang_moyi:"..to.id,
         extra_data = {
+            exclusive_targets = {to.id},
             must_targets = { to.id },
             bypass_times = true,
             bypass_distances = true,
@@ -164,6 +166,7 @@ moyi:addEffect(fk.RoundEnd, {
         skill_name = moyi.name,
         prompt = "#pang_moyi:"..to.id,
         extra_data = {
+            exclusive_targets = {to.id},
             must_targets = { to.id },
             bypass_times = true,
             bypass_distances = true,
