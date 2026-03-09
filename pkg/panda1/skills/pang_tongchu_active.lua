@@ -4,9 +4,9 @@ local tongchu_active = fk.CreateSkill({
 
 Fk:loadTranslationTable{
   ["pang_tongchu_active&"] = "铜储",
-  [":pang_tongchu_active&"] = "出牌阶段限一次，你可以将一张手牌扣置于铜傀儡的武将牌上，称为“货”。",
+  [":pang_tongchu_active&"] = "出牌阶段限一次，你可以将一张牌扣置于铜傀儡的武将牌上，称为“货”。",
 
-  ["#pang_tongchu_use"] = "铜储：将一张手牌扣置于铜傀儡的武将牌上，称为“货”",
+  ["#pang_tongchu_use"] = "铜储：将一张牌扣置于铜傀儡的武将牌上，称为“货”",
 }
 
 tongchu_active:addEffect("active", {
