@@ -93,12 +93,16 @@ renji:addEffect(fk.AskForPeachesDone, {
 
 renji:addAcquireEffect(function (self, player)
   local room = player.room
-        room:recover{
-        who = player,
-        num = 12,
-        recoverBy = player,
-        skillName = renji.name
-      }
+  if player.maxHp < 12 then
+    local n = 12 - player.maxHp
+    room:changeMaxHp(player, n)
+    room:recover{
+      who = player,
+      num = 12,
+      recoverBy = player,
+      skillName = renji.name
+    }
+  end
 end)
 
 Fk:loadTranslationTable {["pang_super_renji"] = "人机",

@@ -75,12 +75,16 @@ anim_type = "offensive",
 
 renji:addAcquireEffect(function (self, player)
   local room = player.room
-        room:recover{
-        who = player,
-        num = 6,
-        recoverBy = player,
-        skillName = renji.name
-      }
+  if player.maxHp < 6 then
+    local n = 6 - player.maxHp
+    room:changeMaxHp(player, n)
+    room:recover{
+      who = player,
+      num = 6,
+      recoverBy = player,
+      skillName = renji.name
+    }
+  end
 end)
 
 renji:addEffect(fk.AskForPeachesDone, {
