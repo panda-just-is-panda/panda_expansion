@@ -41,8 +41,8 @@ anim_type = "offensive",
         cancelable = false,
       })
       to = to[1]
-      local cards
-      local cards2
+      local cards = {}
+      local cards2 = {}
       if not to:isNude() then
         cards2 = room:askToChooseCards(player, {
           target = to,
