@@ -16,10 +16,13 @@ anim_type = "offensive",
       random = 1
     elseif #player:getCardIds("h") < 2 and random ~= 4 then
       random = 2
-    elseif player.hp < 2 and random ~= 2 then
-      random = 3
     elseif not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) then
       random = 4
+    elseif player.hp < 3 then
+      random = 3
+    end
+    if random == 2 and player.hp < 2 then
+      random = 3
     end
     if random == 1 then
       room:askToUseVirtualCard(player, 
