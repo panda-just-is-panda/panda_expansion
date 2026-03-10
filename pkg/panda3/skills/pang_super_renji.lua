@@ -25,7 +25,7 @@ anim_type = "offensive",
     if random == 1 then
       room:askToUseVirtualCard(player, 
         {
-          name = "slash", 
+          name = "thunder__slash", 
           skill_name = renji.name,
           cancelable = false, 
           skip = false, 
@@ -34,7 +34,7 @@ anim_type = "offensive",
       )
       room:askToUseVirtualCard(player, 
         {
-          name = "slash", 
+          name = "thunder__slash", 
           skill_name = renji.name,
           cancelable = false, 
           skip = false, 
@@ -139,11 +139,23 @@ renji:addEffect(fk.TurnEnd, { --
     room:setPlayerMark(player, "renji_qishou", 1)
     room:throwCard(player.next:getCardIds("he"), renji.name, player.next, player)
     player.next:drawCards(4, renji.name)
+    local all_skills = player.next:getSkillNameList() ---@type TriggerSkill[]
+    local skillList = table.filter(all_skills, function (s)
+      return s:isInstanceOf(TriggerSkill) and s.event == fk.GameStart
+    end)
+    local event_data = {}
+    local event_obj = fk.GameStart:new(room, nil, event_data)
+    for _, s in ipairs(skillList) do
+      if player.dead or player.next.dead then break end
+      if s:triggerable(event_obj, nil, player, event_data) then
+        s:trigger(event_obj, nil, player, event_data)
+      end
+    end
 end,
 })
 
 Fk:loadTranslationTable {["pang_super_renji"] = "人机",
-[":pang_super_renji"] = "持恒技，锁定技，准备阶段，你随机执行一项：依次视为使用两张无距离限制的【杀】；摸五张牌；回复2点体力并摸两张牌；弃置一名其他角色四张牌。",
+[":pang_super_renji"] = "持恒技，锁定技，准备阶段，你随机执行一项：依次视为使用两张无距离限制的雷【杀】；摸五张牌；回复2点体力并摸两张牌；弃置一名其他角色四张牌。",
 ["#super_renji_prompt"] = "如果你能看到这条信息，那我问你：为什么不ban质检员？",
 
 
