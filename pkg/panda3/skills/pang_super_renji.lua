@@ -139,18 +139,6 @@ renji:addEffect(fk.TurnEnd, { --
     room:setPlayerMark(player, "renji_qishou", 1)
     room:throwCard(player.next:getCardIds("he"), renji.name, player.next, player)
     player.next:drawCards(4, renji.name)
-    local all_skills = player.next:getSkillNameList() ---@type TriggerSkill[]
-    local skillList = table.filter(all_skills, function (s)
-      return s.event == fk.GameStart
-    end)
-    local event_data = {}
-    local event_obj = fk.GameStart:new(room, nil, event_data)
-    for _, s in ipairs(skillList) do
-      if player.dead or player.next.dead then break end
-      if s:triggerable(event_obj, nil, player.next, event_data) then
-        s:trigger(event_obj, nil, player.next, event_data)
-      end
-    end
 end,
 })
 
