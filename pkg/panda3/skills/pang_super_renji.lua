@@ -1,5 +1,5 @@
 local renji = fk.CreateSkill {
-  name = "pang_renji",
+  name = "pang_super_renji",
     tags = {Skill.Compulsory},
 }
 
@@ -64,7 +64,7 @@ anim_type = "offensive",
         max_num = 1,
         targets = room:getOtherPlayers(player, false),
         skill_name = renji.name,
-        prompt = "#renji_prompt",
+        prompt = "#super_renji_prompt",
         cancelable = false,
       })
       local cards
@@ -75,7 +75,7 @@ anim_type = "offensive",
           max = 5,
           flag = "he",
           skill_name = renji.name,
-          prompt = "#renji_prompt",
+          prompt = "#super_renji_prompt",
           cancelable = false,
         })
       end
@@ -88,7 +88,7 @@ anim_type = "offensive",
         max_num = 1,
         targets = room:getOtherPlayers(player, false),
         skill_name = renji.name,
-        prompt = "#renji_prompt",
+        prompt = "#super_renji_prompt",
         cancelable = false,
       })
     room:damage{
@@ -110,12 +110,12 @@ renji:addEffect(fk.Death, {
   end
 })
 
-Fk:loadTranslationTable {["pang_renji"] = "人机",
-[":pang_renji"] = "持恒技，锁定技，准备阶段和结束阶段，你随机执行一项：依次视为使用四张无距离限制的【杀】；摸十张牌；回复3点体力并摸五张牌；弃置一名其他角色五张牌；对一名其他角色造成2点伤害。",
-["#renji_prompt"] = "如果你能看到这条信息，那我问你：为什么不ban质检员？",
+Fk:loadTranslationTable {["pang_super_renji"] = "人机",
+[":pang_super_renji"] = "持恒技，锁定技，准备阶段和结束阶段，你随机执行一项：依次视为使用四张无距离限制的【杀】；摸十张牌；回复3点体力并摸五张牌；弃置一名其他角色五张牌；对一名其他角色造成2点伤害。",
+["#super_renji_prompt"] = "如果你能看到这条信息，那我问你：为什么不ban质检员？",
 
 
-["$pang_renji1"] = "Enter the gate and see the light.",
+
 }
 
 return renji

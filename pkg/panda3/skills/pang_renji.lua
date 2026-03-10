@@ -73,7 +73,6 @@ Fk:loadTranslationTable {["pang_renji"] = "人机",
 ["#renji_prompt"] = "如果你能看到这条信息，那我问你：为什么不ban质检员？",
 
 
-["$pang_renji1"] = "Enter the gate and see the light.",
 }
 
 return renji
