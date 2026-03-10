@@ -14,7 +14,7 @@ anim_type = "offensive",
     local to = player.next
     if to.hp < 2 then
       random = 1
-    elseif #player:getCardIds("h") < 4 then
+    elseif #player:getCardIds("h") < 4 and player.hp > 5 then
       random = 2
     elseif player.hp < 4 and random ~= 2 then
       random = 3
