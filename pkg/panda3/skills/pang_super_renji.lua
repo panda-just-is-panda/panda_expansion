@@ -91,6 +91,16 @@ renji:addEffect(fk.AskForPeachesDone, {
   end
 })
 
+renji:addAcquireEffect(function (self, player)
+  local room = player.room
+        room:recover{
+        who = player,
+        num = 12,
+        recoverBy = player,
+        skillName = renji.name
+      }
+end)
+
 Fk:loadTranslationTable {["pang_super_renji"] = "人机",
 [":pang_super_renji"] = "持恒技，锁定技，准备阶段，你随机执行一项：依次视为使用两张无距离限制的【杀】；摸五张牌；回复2点体力并摸两张牌；弃置一名其他角色四张牌。",
 ["#super_renji_prompt"] = "如果你能看到这条信息，那我问你：为什么不ban质检员？",

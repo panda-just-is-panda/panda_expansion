@@ -73,6 +73,16 @@ anim_type = "offensive",
   end,
 })
 
+renji:addAcquireEffect(function (self, player)
+  local room = player.room
+        room:recover{
+        who = player,
+        num = 6,
+        recoverBy = player,
+        skillName = renji.name
+      }
+end)
+
 renji:addEffect(fk.AskForPeachesDone, {
   can_refresh = function(self, event, target, player, data)
     return data.who == player and player:hasSkill(renji.name, true, true) and player.hp <= 0
