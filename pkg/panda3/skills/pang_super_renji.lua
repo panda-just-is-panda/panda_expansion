@@ -141,7 +141,7 @@ renji:addEffect(fk.TurnEnd, { --
     player.next:drawCards(4, renji.name)
     local all_skills = player.next:getSkillNameList() ---@type TriggerSkill[]
     local skillList = table.filter(all_skills, function (s)
-      return s:isInstanceOf(TriggerSkill) and s.event == fk.GameStart
+      return s.event == fk.GameStart
     end)
     local event_data = {}
     local event_obj = fk.GameStart:new(room, nil, event_data)
