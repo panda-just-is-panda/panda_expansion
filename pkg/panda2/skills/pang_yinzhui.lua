@@ -59,7 +59,6 @@ anim_type = "switch",
         if choice == "max_card_nerf" then
             room:addPlayerMark(to, "yinzhui_cardnerf-turn", 1)
         else
-            if #player:getCardIds("he") > 1 then
             local card_discard = room:askToDiscard(to, {
             skill_name = yinzhui.name,
             prompt = "#yinzhui_discard",
@@ -68,10 +67,6 @@ anim_type = "switch",
             max_num = 2,
             include_equip = true,
             })
-            elseif #player:getCardIds("he") == 1 then
-                local card_discard = player:getCardIds("he")
-                room:throwCard(card_discard, yinzhui.name, to, to)
-            end
         end
     end
   end,
