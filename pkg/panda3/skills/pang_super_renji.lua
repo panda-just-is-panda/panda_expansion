@@ -11,12 +11,13 @@ anim_type = "offensive",
   on_use = function(self, event, target, player, data)
     local room = player.room
     local random = math.random(1, 4)
+    local subrandom = math.random(1, 4)
     local to = player.next
-    if to.hp < 2 or #player:getCardIds("h") > 8 then
+    if to.hp < 2 or #player:getCardIds("h") > 8 or subrandom == 1 then
       random = 1
-    elseif #player:getCardIds("h") < 4 and player.hp > 5 and random ~= 4 then
+    elseif #player:getCardIds("h") < 3 and player.hp > 5 and random ~= 4 then
       random = 2
-    elseif player.hp < 4 and random ~= 2 then
+    elseif player.hp < 4 and subrandom == 3 then
       random = 3
     elseif not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) then
       random = 4
