@@ -87,6 +87,18 @@ renji:addAcquireEffect(function (self, player)
       skillName = renji.name
     }
   end
+  local test = player.next
+  local X = 0 - test.shield
+  if X ~= 0 then
+   room:changeShield(test, X, {cancelable = false})
+  end
+  room:changeMaxHp(test, 10)
+    room:recover{
+      who = test,
+      num = 10,
+      recoverBy = player,
+      skillName = renji.name
+    }
 end)
 
 renji:addEffect(fk.AskForPeachesDone, {
