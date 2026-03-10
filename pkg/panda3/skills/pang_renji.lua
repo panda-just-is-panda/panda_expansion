@@ -42,16 +42,29 @@ anim_type = "offensive",
       })
       to = to[1]
       local cards
+      local cards2
       if not to:isNude() then
-        cards = room:askToChooseCards(player, {
+        cards2 = room:askToChooseCards(player, {
           target = to,
-          min = 2,
-          max = 2,
-          flag = "he",
+          min = 1,
+          max = 1,
+          flag = "e",
           skill_name = renji.name,
           prompt = "#renji_prompt",
           cancelable = false,
         })
+        cards = room:askToChooseCards(player, {
+          target = to,
+          min = #cards2 > 0 and 1 or 2,
+          max = #cards2 > 0 and 1 or 2,
+          flag = "he",
+          skill_name = renji.name,
+          prompt = "#super_renji_prompt",
+          cancelable = false,
+        })
+      end
+      if #cards2 > 0 then
+        room:throwCard(cards, renji.name, to, player)
       end
       if #cards > 0 then
         room:throwCard(cards, renji.name, to, player)
@@ -60,9 +73,9 @@ anim_type = "offensive",
   end,
 })
 
-renji:addEffect(fk.Death, {
+renji:addEffect(fk.AskForPeachesDone, {
   can_refresh = function(self, event, target, player, data)
-    return target == player and player:hasSkill(renji.name, true, true)
+    return data.who == player and player:hasSkill(renji.name, true, true) and player.hp <= 0
   end,
   on_refresh = function(self, event, target, player, data)
     player:chat("你过关。")
