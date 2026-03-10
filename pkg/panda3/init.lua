@@ -79,7 +79,9 @@ Fk:loadTranslationTable{
 local zhijianyuan = General:new(extension, "pang__zhijianyuan", "qun", 6, 6, General.Male)
 zhijianyuan:addSkill("pang_renji")
 zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
-"<br>推荐在游戏模式选择身份模式并将游戏人数调整为2人，再通过谋徐盛将此武将变出来；更多人数的模式人机依然不会用它的技能。"
+"<br>本武将代码针对设置成2人的身份模式的环境进行了调整，可通过以下步骤开启紧张刺激的单挑："..
+"<br>游戏模式设置成标准版身份模式->开启点将->选择谋徐盛并将用谋徐盛此武将变出来->谋徐盛变出你想要的武将"..
+"<br>注意在其他模式以及更多人数的身份模式下人机依然不会用它的技能，甚至会出现一些诡异的交互。"
 Fk:loadTranslationTable{
 ["pang__zhijianyuan"] = "质检员",
 ["#pang__zhijianyuan"] = "打不过人机，你自裁罢",
@@ -91,8 +93,10 @@ Fk:loadTranslationTable{
 
 local super_zhijianyuan = General:new(extension, "pang__super_zhijianyuan", "qun", 12, 12, General.Male)
 super_zhijianyuan:addSkill("pang_super_renji")
-super_zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
-"<br>推荐在游戏模式选择身份模式并将游戏人数调整为2人，再通过谋徐盛将此武将变出来；更多人数的模式人机依然不会用它的技能。"
+zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
+"<br>本武将代码针对设置成2人的身份模式的环境进行了调整，可通过以下步骤开启紧张刺激的单挑："..
+"<br>游戏模式设置成标准版身份模式->开启点将->选择谋徐盛并将用谋徐盛此武将变出来->谋徐盛变出你想要的武将"..
+"<br>注意在其他模式以及更多人数的身份模式下人机依然不会用它的技能，甚至会出现一些诡异的交互。"
 Fk:loadTranslationTable{
 ["pang__super_zhijianyuan"] = "阴间质检员",
 ["#pang__super_zhijianyuan"] = "阴间守门员",
