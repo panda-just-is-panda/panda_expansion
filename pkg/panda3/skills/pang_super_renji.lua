@@ -17,9 +17,12 @@ anim_type = "offensive",
       random = 1
     elseif #player:getCardIds("h") < 3 and player.hp > 5 and random ~= 4 then
       random = 2
+    elseif not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) then
+      random = 4
     elseif player.hp < 4 and subrandom == 3 then
       random = 3
-    elseif not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) then
+    end
+    if random ~= 1 and #player.next:getCardIds("e") > 2 then
       random = 4
     end
     if random == 1 then
