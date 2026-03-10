@@ -6,7 +6,7 @@ local renji = fk.CreateSkill {
 renji:addEffect(fk.EventPhaseStart, {
 anim_type = "offensive",
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(renji.name) and (target.phase == Player.Start or target.phase == Player.Finish)
+    return target == player and player:hasSkill(renji.name) and target.phase == Player.Start
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
@@ -73,7 +73,7 @@ anim_type = "offensive",
         })
       end
       if #cards2 > 0 then
-        room:throwCard(cards, renji.name, to, player)
+        room:throwCard(cards2, renji.name, to, player)
       end
       if #cards > 0 then
         room:throwCard(cards, renji.name, to, player)
@@ -92,7 +92,7 @@ renji:addEffect(fk.AskForPeachesDone, {
 })
 
 Fk:loadTranslationTable {["pang_super_renji"] = "人机",
-[":pang_super_renji"] = "持恒技，锁定技，准备阶段和结束阶段，你随机执行一项：依次视为使用两张无距离限制的【杀】；摸五张牌；回复2点体力并摸两张牌；弃置一名其他角色四张牌。",
+[":pang_super_renji"] = "持恒技，锁定技，准备阶段，你随机执行一项：依次视为使用两张无距离限制的【杀】；摸五张牌；回复2点体力并摸两张牌；弃置一名其他角色四张牌。",
 ["#super_renji_prompt"] = "如果你能看到这条信息，那我问你：为什么不ban质检员？",
 
 

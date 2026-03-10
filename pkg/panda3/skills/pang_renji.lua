@@ -64,7 +64,7 @@ anim_type = "offensive",
         })
       end
       if #cards2 > 0 then
-        room:throwCard(cards, renji.name, to, player)
+        room:throwCard(cards2, renji.name, to, player)
       end
       if #cards > 0 then
         room:throwCard(cards, renji.name, to, player)
