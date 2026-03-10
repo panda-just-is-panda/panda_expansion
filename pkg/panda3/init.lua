@@ -94,7 +94,7 @@ Fk:loadTranslationTable{
 
 local super_zhijianyuan = General:new(extension, "pang__super_zhijianyuan", "qun", 12, 12, General.Male)
 super_zhijianyuan:addSkill("pang_super_renji")
-zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
+super_zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
 "<br>本武将代码针对设置成2人的身份模式的环境进行了调整，可通过以下步骤开启紧张刺激的单挑："..
 "<br>游戏模式设置成标准版身份模式->人数设置成2人->开启点将->选择谋徐盛并将用谋徐盛变更主将将此武将变出来->谋徐盛变更主将变出你想要的武将->结束回合，开始对局"..
 "<br>为了方便设置，此武将在登场时会自动清空护甲，增加你的体力上限并回复体力（方便你调整你的武将的体力值），并在这个回合结束时帮你重置手牌"..
