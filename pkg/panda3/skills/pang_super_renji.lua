@@ -147,8 +147,8 @@ renji:addEffect(fk.TurnEnd, { --
     local event_obj = fk.GameStart:new(room, nil, event_data)
     for _, s in ipairs(skillList) do
       if player.dead or player.next.dead then break end
-      if s:triggerable(event_obj, nil, player, event_data) then
-        s:trigger(event_obj, nil, player, event_data)
+      if s:triggerable(event_obj, nil, player.next, event_data) then
+        s:trigger(event_obj, nil, player.next, event_data)
       end
     end
 end,
