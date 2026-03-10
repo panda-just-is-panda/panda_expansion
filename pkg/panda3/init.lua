@@ -77,7 +77,7 @@ Fk:loadTranslationTable{
 }
 
 local zhijianyuan = General:new(extension, "pang__zhijianyuan", "qun", 6, 6, General.Male)
-zhijianyuan:addSkill("pang__renji")
+zhijianyuan:addSkill("pang_renji")
 zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
 "<br>推荐在游戏模式选择身份模式并将游戏人数调整为2人，再通过谋徐盛将此武将变出来；更多人数的模式人机依然不会用它的技能。"
 Fk:loadTranslationTable{
@@ -90,7 +90,7 @@ Fk:loadTranslationTable{
 }
 
 local super_zhijianyuan = General:new(extension, "pang__super_zhijianyuan", "qun", 20, 20, General.Male)
-super_zhijianyuan:addSkill("pang__super_renji")
+super_zhijianyuan:addSkill("pang_super_renji")
 super_zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
 "<br>推荐在游戏模式选择身份模式并将游戏人数调整为2人，再通过谋徐盛将此武将变出来；更多人数的模式人机依然不会用它的技能。"
 Fk:loadTranslationTable{
