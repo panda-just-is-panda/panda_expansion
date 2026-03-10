@@ -76,6 +76,32 @@ Fk:loadTranslationTable{
 ["~pang__weihuacun"] = "早知造化钟难逆，当初该留引路灯...",
 }
 
+local zhijianyuan = General:new(extension, "pang__zhijianyuan", "qun", 6, 6, General.Male)
+zhijianyuan:addSkill("pang__renji")
+zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
+"<br>推荐在游戏模式选择身份模式并将游戏人数调整为2人，再通过谋徐盛将此武将变出来；更多人数的模式人机依然不会用它的技能。"
+Fk:loadTranslationTable{
+["pang__zhijianyuan"] = "质检员",
+["#pang__zhijianyuan"] = "打不过人机，你自裁罢",
+["designer:pang__zhijianyuan"] = "胖即是胖",
+["cv:pang__zhijianyuan"] = "官方",
+["illustrator:pang__zhijianyuan"] = "豆包",
+
+}
+
+local super_zhijianyuan = General:new(extension, "pang__super_zhijianyuan", "qun", 20, 20, General.Male)
+super_zhijianyuan:addSkill("pang__super_renji")
+super_zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
+"<br>推荐在游戏模式选择身份模式并将游戏人数调整为2人，再通过谋徐盛将此武将变出来；更多人数的模式人机依然不会用它的技能。"
+Fk:loadTranslationTable{
+["pang__super_zhijianyuan"] = "超级质检员",
+["#pang__super_zhijianyuan"] = "仙界守门员",
+["designer:pang__super_zhijianyuan"] = "胖即是胖",
+["cv:pang__super_zhijianyuan"] = "官方",
+["illustrator:pang__super_zhijianyuan"] = "豆包",
+
+}
+
 local pang = General:new(extension, "pang__pangpanda", "god", 4, 4, General.Female)
 pang.endnote = "这是一只胖。"
 Fk:loadTranslationTable{
