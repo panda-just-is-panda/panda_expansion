@@ -130,6 +130,18 @@ renji:addAcquireEffect(function (self, player)
     }
 end)
 
+renji:addEffect(fk.TurnEnd, { --
+  can_refresh = function(self, event, target, player, data)
+    return player:hasSkill(renji.name, true, true) and player:getMark("renji_qishou") == 0
+  end,
+  on_refresh = function(self, event, target, player, data)
+    local room = player.room
+    room:setPlayerMark(player, "renji_qishou", 1)
+    room:throwCard(player.next:getCardIds("he"), renji.name, player.next, player)
+    player.next:drawCards(4, renji.name)
+end,
+})
+
 Fk:loadTranslationTable {["pang_super_renji"] = "人机",
 [":pang_super_renji"] = "持恒技，锁定技，准备阶段，你随机执行一项：依次视为使用两张无距离限制的【杀】；摸五张牌；回复2点体力并摸两张牌；弃置一名其他角色四张牌。",
 ["#super_renji_prompt"] = "如果你能看到这条信息，那我问你：为什么不ban质检员？",

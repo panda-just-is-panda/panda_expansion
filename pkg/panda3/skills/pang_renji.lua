@@ -119,6 +119,17 @@ renji:addEffect(fk.AskForPeachesDone, {
     player:chat("你过关。")
   end
 })
+renji:addEffect(fk.TurnEnd, { --
+  can_refresh = function(self, event, target, player, data)
+    return player:hasSkill(renji.name, true, true) and player:getMark("renji_qishou") == 0
+  end,
+  on_refresh = function(self, event, target, player, data)
+    local room = player.room
+    room:setPlayerMark(player, "renji_qishou", 1)
+    room:throwCard(player.next:getCardIds("he"), renji.name, player.next, player)
+    player.next:drawCards(4, renji.name)
+end,
+})
 
 Fk:loadTranslationTable {["pang_renji"] = "人机",
 [":pang_renji"] = "锁定技，准备阶段，你随机执行一项：视为使用一张无距离限制的【杀】；摸两张牌；回复1点体力并摸一张牌；弃置一名其他角色两张牌。",
