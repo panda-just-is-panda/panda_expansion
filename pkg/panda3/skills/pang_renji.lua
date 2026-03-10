@@ -40,6 +40,7 @@ anim_type = "offensive",
         prompt = "#renji_prompt",
         cancelable = false,
       })
+      to = to[1]
       local cards
       if not to:isNude() then
         cards = room:askToChooseCards(player, {
