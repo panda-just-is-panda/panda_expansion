@@ -62,6 +62,10 @@ anim_type = "offensive",
           prompt = "#super_renji_prompt",
           cancelable = false,
         })
+        if #cards2 > 0 then
+          room:throwCard(cards2, renji.name, to, player)
+        end
+        if not to:isNude() then
         cards = room:askToChooseCards(player, {
           target = to,
           min = #cards2 > 0 and 3 or 4,
@@ -71,12 +75,10 @@ anim_type = "offensive",
           prompt = "#super_renji_prompt",
           cancelable = false,
         })
-      end
-      if #cards2 > 0 then
-        room:throwCard(cards2, renji.name, to, player)
-      end
-      if #cards > 0 then
-        room:throwCard(cards, renji.name, to, player)
+        end
+        if #cards > 0 then
+          room:throwCard(cards, renji.name, to, player)
+        end
       end
     end
   end,
