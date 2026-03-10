@@ -12,9 +12,9 @@ anim_type = "offensive",
     local room = player.room
     local random = math.random(1, 4)
     local to = player.next
-    if to.hp < 2 then
+    if to.hp < 2 or to.hp < 3 and #player:getCardIds("h") > 4 then
       random = 1
-    elseif #player:getCardIds("h") < 2 then
+    elseif #player:getCardIds("h") < 2 and random ~= 4 then
       random = 2
     elseif player.hp < 2 and random ~= 2 then
       random = 3
