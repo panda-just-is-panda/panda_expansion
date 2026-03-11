@@ -28,15 +28,39 @@ moyi:addEffect(fk.CardUseFinished, {
   end,
   on_cost = function (self, event, target, player, data)
     local room = player.room
-      local use = room:askToUseCard(player, {
+    local cardNames = {}
+    for _, name in ipairs(Fk:getAllCardNames("btd", false, true)) do
+        local card = Fk:cloneCard(name)
+        local min_target = card.skill:getMinTargetNum(player)
+        if min_target > 0 then
+            table.insertIfNeed(cardNames, card.trueName)
+        else
+            if card.multiple_targets then
+                if card.skill:modTargetFilter(player, data.to, {}, card) then
+                    table.insertIfNeed(cardNames, card.trueName)
+                end
+            else
+                --FIXME:不需要选目标的单目标牌，目前没有能指别人的
+            end
+        end
+    end
+    local use = room:askToUseCard(player, {
+        card_name = "",
+        pattern = table.concat(cardNames, ","),
         skill_name = moyi.name,
-        pattern = ".",
-        extra_data = { must_targets = { target.id } },
         prompt = "#pang_moyi:"..target.id,
-      })
+        extra_data = {
+            exclusive_targets = {target.id},
+            must_targets = { target.id },
+            bypass_times = true,
+            bypass_distances = true,
+        },
+        cancelable = true,
+    })
     if use then
         player:broadcastSkillInvoke(moyi.name, 1)
         use.extraUse = true
+        room:useCard(use)
         return true
     end
   end,
@@ -65,16 +89,40 @@ moyi:addEffect(fk.TurnEnd, {
         end
     end 
     if not to then return false end
-      local use = room:askToUseCard(player, {
+    local cardNames = {}
+    for _, name in ipairs(Fk:getAllCardNames("btd", false, true)) do
+        local card = Fk:cloneCard(name)
+        local min_target = card.skill:getMinTargetNum(player)
+        if min_target > 0 then
+            table.insertIfNeed(cardNames, card.trueName)
+        else
+            if card.multiple_targets then
+                if card.skill:modTargetFilter(player, data.to, {}, card) then
+                    table.insertIfNeed(cardNames, card.trueName)
+                end
+            else
+                --FIXME:不需要选目标的单目标牌，目前没有能指别人的
+            end
+        end
+    end
+    local use = room:askToUseCard(player, {
+        card_name = "",
+        pattern = table.concat(cardNames, ","),
         skill_name = moyi.name,
-        pattern = ".",
-        extra_data = { must_targets = { to.id } },
         prompt = "#pang_moyi:"..to.id,
-      })
+        extra_data = {
+            exclusive_targets = {to.id},
+            must_targets = { to.id },
+            bypass_times = true,
+            bypass_distances = true,
+        },
+        cancelable = true,
+    })
     if use then
         player:broadcastSkillInvoke(moyi.name, 2)
-        use.extraUse = true
-        return true
+      use.extraUse = true
+      room:useCard(use)
+      return true
     end
   end,
   on_use = function(self, event, target, player, data)
@@ -98,16 +146,40 @@ moyi:addEffect(fk.RoundEnd, {
         end
     end
     if not to then return false end
-      local use = room:askToUseCard(player, {
+    local cardNames = {}
+    for _, name in ipairs(Fk:getAllCardNames("btd", false, true)) do
+        local card = Fk:cloneCard(name)
+        local min_target = card.skill:getMinTargetNum(player)
+        if min_target > 0 then
+            table.insertIfNeed(cardNames, card.trueName)
+        else
+            if card.multiple_targets then
+                if card.skill:modTargetFilter(player, data.to, {}, card) then
+                    table.insertIfNeed(cardNames, card.trueName)
+                end
+            else
+                --FIXME:不需要选目标的单目标牌，目前没有能指别人的
+            end
+        end
+    end
+    local use = room:askToUseCard(player, {
+        card_name = "",
+        pattern = table.concat(cardNames, ","),
         skill_name = moyi.name,
-        pattern = ".",
-        extra_data = { must_targets = { to.id } },
         prompt = "#pang_moyi:"..to.id,
-      })
+        extra_data = {
+            exclusive_targets = {to.id},
+            must_targets = { to.id },
+            bypass_times = true,
+            bypass_distances = true,
+        },
+        cancelable = true,
+    })
     if use then
         player:broadcastSkillInvoke(moyi.name, 3)
-        use.extraUse = true
-        return true
+      use.extraUse = true
+      room:useCard(use)
+      return true
     end
   end,
   on_use = function(self, event, target, player, data)
