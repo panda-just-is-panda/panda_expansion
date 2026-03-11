@@ -28,7 +28,7 @@ moyi:addEffect(fk.CardUseFinished, {
   end,
   on_cost = function (self, event, target, player, data)
     local room = player.room
-      local use = room:askToUseRealCard(player, {
+      local use = room:askToUseCard(player, {
         skill_name = moyi.name,
         pattern = ".",
         extra_data = { must_targets = { target.id } },
@@ -65,7 +65,7 @@ moyi:addEffect(fk.TurnEnd, {
         end
     end 
     if not to then return false end
-      local use = room:askToUseRealCard(player, {
+      local use = room:askToUseCard(player, {
         skill_name = moyi.name,
         pattern = ".",
         extra_data = { must_targets = { to.id } },
@@ -98,7 +98,7 @@ moyi:addEffect(fk.RoundEnd, {
         end
     end
     if not to then return false end
-      local use = room:askToUseRealCard(player, {
+      local use = room:askToUseCard(player, {
         skill_name = moyi.name,
         pattern = ".",
         extra_data = { must_targets = { to.id } },
