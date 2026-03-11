@@ -26,7 +26,8 @@ anim_type = "offensive",
     end
     if to.hp < 2 and subrandom ~= 1 and lock ~= 1 
     or #player:getCardIds("h") > 8 and subrandom ~= 1 and lock ~= 1
-    or #to:getCardIds("he") < 4 and random == 4 and lock ~= 1 then
+    or #to:getCardIds("he") < 4 and random == 4 and lock ~= 1
+    or #to:getCardIds("h") < 3 and player.hp > 5 and random == 3 then
       random = 1
     elseif player.hp < 3 and subrandom ~= 3 
     or player.hp < 4 and (subrandom == 3 or subrandom == 4) and lock ~= 1 then
