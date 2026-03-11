@@ -72,7 +72,7 @@ moyi:addEffect(fk.TurnEnd, {
         prompt = "#pang_moyi:"..to.id,
       })
     if use then
-        player:broadcastSkillInvoke(moyi.name, 1)
+        player:broadcastSkillInvoke(moyi.name, 2)
         use.extraUse = true
         return true
     end
@@ -105,7 +105,7 @@ moyi:addEffect(fk.RoundEnd, {
         prompt = "#pang_moyi:"..to.id,
       })
     if use then
-        player:broadcastSkillInvoke(moyi.name, 1)
+        player:broadcastSkillInvoke(moyi.name, 3)
         use.extraUse = true
         return true
     end
