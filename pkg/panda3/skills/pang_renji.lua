@@ -13,12 +13,14 @@ anim_type = "offensive",
     local random = math.random(1, 4)
     local subrandom = math.random(1, 4)
     local to = player.next
-    if to.hp < 2 and subrandom ~= 1 then
-      random = 1
+    if not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) and #to:getCardIds("e") > 0 and subrandom ~= 4
+    or #to:getCardIds("e") > 2 and to:getEquipment(Card.SubtypeArmor) and subrandom ~= 4 then
+      random = 4
     elseif #player:getCardIds("h") < 2 and subrandom ~= 2 then
       random = 2
-    elseif not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) and #to:getCardIds("e") > 0 and subrandom ~= 4 then
-      random = 4
+    end
+    if to.hp < 2 and subrandom ~= 1 then
+      random = 1
     elseif player.hp < 2 and subrandom ~= 3 or random == 2 and player.hp < 3 and subrandom ~= 3 then
       random = 3
     end

@@ -13,17 +13,17 @@ anim_type = "offensive",
     local random = math.random(1, 4)
     local subrandom = math.random(1, 4)
     local to = player.next
-    if to.hp < 2 or #player:getCardIds("h") > 8 or subrandom == 1 then
-      random = 1
-    elseif #player:getCardIds("h") < 3 and player.hp > 5 and random ~= 4 then
+    if #player:getCardIds("h") < 4 and player.hp > 5 and subrandom ~= 2 then
       random = 2
-    elseif not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) then
+    elseif not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) and subrandom ~= 4
+    or to:getEquipment(Card.SubtypeArmor) and subrandom ~= 4
+    or #to:getCardIds("e") > 2 and subrandom ~= 4 then
       random = 4
-    elseif player.hp < 4 and subrandom == 3 then
-      random = 3
     end
-    if random ~= 1 and #player.next:getCardIds("e") > 2 then
-      random = 4
+    if to.hp < 2 and subrandom ~= 1 or #player:getCardIds("h") > 8 and subrandom ~= 1 then
+      random = 1
+    elseif player.hp < 3 or player.hp < 4 and (subrandom == 3 or subrandom == 4) then
+      random = 3
     end
     if random == 1 then
       room:askToUseVirtualCard(player, 
