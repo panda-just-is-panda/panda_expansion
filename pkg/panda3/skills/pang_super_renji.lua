@@ -12,6 +12,7 @@ anim_type = "offensive",
     local room = player.room
     local random = math.random(1, 4)
     local subrandom = math.random(1, 4)
+    local lock = 0
     local to = player.next
     if #player:getCardIds("h") < 4 and player.hp > 5 and subrandom ~= 2 then
       random = 2
@@ -19,11 +20,28 @@ anim_type = "offensive",
     or to:getEquipment(Card.SubtypeArmor) and subrandom ~= 4
     or #to:getCardIds("e") > 2 and subrandom ~= 4 then
       random = 4
+      if to:getEquipment(Card.SubtypeArmor) then
+        lock = 1
+      end
     end
-    if to.hp < 2 and subrandom ~= 1 or #player:getCardIds("h") > 8 and subrandom ~= 1 then
+    if to.hp < 2 and subrandom ~= 1 and lock ~= 1 or #player:getCardIds("h") > 8 and subrandom ~= 1 and lock ~= 1 then
       random = 1
-    elseif player.hp < 3 or player.hp < 4 and (subrandom == 3 or subrandom == 4) then
+    elseif player.hp < 3 and subrandom ~= 3 or player.hp < 4 and (subrandom == 3 or subrandom == 4) and lock ~= 1 then
       random = 3
+    end
+    if random == 2 and player:getMark("ai_have_draw") > 2 then
+      if subrandom == 1 or subrandom == 2 then
+        random = 1
+      elseif subrandom == 3 or subrandom == 4 then
+        random = 4
+      end
+    end
+    if (random == 1 or random == 4) and player:getMark("ai_have_attack") > 2 then
+      if subrandom == 1 or subrandom == 2 then
+        random = 2
+      elseif subrandom == 3 or subrandom == 4 then
+        random = 3
+      end
     end
     if random == 1 then
       room:askToUseVirtualCard(player, 
@@ -44,8 +62,12 @@ anim_type = "offensive",
           extra_data = {bypass_distances = true, bypass_times = true, extraUse = true}
         }
       )
+      room:setPlayerMark(player, "ai_have_draw", 0)
+      room:addPlayerMark(player, "ai_have_attack", 1)
     elseif random == 2 then
       room:drawCards(player, 5, renji.name)
+      room:addPlayerMark(player, "ai_have_draw", 1)
+      room:setPlayerMark(player, "ai_have_attack", 0)
     elseif random == 3 then
       room:recover{
         who = player,
@@ -54,7 +76,11 @@ anim_type = "offensive",
         skillName = renji.name
       }
       room:drawCards(player, 2, renji.name)
+      room:addPlayerMark(player, "ai_have_draw", 1)
+      room:setPlayerMark(player, "ai_have_attack", 0)
     elseif random == 4 then
+      room:setPlayerMark(player, "ai_have_draw", 0)
+      room:addPlayerMark(player, "ai_have_attack", 1)
       local to = room:askToChoosePlayers(player, {
         min_num = 1,
         max_num = 1,
