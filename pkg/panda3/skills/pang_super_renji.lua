@@ -14,7 +14,7 @@ anim_type = "offensive",
     local subrandom = math.random(1, 4)
     local lock = 0
     local to = player.next
-    if #player:getCardIds("h") < 4 and player.hp > 5 and subrandom ~= 2 then
+    if #player:getCardIds("h") < 4 and player.hp > 4 and subrandom ~= 2 then
       random = 2
     elseif not player:canUseTo(Fk:cloneCard("slash"), to, {bypass_times = true}) and subrandom ~= 4
     or to:getEquipment(Card.SubtypeArmor) and subrandom ~= 4 and random ~= 1

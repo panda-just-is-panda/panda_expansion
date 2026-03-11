@@ -92,7 +92,7 @@ Fk:loadTranslationTable{
 
 }
 
-local super_zhijianyuan = General:new(extension, "pang__super_zhijianyuan", "qun", 12, 12, General.Male)
+local super_zhijianyuan = General:new(extension, "pang__super_zhijianyuan", "qun", 10, 10, General.Male)
 super_zhijianyuan:addSkill("pang_super_renji")
 super_zhijianyuan.endnote = "用于在单机环境下测试新将强度的（会还手的）沙包。" ..
 "<br>本武将代码针对设置成2人的身份模式的环境进行了调整，可通过以下步骤开启紧张刺激的单挑："..
