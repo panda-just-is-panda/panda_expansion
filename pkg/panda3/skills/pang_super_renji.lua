@@ -25,13 +25,14 @@ anim_type = "offensive",
       end
     end
     if to.hp < 2 and subrandom ~= 1 and lock ~= 1 
-    or #player:getCardIds("h") > 8 and subrandom ~= 1 and lock ~= 1 then
+    or #player:getCardIds("h") > 8 and subrandom ~= 1 and lock ~= 1
+    or #to:getCardIds("he") < 4 and random == 4 and lock ~= 1 then
       random = 1
     elseif player.hp < 3 and subrandom ~= 3 
     or player.hp < 4 and (subrandom == 3 or subrandom == 4) and lock ~= 1 then
       random = 3
     end
-    if random == 2 and player:getMark("ai_have_draw") > 1 then
+    if (random == 2 or random == 3) and player:getMark("ai_have_draw") > 1 then
       if subrandom == 1 or subrandom == 2 then
         random = 1
       elseif subrandom == 3 or subrandom == 4 then
