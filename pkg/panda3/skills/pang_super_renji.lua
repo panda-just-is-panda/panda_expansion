@@ -162,7 +162,7 @@ renji:addAcquireEffect(function (self, player)
       skillName = renji.name
     }
   test = player
-  local X = 0 - test.shield
+  X = 0 - test.shield
   if X ~= 0 then
    room:changeShield(test, X, {cancelable = false})
   end
