@@ -128,9 +128,46 @@ renji:addEffect(fk.TurnEnd, { --
   end,
   on_refresh = function(self, event, target, player, data)
     local room = player.room
+    local to = player.next
     room:setPlayerMark(player, "renji_qishou", 1)
-    room:throwCard(player.next:getCardIds("he"), renji.name, player.next, player)
-    player.next:drawCards(4, renji.name)
+    room:throwCard(to:getCardIds("he"), renji.name, to, player)
+    to:drawCards(4, renji.name)
+    room:throwCard(player:getCardIds("he"), renji.name, player, player)
+    player:drawCards(4, renji.name)
+    local general = Fk.generals[to.general]
+    local skills = table.filter(general:getSkillNameList(true), function (s)
+      return to:hasSkill(s, true)
+    end)
+    local startSkills = {}---@type TriggerSkill[]
+    local start_events = {fk.GamePrepared, fk.GameStart}
+    for _, sname in ipairs(skills) do
+      local s = Fk.skills[sname]
+      local slist = {s}
+      table.insertTable(slist, s.related_skills)
+      for _, skill in ipairs(slist) do
+        if skill:isInstanceOf(TriggerSkill) and skill.event and table.contains(start_events, skill.event) then
+          table.insertIfNeed(startSkills, skill)
+        end
+      end
+    end
+    if #startSkills == 0 then return end
+    for _, event in ipairs(start_events) do
+      local event_data = {}
+      local event_obj = event:new(room, target, event_data)
+      for _, skill in ipairs(startSkills) do
+        if skill.event == event then
+          if not skill.late_refresh and skill:canRefresh(event_obj, to, to, event_data) then
+            skill:refresh(event_obj, to, to, event_data)
+          end
+          if skill:triggerable(event_obj, to, to, event_data) then
+            skill:trigger(event_obj, to, to, event_data)
+          end
+          if skill.late_refresh and skill:canRefresh(event_obj, to, to, event_data) then
+            skill:refresh(event_obj, to, to, event_data)
+          end
+        end
+      end
+    end
 end,
 })
 
