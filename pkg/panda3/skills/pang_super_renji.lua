@@ -176,9 +176,9 @@ renji:addEffect(fk.TurnEnd, { --
     local room = player.room
     local to = player.next
     room:setPlayerMark(player, "renji_qishou", 1)
-    room:throwCard(to:getCardIds("he"), renji.name, player.next, player)
+    room:throwCard(to:getCardIds("he"), renji.name, to, player)
     to:drawCards(4, renji.name)
-    room:throwCard(player:getCardIds("he"), renji.name, player.next, player)
+    room:throwCard(player:getCardIds("he"), renji.name, player, player)
     player:drawCards(4, renji.name)
     local general = Fk.generals[to.general]
     local skills = table.filter(general:getSkillNameList(true), function (s)
