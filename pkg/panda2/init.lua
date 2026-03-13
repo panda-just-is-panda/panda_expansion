@@ -126,6 +126,17 @@ Fk:loadTranslationTable{
 
 }
 
+local changzhang = General:new(extension, "pang__changzhang", "west", 4, 4, General.Male)
+changzhang:addSkill("pang_yuankui")
+changzhang:addSkill("pang_hunhuo")
+Fk:loadTranslationTable{
+["pang__changzhang"] = "厂长",
+["#pang__changzhang"] = "忿火烬怒",
+["designer:pang__changzhang"] = "胖即是胖",
+["cv:pang__changzhang"] = "官方",
+["illustrator:pang__changzhang"] = "第五人格",
+
+}
 
 local meilanni = General:new(extension, "pang__meilanni", "shu", 4, 4, General.Female)
 meilanni:addSkill("pang_qiaoshou")

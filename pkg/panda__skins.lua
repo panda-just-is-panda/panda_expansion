@@ -274,6 +274,10 @@ local content1 = {
   skins={"pang__girl_beastfly.jpg"}, 
   enabled_generals = {"pang__savage_beastfly"},
   },
+  {
+  skins={"pang__changzhang_skin.jpg"}, 
+  enabled_generals = {"pang__changzhang"},
+  },
 }
 extension:addSkinPackage {
   path = "/image/skins",
@@ -347,6 +351,7 @@ Fk:loadTranslationTable{
   ["pang__creeper_skin_four"] = "怪物集结",
   ["pang__enderman_skin_three"] = "仰望天空",
   ["pang__copper_golem_skin"] = "钻石传运",
+  ["pang__changzhang_skin"] = "非卖品",
 }
 
 return extension
