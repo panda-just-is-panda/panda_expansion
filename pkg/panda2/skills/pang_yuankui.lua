@@ -15,14 +15,12 @@ end
 yuankui:addEffect(fk.Damage, {
   mute = true,
   can_trigger = function(self, event, target, player, data)
-    if not target == player or not player:hasSkill(yuankui.name) then return false end
-    local X = 0
     for _, to in ipairs(player.room.alive_players) do
         if to:getMark("@@rmt__puppet") > 0 then
             X = X + 1
         end
     end
-    return  X < 2
+    return  X < 2 and target == player and player:hasSkill(yuankui.name)
   end,
   on_cost = function(self, event, target, player, data)
     local room = player.room
@@ -64,7 +62,7 @@ yuankui:addEffect(fk.Damaged, {
 })
 
 yuankui:addEffect(fk.GameStart, {
-  can_refresh = function(self, event, target, player, data)
+  can_trigger = function(self, event, target, player, data)
     local X = 0
     for _, to in ipairs(player.room.alive_players) do
         if to.general == "rmt__himiko" or to.deputyGeneral == "rmt__himiko" then
@@ -73,6 +71,7 @@ yuankui:addEffect(fk.GameStart, {
     end
     return player:hasSkill(yuankui.name) and X == 1
   end,
+  on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
     player:chat("我去，日本女人，太好")
     if Fk.skills["glory_days__show"] and gdU and player:getMark(yuankui.name.."_achive")==0 then
