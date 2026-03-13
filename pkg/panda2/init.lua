@@ -130,8 +130,8 @@ local changzhang = General:new(extension, "pang__changzhang", "west", 4, 4, Gene
 changzhang:addSkill("pang_yuankui")
 changzhang:addSkill("pang_yuhuo")
 Fk:loadTranslationTable{
-["pang__changzhang"] = "厂长",
-["#pang__changzhang"] = "忿火烬怒",
+["pang__changzhang"] = "里奥",
+["#pang__changzhang"] = "厂长",
 ["designer:pang__changzhang"] = "胖即是胖",
 ["cv:pang__changzhang"] = "官方",
 ["illustrator:pang__changzhang"] = "第五人格",
