@@ -15,6 +15,7 @@ end
 yuankui:addEffect(fk.Damage, {
   mute = true,
   can_trigger = function(self, event, target, player, data)
+    local X = 0
     for _, to in ipairs(player.room.alive_players) do
         if to:getMark("@@rmt__puppet") > 0 then
             X = X + 1
