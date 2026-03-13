@@ -8,7 +8,7 @@ Fk:loadTranslationTable{
   ["pang"] = "胖"
 }
 
-local ouliege = General:new(extension, "pang__ouliege", "shu", 4)
+local ouliege = General:new(extension, "pang__ouliege", "west", 4)
 ouliege:addSkill("pang_binghai")
 ouliege:addSkill("pang_tanta")
 Fk:loadTranslationTable{
@@ -21,7 +21,7 @@ Fk:loadTranslationTable{
 ["~pang__ouliege"] = "I guess that's it.",
 }
 
-local moskvin = General:new(extension, "pang__moskvin", "shu", 4)
+local moskvin = General:new(extension, "pang__moskvin", "west", 4)
 moskvin:addSkill("pang_ciyong")
 Fk:loadTranslationTable{
 ["pang__moskvin"] = "摩斯克芬",
