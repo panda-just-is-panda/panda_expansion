@@ -128,7 +128,7 @@ Fk:loadTranslationTable{
 
 local changzhang = General:new(extension, "pang__changzhang", "west", 4, 4, General.Male)
 changzhang:addSkill("pang_yuankui")
-changzhang:addSkill("pang_hunhuo")
+changzhang:addSkill("pang_yuhuo")
 Fk:loadTranslationTable{
 ["pang__changzhang"] = "厂长",
 ["#pang__changzhang"] = "忿火烬怒",
