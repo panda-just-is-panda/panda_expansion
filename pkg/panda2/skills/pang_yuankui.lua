@@ -70,7 +70,7 @@ yuankui:addEffect(fk.Damaged, {
       skill_name = yuankui.name,
       prompt = "#pang_yuankui_swap:"..to.id,
     }) then
-      room:swapAllCards(player, to, yuankui.name, "h")
+      room:swapAllCards(player, {player, to}, yuankui.name)
     elseif from then
       if room:askToSkillInvoke(from, {
         skill_name = yuankui.name,
@@ -107,7 +107,7 @@ Fk:loadTranslationTable{["pang_yuankui"] = "怨傀",
   ["#yuankui"] = "怨傀：你可以令一名没有“傀”的角色获得一枚“傀”",
 
   ["#pang_yuankui_swap"] = "怨傀：你可以和 %src 交换手牌，否则伤害来源可以移除 %src 的“傀”",
-  ["#pang_yuankui_remove:"] = "怨傀：你可以移除 %src 的“傀”",
+  ["#pang_yuankui_remove"] = "怨傀：你可以移除 %src 的“傀”",
 }
 
 return yuankui
