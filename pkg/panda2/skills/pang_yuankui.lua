@@ -54,11 +54,31 @@ yuankui:addEffect(fk.Damage, {
 })
 
 yuankui:addEffect(fk.Damaged, {
-  can_refresh = function(self, event, target, player, data)
+  can_trigger = function(self, event, target, player, data)
     return target:getMark("@@rmt__puppet") > 0 and player:hasSkill(yuankui.name)
   end,
-  on_refresh = function(self, event, target, player, data)
+  on_cost = Util.TrueFunc,
+  on_use = function(self, event, target, player, data)
+    local room = player.room
+    local to = target
+    local from
+    if data.from then
+      from = data.from
+    end
     player:drawCards(1, yuankui.name)
+    if room:askToSkillInvoke(player, {
+      skill_name = yuankui.name,
+      prompt = "#pang_yuankui_swap:"..to.id,
+    }) then
+      room:swapAllCards(player, to, yuankui.name, "h")
+    elseif from then
+      if room:askToSkillInvoke(from, {
+        skill_name = yuankui.name,
+        prompt = "#pang_yuankui_remove:"..to.id,
+      }) then
+        room:setPlayerMark(to, "@@rmt__puppet", 0)
+      end
+    end
   end,
 })
 
@@ -83,10 +103,11 @@ yuankui:addEffect(fk.GameStart, {
 })
 
 Fk:loadTranslationTable{["pang_yuankui"] = "怨傀",
-  [":pang_yuankui"] = "当你造成伤害后，若场上的“傀”数小于2，你可以令一名没有“傀”的角色获得1枚“傀”；当有“傀”的角色受到伤害后，你摸一张牌。",
+  [":pang_yuankui"] = "当你造成伤害后，若场上的“傀”数小于2，你可以令一名没有“傀”的角色获得1枚“傀”；当一名有“傀”的角色受到伤害后，你可以和其交换手牌，否则伤害来源可以移除此“傀”。",
   ["#yuankui"] = "怨傀：你可以令一名没有“傀”的角色获得一枚“傀”",
 
-
+  ["#pang_yuankui_swap"] = "怨傀：你可以和 %src 交换手牌，否则伤害来源可以移除 %src 的“傀”",
+  ["#pang_yuankui_remove:"] = "怨傀：你可以移除 %src 的“傀”",
 }
 
 return yuankui
