@@ -141,10 +141,10 @@ baopo:addEffect(fk.Damaged, {
   trigger_times = function(self, event, target, player, data)
     return 1
   end,
-  can_refresh = function(self, event, target, player, data)
+  can_trigger = function(self, event, target, player, data)
     return target == player and player:hasSkill(self) and data.card and data.card.trueName == "lightning"
   end,
-  on_refresh = function(self, event, target, player, data)
+  on_use = function(self, event, target, player, data)
     local room = player.room
     if Fk.skills["glory_days__show"] and gdU then
           room:setPlayerMark(player,baopo.name.."_achive",1)
