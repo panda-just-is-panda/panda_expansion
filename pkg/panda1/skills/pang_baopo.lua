@@ -128,31 +128,4 @@ baopo:addEffect("active", {
 end
 })
 
-local U = require "packages.utility.utility"
-local gdU
-if Fk.skills["glory_days__show"] then
-    gdU = require "packages.glory_days.utility"
-    if type(gdU.RegisterAchievement) == "function" then
-      gdU.RegisterAchievement("胖胖胖胖","闪电苦力怕","我的伤害翻倍呢？","受到闪电造成的伤害","general:pang__creeper",true,nil,true)
-    end
-end
-
-baopo:addEffect(fk.Damage, {
-  trigger_times = function(self, event, target, player, data)
-    return 1
-  end,
-  is_delay_effect = true,
-  can_trigger = function(self, event, target, player, data)
-    return data.to == player and player:hasSkill(self) and data.card and data.card.trueName == "lightning"
-  end,
-  on_cost = Util.TrueFunc,
-  on_use = function(self, event, target, player, data)
-    local room = player.room
-    if Fk.skills["glory_days__show"] and gdU then
-          room:setPlayerMark(player,baopo.name.."_achive",1)
-          gdU.addAchievement(room,"steam",250,nil,"闪电苦力怕","我的伤害翻倍呢？","general:pang__creeper", {player})
-      end
-  end,
-})
-
 return baopo
