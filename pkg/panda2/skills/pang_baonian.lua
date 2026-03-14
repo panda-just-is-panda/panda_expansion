@@ -3,6 +3,14 @@ local baonian = fk.CreateSkill {
   tags = {Skill.Compulsory},
 }
 
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages.glory_days.utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","他自杀了","锁定技害我","发动暴碾杀死自己","general:pang__skull_tyrant",true,nil,true)
+    end
+end
 
 baonian:addEffect(fk.TargetSpecified, {
   anim_type = "offensive",
@@ -41,6 +49,10 @@ baonian:addEffect(fk.TargetSpecified, {
                 damage = 1,
                 skillName = baonian.name,
             }
+          if player.dead and Fk.skills["glory_days__show"] and gdU then
+            room:setPlayerMark(player,baonian.name.."_achive",1)
+            gdU.addAchievement(room,"steam",250,nil,"他自杀了","锁定技害我","general:pang__skull_tyrant", {player})
+          end
         end
     end
     room:cleanProcessingArea(cards, baonian.name)

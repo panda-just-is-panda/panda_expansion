@@ -27,7 +27,7 @@ EnterHidden = function (player)
   if player.deputyGeneral ~= "" then
     player.deputyGeneral = ""
   end
-  player.kingdom = "jin"
+  player.kingdom = "wu"
   room:setPlayerMark(player, "__hidden_record",
   {
     maxHp = player.maxHp,
@@ -126,6 +126,31 @@ baopo:addEffect("active", {
         end
     end
 end
+})
+
+local U = require "packages.utility.utility"
+local gdU
+if Fk.skills["glory_days__show"] then
+    gdU = require "packages.glory_days.utility"
+    if type(gdU.RegisterAchievement) == "function" then
+      gdU.RegisterAchievement("胖胖胖胖","闪电苦力怕","我的伤害翻倍呢？","受到闪电造成的伤害","general:pang__creeper",true,nil,true)
+    end
+end
+
+baopo:addEffect(fk.Damaged, {
+  trigger_times = function(self, event, target, player, data)
+    return 1
+  end,
+  can_refresh = function(self, event, target, player, data)
+    return target == player and player:hasSkill(self) and data.card and data.card.trueName == "lightning"
+  end,
+  on_refresh = function(self, event, target, player, data)
+    local room = player.room
+    if Fk.skills["glory_days__show"] and gdU then
+          room:setPlayerMark(player,baopo.name.."_achive",1)
+          gdU.addAchievement(room,"steam",250,nil,"闪电苦力怕","我的伤害翻倍呢？","general:pang__creeper", {player})
+      end
+  end,
 })
 
 return baopo
