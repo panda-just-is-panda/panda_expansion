@@ -65,7 +65,6 @@ yuankui:addEffect(fk.Damaged, {
     if data.from then
       from = data.from
     end
-    player:drawCards(1, yuankui.name)
     if to ~= player and room:askToSkillInvoke(player, {
       skill_name = yuankui.name,
       prompt = "#pang_yuankui_swap:"..to.id,
