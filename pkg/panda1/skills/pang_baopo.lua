@@ -137,12 +137,12 @@ if Fk.skills["glory_days__show"] then
     end
 end
 
-baopo:addEffect(fk.Damaged, {
+baopo:addEffect(fk.Damage, {
   trigger_times = function(self, event, target, player, data)
     return 1
   end,
   can_trigger = function(self, event, target, player, data)
-    return target == player and player:hasSkill(self) and data.card and data.card.trueName == "lightning"
+    return data.to == player and player:hasSkill(self) and data.card and data.card.trueName == "lightning"
   end,
   on_use = function(self, event, target, player, data)
     local room = player.room
