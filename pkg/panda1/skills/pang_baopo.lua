@@ -27,7 +27,7 @@ EnterHidden = function (player)
   if player.deputyGeneral ~= "" then
     player.deputyGeneral = ""
   end
-  player.kingdom = "wu"
+  player.kingdom = "jin"
   room:setPlayerMark(player, "__hidden_record",
   {
     maxHp = player.maxHp,
