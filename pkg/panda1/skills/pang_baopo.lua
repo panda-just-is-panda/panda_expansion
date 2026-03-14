@@ -141,9 +141,11 @@ baopo:addEffect(fk.Damage, {
   trigger_times = function(self, event, target, player, data)
     return 1
   end,
+  is_delay_effect = true,
   can_trigger = function(self, event, target, player, data)
     return data.to == player and player:hasSkill(self) and data.card and data.card.trueName == "lightning"
   end,
+  on_cost = Util.TrueFunc,
   on_use = function(self, event, target, player, data)
     local room = player.room
     if Fk.skills["glory_days__show"] and gdU then
